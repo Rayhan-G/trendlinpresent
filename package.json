@@ -5,10 +5,10 @@
   "author": "Trending Wealth",
   "license": "MIT",
   "scripts": {
-    "build": "node build.js",
+    "build": "echo 'Static site - no build needed'",
     "serve": "npx serve .",
     "deploy": "wrangler pages deploy . --project-name=trending-wealth",
-    "dev": "node build.js --watch"
+    "dev": "echo 'No dev server needed'"
   },
   "dependencies": {},
   "devDependencies": {
