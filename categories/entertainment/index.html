@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entertainment | Ultima — Live Feed</title>
+    <title>Entertainment | Trendlin — Live Feed</title>
     <meta name="description" content="What's worth your time. Curated recommendations on film, TV, books, games, and pop culture — only live posts from entertainment.">
-    <!-- Critical styles + live-feed carousel styles -->
     <link rel="stylesheet" href="/assets/css/critical.css">
     <link rel="stylesheet" href="/assets/css/live-feed.css">
     <script src="/components/loader.js" defer></script>
@@ -29,7 +28,6 @@
             padding: 0 24px;
         }
 
-        /* Hero section (preserved but dynamic) */
         .hero {
             min-height: 40vh;
             display: flex;
@@ -101,26 +99,6 @@
             line-height: 1.5;
         }
 
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            margin-top: 24px;
-        }
-
-        .hero-stat-number {
-            font-size: 1rem;
-            font-weight: 700;
-            color: white;
-        }
-
-        .hero-stat-label {
-            font-size: 0.6rem;
-            color: #6b7280;
-            margin-top: 2px;
-        }
-
-        /* feed section header */
         .feed-section {
             padding: 60px 0 40px 0;
             background: linear-gradient(135deg, #ffffff 0%, #faf5ff 100%);
@@ -145,36 +123,6 @@
             font-size: 0.85rem;
         }
 
-        /* stats bar & category pills & articles etc - keep untouched for structure */
-        .stats-bar {
-            background: #111827;
-            padding: 24px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .stats-grid {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 24px;
-        }
-
-        .stat-number {
-            font-size: 1.25rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #a78bfa, #f472b6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .stat-label {
-            font-size: 0.65rem;
-            color: #9ca3af;
-            margin-top: 4px;
-        }
-
-        /* ========== NEW SUBCATEGORY GRID (from React component) ========== */
         .subcategory-showcase {
             padding: 60px 0;
             background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
@@ -285,16 +233,6 @@
             font-size: 1.8rem;
         }
 
-        .card-stat {
-            padding: 6px 14px;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.95);
-        }
-
         .card-bottom {
             text-align: left;
         }
@@ -335,12 +273,6 @@
             color: white;
         }
 
-        /* hide featured & articles grid - keep your original behavior */
-        .featured-section, .articles-section, .sidebar-section {
-            display: none !important;
-        }
-
-        /* override live-feed skeleton to blend */
         .loading {
             text-align: center;
             padding: 40px;
@@ -351,7 +283,6 @@
             .hero h1 {
                 font-size: 1.8rem;
             }
-            
             .subcategory-grid {
                 grid-template-columns: 1fr;
             }
@@ -361,12 +292,6 @@
             .hero h1 {
                 font-size: 1.5rem;
             }
-
-            .hero-stats {
-                flex-direction: column;
-                gap: 12px;
-            }
-            
             .card-bottom h3 {
                 font-size: 1.3rem;
             }
@@ -377,28 +302,20 @@
 
 <div class="hero">
     <div class="hero-content">
-        <div class="hero-badge">ULTIMA ENTERTAINMENT</div>
+        <div class="hero-badge">TRENDLIN ENTERTAINMENT</div>
         <h1>What's <span>worth your time</span></h1>
-        <p>We spend 12 years watching. 5 years scrolling. Countless hours gaming. The question isn't whether you consume — it's what you choose.</p>
-        <div class="hero-stats">
-            <div class="hero-stat"><div class="hero-stat-number">12 yrs</div><div class="hero-stat-label">Watching TV</div></div>
-            <div class="hero-stat"><div class="hero-stat-number">$200B+</div><div class="hero-stat-label">Streaming Revenue</div></div>
-            <div class="hero-stat"><div class="hero-stat-number">3.2B</div><div class="hero-stat-label">Gamers</div></div>
-        </div>
+        <p>Trends in movies, TV, gaming, music, and pop culture — researched and explained.</p>
     </div>
 </div>
 
-<!-- ========= LIVE FEED SECTION: ONLY 'entertainment' CATEGORY LIVE POSTS ========= -->
 <section class="feed-section">
     <div class="feed-header">
         <h2>🎬 Live from Entertainment</h2>
-        <p>← Swipe → only the freshest posts from movies, TV, gaming, and pop culture — updated in real-time</p>
+        <p>← Swipe → only the freshest posts from movies, TV, gaming, and pop culture</p>
     </div>
     <div id="live-feed-container" data-category="entertainment">
-        <!-- skeleton will be rendered by JS -->
         <div class="feed-skeleton">
             <div class="skeleton-track">
-                <div class="skeleton-post"><div class="skeleton-text"><div class="skeleton-line title"></div><div class="skeleton-line meta"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line footer"></div></div><div class="skeleton-media"></div></div>
                 <div class="skeleton-post"><div class="skeleton-text"><div class="skeleton-line title"></div><div class="skeleton-line meta"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line footer"></div></div><div class="skeleton-media"></div></div>
                 <div class="skeleton-post"><div class="skeleton-text"><div class="skeleton-line title"></div><div class="skeleton-line meta"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line footer"></div></div><div class="skeleton-media"></div></div>
             </div>
@@ -406,19 +323,6 @@
     </div>
 </section>
 
-<!-- stats bar (kept for context) -->
-<div class="stats-bar">
-    <div class="container">
-        <div class="stats-grid">
-            <div class="stat-item"><div class="stat-number">1.2M+</div><div class="stat-label">Titles Available</div></div>
-            <div class="stat-item"><div class="stat-number">71%</div><div class="stat-label">Feel Overwhelmed</div></div>
-            <div class="stat-item"><div class="stat-number">24 min</div><div class="stat-label">Average Search Time</div></div>
-            <div class="stat-item"><div class="stat-number">200+</div><div class="stat-label">Shows Canceled</div></div>
-        </div>
-    </div>
-</div>
-
-<!-- ========== NEW SUBCATEGORY GRID (Beautiful Cards from React Component) ========== -->
 <div class="subcategory-showcase">
     <div class="container">
         <div class="showcase-header">
@@ -427,7 +331,7 @@
             <p>Dive into your favorite entertainment categories</p>
         </div>
         <div class="subcategory-grid" id="subcategory-grid">
-            <!-- Subcategory cards will be loaded dynamically -->
+            <div class="loading">Loading categories...</div>
         </div>
     </div>
 </div>
@@ -436,102 +340,85 @@
 <script src="/assets/js/live-feed.js"></script>
 
 <script>
-    // ========== SUBCATEGORY CARDS DATA (from React component) ==========
+    // ========== SUBCATEGORIES - DYNAMIC FROM YOUR ACTUAL FOLDER STRUCTURE ==========
+    // These are the actual subfolders under /categories/entertainment/
     const ENTERTAINMENT_SUBCATEGORIES = [
-        { 
-            slug: 'movies', 
-            name: 'Movies', 
-            icon: '🎬', 
-            bgImage: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&h=1000&fit=crop',
-            tagline: 'Cinema magic awaits',
-            stat: '145 articles',
-            description: 'Reviews, trailers, and behind-the-scenes'
-        },
-        { 
-            slug: 'tv-shows', 
-            name: 'TV Shows', 
-            icon: '📺', 
-            bgImage: 'https://images.unsplash.com/photo-1578020198024-2b3e2b9d4a7c?w=800&h=1000&fit=crop',
-            tagline: 'Binge-worthy series',
-            stat: '98 articles',
-            description: 'Streaming guides & episode recaps'
-        },
-        { 
-            slug: 'music', 
-            name: 'Music', 
-            icon: '🎵', 
-            bgImage: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&h=1000&fit=crop',
-            tagline: 'Feel the rhythm',
-            stat: '210 articles',
-            description: 'Albums, artists, and concert reviews'
-        },
-        { 
-            slug: 'gaming', 
-            name: 'Gaming', 
-            icon: '🎮', 
-            bgImage: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=1000&fit=crop',
-            tagline: 'Level up',
-            stat: '167 articles',
-            description: 'Reviews, esports & gaming news'
-        },
-        { 
-            slug: 'celebrities', 
-            name: 'Celebrities', 
-            icon: '⭐', 
-            bgImage: 'https://images.unsplash.com/photo-1499364615650-ec38552f4f34?w=800&h=1000&fit=crop',
-            tagline: 'Star power',
-            stat: '134 articles',
-            description: 'Exclusive interviews & news'
-        },
-        { 
-            slug: 'streaming', 
-            name: 'Streaming', 
-            icon: '📡', 
-            bgImage: 'https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=800&h=1000&fit=crop',
-            tagline: 'Watch anywhere',
-            stat: '89 articles',
-            description: 'Netflix, Disney+, HBO & more'
-        }
+        { slug: 'movies', name: 'Movies', icon: '🎬', tagline: 'Cinema magic awaits', description: 'Reviews, trailers, and behind-the-scenes' },
+        { slug: 'tv-shows', name: 'TV Shows', icon: '📺', tagline: 'Binge-worthy series', description: 'Streaming guides & episode recaps' },
+        { slug: 'gaming', name: 'Gaming', icon: '🎮', tagline: 'Level up', description: 'Reviews, esports & gaming news' },
+        { slug: 'streaming', name: 'Streaming', icon: '📡', tagline: 'Watch anywhere', description: 'Netflix, Disney+, HBO & more' }
     ];
 
-    // Render subcategory grid
-    function renderSubcategoryGrid() {
+    // Dynamic background images for each subcategory (using Unsplash)
+    const BG_IMAGES = {
+        movies: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&h=1000&fit=crop',
+        'tv-shows': 'https://images.unsplash.com/photo-1578020198024-2b3e2b9d4a7c?w=800&h=1000&fit=crop',
+        gaming: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=1000&fit=crop',
+        streaming: 'https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=800&h=1000&fit=crop'
+    };
+
+    async function getArticleCountForSubcategory(slug) {
+        try {
+            const response = await fetch('/data/posts.json?t=' + Date.now());
+            if (response.ok) {
+                const data = await response.json();
+                const posts = data.posts || [];
+                const count = posts.filter(post => {
+                    const cat = (post.category || '').toLowerCase();
+                    const subcat = (post.subcategory || '').toLowerCase();
+                    return cat === 'entertainment' && subcat === slug;
+                }).length;
+                return count > 0 ? count : null;
+            }
+        } catch (e) {
+            console.warn('Could not load article count for', slug);
+        }
+        return null;
+    }
+
+    async function renderSubcategoryGrid() {
         const grid = document.getElementById('subcategory-grid');
         if (!grid) return;
         
-        grid.innerHTML = ENTERTAINMENT_SUBCATEGORIES.map((cat) => `
-            <a href="/categories/entertainment/${cat.slug}/" class="subcategory-card">
-                <div class="card-bg" style="background-image: url('${cat.bgImage}');"></div>
-                <div class="gradient-overlay"></div>
-                <div class="card-content-wrapper">
-                    <div class="card-top">
-                        <div class="card-icon">${cat.icon}</div>
-                        <div class="card-stat">${cat.stat}</div>
-                    </div>
-                    <div class="card-bottom">
-                        <h3>${cat.name}</h3>
-                        <div class="card-tagline">${cat.tagline}</div>
-                        <div class="card-description">${cat.description}</div>
-                        <div class="explore-link">
-                            Explore <span>→</span>
+        // First show loading state with real article counts loaded dynamically
+        const cards = [];
+        
+        for (const cat of ENTERTAINMENT_SUBCATEGORIES) {
+            const articleCount = await getArticleCountForSubcategory(cat.slug);
+            const statText = articleCount ? `${articleCount} articles` : 'Explore';
+            const bgImage = BG_IMAGES[cat.slug] || 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&h=1000&fit=crop';
+            
+            cards.push(`
+                <a href="/categories/entertainment/${cat.slug}/" class="subcategory-card">
+                    <div class="card-bg" style="background-image: url('${bgImage}');"></div>
+                    <div class="gradient-overlay"></div>
+                    <div class="card-content-wrapper">
+                        <div class="card-top">
+                            <div class="card-icon">${cat.icon}</div>
+                        </div>
+                        <div class="card-bottom">
+                            <h3>${cat.name}</h3>
+                            <div class="card-tagline">${cat.tagline}</div>
+                            <div class="card-description">${cat.description}</div>
+                            <div class="explore-link">
+                                ${statText} <span>→</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
-        `).join('');
+                </a>
+            `);
+        }
+        
+        grid.innerHTML = cards.join('');
     }
 
-    // ------------------------------
-    // ENTERTAINMENT ONLY LIVE FEED (category = "entertainment")
-    // (Keep your original working live feed code)
-    // ------------------------------
+    // ========== LIVE FEED - ENTERTAINMENT ONLY ==========
     (function() {
         const CONFIG = {
-            postLifespanHours: 24,
-            refreshInterval: 300000   // 5min refresh
+            postLifespanHours: 168, // 7 days for entertainment
+            refreshInterval: 300000
         };
 
-        let allPosts = [];
         let filteredEntertainmentPosts = [];
         let container = null;
 
@@ -549,46 +436,33 @@
                 const data = await response.json();
                 return data.posts || [];
             } catch (err) {
-                console.warn('Error loading posts.json, trying /api/v1/posts/page/1.json:', err);
-                try {
-                    const apiResp = await fetch('/api/v1/posts/page/1.json?t=' + Date.now());
-                    if (!apiResp.ok) throw new Error('API failed');
-                    const apiData = await apiResp.json();
-                    return apiData.posts || [];
-                } catch (e) {
-                    console.error('Failed to load any post source', e);
-                    return [];
-                }
+                console.warn('Error loading posts:', err);
+                return [];
             }
         }
 
         function filterEntertainmentLivePosts(posts) {
             const now = new Date();
-            let livePosts = posts.filter(post => {
-                if (!post.date) return false;
-                const postDate = new Date(post.date);
-                if (isNaN(postDate.getTime())) return false;
-                const diffHours = (now - postDate) / (1000 * 60 * 60);
-                return diffHours <= CONFIG.postLifespanHours && diffHours >= 0;
-            });
-            const entertainmentOnly = livePosts.filter(post => {
+            const entertainmentOnly = posts.filter(post => {
                 const cat = (post.category || '').toLowerCase();
                 return cat === 'entertainment';
             });
-            entertainmentOnly.sort((a, b) => new Date(b.date) - new Date(a.date));
-            console.log(`🎬 Entertainment live posts: ${entertainmentOnly.length} out of ${livePosts.length} live posts`);
-            return entertainmentOnly;
+            
+            const livePosts = entertainmentOnly.filter(post => {
+                if (!post.date) return true;
+                const postDate = new Date(post.date);
+                if (isNaN(postDate.getTime())) return true;
+                const diffHours = (now - postDate) / (1000 * 60 * 60);
+                return diffHours <= CONFIG.postLifespanHours;
+            });
+            
+            livePosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+            return livePosts;
         }
 
         function getCategoryIcon(category) {
             const icons = {
-                entertainment: '🎬',
-                movies: '🎬',
-                'tv-shows': '📺',
-                gaming: '🎮',
-                books: '📚',
-                streaming: '📡',
-                'pop-culture': '🌟'
+                movies: '🎬', 'tv-shows': '📺', gaming: '🎮', streaming: '📡'
             };
             return icons[category?.toLowerCase()] || '🎭';
         }
@@ -596,23 +470,14 @@
         function getCategoryDisplayName(category) {
             if (!category) return 'Entertainment';
             const map = {
-                entertainment: 'Entertainment',
-                movies: 'Movies',
-                'tv-shows': 'TV Shows',
-                gaming: 'Gaming',
-                books: 'Books',
-                streaming: 'Streaming',
-                'pop-culture': 'Pop Culture'
+                movies: 'Movies', 'tv-shows': 'TV Shows', gaming: 'Gaming', streaming: 'Streaming'
             };
             return map[category.toLowerCase()] || category;
         }
 
         function renderMediaCarousel(mediaItems, postId) {
             if (!mediaItems || mediaItems.length === 0) {
-                return `<div class="post-media-placeholder">
-                            <span>🎞️</span>
-                            <span style="font-size:0.7rem;">No media</span>
-                        </div>`;
+                return `<div class="post-media-placeholder"><span>🎞️</span><span style="font-size:0.7rem;">No media</span></div>`;
             }
             const hasMultiple = mediaItems.length > 1;
             const carouselId = `media-${postId}`;
@@ -623,8 +488,6 @@
                     mediaHtml = `<img src="${media.url}" alt="Post media" loading="lazy" onerror="this.src='https://placehold.co/800x450?text=No+Image'">`;
                 } else if (media.type === 'video') {
                     mediaHtml = `<video controls preload="metadata"><source src="${media.url}" type="video/mp4"></video>`;
-                } else if (media.type === 'audio') {
-                    mediaHtml = `<audio controls src="${media.url}"></audio>`;
                 } else {
                     mediaHtml = `<img src="${media.url}" alt="Media" loading="lazy">`;
                 }
@@ -642,7 +505,7 @@
 
         function escapeHtml(str) {
             if (!str) return '';
-            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         }
 
         function renderPost(post, idx) {
@@ -652,7 +515,7 @@
             if (!excerptText && post.content) {
                 excerptText = post.content.replace(/<[^>]*>/g, '').substring(0, 180) + '...';
             }
-            if (!excerptText) excerptText = 'Dive into the latest entertainment insights, reviews, and recommendations.';
+            if (!excerptText) excerptText = 'Explore the latest entertainment insights.';
             const icon = getCategoryIcon(post.subcategory || post.category);
             const displayCategory = getCategoryDisplayName(post.subcategory || post.category);
             const postDate = post.date ? new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : 'Recent';
@@ -673,7 +536,7 @@
                             <div class="post-footer">
                                 <div class="post-author">
                                     <span class="author-avatar">👤</span>
-                                    <span class="author-name">${escapeHtml(post.author || 'Ultima Team')}</span>
+                                    <span class="author-name">${escapeHtml(post.author || 'Trendlin Team')}</span>
                                 </div>
                                 <div class="post-read-time">⏱️ ${readTime} min read</div>
                             </div>
@@ -687,101 +550,7 @@
         }
 
         function renderEmptyState() {
-            return `
-                <div class="feed-empty">
-                    <div class="empty-icon">🎬🍿</div>
-                    <h3>No live entertainment posts right now</h3>
-                    <p>No posts from the last 24 hours in Entertainment category.</p>
-                    <p class="empty-hint">Check back soon for fresh movie, TV, gaming & pop culture updates!</p>
-                </div>
-            `;
-        }
-
-        function attachMediaCarouselEvents() {
-            document.querySelectorAll('.media-prev, .media-next').forEach(btn => {
-                btn.removeEventListener('click', handleMediaNav);
-                btn.addEventListener('click', handleMediaNav);
-            });
-            document.querySelectorAll('.media-dots .dot').forEach(dot => {
-                dot.removeEventListener('click', handleMediaDot);
-                dot.addEventListener('click', handleMediaDot);
-            });
-        }
-
-        function handleMediaNav(e) {
-            e.stopPropagation();
-            const btn = e.currentTarget;
-            const carouselId = btn.dataset.carousel;
-            const containerSlides = document.getElementById(carouselId);
-            if (!containerSlides) return;
-            const slides = containerSlides.querySelectorAll('.media-slide');
-            const mediaContainer = containerSlides.closest('.post-media');
-            const dots = mediaContainer?.querySelectorAll('.media-dots .dot');
-            if (slides.length === 0) return;
-            let activeIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
-            const isPrev = btn.classList.contains('media-prev');
-            activeIndex = isPrev ? (activeIndex - 1 + slides.length) % slides.length : (activeIndex + 1) % slides.length;
-            slides.forEach((slide, idx) => slide.classList.toggle('active', idx === activeIndex));
-            if (dots) dots.forEach((dot, idx) => dot.classList.toggle('active', idx === activeIndex));
-        }
-
-        function handleMediaDot(e) {
-            e.stopPropagation();
-            const dot = e.currentTarget;
-            const dotsContainer = dot.closest('.media-dots');
-            const mediaContainer = dotsContainer?.closest('.post-media');
-            const carouselId = mediaContainer?.dataset.carouselId;
-            const containerSlides = document.getElementById(carouselId);
-            if (!containerSlides) return;
-            const slides = containerSlides.querySelectorAll('.media-slide');
-            const index = parseInt(dot.dataset.index);
-            slides.forEach((slide, idx) => slide.classList.toggle('active', idx === index));
-            dotsContainer?.querySelectorAll('.dot').forEach((d, idx) => d.classList.toggle('active', idx === index));
-        }
-
-        function updateCarouselCounterAndScrollbar() {
-            const track = document.querySelector('.carousel-track');
-            const currentSpan = document.querySelector('.current-index');
-            const totalSpan = document.querySelector('.total-count');
-            const scrollbarThumb = document.querySelector('.carousel-scrollbar-thumb');
-            if (!track || !currentSpan) return;
-            const clientWidth = track.clientWidth;
-            if (clientWidth === 0) return;
-            const scrollLeft = track.scrollLeft;
-            let currentIndex = Math.round(scrollLeft / clientWidth) + 1;
-            const total = filteredEntertainmentPosts.length;
-            currentIndex = Math.min(currentIndex, total);
-            currentIndex = Math.max(currentIndex, 1);
-            currentSpan.textContent = currentIndex;
-            if (totalSpan) totalSpan.textContent = total;
-            if (scrollbarThumb && track.scrollWidth > clientWidth) {
-                const scrollPercent = scrollLeft / (track.scrollWidth - clientWidth);
-                const thumbWidth = (clientWidth / track.scrollWidth) * 100;
-                const thumbLeft = scrollPercent * (100 - thumbWidth);
-                scrollbarThumb.style.width = `${thumbWidth}%`;
-                scrollbarThumb.style.marginLeft = `${thumbLeft}%`;
-            }
-        }
-
-        function attachCarouselEvents() {
-            const track = document.querySelector('.carousel-track');
-            const prevBtn = document.querySelector('.carousel-prev');
-            const nextBtn = document.querySelector('.carousel-next');
-            if (!track) return;
-            if (prevBtn && nextBtn && filteredEntertainmentPosts.length > 1) {
-                prevBtn.addEventListener('click', () => {
-                    track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
-                });
-                nextBtn.addEventListener('click', () => {
-                    track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
-                });
-            }
-            const updateAll = () => {
-                updateCarouselCounterAndScrollbar();
-            };
-            track.addEventListener('scroll', updateAll);
-            window.addEventListener('resize', updateAll);
-            setTimeout(updateAll, 100);
+            return `<div class="feed-empty"><div class="empty-icon">🎬🍿</div><h3>No entertainment posts yet</h3><p>Check back soon for fresh content!</p></div>`;
         }
 
         async function renderLiveFeed() {
@@ -791,37 +560,19 @@
                 return;
             }
             const carouselId = 'entertainment-carousel-main';
-            let html = `
-                <div class="carousel-container">
-                    <div class="carousel-track" id="${carouselId}">
-                        ${filteredEntertainmentPosts.map((post, idx) => renderPost(post, idx)).join('')}
-                    </div>
-                    ${filteredEntertainmentPosts.length > 1 ? `
-                        <button class="carousel-nav carousel-prev" data-carousel="${carouselId}">‹</button>
-                        <button class="carousel-nav carousel-next" data-carousel="${carouselId}">›</button>
-                    ` : ''}
-                    <div class="carousel-scrollbar">
-                        <div class="carousel-scrollbar-thumb"></div>
-                    </div>
-                    <div class="carousel-counter">
-                        <span class="current-index">1</span> / <span class="total-count">${filteredEntertainmentPosts.length}</span>
-                    </div>
-                </div>
-            `;
+            let html = `<div class="carousel-container"><div class="carousel-track" id="${carouselId}">${filteredEntertainmentPosts.map((post, idx) => renderPost(post, idx)).join('')}</div>`;
+            if (filteredEntertainmentPosts.length > 1) {
+                html += `<button class="carousel-nav carousel-prev" data-carousel="${carouselId}">‹</button><button class="carousel-nav carousel-next" data-carousel="${carouselId}">›</button>`;
+            }
+            html += `<div class="carousel-scrollbar"><div class="carousel-scrollbar-thumb"></div></div><div class="carousel-counter"><span class="current-index">1</span> / <span class="total-count">${filteredEntertainmentPosts.length}</span></div></div>`;
             container.innerHTML = html;
-            attachCarouselEvents();
-            attachMediaCarouselEvents();
         }
 
         async function refresh() {
             if (!container) return;
-            container.innerHTML = `<div class="feed-skeleton"><div class="skeleton-track">
-                <div class="skeleton-post"><div class="skeleton-text"><div class="skeleton-line title"></div><div class="skeleton-line meta"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line footer"></div></div><div class="skeleton-media"></div></div>
-                <div class="skeleton-post"><div class="skeleton-text"><div class="skeleton-line title"></div><div class="skeleton-line meta"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line footer"></div></div><div class="skeleton-media"></div></div>
-            </div></div>`;
+            container.innerHTML = `<div class="feed-skeleton"><div class="skeleton-track"><div class="skeleton-post"><div class="skeleton-text"><div class="skeleton-line title"></div><div class="skeleton-line meta"></div><div class="skeleton-line excerpt"></div></div><div class="skeleton-media"></div></div></div></div>`;
             const posts = await loadPosts();
-            allPosts = posts;
-            filteredEntertainmentPosts = filterEntertainmentLivePosts(allPosts);
+            filteredEntertainmentPosts = filterEntertainmentLivePosts(posts);
             await renderLiveFeed();
         }
 
@@ -829,15 +580,12 @@
             container = document.getElementById('live-feed-container');
             if (!container) return;
             refresh();
-            setInterval(() => {
-                refresh();
-            }, CONFIG.refreshInterval);
+            setInterval(refresh, CONFIG.refreshInterval);
         }
 
         init();
     })();
 
-    // Initialize subcategory grid on page load
     document.addEventListener('DOMContentLoaded', () => {
         renderSubcategoryGrid();
     });

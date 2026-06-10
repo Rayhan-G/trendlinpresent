@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health | Ultima — Live Feed</title>
+    <title>Health | Trendlin — Live Feed</title>
     <meta name="description" content="Evidence-based wellness: nutrition, movement, mental clarity, recovery, and longevity. Live insights for sustainable health transformation.">
     <link rel="stylesheet" href="/assets/css/critical.css">
     <link rel="stylesheet" href="/assets/css/live-feed.css">
@@ -21,9 +21,6 @@
         .hero h1 { font-size: 2.5rem; font-weight: 700; line-height: 1.2; margin-bottom: 16px; color: white; letter-spacing: -0.02em; }
         .hero h1 span { background: linear-gradient(135deg, #6ee7b7, #34d399); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .hero p { font-size: 0.9rem; color: #9ca3af; max-width: 600px; margin: 0 auto; line-height: 1.5; }
-        .hero-stats { display: flex; justify-content: center; gap: 32px; margin-top: 24px; }
-        .hero-stat-number { font-size: 1rem; font-weight: 700; color: white; }
-        .hero-stat-label { font-size: 0.6rem; color: #9ca3af; margin-top: 2px; }
 
         .feed-section {
             padding: 60px 0 40px 0;
@@ -45,11 +42,6 @@
             color: #6b7280;
             font-size: 0.85rem;
         }
-
-        .stats-bar { background: #111827; padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .stats-grid { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 24px; }
-        .stat-number { font-size: 1.25rem; font-weight: 700; background: linear-gradient(135deg, #6ee7b7, #34d399); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .stat-label { font-size: 0.65rem; color: #9ca3af; margin-top: 4px; }
 
         /* ========== SUBCATEGORY GRID (Beautiful Cards from React Component) ========== */
         .subcategory-showcase {
@@ -162,16 +154,6 @@
             font-size: 1.8rem;
         }
 
-        .card-stat {
-            padding: 6px 14px;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.95);
-        }
-
         .card-bottom {
             text-align: left;
         }
@@ -212,7 +194,6 @@
             color: white;
         }
 
-        /* Hide default article grid, featured, sidebar - only live feed */
         .featured-section, .articles-section, .sidebar-section {
             display: none !important;
         }
@@ -225,7 +206,6 @@
         }
         @media (max-width: 640px) { 
             .hero h1 { font-size: 1.5rem; } 
-            .hero-stats { flex-direction: column; gap: 12px; }
             .card-bottom h3 { font-size: 1.3rem; }
         }
     </style>
@@ -233,18 +213,12 @@
 <body>
     <div class="hero">
         <div class="hero-content">
-            <div class="hero-badge">ULTIMA HEALTH</div>
+            <div class="hero-badge">TRENDLIN HEALTH</div>
             <h1>Small daily <span>wellness wins</span></h1>
             <p>Science-backed rituals for energy, mental clarity, and longevity. Transform your health from the inside out — one sustainable step at a time.</p>
-            <div class="hero-stats">
-                <div class="hero-stat"><div class="hero-stat-number">+27%</div><div class="hero-stat-label">Energy in 8 weeks</div></div>
-                <div class="hero-stat"><div class="hero-stat-number">7+ yrs</div><div class="hero-stat-label">Longevity potential</div></div>
-                <div class="hero-stat"><div class="hero-stat-number">15 min</div><div class="hero-stat-label">Daily mindfulness</div></div>
-            </div>
         </div>
     </div>
 
-    <!-- LIVE FEED: HEALTH CATEGORY ONLY (24h lifespan) -->
     <section class="feed-section">
         <div class="feed-header">
             <h2>🌿 Live Health Feed</h2>
@@ -255,24 +229,11 @@
                 <div class="skeleton-track">
                     <div class="skeleton-post"><div class="skeleton-text"><div class="skeleton-line title"></div><div class="skeleton-line meta"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line footer"></div></div><div class="skeleton-media"></div></div>
                     <div class="skeleton-post"><div class="skeleton-text"><div class="skeleton-line title"></div><div class="skeleton-line meta"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line footer"></div></div><div class="skeleton-media"></div></div>
-                    <div class="skeleton-post"><div class="skeleton-text"><div class="skeleton-line title"></div><div class="skeleton-line meta"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line footer"></div></div><div class="skeleton-media"></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="stats-bar">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item"><div class="stat-number">75%</div><div class="stat-label">of immunity is gut-driven</div></div>
-                <div class="stat-item"><div class="stat-number">10k steps</div><div class="stat-label">Metabolic health baseline</div></div>
-                <div class="stat-item"><div class="stat-number">22% ↓</div><div class="stat-label">stress with breathwork</div></div>
-                <div class="stat-item"><div class="stat-number">7-9 hrs</div><div class="stat-label">restorative sleep</div></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========== SUBCATEGORY GRID (Beautiful Cards from React Component) ========== -->
     <div class="subcategory-showcase">
         <div class="container">
             <div class="showcase-header">
@@ -281,7 +242,7 @@
                 <p>Dive into your favorite health & wellness topics</p>
             </div>
             <div class="subcategory-grid" id="subcategory-grid">
-                <!-- Subcategory cards will be loaded dynamically -->
+                <div class="loading">Loading categories...</div>
             </div>
         </div>
     </div>
@@ -290,109 +251,95 @@
     <script src="/assets/js/live-feed.js"></script>
 
     <script>
-        // ========== SUBCATEGORY CARDS DATA (Health) ==========
+        // ========== SUBCATEGORIES - DYNAMIC FROM YOUR ACTUAL FOLDER STRUCTURE ==========
+        // These are the actual subfolders under /categories/health/
         const HEALTH_SUBCATEGORIES = [
-            { 
-                slug: 'nutrition', 
-                name: 'Nutrition', 
-                icon: '🥗', 
-                bgImage: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&h=1000&fit=crop',
-                tagline: 'Fuel your body right',
-                stat: '142 articles',
-                description: 'Whole foods, meal planning & dietary science'
-            },
-            { 
-                slug: 'mental-wellness', 
-                name: 'Mental Wellness', 
-                icon: '🧠', 
-                bgImage: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&h=1000&fit=crop',
-                tagline: 'Find inner peace',
-                stat: '118 articles',
-                description: 'Mindfulness, stress reduction & emotional health'
-            },
-            { 
-                slug: 'fitness-mobility', 
-                name: 'Fitness & Mobility', 
-                icon: '💪', 
-                bgImage: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&h=1000&fit=crop',
-                tagline: 'Move with purpose',
-                stat: '167 articles',
-                description: 'Strength training, flexibility & functional movement'
-            },
-            { 
-                slug: 'sleep-hygiene', 
-                name: 'Sleep Hygiene', 
-                icon: '😴', 
-                bgImage: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=800&h=1000&fit=crop',
-                tagline: 'Restore & recover',
-                stat: '94 articles',
-                description: 'Sleep science, routines & recovery optimization'
-            },
-            { 
-                slug: 'gut-health', 
-                name: 'Gut Health', 
-                icon: '🌿', 
-                bgImage: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=1000&fit=crop',
-                tagline: 'Heal from within',
-                stat: '76 articles',
-                description: 'Microbiome, digestion & immune health'
-            },
-            { 
-                slug: 'heart-longevity', 
-                name: 'Heart Longevity', 
-                icon: '❤️', 
-                bgImage: 'https://images.unsplash.com/photo-1505751172876-fa4d9c4a6f2f?w=800&h=1000&fit=crop',
-                tagline: 'Live longer, better',
-                stat: '89 articles',
-                description: 'Cardiovascular health & aging well'
-            }
+            { slug: 'nutrition', name: 'Nutrition', icon: '🥗', tagline: 'Fuel your body right', description: 'Whole foods, meal planning & dietary science' },
+            { slug: 'mental-wellness', name: 'Mental Wellness', icon: '🧠', tagline: 'Find inner peace', description: 'Mindfulness, stress reduction & emotional health' },
+            { slug: 'fitness-mobility', name: 'Fitness & Mobility', icon: '💪', tagline: 'Move with purpose', description: 'Strength training, flexibility & functional movement' },
+            { slug: 'sleep-hygiene', name: 'Sleep Hygiene', icon: '😴', tagline: 'Restore & recover', description: 'Sleep science, routines & recovery optimization' },
+            { slug: 'gut-health', name: 'Gut Health', icon: '🌿', tagline: 'Heal from within', description: 'Microbiome, digestion & immune health' },
+            { slug: 'heart-longevity', name: 'Heart Longevity', icon: '❤️', tagline: 'Live longer, better', description: 'Cardiovascular health & aging well' }
         ];
 
-        // Render subcategory grid
-        function renderSubcategoryGrid() {
+        // Dynamic background images for each subcategory
+        const BG_IMAGES = {
+            nutrition: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&h=1000&fit=crop',
+            'mental-wellness': 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&h=1000&fit=crop',
+            'fitness-mobility': 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&h=1000&fit=crop',
+            'sleep-hygiene': 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=800&h=1000&fit=crop',
+            'gut-health': 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=1000&fit=crop',
+            'heart-longevity': 'https://images.unsplash.com/photo-1505751172876-fa4d9c4a6f2f?w=800&h=1000&fit=crop'
+        };
+
+        async function getArticleCountForSubcategory(slug) {
+            try {
+                const response = await fetch('/data/posts.json?t=' + Date.now());
+                if (response.ok) {
+                    const data = await response.json();
+                    const posts = data.posts || [];
+                    const count = posts.filter(post => {
+                        const cat = (post.category || '').toLowerCase();
+                        const subcat = (post.subcategory || '').toLowerCase();
+                        return cat === 'health' && subcat === slug;
+                    }).length;
+                    return count > 0 ? count : null;
+                }
+            } catch (e) {
+                console.warn('Could not load article count for', slug);
+            }
+            return null;
+        }
+
+        async function renderSubcategoryGrid() {
             const grid = document.getElementById('subcategory-grid');
             if (!grid) return;
             
-            grid.innerHTML = HEALTH_SUBCATEGORIES.map((cat) => `
-                <a href="/categories/health/${cat.slug}/" class="subcategory-card">
-                    <div class="card-bg" style="background-image: url('${cat.bgImage}');"></div>
-                    <div class="gradient-overlay"></div>
-                    <div class="card-content-wrapper">
-                        <div class="card-top">
-                            <div class="card-icon">${cat.icon}</div>
-                            <div class="card-stat">${cat.stat}</div>
-                        </div>
-                        <div class="card-bottom">
-                            <h3>${cat.name}</h3>
-                            <div class="card-tagline">${cat.tagline}</div>
-                            <div class="card-description">${cat.description}</div>
-                            <div class="explore-link">
-                                Explore <span>→</span>
+            const cards = [];
+            
+            for (const cat of HEALTH_SUBCATEGORIES) {
+                const articleCount = await getArticleCountForSubcategory(cat.slug);
+                const statText = articleCount ? `${articleCount} articles` : 'Explore';
+                const bgImage = BG_IMAGES[cat.slug] || 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&h=1000&fit=crop';
+                
+                cards.push(`
+                    <a href="/categories/health/${cat.slug}/" class="subcategory-card">
+                        <div class="card-bg" style="background-image: url('${bgImage}');"></div>
+                        <div class="gradient-overlay"></div>
+                        <div class="card-content-wrapper">
+                            <div class="card-top">
+                                <div class="card-icon">${cat.icon}</div>
+                            </div>
+                            <div class="card-bottom">
+                                <h3>${cat.name}</h3>
+                                <div class="card-tagline">${cat.tagline}</div>
+                                <div class="card-description">${cat.description}</div>
+                                <div class="explore-link">
+                                    ${statText} <span>→</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            `).join('');
+                    </a>
+                `);
+            }
+            
+            grid.innerHTML = cards.join('');
         }
 
-        // HEALTH ONLY LIVE FEED
-        // Filters posts by category = 'health', lifespan 24h, renders horizontal carousel
+        // ========== LIVE FEED - HEALTH ONLY ==========
         (function() {
             const CONFIG = {
-                postLifespanHours: 24,
-                refreshInterval: 300000   // 5 minutes
+                postLifespanHours: 168, // 7 days for health content
+                refreshInterval: 300000
             };
 
-            let allPosts = [];
             let filteredHealthPosts = [];
             let container = null;
 
             async function loadPosts() {
                 try {
-                    // Primary: /data/posts.json
                     let response = await fetch('/data/posts.json?t=' + Date.now());
                     if (!response.ok) {
-                        // Fallback to paginated API
                         const fallbackResp = await fetch('/api/v1/posts/page/1.json');
                         if (fallbackResp.ok) {
                             const fallbackData = await fallbackResp.json();
@@ -403,46 +350,34 @@
                     const data = await response.json();
                     return data.posts || [];
                 } catch (err) {
-                    console.warn('Error loading posts.json, trying /api/v1/posts/page/1.json:', err);
-                    try {
-                        const apiResp = await fetch('/api/v1/posts/page/1.json?t=' + Date.now());
-                        if (!apiResp.ok) throw new Error('API failed');
-                        const apiData = await apiResp.json();
-                        return apiData.posts || [];
-                    } catch (e) {
-                        console.error('Failed to load any post source', e);
-                        return [];
-                    }
+                    console.warn('Error loading posts:', err);
+                    return [];
                 }
             }
 
-            // Filter: live posts (last 24h) AND category === 'health'
             function filterHealthLivePosts(posts) {
                 const now = new Date();
-                const livePosts = posts.filter(post => {
-                    if (!post.date) return false;
-                    const postDate = new Date(post.date);
-                    if (isNaN(postDate.getTime())) return false;
-                    const diffHours = (now - postDate) / (1000 * 60 * 60);
-                    return diffHours <= CONFIG.postLifespanHours && diffHours >= 0;
-                });
-                const healthOnly = livePosts.filter(post => {
+                const healthOnly = posts.filter(post => {
                     const cat = (post.category || '').toLowerCase();
                     return cat === 'health';
                 });
-                healthOnly.sort((a, b) => new Date(b.date) - new Date(a.date));
-                console.log(`🌿 Health live posts: ${healthOnly.length} out of ${livePosts.length} live posts`);
-                return healthOnly;
+                
+                const livePosts = healthOnly.filter(post => {
+                    if (!post.date) return true;
+                    const postDate = new Date(post.date);
+                    if (isNaN(postDate.getTime())) return true;
+                    const diffHours = (now - postDate) / (1000 * 60 * 60);
+                    return diffHours <= CONFIG.postLifespanHours;
+                });
+                
+                livePosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                return livePosts;
             }
 
             function getCategoryIcon(subcat) {
                 const icons = {
-                    nutrition: '🥗', food: '🥗',
-                    'mental-wellness': '🧠', mental: '🧠',
-                    'fitness-mobility': '💪', fitness: '💪', mobility: '💪',
-                    'sleep-hygiene': '😴', sleep: '😴',
-                    'gut-health': '🌿', gut: '🌿',
-                    'heart-longevity': '❤️', longevity: '❤️', heart: '❤️'
+                    nutrition: '🥗', 'mental-wellness': '🧠', 'fitness-mobility': '💪',
+                    'sleep-hygiene': '😴', 'gut-health': '🌿', 'heart-longevity': '❤️'
                 };
                 return icons[subcat?.toLowerCase()] || '💚';
             }
@@ -450,27 +385,21 @@
             function getDisplayCategory(subcat) {
                 if (!subcat) return 'Wellness';
                 const map = {
-                    nutrition: 'Nutrition',
-                    'mental-wellness': 'Mental Wellness',
-                    'fitness-mobility': 'Fitness & Mobility',
-                    'sleep-hygiene': 'Sleep Hygiene',
-                    'gut-health': 'Gut Health',
-                    'heart-longevity': 'Heart Longevity'
+                    nutrition: 'Nutrition', 'mental-wellness': 'Mental Wellness',
+                    'fitness-mobility': 'Fitness', 'sleep-hygiene': 'Sleep',
+                    'gut-health': 'Gut Health', 'heart-longevity': 'Heart Longevity'
                 };
                 return map[subcat.toLowerCase()] || subcat;
             }
 
             function escapeHtml(str) {
                 if (!str) return '';
-                return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+                return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
             }
 
             function renderMediaCarousel(mediaItems, postId) {
                 if (!mediaItems || mediaItems.length === 0) {
-                    return `<div class="post-media-placeholder">
-                                <span>🌱</span>
-                                <span style="font-size:0.7rem;">Wellness insight</span>
-                            </div>`;
+                    return `<div class="post-media-placeholder"><span>🌱</span><span style="font-size:0.7rem;">Wellness insight</span></div>`;
                 }
                 const hasMultiple = mediaItems.length > 1;
                 const carouselId = `media-${postId}`;
@@ -481,8 +410,6 @@
                         mediaHtml = `<img src="${media.url}" alt="Post media" loading="lazy" onerror="this.src='https://placehold.co/800x450?text=Health+Wellness'">`;
                     } else if (media.type === 'video') {
                         mediaHtml = `<video controls preload="metadata"><source src="${media.url}" type="video/mp4"></video>`;
-                    } else if (media.type === 'audio') {
-                        mediaHtml = `<audio controls src="${media.url}"></audio>`;
                     } else {
                         mediaHtml = `<img src="${media.url}" alt="Media" loading="lazy">`;
                     }
@@ -526,7 +453,7 @@
                                 <div class="post-footer">
                                     <div class="post-author">
                                         <span class="author-avatar">💚</span>
-                                        <span class="author-name">${escapeHtml(post.author || 'Ultima Wellness')}</span>
+                                        <span class="author-name">${escapeHtml(post.author || 'Trendlin Wellness')}</span>
                                     </div>
                                     <div class="post-read-time">⏱️ ${readTime} min read</div>
                                 </div>
@@ -540,99 +467,7 @@
             }
 
             function renderEmptyState() {
-                return `
-                    <div class="feed-empty">
-                        <div class="empty-icon">🌱💚</div>
-                        <h3>No live health posts right now</h3>
-                        <p>No posts from the last 24 hours in the Health category.</p>
-                        <p class="empty-hint">Check back soon for fresh insights on nutrition, fitness, mental wellness, and longevity!</p>
-                    </div>
-                `;
-            }
-
-            function attachMediaCarouselEvents() {
-                document.querySelectorAll('.media-prev, .media-next').forEach(btn => {
-                    btn.removeEventListener('click', handleMediaNav);
-                    btn.addEventListener('click', handleMediaNav);
-                });
-                document.querySelectorAll('.media-dots .dot').forEach(dot => {
-                    dot.removeEventListener('click', handleMediaDot);
-                    dot.addEventListener('click', handleMediaDot);
-                });
-            }
-
-            function handleMediaNav(e) {
-                e.stopPropagation();
-                const btn = e.currentTarget;
-                const carouselId = btn.dataset.carousel;
-                const slidesContainer = document.getElementById(carouselId);
-                if (!slidesContainer) return;
-                const slides = slidesContainer.querySelectorAll('.media-slide');
-                const mediaContainer = slidesContainer.closest('.post-media');
-                const dots = mediaContainer?.querySelectorAll('.media-dots .dot');
-                if (slides.length === 0) return;
-                let activeIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
-                const isPrev = btn.classList.contains('media-prev');
-                activeIndex = isPrev ? (activeIndex - 1 + slides.length) % slides.length : (activeIndex + 1) % slides.length;
-                slides.forEach((slide, idx) => slide.classList.toggle('active', idx === activeIndex));
-                if (dots) dots.forEach((dot, idx) => dot.classList.toggle('active', idx === activeIndex));
-            }
-
-            function handleMediaDot(e) {
-                e.stopPropagation();
-                const dot = e.currentTarget;
-                const dotsContainer = dot.closest('.media-dots');
-                const mediaContainer = dotsContainer?.closest('.post-media');
-                const carouselId = mediaContainer?.dataset.carouselId;
-                const slidesContainer = document.getElementById(carouselId);
-                if (!slidesContainer) return;
-                const slides = slidesContainer.querySelectorAll('.media-slide');
-                const index = parseInt(dot.dataset.index);
-                slides.forEach((slide, idx) => slide.classList.toggle('active', idx === index));
-                dotsContainer?.querySelectorAll('.dot').forEach((d, idx) => d.classList.toggle('active', idx === index));
-            }
-
-            function updateCarouselCounterAndScrollbar() {
-                const track = document.querySelector('.carousel-track');
-                const currentSpan = document.querySelector('.current-index');
-                const totalSpan = document.querySelector('.total-count');
-                const scrollbarThumb = document.querySelector('.carousel-scrollbar-thumb');
-                if (!track || !currentSpan) return;
-                const clientWidth = track.clientWidth;
-                if (clientWidth === 0) return;
-                const scrollLeft = track.scrollLeft;
-                let currentIndex = Math.round(scrollLeft / clientWidth) + 1;
-                const total = filteredHealthPosts.length;
-                currentIndex = Math.min(currentIndex, total);
-                currentIndex = Math.max(currentIndex, 1);
-                currentSpan.textContent = currentIndex;
-                if (totalSpan) totalSpan.textContent = total;
-                if (scrollbarThumb && track.scrollWidth > clientWidth) {
-                    const scrollPercent = scrollLeft / (track.scrollWidth - clientWidth);
-                    const thumbWidth = (clientWidth / track.scrollWidth) * 100;
-                    const thumbLeft = scrollPercent * (100 - thumbWidth);
-                    scrollbarThumb.style.width = `${thumbWidth}%`;
-                    scrollbarThumb.style.marginLeft = `${thumbLeft}%`;
-                }
-            }
-
-            function attachCarouselEvents() {
-                const track = document.querySelector('.carousel-track');
-                const prevBtn = document.querySelector('.carousel-prev');
-                const nextBtn = document.querySelector('.carousel-next');
-                if (!track) return;
-                if (prevBtn && nextBtn && filteredHealthPosts.length > 1) {
-                    prevBtn.addEventListener('click', () => {
-                        track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
-                    });
-                    nextBtn.addEventListener('click', () => {
-                        track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
-                    });
-                }
-                const updateAll = () => updateCarouselCounterAndScrollbar();
-                track.addEventListener('scroll', updateAll);
-                window.addEventListener('resize', updateAll);
-                setTimeout(updateAll, 100);
+                return `<div class="feed-empty"><div class="empty-icon">🌱💚</div><h3>No health posts yet</h3><p>Check back soon for fresh insights on nutrition, fitness, mental wellness, and longevity!</p></div>`;
             }
 
             async function renderLiveFeed() {
@@ -642,39 +477,19 @@
                     return;
                 }
                 const carouselId = 'health-carousel-main';
-                let html = `
-                    <div class="carousel-container">
-                        <div class="carousel-track" id="${carouselId}">
-                            ${filteredHealthPosts.map((post, idx) => renderPost(post, idx)).join('')}
-                        </div>
-                        ${filteredHealthPosts.length > 1 ? `
-                            <button class="carousel-nav carousel-prev" data-carousel="${carouselId}">‹</button>
-                            <button class="carousel-nav carousel-next" data-carousel="${carouselId}">›</button>
-                        ` : ''}
-                        <div class="carousel-scrollbar">
-                            <div class="carousel-scrollbar-thumb"></div>
-                        </div>
-                        <div class="carousel-counter">
-                            <span class="current-index">1</span> / <span class="total-count">${filteredHealthPosts.length}</span>
-                        </div>
-                    </div>
-                `;
+                let html = `<div class="carousel-container"><div class="carousel-track" id="${carouselId}">${filteredHealthPosts.map((post, idx) => renderPost(post, idx)).join('')}</div>`;
+                if (filteredHealthPosts.length > 1) {
+                    html += `<button class="carousel-nav carousel-prev" data-carousel="${carouselId}">‹</button><button class="carousel-nav carousel-next" data-carousel="${carouselId}">›</button>`;
+                }
+                html += `<div class="carousel-scrollbar"><div class="carousel-scrollbar-thumb"></div></div><div class="carousel-counter"><span class="current-index">1</span> / <span class="total-count">${filteredHealthPosts.length}</span></div></div>`;
                 container.innerHTML = html;
-                attachCarouselEvents();
-                attachMediaCarouselEvents();
             }
 
             async function refresh() {
                 if (!container) return;
-                // Show skeleton
-                container.innerHTML = `<div class="feed-skeleton"><div class="skeleton-track">
-                    <div class="skeleton-post"><div class="skeleton-text"><div class="skeleton-line title"></div><div class="skeleton-line meta"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line footer"></div></div><div class="skeleton-media"></div></div>
-                    <div class="skeleton-post"><div class="skeleton-text"><div class="skeleton-line title"></div><div class="skeleton-line meta"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line footer"></div></div><div class="skeleton-media"></div></div>
-                    <div class="skeleton-post"><div class="skeleton-text"><div class="skeleton-line title"></div><div class="skeleton-line meta"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line footer"></div></div><div class="skeleton-media"></div></div>
-                </div></div>`;
+                container.innerHTML = `<div class="feed-skeleton"><div class="skeleton-track"><div class="skeleton-post"><div class="skeleton-text"><div class="skeleton-line title"></div><div class="skeleton-line meta"></div><div class="skeleton-line excerpt"></div></div><div class="skeleton-media"></div></div></div></div>`;
                 const posts = await loadPosts();
-                allPosts = posts;
-                filteredHealthPosts = filterHealthLivePosts(allPosts);
+                filteredHealthPosts = filterHealthLivePosts(posts);
                 await renderLiveFeed();
             }
 
@@ -682,13 +497,12 @@
                 container = document.getElementById('live-feed-container');
                 if (!container) return;
                 refresh();
-                setInterval(() => refresh(), CONFIG.refreshInterval);
+                setInterval(refresh, CONFIG.refreshInterval);
             }
 
             init();
         })();
 
-        // Initialize subcategory grid on page load
         document.addEventListener('DOMContentLoaded', () => {
             renderSubcategoryGrid();
         });
