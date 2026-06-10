@@ -4,15 +4,7 @@
   "description": "Professional static site for trending content with 500+ posts, 7 categories, PWA, and Cloudflare Workers",
   "author": "Trending Wealth",
   "license": "MIT",
-  "scripts": {
-    "build": "echo 'Static site - no build needed'",
-    "serve": "npx serve .",
-    "deploy": "wrangler pages deploy . --project-name=trending-wealth",
-    "dev": "echo 'No dev server needed'"
-  },
+  "scripts": {},
   "dependencies": {},
-  "devDependencies": {
-    "wrangler": "^3.78.0"
-  },
   "keywords": ["trending", "static-site", "affiliate", "adsense", "cloudflare"]
 }
