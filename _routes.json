@@ -1,9 +1,15 @@
 {
   "version": 1,
-  "include": ["/*"],
+  "description": "Production routes for Trendlin",
+  "include": [
+    "/*"
+  ],
   "exclude": [
-    "/assets/images/optimized/*",
-    "/worker/*",
-    "/api/v1/*/page/*"
+    "/assets/*",
+    "/components/*",
+    "/data/*",
+    "/functions/*",
+    "/scripts/*",
+    "/worker/*"
   ]
 }
