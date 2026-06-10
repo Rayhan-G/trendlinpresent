@@ -1,0 +1,350 @@
+{
+  "success": true,
+  "version": "1.0",
+  "timestamp": "2024-01-15T10:00:00Z",
+  "cache_ttl": 120,
+  "total": 100,
+  "current_page": 1,
+  "per_page": 20,
+  "total_pages": 5,
+  "data": {
+    "posts": [
+      {
+        "id": "lat-001",
+        "title": "AI Revolution 2024: Complete Guide to Artificial Intelligence",
+        "slug": "ai-revolution-2024-complete-guide",
+        "category": "technology",
+        "category_title": "Technology",
+        "category_icon": "💻",
+        "excerpt": "Discover how artificial intelligence is transforming every industry in 2024. From ChatGPT-5 to AI-powered automation, here's what you need to know about the AI revolution that's reshaping our world.",
+        "featured_image": "https://trendingwealth.com/assets/images/optimized/webp/ai-revolution.webp",
+        "featured_image_alt": "Artificial Intelligence visualization with neural network",
+        "author": {
+          "name": "Dr. Sarah Chen",
+          "avatar": "https://trendingwealth.com/assets/images/authors/sarah-chen.jpg",
+          "bio": "AI Researcher and Technology Journalist",
+          "twitter": "@sarahchen_ai",
+          "website": "https://sarahchen.com"
+        },
+        "published_at": "2024-01-15T09:00:00Z",
+        "updated_at": "2024-01-15T09:00:00Z",
+        "read_time": 8,
+        "views": 15420,
+        "likes": 3421,
+        "comments": 156,
+        "shares": 876,
+        "saves": 543,
+        "is_featured": true,
+        "is_trending": true,
+        "affiliate_links": {
+          "amazon": "https://amazon.com/dp/B0XXXXXX?tag=trendingwealth-20",
+          "bestbuy": "https://bestbuy.com/product/XXXXXX",
+          "walmart": "https://walmart.com/ip/XXXXXX"
+        },
+        "url": "/posts/2024/01/15/ai-revolution-2024-complete-guide/"
+      },
+      {
+        "id": "lat-002",
+        "title": "10 Passive Income Ideas for 2024: Build Wealth While You Sleep",
+        "slug": "passive-income-ideas-2024",
+        "category": "wealth",
+        "category_title": "Wealth",
+        "category_icon": "💰",
+        "excerpt": "Tired of trading time for money? These 10 passive income streams can help you earn $5,000+ monthly with minimal ongoing effort. Start building real wealth today.",
+        "featured_image": "https://trendingwealth.com/assets/images/optimized/webp/passive-income.webp",
+        "featured_image_alt": "Passive income concepts with money and time visualization",
+        "author": {
+          "name": "Michael Rodriguez",
+          "avatar": "https://trendingwealth.com/assets/images/authors/michael-rodriguez.jpg",
+          "bio": "Financial Freedom Coach & Investor",
+          "twitter": "@michael_wealth",
+          "website": "https://michaelrodriguez.com"
+        },
+        "published_at": "2024-01-15T11:00:00Z",
+        "updated_at": "2024-01-15T11:00:00Z",
+        "read_time": 12,
+        "views": 12890,
+        "likes": 2891,
+        "comments": 234,
+        "shares": 654,
+        "saves": 432,
+        "is_featured": true,
+        "is_trending": true,
+        "affiliate_links": {
+          "amazon": "https://amazon.com/dp/B0YYYYYY?tag=trendingwealth-20"
+        },
+        "url": "/posts/2024/01/15/passive-income-ideas-2024/"
+      },
+      {
+        "id": "lat-003",
+        "title": "Intermittent Fasting Complete Guide: Benefits, Methods & Results",
+        "slug": "intermittent-fasting-complete-guide",
+        "category": "health",
+        "category_title": "Health",
+        "category_icon": "💊",
+        "excerpt": "Everything you need to know about intermittent fasting for weight loss, mental clarity, and longevity. Backed by scientific research and real results from 1000+ participants.",
+        "featured_image": "https://trendingwealth.com/assets/images/optimized/webp/intermittent-fasting.webp",
+        "featured_image_alt": "Intermittent fasting clock and meal timing schedule",
+        "author": {
+          "name": "Dr. Emily Watson",
+          "avatar": "https://trendingwealth.com/assets/images/authors/emily-watson.jpg",
+          "bio": "Nutrition Scientist & Wellness Expert",
+          "twitter": "@dr_emily_watson",
+          "website": "https://emilywatson.com"
+        },
+        "published_at": "2024-01-14T14:30:00Z",
+        "updated_at": "2024-01-14T14:30:00Z",
+        "read_time": 10,
+        "views": 11234,
+        "likes": 2156,
+        "comments": 189,
+        "shares": 543,
+        "saves": 321,
+        "is_featured": false,
+        "is_trending": true,
+        "affiliate_links": {},
+        "url": "/posts/2024/01/14/intermittent-fasting-complete-guide/"
+      },
+      {
+        "id": "lat-004",
+        "title": "Best Smartphones 2024: Complete Buyer's Guide with Deals",
+        "slug": "best-smartphones-2024-buyers-guide",
+        "category": "technology",
+        "category_title": "Technology",
+        "category_icon": "📱",
+        "excerpt": "We tested 50+ smartphones to find the absolute best options for every budget. Includes iPhone 15 Pro, Samsung S24 Ultra, Pixel 8 Pro, and hidden gems from OnePlus and Xiaomi.",
+        "featured_image": "https://trendingwealth.com/assets/images/optimized/webp/smartphones-2024.webp",
+        "featured_image_alt": "Latest smartphones lineup 2024 comparison",
+        "author": {
+          "name": "Alex Thompson",
+          "avatar": "https://trendingwealth.com/assets/images/authors/alex-thompson.jpg",
+          "bio": "Tech Reviewer & Gadget Enthusiast",
+          "twitter": "@alex_tech_review",
+          "website": "https://alexthompson.com"
+        },
+        "published_at": "2024-01-14T10:00:00Z",
+        "updated_at": "2024-01-14T10:00:00Z",
+        "read_time": 15,
+        "views": 9876,
+        "likes": 1876,
+        "comments": 345,
+        "shares": 432,
+        "saves": 287,
+        "is_featured": false,
+        "is_trending": true,
+        "affiliate_links": {
+          "amazon": "https://amazon.com/dp/B0ZZZZZZ?tag=trendingwealth-20",
+          "bestbuy": "https://bestbuy.com/product/iphone15pro",
+          "walmart": "https://walmart.com/ip/samsung-s24-ultra"
+        },
+        "url": "/posts/2024/01/14/best-smartphones-2024-buyers-guide/"
+      },
+      {
+        "id": "lat-005",
+        "title": "Morning Routine of Billionaires: Start Your Day Like the Top 1%",
+        "slug": "morning-routine-billionaires",
+        "category": "growth",
+        "category_title": "Personal Growth",
+        "category_icon": "🌱",
+        "excerpt": "Discover the morning habits of Elon Musk, Warren Buffett, Jeff Bezos, and other successful billionaires. Transform your productivity starting tomorrow morning.",
+        "featured_image": "https://trendingwealth.com/assets/images/optimized/webp/morning-routine.webp",
+        "featured_image_alt": "Successful morning routine visualization with habits",
+        "author": {
+          "name": "Jennifer Lopez",
+          "avatar": "https://trendingwealth.com/assets/images/authors/jennifer-lopez.jpg",
+          "bio": "Productivity Coach & Speaker",
+          "twitter": "@jennifer_growth",
+          "website": "https://jenniferlopez.com"
+        },
+        "published_at": "2024-01-13T08:00:00Z",
+        "updated_at": "2024-01-13T08:00:00Z",
+        "read_time": 7,
+        "views": 8765,
+        "likes": 1543,
+        "comments": 98,
+        "shares": 287,
+        "saves": 198,
+        "is_featured": false,
+        "is_trending": false,
+        "affiliate_links": {
+          "amazon": "https://amazon.com/dp/B0AAAAAA?tag=trendingwealth-20"
+        },
+        "url": "/posts/2024/01/13/morning-routine-billionaires/"
+      },
+      {
+        "id": "lat-006",
+        "title": "Cryptocurrency Investing Guide 2024: Bitcoin, Ethereum & Altcoins",
+        "slug": "cryptocurrency-investing-guide-2024",
+        "category": "wealth",
+        "category_title": "Wealth",
+        "category_icon": "₿",
+        "excerpt": "Expert analysis of crypto market trends, top coins to watch, and risk management strategies for 2024. Perfect for beginners and advanced investors alike.",
+        "featured_image": "https://trendingwealth.com/assets/images/optimized/webp/crypto-guide.webp",
+        "featured_image_alt": "Cryptocurrency coins and blockchain visualization",
+        "author": {
+          "name": "David Kim",
+          "avatar": "https://trendingwealth.com/assets/images/authors/david-kim.jpg",
+          "bio": "Crypto Analyst & Blockchain Expert",
+          "twitter": "@davidkim_crypto",
+          "website": "https://davidkim.com"
+        },
+        "published_at": "2024-01-12T16:00:00Z",
+        "updated_at": "2024-01-12T16:00:00Z",
+        "read_time": 14,
+        "views": 7654,
+        "likes": 1234,
+        "comments": 267,
+        "shares": 198,
+        "saves": 154,
+        "is_featured": false,
+        "is_trending": false,
+        "affiliate_links": {
+          "amazon": "https://amazon.com/dp/B0BBBBBB?tag=trendingwealth-20"
+        },
+        "url": "/posts/2024/01/12/cryptocurrency-investing-guide-2024/"
+      },
+      {
+        "id": "lat-007",
+        "title": "Best Mental Health Apps of 2024: Expert Review",
+        "slug": "mental-health-apps-review",
+        "category": "health",
+        "category_title": "Health",
+        "category_icon": "🧠",
+        "excerpt": "We reviewed 30+ mental health apps to find the best for meditation, therapy, anxiety relief, and sleep improvement. Save money with our exclusive promo codes.",
+        "featured_image": "https://trendingwealth.com/assets/images/optimized/webp/mental-health-apps.webp",
+        "featured_image_alt": "Mental health apps on smartphone screen",
+        "author": {
+          "name": "Dr. Lisa Brown",
+          "avatar": "https://trendingwealth.com/assets/images/authors/lisa-brown.jpg",
+          "bio": "Clinical Psychologist",
+          "twitter": "@dr_lisa_brown",
+          "website": "https://lisabrown.com"
+        },
+        "published_at": "2024-01-11T13:00:00Z",
+        "updated_at": "2024-01-11T13:00:00Z",
+        "read_time": 9,
+        "views": 6987,
+        "likes": 987,
+        "comments": 76,
+        "shares": 165,
+        "saves": 123,
+        "is_featured": false,
+        "is_trending": false,
+        "affiliate_links": {
+          "app_store": "https://apps.apple.com/app/headspace",
+          "play_store": "https://play.google.com/store/apps/calm"
+        },
+        "url": "/posts/2024/01/11/mental-health-apps-review/"
+      },
+      {
+        "id": "lat-008",
+        "title": "Best Netflix Series to Watch in 2024: Top 20 Picks",
+        "slug": "netflix-best-series-2024",
+        "category": "entertainment",
+        "category_title": "Entertainment",
+        "category_icon": "🎬",
+        "excerpt": "From Stranger Things to The Crown, discover the most binge-worthy Netflix original series of 2024. Updated weekly with new releases and hidden gems.",
+        "featured_image": "https://trendingwealth.com/assets/images/optimized/webp/netflix-series.webp",
+        "featured_image_alt": "Netflix streaming interface with popular series",
+        "author": {
+          "name": "Rachel Green",
+          "avatar": "https://trendingwealth.com/assets/images/authors/rachel-green.jpg",
+          "bio": "Entertainment Journalist",
+          "twitter": "@rachel_entertain",
+          "website": "https://rachelgreen.com"
+        },
+        "published_at": "2024-01-10T19:00:00Z",
+        "updated_at": "2024-01-10T19:00:00Z",
+        "read_time": 6,
+        "views": 6543,
+        "likes": 876,
+        "comments": 123,
+        "shares": 143,
+        "saves": 98,
+        "is_featured": false,
+        "is_trending": false,
+        "affiliate_links": {
+          "netflix": "https://netflix.com/signup?ref=trendingwealth"
+        },
+        "url": "/posts/2024/01/10/netflix-best-series-2024/"
+      },
+      {
+        "id": "lat-009",
+        "title": "Top Travel Destinations for 2024: Where to Go This Year",
+        "slug": "top-travel-destinations-2024",
+        "category": "world",
+        "category_title": "World",
+        "category_icon": "🌍",
+        "excerpt": "From Bali to Barcelona, discover the most Instagram-worthy and budget-friendly travel destinations for 2024. Includes flight deals and hotel recommendations.",
+        "featured_image": "https://trendingwealth.com/assets/images/optimized/webp/travel-destinations.webp",
+        "featured_image_alt": "Beautiful travel destinations around the world",
+        "author": {
+          "name": "Marco Polo",
+          "avatar": "https://trendingwealth.com/assets/images/authors/marco-polo.jpg",
+          "bio": "Travel Blogger & Photographer",
+          "twitter": "@marco_travels",
+          "website": "https://marcopolo.com"
+        },
+        "published_at": "2024-01-09T12:00:00Z",
+        "updated_at": "2024-01-09T12:00:00Z",
+        "read_time": 11,
+        "views": 6123,
+        "likes": 765,
+        "comments": 89,
+        "shares": 132,
+        "saves": 87,
+        "is_featured": false,
+        "is_trending": false,
+        "affiliate_links": {
+          "expedia": "https://expedia.com/partners/trendingwealth",
+          "booking": "https://booking.com/?aid=trendingwealth"
+        },
+        "url": "/posts/2024/01/09/top-travel-destinations-2024/"
+      },
+      {
+        "id": "lat-010",
+        "title": "Minimalist Living Guide: Declutter Your Life in 30 Days",
+        "slug": "minimalist-living-guide",
+        "category": "lifestyle",
+        "category_title": "Lifestyle",
+        "category_icon": "✨",
+        "excerpt": "Transform your home and mind with our 30-day minimalist challenge. Learn to let go of clutter and focus on what truly matters for a happier, simpler life.",
+        "featured_image": "https://trendingwealth.com/assets/images/optimized/webp/minimalist-living.webp",
+        "featured_image_alt": "Minimalist living room with clean aesthetic",
+        "author": {
+          "name": "Marie Kondo",
+          "avatar": "https://trendingwealth.com/assets/images/authors/marie-kondo.jpg",
+          "bio": "Organizing Consultant & Author",
+          "twitter": "@mariekondo",
+          "website": "https://mariekondo.com"
+        },
+        "published_at": "2024-01-08T10:00:00Z",
+        "updated_at": "2024-01-08T10:00:00Z",
+        "read_time": 8,
+        "views": 5876,
+        "likes": 654,
+        "comments": 67,
+        "shares": 98,
+        "saves": 76,
+        "is_featured": false,
+        "is_trending": false,
+        "affiliate_links": {
+          "amazon": "https://amazon.com/dp/B0CCCCCC?tag=trendingwealth-20"
+        },
+        "url": "/posts/2024/01/08/minimalist-living-guide/"
+      }
+    ]
+  },
+  "pagination": {
+    "next_page": "/api/v1/latest.json?page=2",
+    "previous_page": null,
+    "first_page": "/api/v1/latest.json?page=1",
+    "last_page": "/api/v1/latest.json?page=5"
+  },
+  "meta": {
+    "updated_at": "2024-01-15T10:00:00Z",
+    "next_update": "2024-01-15T10:05:00Z",
+    "source": "cloudflare-cache",
+    "cache_hit": true
+  }
+}

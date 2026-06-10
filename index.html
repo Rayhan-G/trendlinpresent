@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Wealth | Intelligence for the Modern World</title>
+    <meta name="description" content="Curated insights on technology, finance, health, and culture. For those who seek understanding before action.">
+    <link rel="stylesheet" href="/assets/css/critical.css">
+    <link rel="stylesheet" href="/assets/css/live-feed.css">
+    <script src="/components/loader.js" defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #667eea;
+            --primary-dark: #5a67d8;
+            --secondary: #764ba2;
+            --accent: #ff4757;
+            --dark: #0a0a0a;
+            --dark-muted: #1a1a1a;
+            --gray: #6b7280;
+            --gray-light: #9ca3af;
+            --light: #fafafa;
+            --border: #e5e7eb;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Hero */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9edf2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102,126,234,0.08) 0%, rgba(118,75,162,0.08) 100%);
+            clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: var(--dark);
+        }
+        
+        .hero-text .accent {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero-text p {
+            font-size: 1.125rem;
+            color: var(--gray);
+            margin-bottom: 32px;
+            max-width: 90%;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .stat h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .stat p {
+            font-size: 0.875rem;
+            color: var(--gray);
+            margin: 0;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        /* Section Common */
+        .section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+        
+        /* Feed Section - Beautiful & Seamless */
+        .feed-section {
+            padding: 60px 0;
+            background: var(--light);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .feed-header {
+            max-width: 1280px;
+            margin: 0 auto 32px;
+            padding: 0 24px;
+        }
+        
+        .feed-header h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+        
+        .feed-header p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* The Question */
+        .question-card {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            background: var(--dark);
+            color: white;
+            padding: 60px 48px;
+            border-radius: 24px;
+        }
+        
+        .question-card h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .question-card p {
+            color: var(--gray-light);
+            margin-bottom: 32px;
+        }
+        
+        /* Three Realities */
+        .realities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        
+        .reality-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        
+        .reality-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .reality-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .reality-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .reality-card p {
+            color: var(--gray);
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .reality-stat {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        
+        .reality-label {
+            font-size: 0.75rem;
+            color: var(--gray-light);
+        }
+        
+        /* The Pivot */
+        .pivot-section {
+            background: var(--dark);
+            color: white;
+        }
+        
+        .pivot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .pivot-text h3 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .pivot-text p {
+            color: var(--gray-light);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+        
+        .pivot-list {
+            list-style: none;
+        }
+        
+        .pivot-list li {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--gray-light);
+        }
+        
+        .pivot-list li::before {
+            content: '→';
+            color: var(--primary);
+        }
+        
+        .pivot-image img {
+            width: 100%;
+            border-radius: 16px;
+        }
+        
+        /* ========== BEAUTIFUL CATEGORY CARDS (from React component) ========== */
+        .categories-showcase {
+            padding: 80px 0;
+            background: var(--light);
+        }
+        
+        .categories-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .categories-header .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 100px;
+            margin-bottom: 20px;
+        }
+        
+        .categories-header .badge span:first-child {
+            font-size: 0.8rem;
+        }
+        
+        .categories-header .badge span:last-child {
+            font-size: 0.7rem;
+            color: var(--primary);
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        
+        .categories-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+        
+        .categories-header p {
+            color: var(--gray);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 28px;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .category-card {
+            position: relative;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15);
+            border-color: var(--primary);
+        }
+        
+        .card-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 120px;
+            height: 120px;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08;
+            border-radius: 0 24px 0 24px;
+            transition: opacity 0.3s ease;
+        }
+        
+        .category-card:hover .card-bg {
+            opacity: 0.12;
+        }
+        
+        .card-content {
+            padding: 28px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .category-card:hover .card-icon {
+            transform: scale(1.05);
+        }
+        
+        .trending-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: rgba(249, 115, 22, 0.1);
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #f97316;
+        }
+        
+        .trending-badge span:first-child {
+            font-size: 0.7rem;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+        
+        .card-description {
+            color: var(--gray);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .card-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .article-count {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            color: var(--gray-light);
+        }
+        
+        .article-count span:first-child {
+            font-size: 0.8rem;
+        }
+        
+        .engagement {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.7rem;
+            color: #10b981;
+            font-weight: 500;
+        }
+        
+        .explore-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--primary);
+            transition: all 0.2s;
+        }
+        
+        .category-card:hover .explore-link {
+            gap: 12px;
+        }
+        
+        .topics-wrapper {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .topics-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .topic-tag {
+            padding: 4px 12px;
+            background: #f3f4f6;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: #4b5563;
+            transition: all 0.2s;
+        }
+        
+        .category-card:hover .topic-tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: var(--primary);
+        }
+        
+        /* Manifesto */
+        .manifesto {
+            background: #f0f4f8;
+            padding: 80px 0;
+        }
+        
+        .manifesto-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .manifesto blockquote {
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 1.4;
+            color: var(--dark);
+            margin-bottom: 32px;
+        }
+        
+        .manifesto-author {
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .hero-text p {
+                max-width: 100%;
+            }
+            .realities-grid {
+                grid-template-columns: 1fr;
+            }
+            .pivot-grid {
+                grid-template-columns: 1fr;
+            }
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            .section {
+                padding: 48px 0;
+            }
+            .feed-header h2 {
+                font-size: 1.5rem;
+            }
+            .categories-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Intelligence for the <span class="accent">Modern World</span></h1>
+                    <p>We consume over 10,000 pieces of information daily. Most of it is noise. This is the signal.</p>
+                    <div class="hero-stats">
+                        <div class="stat"><h3>500+</h3><p>Deep dives</p></div>
+                        <div class="stat"><h3>7</h3><p>Domains</p></div>
+                        <div class="stat"><h3>50K+</h3><p>Readers</p></div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=500&fit=crop" alt="Signal vs Noise">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BEAUTIFUL FEED SECTION -->
+    <section class="feed-section">
+        <div class="feed-header">
+            <h2>Recent stories</h2>
+            <p>Fresh perspectives from the last 24 hours</p>
+        </div>
+        <div id="live-feed-container">
+            <div class="feed-skeleton">
+                <div class="skeleton-post">
+                    <div class="skeleton-text-area">
+                        <div class="skeleton-line skeleton-title"></div>
+                        <div class="skeleton-line skeleton-meta"></div>
+                        <div class="skeleton-line skeleton-excerpt"></div>
+                        <div class="skeleton-line skeleton-excerpt short"></div>
+                        <div class="skeleton-source"></div>
+                    </div>
+                    <div class="skeleton-media-area">
+                        <div class="skeleton-media"></div>
+                    </div>
+                </div>
+                <div class="skeleton-post">
+                    <div class="skeleton-text-area">
+                        <div class="skeleton-line skeleton-title"></div>
+                        <div class="skeleton-line skeleton-meta"></div>
+                        <div class="skeleton-line skeleton-excerpt"></div>
+                        <div class="skeleton-line skeleton-excerpt short"></div>
+                        <div class="skeleton-source"></div>
+                    </div>
+                    <div class="skeleton-media-area">
+                        <div class="skeleton-media"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Question -->
+    <div class="section">
+        <div class="container">
+            <div class="question-card">
+                <h2>The world is changing faster than ever.</h2>
+                <p>Are you keeping up, or falling behind?</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Three Realities -->
+    <div class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Three realities most people accept.</h2>
+                <p>We don't think you should.</p>
+            </div>
+            <div class="realities-grid">
+                <div class="reality-card">
+                    <div class="reality-icon">📱</div>
+                    <h3>Information Overload</h3>
+                    <p>Endless scrolling. Contradictory advice. No clarity. Most people drown in content without ever finding insight.</p>
+                    <div class="reality-stat">74%</div>
+                    <div class="reality-label">feel overwhelmed by information</div>
+                </div>
+                <div class="reality-card">
+                    <div class="reality-icon">💸</div>
+                    <h3>Financial Anxiety</h3>
+                    <p>Living paycheck to paycheck isn't a lifestyle — it's a trap. Yet most never learn how money actually works.</p>
+                    <div class="reality-stat">64%</div>
+                    <div class="reality-label">of Americans live paycheck to paycheck</div>
+                </div>
+                <div class="reality-card">
+                    <div class="reality-icon">🕐</div>
+                    <h3>The Productivity Paradox</h3>
+                    <p>We have more productivity tools than ever. We feel less productive than ever. Something is broken.</p>
+                    <div class="reality-stat">82%</div>
+                    <div class="reality-label">don't have a formal productivity system</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Pivot -->
+    <div class="pivot-section section">
+        <div class="container">
+            <div class="pivot-grid">
+                <div class="pivot-text">
+                    <h3>There's another way.</h3>
+                    <p>We believe that understanding a few things deeply is better than knowing many things superficially.</p>
+                    <ul class="pivot-list">
+                        <li>Curated depth over algorithmic noise</li>
+                        <li>Actionable frameworks over motivational fluff</li>
+                        <li>Long-term thinking over short-term trends</li>
+                    </ul>
+                </div>
+                <div class="pivot-image">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500&h=400&fit=crop" alt="Another way">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== BEAUTIFUL CATEGORY CARDS (from React component) ========== -->
+    <div class="categories-showcase">
+        <div class="categories-header">
+            <div class="badge">
+                <span>🎯</span>
+                <span>7 WORLDS TO EXPLORE</span>
+            </div>
+            <h2>Your Interests, Curated</h2>
+            <p>Each category is a universe of knowledge. Pick your passion.</p>
+        </div>
+        <div class="categories-grid" id="categories-grid">
+            <!-- Categories will be loaded dynamically -->
+        </div>
+    </div>
+
+    <!-- Manifesto -->
+    <div class="manifesto">
+        <div class="container">
+            <div class="manifesto-content">
+                <blockquote>"The modern world doesn't need more information. It needs more wisdom. We're building a sanctuary for the curious mind."</blockquote>
+                <div class="manifesto-author">— Trending Wealth Manifesto</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/live-feed.js"></script>
+    <script>
+        // ========== BEAUTIFUL CATEGORY CARDS DATA ==========
+        const CATEGORIES = [
+            { 
+                id: 'technology',
+                slug: 'technology', 
+                name: 'Technology', 
+                icon: '💻', 
+                color: '#3b82f6',
+                gradient: 'from-blue-500 to-cyan-500',
+                bgImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=200&h=200&fit=crop',
+                description: 'Future-proof insights for the digital age',
+                articleCount: 320,
+                trending: true,
+                weeklyGrowth: '+67%',
+                topics: ['AI/ML', 'Web3', 'Startups', 'Coding', 'Gadgets']
+            },
+            { 
+                id: 'wealth',
+                slug: 'wealth', 
+                name: 'Wealth & Finance', 
+                icon: '💰', 
+                color: '#f59e0b',
+                gradient: 'from-amber-500 to-orange-500',
+                bgImage: 'https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?w=200&h=200&fit=crop',
+                description: 'Smart money moves for financial freedom',
+                articleCount: 180,
+                trending: true,
+                weeklyGrowth: '+45%',
+                topics: ['Investing', 'Crypto', 'Real Estate', 'Taxes', 'FIRE']
+            },
+            { 
+                id: 'health',
+                slug: 'health', 
+                name: 'Health & Wellness', 
+                icon: '💊', 
+                color: '#10b981',
+                gradient: 'from-emerald-500 to-teal-500',
+                bgImage: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=200&h=200&fit=crop',
+                description: 'Evidence-based wellness strategies for optimal living',
+                articleCount: 245,
+                trending: true,
+                weeklyGrowth: '+23%',
+                topics: ['Nutrition', 'Exercise', 'Mental Health', 'Sleep', 'Longevity']
+            },
+            { 
+                id: 'growth',
+                slug: 'growth', 
+                name: 'Personal Growth', 
+                icon: '🌱', 
+                color: '#8b5cf6',
+                gradient: 'from-purple-500 to-pink-500',
+                bgImage: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=200&h=200&fit=crop',
+                description: 'Level up your life with proven frameworks',
+                articleCount: 210,
+                trending: false,
+                weeklyGrowth: '+31%',
+                topics: ['Productivity', 'Mindset', 'Habits', 'Learning', 'Career']
+            },
+            { 
+                id: 'entertainment',
+                slug: 'entertainment', 
+                name: 'Entertainment', 
+                icon: '🎬', 
+                color: '#ec4899',
+                gradient: 'from-pink-500 to-rose-500',
+                bgImage: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=200&h=200&fit=crop',
+                description: 'Pop culture decoded with depth',
+                articleCount: 300,
+                trending: true,
+                weeklyGrowth: '+28%',
+                topics: ['Movies', 'TV', 'Music', 'Gaming', 'Books']
+            },
+            { 
+                id: 'world',
+                slug: 'world', 
+                name: 'World Affairs', 
+                icon: '🌍', 
+                color: '#06b6d4',
+                gradient: 'from-cyan-500 to-blue-500',
+                bgImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=200&h=200&fit=crop',
+                description: 'Global perspectives that matter',
+                articleCount: 280,
+                trending: false,
+                weeklyGrowth: '+19%',
+                topics: ['Politics', 'Climate', 'Economics', 'Society', 'Geopolitics']
+            },
+            { 
+                id: 'lifestyle',
+                slug: 'lifestyle', 
+                name: 'Lifestyle', 
+                icon: '✨', 
+                color: '#f97316',
+                gradient: 'from-orange-500 to-red-500',
+                bgImage: 'https://images.unsplash.com/photo-1486718448742-163732cd1544?w=200&h=200&fit=crop',
+                description: 'Live intentionally, not automatically',
+                articleCount: 160,
+                trending: false,
+                weeklyGrowth: '+22%',
+                topics: ['Minimalism', 'Travel', 'Food', 'Design', 'Fashion']
+            }
+        ];
+
+        // Render category cards
+        function renderCategoryCards() {
+            const grid = document.getElementById('categories-grid');
+            if (!grid) return;
+            
+            grid.innerHTML = CATEGORIES.map((cat) => `
+                <a href="/categories/${cat.slug}/" class="category-card" data-category="${cat.slug}">
+                    <div class="card-bg" style="background-image: url('${cat.bgImage}');"></div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: linear-gradient(135deg, ${cat.color}20, ${cat.color}10);">
+                                ${cat.icon}
+                            </div>
+                            ${cat.trending ? `
+                                <div class="trending-badge">
+                                    <span>🔥</span>
+                                    <span>Trending</span>
+                                </div>
+                            ` : ''}
+                        </div>
+                        <h3 class="card-title">${cat.name}</h3>
+                        <p class="card-description">${cat.description}</p>
+                        <div class="card-stats">
+                            <div class="article-count">
+                                <span>📄</span>
+                                <span>${cat.articleCount}+ articles</span>
+                            </div>
+                            <div class="engagement">
+                                <span>📈</span>
+                                <span>${cat.weeklyGrowth} growth</span>
+                            </div>
+                        </div>
+                        <div class="explore-link">
+                            Explore category <span>→</span>
+                        </div>
+                        <div class="topics-wrapper">
+                            <div class="topics-list">
+                                ${cat.topics.map(topic => `<span class="topic-tag">${topic}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+            
+            // Add click tracking
+            document.querySelectorAll('.category-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    console.log(`Category clicked: ${category}`);
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'category_click', { category: category });
+                    }
+                });
+            });
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCategoryCards();
+        });
+    </script>
+</body>
+</html>

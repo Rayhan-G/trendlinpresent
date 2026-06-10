@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"
+                       xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+    
+    <!-- ============================================ -->
+    <!-- OPENSEARCH DESCRIPTION FOR TRENDING WEALTH   -->
+    <!-- Allows users to add site to browser search  -->
+    <!-- ============================================ -->
+    
+    <!-- Search Engine Name -->
+    <ShortName>Trending Wealth</ShortName>
+    <LongName>Trending Wealth - Discover What's Trending</LongName>
+    
+    <!-- Search Engine Description -->
+    <Description>
+        Search trending content across Technology, Health, Wealth, Personal Growth, 
+        Entertainment, World News, and Lifestyle. Find expert reviews, exclusive deals, 
+        and daily insights.
+    </Description>
+    
+    <!-- Search Engine Tags -->
+    <Tags>
+        trending wealth technology health finance personal-growth entertainment world lifestyle 
+        deals reviews insights blog news articles
+    </Tags>
+    
+    <!-- Contact Email -->
+    <Contact>search@trendingwealth.com</Contact>
+    
+    <!-- Search Engine URL Templates -->
+    
+    <!-- Search URL (GET method) -->
+    <Url type="text/html" 
+         method="get" 
+         template="https://trendingwealth.com/search/?q={searchTerms}">
+        <Param name="source" value="opensearch"/>
+        <Param name="utm_source" value="browser-search"/>
+    </Url>
+    
+    <!-- Suggestions URL for autocomplete -->
+    <Url type="application/x-suggestions+json" 
+         template="https://trendingwealth.com/api/v1/search/suggestions?q={searchTerms}"/>
+    
+    <!-- Search URL for POST method -->
+    <Url type="text/html" 
+         method="post" 
+         template="https://trendingwealth.com/search/">
+        <Param name="q" value="{searchTerms}"/>
+        <Param name="source" value="opensearch-post"/>
+    </Url>
+    
+    <!-- Search URL for GET with different encoding -->
+    <Url type="text/html" 
+         method="get" 
+         template="https://trendingwealth.com/?s={searchTerms}"/>
+    
+    <!-- Search URL for HTTPS with different parameter -->
+    <Url type="text/html" 
+         method="get" 
+         template="https://trendingwealth.com/index.html?search={searchTerms}"/>
+    
+    <!-- Category-specific search URLs -->
+    <Url type="text/html" 
+         method="get" 
+         template="https://trendingwealth.com/categories/technology/?search={searchTerms}"
+         category="Technology"/>
+    
+    <Url type="text/html" 
+         method="get" 
+         template="https://trendingwealth.com/categories/wealth/?search={searchTerms}"
+         category="Wealth"/>
+    
+    <Url type="text/html" 
+         method="get" 
+         template="https://trendingwealth.com/categories/health/?search={searchTerms}"
+         category="Health"/>
+    
+    <Url type="text/html" 
+         method="get" 
+         template="https://trendingwealth.com/categories/growth/?search={searchTerms}"
+         category="Growth"/>
+    
+    <!-- Search Icons -->
+    <Image height="16" width="16" type="image/x-icon">
+        https://trendingwealth.com/favicon.ico
+    </Image>
+    
+    <Image height="64" width="64" type="image/png">
+        https://trendingwealth.com/assets/images/icon-64x64.png
+    </Image>
+    
+    <Image height="128" width="128" type="image/png">
+        https://trendingwealth.com/assets/images/icon-128x128.png
+    </Image>
+    
+    <!-- Search Icon for dark mode -->
+    <Image height="16" width="16" type="image/svg+xml">
+        https://trendingwealth.com/assets/images/search-icon-dark.svg
+    </Image>
+    
+    <!-- Developer Information -->
+    <Developer>Trending Wealth Team</Developer>
+    
+    <!-- Attribution -->
+    <Attribution>
+        Search by Trending Wealth - Discover what's trending
+    </Attribution>
+    
+    <!-- Syndication Rights -->
+    <SyndicationRight>open</SyndicationRight>
+    
+    <!-- Adult Content -->
+    <AdultContent>false</AdultContent>
+    
+    <!-- Language Support -->
+    <Language>en-us</Language>
+    <Language>en-gb</Language>
+    <Language>en-ca</Language>
+    <Language>en-au</Language>
+    
+    <!-- Output Encoding -->
+    <InputEncoding>UTF-8</InputEncoding>
+    <OutputEncoding>UTF-8</OutputEncoding>
+    
+    <!-- Autocomplete Settings -->
+    <moz:SearchForm>https://trendingwealth.com/search/</moz:SearchForm>
+    
+    <!-- Update Interval (Days) -->
+    <UpdateInterval>7</UpdateInterval>
+    
+    <!-- Search Engine Examples -->
+    <Example>artificial intelligence trends</Example>
+    <Example>best passive income ideas</Example>
+    <Example>mental health tips 2024</Example>
+    <Example>Amazon deals this week</Example>
+    <Example>cryptocurrency investing guide</Example>
+    
+    <!-- Query Suggestions (Sample data for browsers) -->
+    <Query role="example" searchTerms="ai revolution 2024"/>
+    <Query role="example" searchTerms="best smartphones"/>
+    <Query role="example" searchTerms="passive income"/>
+    <Query role="example" searchTerms="meditation guide"/>
+    <Query role="example" searchTerms="netflix series"/>
+    
+    <!-- Related Search Engines (Optional) -->
+    <!-- 
+    <Related>
+        <ShortName>Google</ShortName>
+        <Url type="text/html" template="https://www.google.com/search?q={searchTerms}"/>
+    </Related>
+    <Related>
+        <ShortName>Bing</ShortName>
+        <Url type="text/html" template="https://www.bing.com/search?q={searchTerms}"/>
+    </Related>
+    -->
+    
+    <!-- Custom Parameters -->
+    <Parameter name="safe" value="active"/>
+    <Parameter name="hl" value="en"/>
+    
+</OpenSearchDescription>

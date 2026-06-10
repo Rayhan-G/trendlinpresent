@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success - Trending Wealth</title>
+    <meta name="description" content="Thank you for subscribing to Trending Wealth. Get ready for exclusive insights and deals.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <link rel="canonical" href="https://trendingwealth.com/success">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" as="style" href="/assets/css/critical.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .success-container {
+            background: white;
+            border-radius: 32px;
+            padding: 48px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: slideUp 0.5s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            animation: scaleIn 0.5s ease-out 0.2s both;
+        }
+        
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+        
+        .success-icon svg {
+            width: 48px;
+            height: 48px;
+            stroke: white;
+            stroke-width: 2;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            color: #1a1a2e;
+            margin-bottom: 12px;
+        }
+        
+        .message {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            font-size: 1.125rem;
+        }
+        
+        .next-steps {
+            background: #f7fafc;
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+        
+        .next-steps h3 {
+            color: #2d3748;
+            margin-bottom: 16px;
+            font-size: 1.125rem;
+        }
+        
+        .next-steps ul {
+            list-style: none;
+        }
+        
+        .next-steps li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #4a5568;
+        }
+        
+        .next-steps li::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: bold;
+            font-size: 1.125rem;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+        
+        .btn-primary, .btn-secondary {
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+        
+        .btn-secondary:hover {
+            background: #cbd5e0;
+        }
+        
+        .countdown {
+            font-size: 0.875rem;
+            color: #718096;
+            margin-top: 16px;
+        }
+        
+        @media (max-width: 640px) {
+            .success-container {
+                padding: 32px 24px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+            }
+            
+            .btn-primary, .btn-secondary {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+        </div>
+        
+        <h1>Success! 🎉</h1>
+        <div class="message" id="successMessage">
+            Thank you for subscribing to Trending Wealth!
+        </div>
+        
+        <div class="next-steps">
+            <h3>What's next?</h3>
+            <ul>
+                <li>Check your email for confirmation</li>
+                <li>Add contact@trendingwealth.com to your address book</li>
+                <li>Get weekly trending insights delivered to your inbox</li>
+                <li>Exclusive deals and early access to reviews</li>
+            </ul>
+        </div>
+        
+        <div class="buttons">
+            <a href="/" class="btn-primary">← Back to Home</a>
+            <a href="/categories/" class="btn-secondary">Explore Categories →</a>
+        </div>
+        
+        <div class="countdown">
+            Redirecting to homepage in <span id="countdown">5</span> seconds...
+        </div>
+    </div>
+    
+    <script>
+        // Get the message from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const type = urlParams.get('type');
+        const messageElement = document.getElementById('successMessage');
+        
+        if (type === 'newsletter') {
+            messageElement.innerHTML = 'You\'ve successfully subscribed to our newsletter! 🎉<br><small>Get ready for weekly trending insights.</small>';
+        } else if (type === 'contact') {
+            messageElement.innerHTML = 'Your message has been sent successfully! 📧<br><small>We\'ll get back to you within 24 hours.</small>';
+        } else if (type === 'feedback') {
+            messageElement.innerHTML = 'Thank you for your feedback! 💡<br><small>We appreciate your input.</small>';
+        }
+        
+        // Countdown redirect
+        let seconds = 5;
+        const countdownElement = document.getElementById('countdown');
+        
+        const interval = setInterval(() => {
+            seconds--;
+            countdownElement.textContent = seconds;
+            
+            if (seconds <= 0) {
+                clearInterval(interval);
+                window.location.href = '/';
+            }
+        }, 1000);
+        
+        // Optional: Stop countdown if user interacts
+        const buttons = document.querySelectorAll('.btn-primary, .btn-secondary');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                clearInterval(interval);
+            });
+        });
+    </script>
+</body>
+</html>

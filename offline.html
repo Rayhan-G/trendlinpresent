@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>You're Offline - Trending Wealth</title>
+    <meta name="description" content="You appear to be offline. Connect to the internet to access trending content.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #667eea;
+            --primary-dark: #5a67d8;
+            --secondary: #764ba2;
+            --accent: #ff4757;
+            --dark: #1a1a2e;
+            --light: #f7fafc;
+            --gray: #718096;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .offline-container {
+            max-width: 500px;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .offline-card {
+            background: white;
+            border-radius: 32px;
+            padding: 48px 32px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .offline-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .offline-icon svg {
+            width: 50px;
+            height: 50px;
+            color: white;
+        }
+        
+        .offline-card h1 {
+            font-size: 1.75rem;
+            color: var(--dark);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .offline-card p {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+        
+        .connection-status {
+            background: #f3f4f6;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 0.875rem;
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ff4757;
+            animation: blink 1.5s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        .retry-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .retry-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(102, 126, 234, 0.4);
+        }
+        
+        .cached-content {
+            border-top: 1px solid #e5e7eb;
+            padding-top: 24px;
+            margin-top: 8px;
+        }
+        
+        .cached-content h3 {
+            font-size: 0.875rem;
+            color: var(--gray);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cached-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .cached-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #f9fafb;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .cached-link:hover {
+            background: #f3f4f6;
+            transform: translateX(4px);
+        }
+        
+        .cached-link-icon {
+            font-size: 1.5rem;
+        }
+        
+        .cached-link-content {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .cached-link-title {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+        
+        .cached-link-url {
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+        
+        .offline-features {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .feature {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+        
+        .feature span {
+            font-size: 1.25rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        @media (max-width: 640px) {
+            .offline-card {
+                padding: 32px 24px;
+            }
+            
+            .offline-icon {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .offline-icon svg {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .offline-card h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-card">
+            <div class="offline-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="12"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+                </svg>
+            </div>
+            
+            <h1>You're Offline</h1>
+            <p>It looks like you've lost your internet connection. Don't worry, you can still access some of our content that's been saved on your device.</p>
+            
+            <div class="connection-status">
+                <div class="status-dot"></div>
+                <span>No internet connection detected</span>
+            </div>
+            
+            <button class="retry-btn" onclick="retryConnection()">
+                🔄 Try Again
+            </button>
+            
+            <div class="cached-content" id="cachedContent">
+                <h3>📚 Available Offline Content</h3>
+                <div class="cached-links" id="cachedLinks">
+                    <div class="cached-link">
+                        <div class="cached-link-icon">🏠</div>
+                        <div class="cached-link-content">
+                            <div class="cached-link-title">Homepage</div>
+                            <div class="cached-link-url">trendingwealth.com</div>
+                        </div>
+                    </div>
+                    <div class="cached-link">
+                        <div class="cached-link-icon">💻</div>
+                        <div class="cached-link-content">
+                            <div class="cached-link-title">Technology</div>
+                            <div class="cached-link-url">/categories/technology/</div>
+                        </div>
+                    </div>
+                    <div class="cached-link">
+                        <div class="cached-link-icon">💰</div>
+                        <div class="cached-link-content">
+                            <div class="cached-link-title">Wealth</div>
+                            <div class="cached-link-url">/categories/wealth/</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="offline-features">
+                <div class="feature">
+                    <span>💾</span>
+                    <div>Saved Content</div>
+                </div>
+                <div class="feature">
+                    <span>🔄</span>
+                    <div>Auto-sync on reconnect</div>
+                </div>
+                <div class="feature">
+                    <span>📱</span>
+                    <div>PWA Support</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Retry connection
+        function retryConnection() {
+            if (navigator.onLine) {
+                window.location.href = '/';
+            } else {
+                const statusDiv = document.querySelector('.connection-status span');
+                statusDiv.innerHTML = 'Still offline. Waiting for connection...';
+                statusDiv.style.color = '#ff4757';
+                
+                // Watch for online event
+                window.addEventListener('online', () => {
+                    window.location.href = '/';
+                });
+            }
+        }
+        
+        // Check if we have cached pages
+        async function loadCachedPages() {
+            if ('caches' in window) {
+                const cache = await caches.open('pages-v3_0_0');
+                const keys = await cache.keys();
+                const cachedUrls = keys.map(req => req.url).filter(url => 
+                    url.includes('/categories/') || 
+                    url.includes('/posts/') ||
+                    url === `${window.location.origin}/`
+                );
+                
+                if (cachedUrls.length > 0) {
+                    const container = document.getElementById('cachedLinks');
+                    container.innerHTML = cachedUrls.slice(0, 5).map(url => {
+                        const path = url.replace(window.location.origin, '');
+                        const name = path === '/' ? 'Homepage' : path.split('/').filter(Boolean).pop() || 'Article';
+                        return `
+                            <a href="${path}" class="cached-link">
+                                <div class="cached-link-icon">📄</div>
+                                <div class="cached-link-content">
+                                    <div class="cached-link-title">${name}</div>
+                                    <div class="cached-link-url">${path}</div>
+                                </div>
+                            </a>
+                        `;
+                    }).join('');
+                }
+            }
+        }
+        
+        // Listen for online/offline events
+        window.addEventListener('online', () => {
+            const statusDiv = document.querySelector('.connection-status span');
+            statusDiv.innerHTML = 'Connection restored! Redirecting...';
+            statusDiv.style.color = '#10b981';
+            document.querySelector('.status-dot').style.background = '#10b981';
+            
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 1500);
+        });
+        
+        window.addEventListener('offline', () => {
+            const statusDiv = document.querySelector('.connection-status span');
+            statusDiv.innerHTML = 'You are offline';
+            statusDiv.style.color = '#ff4757';
+            document.querySelector('.status-dot').style.background = '#ff4757';
+        });
+        
+        // Load cached pages on page load
+        loadCachedPages();
+        
+        // Track offline page view in analytics
+        if (navigator.onLine && typeof gtag !== 'undefined') {
+            gtag('event', 'page_view', {
+                'page_title': 'Offline Page',
+                'page_location': window.location.href
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+﻿User-agent: *
+Allow: /
+Sitemap: https://trendlin.com/sitemap-index.xml
+Host: https://trendlin.com
+Crawl-delay: 0

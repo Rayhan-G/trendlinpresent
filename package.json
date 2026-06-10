@@ -1,0 +1,18 @@
+{
+  "name": "trending-wealth-ultimate",
+  "version": "1.0.0",
+  "description": "Professional static site for trending content with 500+ posts, 7 categories, PWA, and Cloudflare Workers",
+  "author": "Trending Wealth",
+  "license": "MIT",
+  "scripts": {
+    "build": "node build.js",
+    "serve": "npx serve dist",
+    "deploy": "wrangler pages deploy dist --project-name=trending-wealth",
+    "dev": "node build.js --watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@cloudflare/wrangler": "^1.20.0"
+  },
+  "keywords": ["trending", "static-site", "affiliate", "adsense", "cloudflare"]
+}

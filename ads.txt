@@ -1,0 +1,255 @@
+# ============================================
+# ADS.TXT - Authorized Digital Sellers
+# Required for Google AdSense & Programmatic Advertising
+# Last Updated: January 2024
+# ============================================
+
+# Google AdSense (Primary)
+google.com, pub-XXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+
+# ============================================
+# GOOGLE AD MANAGER (If applicable)
+# ============================================
+google.com, pub-XXXXXXXXXXXXX, RESELLER, f08c47fec0942fa0
+
+# ============================================
+# AMAZON AFFILIATE NETWORK
+# ============================================
+amazon.com, YOUR-AMAZON-ID, DIRECT
+
+# ============================================
+# AMAZON ASSOCIATES (Global)
+# ============================================
+amazon.co.uk, YOUR-AMAZON-UK-ID, DIRECT
+amazon.de, YOUR-AMAZON-DE-ID, DIRECT
+amazon.fr, YOUR-AMAZON-FR-ID, DIRECT
+amazon.it, YOUR-AMAZON-IT-ID, DIRECT
+amazon.es, YOUR-AMAZON-ES-ID, DIRECT
+amazon.ca, YOUR-AMAZON-CA-ID, DIRECT
+amazon.com.au, YOUR-AMAZON-AU-ID, DIRECT
+amazon.in, YOUR-AMAZON-IN-ID, DIRECT
+amazon.co.jp, YOUR-AMAZON-JP-ID, DIRECT
+
+# ============================================
+# SHAREASALE (Affiliate Network)
+# ============================================
+shareasale.com, YOUR-SHAREASALE-ID, DIRECT
+
+# ============================================
+# CJ AFFILIATE (Commission Junction)
+# ============================================
+cj.com, YOUR-CJ-ID, DIRECT
+
+# ============================================
+# RAKUTEN ADVERTISING
+# ============================================
+rakuten.com, YOUR-RAKUTEN-ID, DIRECT
+
+# ============================================
+# IMPACT RADIUS (Affiliate Network)
+# ============================================
+impact.com, YOUR-IMPACT-ID, RESELLER
+
+# ============================================
+# AVANTLINK (Affiliate Network)
+# ============================================
+avantlink.com, YOUR-AVANTLINK-ID, DIRECT
+
+# ============================================
+# AWIN (Affiliate Network)
+# ============================================
+awin.com, YOUR-AWIN-ID, DIRECT
+
+# ============================================
+# CLICKBANK (Digital Products)
+# ============================================
+clickbank.net, YOUR-CLICKBANK-ID, DIRECT
+
+# ============================================
+# DIGISTORE24 (Digital Products)
+# ============================================
+digistore24.com, YOUR-DIGISTORE24-ID, RESELLER
+
+# ============================================
+# EBAY PARTNER NETWORK
+# ============================================
+ebay.com, YOUR-EBAY-ID, DIRECT
+
+# ============================================
+# WALMART AFFILIATE
+# ============================================
+walmart.com, YOUR-WALMART-ID, DIRECT
+
+# ============================================
+# BEST BUY AFFILIATE
+# ============================================
+bestbuy.com, YOUR-BESTBUY-ID, DIRECT
+
+# ============================================
+# TARGET AFFILIATE
+# ============================================
+target.com, YOUR-TARGET-ID, DIRECT
+
+# ============================================
+# ALIEXPRESS AFFILIATE
+# ============================================
+aliexpress.com, YOUR-ALIEXPRESS-ID, DIRECT
+
+# ============================================
+# SHOPIFY AFFILIATE
+# ============================================
+shopify.com, YOUR-SHOPIFY-ID, RESELLER
+
+# ============================================
+# CLICKBANK MARKETPLACE
+# ============================================
+clickbank.com, YOUR-CLICKBANK-ID, RESELLER
+
+# ============================================
+# WARRIOR PLUS
+# ============================================
+warriorplus.com, YOUR-WARRIORPLUS-ID, DIRECT
+
+# ============================================
+# JVZOO (Affiliate Network)
+# ============================================
+jvzoo.com, YOUR-JVZOO-ID, DIRECT
+
+# ============================================
+# GUMROAD AFFILIATE
+# ============================================
+gumroad.com, YOUR-GUMROAD-ID, RESELLER
+
+# ============================================
+# PODIA AFFILIATE
+# ============================================
+podia.com, YOUR-PODIA-ID, RESELLER
+
+# ============================================
+# TEACHABLE AFFILIATE
+# ============================================
+teachable.com, YOUR-TEACHABLE-ID, RESELLER
+
+# ============================================
+# THINKIFIC AFFILIATE
+# ============================================
+thinkific.com, YOUR-THINKIFIC-ID, RESELLER
+
+# ============================================
+# KAJABI AFFILIATE
+# ============================================
+kajabi.com, YOUR-KAJABI-ID, RESELLER
+
+# ============================================
+# BLUEHOST AFFILIATE
+# ============================================
+bluehost.com, YOUR-BLUEHOST-ID, DIRECT
+
+# ============================================
+# SITEGROUND AFFILIATE
+# ============================================
+siteground.com, YOUR-SITEGROUND-ID, DIRECT
+
+# ============================================
+# HOSTINGER AFFILIATE
+# ============================================
+hostinger.com, YOUR-HOSTINGER-ID, DIRECT
+
+# ============================================
+# NAMECHEAP AFFILIATE
+# ============================================
+namecheap.com, YOUR-NAMECHEAP-ID, DIRECT
+
+# ============================================
+# GOOGLE AD SENSOR (Third-party verification)
+# ============================================
+google.com, pub-XXXXXXXXXXXXX, RESELLER
+
+# ============================================
+# FACEBOOK AUDIENCE NETWORK
+# ============================================
+facebook.com, YOUR-FACEBOOK-ID, RESELLER
+
+# ============================================
+# TIKTOK ADS
+# ============================================
+tiktok.com, YOUR-TIKTOK-ID, RESELLER
+
+# ============================================
+# ADSTERRA
+# ============================================
+adsterra.com, YOUR-ADSTERRA-ID, RESELLER
+
+# ============================================
+# PROPELLER ADS
+# ============================================
+propellerads.com, YOUR-PROPELLERADS-ID, RESELLER
+
+# ============================================
+# MEDIA.NET
+# ============================================
+media.net, YOUR-MEDIANET-ID, RESELLER
+
+# ============================================
+# INVIDI TECHNOLOGIES (Verification)
+# ============================================
+invidi.com, YOUR-INVIDI-ID, RESELLER
+
+# ============================================
+# INDEX EXCHANGE
+# ============================================
+indexexchange.com, YOUR-INDEXEXCHANGE-ID, RESELLER
+
+# ============================================
+# MAGNITE (Formerly Rubicon)
+# ============================================
+magnite.com, YOUR-MAGNITE-ID, RESELLER
+
+# ============================================
+# PUBMATIC
+# ============================================
+pubmatic.com, YOUR-PUBMATIC-ID, RESELLER
+
+# ============================================
+# SOVRN (Formerly Sovrn Holdings)
+# ============================================
+sovrn.com, YOUR-SOVRN-ID, RESELLER
+
+# ============================================
+# TRIPLELIFT
+# ============================================
+triplelift.com, YOUR-TRIPLELIFT-ID, RESELLER
+
+# ============================================
+# XANDR (Verizon Media)
+# ============================================
+xandr.com, YOUR-XANDR-ID, RESELLER
+
+# ============================================
+# OPENX
+# ============================================
+openx.com, YOUR-OPENX-ID, RESELLER
+
+# ============================================
+# YAHOO! (Verizon Media)
+# ============================================
+yahoo.com, YOUR-YAHOO-ID, RESELLER
+
+# ============================================
+# OUTBRAIN (Native Advertising)
+# ============================================
+outbrain.com, YOUR-OUTBRAIN-ID, RESELLER
+
+# ============================================
+# TABOOLA (Native Advertising)
+# ============================================
+taboola.com, YOUR-TABOOLA-ID, RESELLER
+
+# ============================================
+# REVCONTENT (Native Advertising)
+# ============================================
+revcontent.com, YOUR-REVCONTENT-ID, RESELLER
+
+# ============================================
+# END OF ADS.TXT
+# ============================================

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    
+    <!-- ============================================ -->
+    <!-- MASTER SITEMAP INDEX FOR TRENDING WEALTH     -->
+    <!-- Generated: 2024-01-15                        -->
+    <!-- Total URLs: 500+                            -->
+    <!-- ============================================ -->
+    
+    <!-- POST SITEMAPS (500+ posts across multiple files) -->
+    <sitemap>
+        <loc>https://trendingwealth.com/sitemap/sitemap-posts-1.xml</loc>
+        <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </sitemap>
+    
+    <sitemap>
+        <loc>https://trendingwealth.com/sitemap/sitemap-posts-2.xml</loc>
+        <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </sitemap>
+    
+    <!-- CATEGORY SITEMAP -->
+    <sitemap>
+        <loc>https://trendingwealth.com/sitemap/sitemap-categories.xml</loc>
+        <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </sitemap>
+    
+    <!-- PAGE SITEMAP (About, Contact, Privacy, etc.) -->
+    <sitemap>
+        <loc>https://trendingwealth.com/sitemap/sitemap-pages.xml</loc>
+        <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </sitemap>
+    
+    <!-- TECHNOLOGY CATEGORY SUB-SITEMAPS -->
+    <sitemap>
+        <loc>https://trendingwealth.com/categories/technology/sitemap.xml</loc>
+        <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </sitemap>
+    
+    <!-- HEALTH CATEGORY SUB-SITEMAP -->
+    <sitemap>
+        <loc>https://trendingwealth.com/categories/health/sitemap.xml</loc>
+        <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </sitemap>
+    
+    <!-- WEALTH CATEGORY SUB-SITEMAP -->
+    <sitemap>
+        <loc>https://trendingwealth.com/categories/wealth/sitemap.xml</loc>
+        <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </sitemap>
+    
+    <!-- GROWTH CATEGORY SUB-SITEMAP -->
+    <sitemap>
+        <loc>https://trendingwealth.com/categories/growth/sitemap.xml</loc>
+        <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </sitemap>
+    
+    <!-- ENTERTAINMENT CATEGORY SUB-SITEMAP -->
+    <sitemap>
+        <loc>https://trendingwealth.com/categories/entertainment/sitemap.xml</loc>
+        <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </sitemap>
+    
+    <!-- WORLD CATEGORY SUB-SITEMAP -->
+    <sitemap>
+        <loc>https://trendingwealth.com/categories/world/sitemap.xml</loc>
+        <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </sitemap>
+    
+    <!-- LIFESTYLE CATEGORY SUB-SITEMAP -->
+    <sitemap>
+        <loc>https://trendingwealth.com/categories/lifestyle/sitemap.xml</loc>
+        <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </sitemap>
+    
+    <!-- NEWS SITEMAP (Google News) -->
+    <sitemap>
+        <loc>https://trendingwealth.com/news.xml</loc>
+        <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+        <changefreq>hourly</changefreq>
+        <priority>0.9</priority>
+    </sitemap>
+    
+    <!-- IMAGE SITEMAP -->
+    <sitemap>
+        <loc>https://trendingwealth.com/sitemap/sitemap-images.xml</loc>
+        <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </sitemap>
+    
+    <!-- VIDEO SITEMAP (If applicable) -->
+    <!-- <sitemap>
+        <loc>https://trendingwealth.com/sitemap/sitemap-videos.xml</loc>
+        <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </sitemap> -->
+    
+</sitemapindex> 

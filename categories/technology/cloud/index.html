@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Computing | Technology | Ultima</title>
+    <meta name="description" content="AWS, Azure, Google Cloud, and the future of infrastructure. Expert insights on cloud computing, DevOps, and scalable systems.">
+    <link rel="stylesheet" href="/assets/css/critical.css">
+    <script src="/components/loader.js" defer></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #ffffff; color: #111827; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.5; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        
+        .sub-header { padding: 60px 0 40px; background: linear-gradient(135deg, #0a0a2a 0%, #0a0a0a 100%); color: white; }
+        .back-link { color: #60a5fa; text-decoration: none; margin-bottom: 24px; display: inline-block; font-size: 0.875rem; }
+        .back-link:hover { text-decoration: underline; }
+        .sub-header h1 { font-size: 2.5rem; font-weight: 700; display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .sub-header p { font-size: 1.125rem; color: #9ca3af; max-width: 700px; }
+        
+        .posts-section { padding: 48px 0 80px; }
+        .posts-section h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 32px; color: #0f172a; }
+        .posts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 48px; }
+        .post-card { border-bottom: 1px solid #eaeef2; padding-bottom: 24px; transition: all 0.2s; }
+        .post-card:hover { border-bottom-color: #3b82f6; }
+        .post-category { font-size: 0.7rem; text-transform: uppercase; color: #3b82f6; margin-bottom: 12px; letter-spacing: 1px; font-weight: 600; }
+        .post-card h3 { font-size: 1.125rem; font-weight: 600; margin-bottom: 12px; line-height: 1.4; }
+        .post-card h3 a { color: #111827; text-decoration: none; transition: color 0.2s; }
+        .post-card h3 a:hover { color: #3b82f6; }
+        .post-card p { font-size: 0.875rem; color: #6b7280; line-height: 1.5; }
+        .post-meta { display: flex; gap: 16px; font-size: 0.7rem; color: #9ca3af; margin-top: 12px; }
+        
+        .pagination { display: flex; justify-content: center; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
+        .page-link { padding: 8px 14px; border-radius: 8px; background: #f3f4f6; text-decoration: none; color: #4b5563; font-size: 0.875rem; transition: all 0.2s; cursor: pointer; display: inline-block; }
+        .page-link:hover { background: #e5e7eb; color: #111827; }
+        .page-link.active { background: #111827; color: white; }
+        
+        .loading, .error-message, .empty-message { text-align: center; padding: 60px; font-size: 0.875rem; grid-column: 1 / -1; }
+        .loading { color: #6b7280; }
+        .error-message { color: #ef4444; }
+        .empty-message { color: #9ca3af; }
+        
+        @media (max-width: 900px) { 
+            .posts-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+            .sub-header h1 { font-size: 1.8rem; }
+        }
+        @media (max-width: 640px) { 
+            .posts-grid { grid-template-columns: 1fr; }
+            .sub-header h1 { font-size: 1.5rem; }
+            .sub-header { padding: 40px 0 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="sub-header">
+        <div class="container">
+            <a href="/categories/technology/" class="back-link">← Back to Technology</a>
+            <h1>☁️ Cloud Computing</h1>
+            <p>AWS, Azure, Google Cloud, and the future of infrastructure. Expert insights on cloud computing, DevOps, and scalable systems.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="posts-section">
+            <h2>Latest in Cloud</h2>
+            <div class="posts-grid" id="postsGrid">
+                <div class="loading">Loading articles...</div>
+            </div>
+            <div class="pagination" id="pagination"></div>
+        </div>
+    </div>
+
+    <script>
+        const CATEGORY = 'technology';
+        const SUBCATEGORY = 'cloud';
+        let currentPage = 1;
+        const POSTS_PER_PAGE = 9;
+        let allPosts = [];
+
+        async function loadContent() {
+            try {
+                const response = await fetch('/data/posts.json');
+                if (!response.ok) throw new Error(`HTTP ${response.status}: Failed to fetch posts`);
+                const data = await response.json();
+                
+                // Filter posts by category and subcategory (case-insensitive match for flexibility)
+                allPosts = data.posts.filter(post => 
+                    post.category === CATEGORY && 
+                    post.subcategory?.toLowerCase() === SUBCATEGORY.toLowerCase()
+                );
+                renderPosts();
+            } catch (error) {
+                console.error('Error loading cloud computing content:', error);
+                const postsGrid = document.getElementById('postsGrid');
+                if (postsGrid) {
+                    postsGrid.innerHTML = '<div class="error-message">⚠️ Unable to load articles. Please refresh the page.</div>';
+                }
+                const pagination = document.getElementById('pagination');
+                if (pagination) pagination.innerHTML = '';
+            }
+        }
+
+        function renderPosts() {
+            const postsGrid = document.getElementById('postsGrid');
+            
+            if (!allPosts.length) {
+                postsGrid.innerHTML = '<div class="empty-message">📭 No cloud computing articles found yet. Check back soon for infrastructure insights.</div>';
+                document.getElementById('pagination').innerHTML = '';
+                return;
+            }
+            
+            const start = (currentPage - 1) * POSTS_PER_PAGE;
+            const pagePosts = allPosts.slice(start, start + POSTS_PER_PAGE);
+            
+            postsGrid.innerHTML = pagePosts.map(post => `
+                <div class="post-card">
+                    <div class="post-category">CLOUD</div>
+                    <h3><a href="/posts/index.html?id=${post.id}">${escapeHtml(post.title)}</a></h3>
+                    <p>${escapeHtml(post.excerpt)}</p>
+                    <div class="post-meta">
+                        <span>📅 ${escapeHtml(post.date) || 'Recent'}</span>
+                        <span>🕐 ${escapeHtml(post.readTime) || '5'} min read</span>
+                        ${post.views ? `<span>👁️ ${post.views.toLocaleString()}</span>` : ''}
+                    </div>
+                </div>
+            `).join('');
+            
+            renderPagination();
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+            const paginationContainer = document.getElementById('pagination');
+            
+            if (totalPages <= 1) {
+                paginationContainer.innerHTML = '';
+                return;
+            }
+            
+            let html = '';
+            
+            // Previous button
+            if (currentPage > 1) {
+                html += `<a class="page-link" data-page="${currentPage - 1}">← Prev</a>`;
+            }
+            
+            // Page numbers with ellipsis for large pagination
+            let startPage = Math.max(1, currentPage - 2);
+            let endPage = Math.min(totalPages, currentPage + 2);
+            
+            if (startPage > 1) {
+                html += `<a class="page-link" data-page="1">1</a>`;
+                if (startPage > 2) html += `<span class="page-link" style="background:transparent; cursor:default;">...</span>`;
+            }
+            
+            for (let i = startPage; i <= endPage; i++) {
+                html += `<a class="page-link ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</a>`;
+            }
+            
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) html += `<span class="page-link" style="background:transparent; cursor:default;">...</span>`;
+                html += `<a class="page-link" data-page="${totalPages}">${totalPages}</a>`;
+            }
+            
+            // Next button
+            if (currentPage < totalPages) {
+                html += `<a class="page-link" data-page="${currentPage + 1}">Next →</a>`;
+            }
+            
+            paginationContainer.innerHTML = html;
+            
+            // Attach click handlers to pagination links
+            document.querySelectorAll('.page-link[data-page]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const newPage = parseInt(link.getAttribute('data-page'), 10);
+                    if (!isNaN(newPage) && newPage !== currentPage) {
+                        currentPage = newPage;
+                        renderPosts();
+                        window.scrollTo({ top: 300, behavior: 'smooth' });
+                    }
+                });
+            });
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+        
+        // Initialize on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadContent);
+        } else {
+            loadContent();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "categories": ["technology", "health", "wealth", "growth", "lifestyle", "entertainment", "world"],
+  "postLifespanHours": 24,
+  "carouselSettings": {
+    "autoPlay": false,
+    "showDots": true,
+    "showArrows": true
+  }
+}

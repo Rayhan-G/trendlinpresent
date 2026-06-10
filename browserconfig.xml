@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+    <!-- ============================================ -->
+    <!-- BROWSER CONFIG FOR TRENDING WEALTH           -->
+    <!-- Windows 8/10/11 Pinned Site Configuration    -->
+    <!-- ============================================ -->
+    
+    <msapplication>
+        <!-- ============================================ -->
+        <!-- APPLICATION METADATA                         -->
+        <!-- ============================================ -->
+        
+        <!-- Application Name (Shows in Start Menu) -->
+        <application>
+            <id>trendingwealth.com</id>
+            <name>Trending Wealth</name>
+            <description>Discover what's trending in tech, health, wealth &amp; lifestyle</description>
+            <logo>
+                <!-- Square 70x70 (Windows 8/10 Start Screen) -->
+                <square70x70logo src="/assets/images/ms-icon-70x70.png"/>
+                
+                <!-- Square 150x150 (Windows 8/10 Start Screen) -->
+                <square150x150logo src="/assets/images/ms-icon-150x150.png"/>
+                
+                <!-- Wide 310x150 (Windows 8/10 Start Screen) -->
+                <wide310x150logo src="/assets/images/ms-icon-310x150.png"/>
+                
+                <!-- Square 310x310 (Windows 8/10 Start Screen) -->
+                <square310x310logo src="/assets/images/ms-icon-310x310.png"/>
+            </logo>
+        </application>
+        
+        <!-- ============================================ -->
+        <!-- TILE NOTIFICATIONS                           -->
+        <!-- ============================================ -->
+        
+        <!-- Enable tile notifications -->
+        <notification>
+            <polling-uri src="https://trendingwealth.com/api/v1/notifications.xml" />
+            <polling-interval>1440</polling-interval> <!-- 24 hours in minutes -->
+        </notification>
+        
+        <!-- ============================================ -->
+        <!-- START MENU TILE SETTINGS                     -->
+        <!-- ============================================ -->
+        
+        <!-- Tile background color (matches brand colors) -->
+        <tile>
+            <TileColor>#667eea</TileColor>
+            <TileImage src="/assets/images/ms-icon-150x150.png" />
+            <SmallTileImage src="/assets/images/ms-icon-70x70.png" />
+            <WideTileImage src="/assets/images/ms-icon-310x150.png" />
+        </tile>
+        
+        <!-- ============================================ -->
+        <!-- LOCK SCREEN NOTIFICATIONS                    -->
+        <!-- ============================================ -->
+        
+        <!-- Badge logo for lock screen -->
+        <badge>
+            <logo src="/assets/images/ms-icon-70x70.png" />
+            <polling-uri src="https://trendingwealth.com/api/v1/badge.xml" />
+            <polling-interval>60</polling-interval>
+        </badge>
+        
+        <!-- ============================================ -->
+        <!-- TASK BAR PINNING                             -->
+        <!-- ============================================ -->
+        
+        <!-- Jump list tasks -->
+        <customtask>
+            <task>
+                <name>Trending Today</name>
+                <uri>/?sort=trending</uri>
+                <icon src="/assets/images/icon-trending.ico" />
+            </task>
+            <task>
+                <name>Latest Deals</name>
+                <uri>/categories/technology/?filter=deals</uri>
+                <icon src="/assets/images/icon-deals.ico" />
+            </task>
+            <task>
+                <name>Popular This Week</name>
+                <uri>/?sort=popular</uri>
+                <icon src="/assets/images/icon-popular.ico" />
+            </task>
+            <task>
+                <name>Search</name>
+                <uri>/search/</uri>
+                <icon src="/assets/images/icon-search.ico" />
+            </task>
+        </customtask>
+        
+        <!-- ============================================ -->
+        <!-- WINDOWS NOTIFICATION SETTINGS                -->
+        <!-- ============================================ -->
+        
+        <!-- Toast notifications -->
+        <toast>
+            <enabled>true</enabled>
+            <launchUrl>https://trendingwealth.com</launchUrl>
+        </toast>
+        
+        <!-- ============================================ -->
+        <!-- FAVORITE ICON (For pinned sites)             -->
+        <!-- ============================================ -->
+        
+        <favicon>
+            <small>
+                <ico src="/favicon.ico" />
+            </small>
+        </favicon>
+        
+        <!-- ============================================ -->
+        <!-- CONTEXT MENU OPTIONS (Right-click on tile)  -->
+        <!-- ============================================ -->
+        
+        <contextmenu>
+            <item>
+                <name>Open Trending Wealth</name>
+                <uri>https://trendingwealth.com</uri>
+            </item>
+            <item>
+                <name>View Latest Articles</name>
+                <uri>https://trendingwealth.com/?sort=latest</uri>
+            </item>
+            <item>
+                <name>Contact Support</name>
+                <uri>https://trendingwealth.com/contact.html</uri>
+            </item>
+            <separator/>
+            <item>
+                <name>Privacy Settings</name>
+                <uri>https://trendingwealth.com/privacy.html</uri>
+            </item>
+        </contextmenu>
+        
+        <!-- ============================================ -->
+        <!-- LIVE TITLE (Dynamic tile updates)           -->
+        <!-- ============================================ -->
+        
+        <live-title>
+            <enabled>true</enabled>
+            <polling-uri src="https://trendingwealth.com/api/v1/title.xml" />
+            <polling-interval>120</polling-interval> <!-- 2 hours -->
+        </live-title>
+    </msapplication>
+    
+    <!-- ============================================ -->
+    <!-- EDGE BROWSER CONFIGURATION                   -->
+    <!-- ============================================ -->
+    
+    <Edge>
+        <!-- Configure Edge browser behavior -->
+        <SendIntranetTrafficToInternet>false</SendIntranetTrafficToInternet>
+        
+        <!-- Sync settings across devices -->
+        <SyncSettings>
+            <Favorites>true</Favorites>
+            <Passwords>true</Passwords>
+            <History>true</History>
+            <OpenTabs>true</OpenTabs>
+            <Settings>true</Settings>
+        </SyncSettings>
+    </Edge>
+    
+    <!-- ============================================ -->
+    <!-- INTERNET EXPLORER LEGACY SUPPORT             -->
+    <!-- ============================================ -->
+    
+    <InternetExplorer>
+        <!-- Force IE to use latest rendering engine -->
+        <CompatibilityMode>
+            <ForceLatest>true</ForceLatest>
+            <OverrideList>
+                <Add domain="trendingwealth.com" />
+            </OverrideList>
+        </CompatibilityMode>
+        
+        <!-- Protected mode settings -->
+        <ProtectedMode>
+            <Enabled>true</Enabled>
+        </ProtectedMode>
+    </InternetExplorer>
+    
+    <!-- ============================================ -->
+    <!-- END OF BROWSERCONFIG.XML                     -->
+    <!-- ============================================ -->
+</browserconfig>
