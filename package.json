@@ -6,13 +6,13 @@
   "license": "MIT",
   "scripts": {
     "build": "node build.js",
-    "serve": "npx serve dist",
-    "deploy": "wrangler pages deploy dist --project-name=trending-wealth",
+    "serve": "npx serve .",
+    "deploy": "wrangler pages deploy . --project-name=trending-wealth",
     "dev": "node build.js --watch"
   },
   "dependencies": {},
   "devDependencies": {
-    "@cloudflare/wrangler": "^1.20.0"
+    "wrangler": "^3.78.0"
   },
   "keywords": ["trending", "static-site", "affiliate", "adsense", "cloudflare"]
 }
