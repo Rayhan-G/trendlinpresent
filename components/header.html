@@ -96,33 +96,29 @@
             gap: var(--spacing-48);
         }
 
-        /* Logo */
+        /* Logo - Updated to match footer trendlin style */
         .logo a {
             text-decoration: none;
             display: flex;
-            align-items: center;
-            gap: var(--spacing-8);
+            align-items: baseline;
+            gap: 0;
             transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        }
-
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--color-accent-gradient-start), var(--color-accent-gradient-end));
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
-            font-weight: 700;
         }
 
         .logo-text {
             font-weight: 700;
-            font-size: 20px;
+            font-size: 1.5rem;
             letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #18181B, #3F3F46);
+            background: linear-gradient(135deg, #1a1a1a 0%, #404040 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo-dot {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #e11d48 0%, #f43f5e 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -280,14 +276,8 @@
                 padding: var(--spacing-12) 0;
             }
             
-            .logo-text {
-                font-size: 18px;
-            }
-            
-            .logo-icon {
-                width: 28px;
-                height: 28px;
-                font-size: 14px;
+            .logo-text, .logo-dot {
+                font-size: 1.25rem;
             }
             
             .main-nav {
@@ -395,10 +385,8 @@
         <div class="header-inner">
             <div class="logo">
                 <a href="/">
-                    <div class="logo-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <span class="logo-text">Trendlin</span>
+                    <span class="logo-text">trendlin</span>
+                    <span class="logo-dot">.</span>
                 </a>
             </div>
             
@@ -549,7 +537,7 @@
             }
         });
         
-        console.log('✨ Trendlin navbar active — Lifestyle icon using fa-star ✨');
+        console.log('✨ Trendlin navbar active — Logo matches footer trendlin style ✨');
     })();
 </script>
 
