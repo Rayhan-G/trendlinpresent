@@ -2,114 +2,228 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Affiliate Disclosure - Trending Wealth</title>
-    <meta name="description" content="How Trending Wealth makes money through affiliate partnerships. Transparent disclosure per FTC guidelines.">
-    <link rel="stylesheet" href="/assets/css/critical.css">
-    <script src="/components/loader.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Affiliate Disclosure | Trendlin</title>
+    <meta name="description" content="Trendlin affiliate disclosure — transparent, FTC compliant, and reader-first. No cost to you, ever.">
+    <meta name="robots" content="index, follow">
     <style>
-        .legal-container { max-width: 800px; margin: 0 auto; padding: 80px 20px; }
-        .legal-header { margin-bottom: 48px; }
-        .legal-header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 16px; }
-        .last-updated { color: #6b7280; font-size: 0.875rem; }
-        .disclosure-notice { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 24px; margin-bottom: 40px; border-radius: 8px; }
-        .legal-section { margin-bottom: 40px; }
-        .legal-section h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #e5e7eb; }
-        .legal-section p { color: #4b5563; line-height: 1.7; margin-bottom: 16px; }
-        .legal-section ul { margin: 16px 0 16px 24px; color: #4b5563; line-height: 1.7; }
-        .legal-section li { margin-bottom: 8px; }
-        .program-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 20px 0; }
-        .program-item { background: #f3f4f6; padding: 12px 16px; border-radius: 8px; font-size: 0.875rem; }
-        @media (max-width: 768px) { .program-list { grid-template-columns: 1fr; } }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #ffffff;
+            color: #111827;
+            line-height: 1.5;
+        }
+
+        /* simple container — no navbar, no footer cruft */
+        .legal-container {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            width: 100%;
+        }
+
+        /* clean typography */
+        .legal-header {
+            margin-bottom: 48px;
+        }
+
+        .legal-header h1 {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #0a0c12;
+            margin-bottom: 12px;
+        }
+
+        .last-updated {
+            color: #6b7280;
+            font-size: 0.8rem;
+            font-weight: 400;
+        }
+
+        /* premium subtle notice */
+        .disclosure-notice {
+            background: #f8fafc;
+            padding: 20px 24px;
+            margin-bottom: 48px;
+            border-radius: 14px;
+            font-size: 0.95rem;
+            border: 1px solid #eef2f8;
+        }
+
+        .disclosure-notice strong {
+            color: #0a0c12;
+            font-weight: 600;
+        }
+
+        .legal-section {
+            margin-bottom: 40px;
+        }
+
+        .legal-section h2 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: #0a0c12;
+            letter-spacing: -0.2px;
+        }
+
+        .legal-section p {
+            color: #3a3f4e;
+            line-height: 1.65;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+
+        .legal-section ul {
+            margin: 12px 0 16px 24px;
+            color: #3a3f4e;
+            line-height: 1.65;
+            font-size: 0.95rem;
+        }
+
+        .legal-section li {
+            margin-bottom: 6px;
+        }
+
+        .program-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 20px 0 12px;
+        }
+
+        .program-item {
+            background: #f9fafb;
+            padding: 8px 12px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #2c313a;
+            text-align: center;
+            border: 1px solid #edf2f7;
+        }
+
+        hr {
+            margin: 32px 0 20px;
+            border: 0;
+            height: 1px;
+            background: #eef2f8;
+        }
+
+        @media (max-width: 640px) {
+            .legal-container {
+                padding: 56px 20px;
+            }
+            .legal-header h1 {
+                font-size: 1.7rem;
+            }
+            .program-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* dark mode (professional & optional) */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #0b0e14;
+                color: #eef2f8;
+            }
+            .legal-header h1 {
+                color: #f0f3fa;
+            }
+            .legal-section p, .legal-section ul, .legal-section li {
+                color: #b9c2d6;
+            }
+            .disclosure-notice {
+                background: #121720;
+                border-color: #232b36;
+            }
+            .disclosure-notice strong {
+                color: #ffffff;
+            }
+            .program-item {
+                background: #10151e;
+                border-color: #262e3a;
+                color: #cfd9ec;
+            }
+            .legal-section h2 {
+                color: #eef2fc;
+            }
+            .last-updated {
+                color: #8992a8;
+            }
+            hr {
+                background: #232b36;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="legal-container">
         <div class="legal-header">
             <h1>Affiliate Disclosure</h1>
-            <div class="last-updated">Last updated: January 15, 2024</div>
+            <div class="last-updated">Last updated: March 2025 · FTC guidelines</div>
         </div>
 
         <div class="disclosure-notice">
-            <strong>🔍 Transparency notice:</strong> Trending Wealth participates in affiliate marketing programs. This means we may earn commissions when you purchase through links on our site — at <strong>no additional cost to you</strong>.
+            <strong>Transparent & simple.</strong> Trendlin participates in affiliate marketing. When you purchase through links on our site, we may earn a small commission — <strong>at no extra cost to you</strong>. This keeps our content free and independent.
         </div>
 
         <div class="legal-section">
-            <h2>What are affiliate links?</h2>
-            <p>Affiliate links are special URLs that track referrals. When you click an affiliate link and make a purchase, the retailer pays us a small commission. This is how we keep our content free and sustainable.</p>
-            <p>The price you pay is exactly the same whether you use our affiliate links or go directly to the retailer. In fact, some of our links include exclusive discounts you won't find elsewhere.</p>
+            <h2>How affiliate links work</h2>
+            <p>Affiliate links are special URLs that track referrals. If you click one and later make a purchase, the retailer pays us a referral fee. Your price never changes — you pay exactly the same as if you went directly to the store. Some partnerships even unlock exclusive discounts.</p>
         </div>
 
         <div class="legal-section">
             <h2>Our affiliate programs</h2>
-            <p>Trending Wealth participates in the following affiliate networks and programs:</p>
+            <p>Trendlin works with trusted, vetted affiliate networks. Below are the primary programs we partner with:</p>
             <div class="program-list">
                 <div class="program-item">Amazon Associates</div>
                 <div class="program-item">ShareASale</div>
-                <div class="program-item">CJ Affiliate (Commission Junction)</div>
+                <div class="program-item">CJ Affiliate</div>
                 <div class="program-item">Rakuten Advertising</div>
                 <div class="program-item">Impact Radius</div>
                 <div class="program-item">Awin</div>
-                <div class="program-item">ClickBank</div>
                 <div class="program-item">PartnerStack</div>
+                <div class="program-item">ClickBank</div>
             </div>
         </div>
 
         <div class="legal-section">
-            <h2>Does this affect you?</h2>
-            <p><strong>No.</strong> Using our affiliate links does not increase the price you pay. The retailer pays us a commission for referring you, at zero cost to you.</p>
-            <p>In many cases, our links include exclusive promo codes or deals that actually <strong>save you money</strong>.</p>
+            <h2>Does this affect your price?</h2>
+            <p><strong>No — never.</strong> Affiliate commissions are paid by the retailer, not by you. Using our links will never increase the cost of any product or service.</p>
         </div>
 
         <div class="legal-section">
-            <h2>Our editorial independence</h2>
-            <p>Affiliate relationships do NOT influence our content. We are committed to honest, unbiased reviews and recommendations. Our priorities are:</p>
+            <h2>Editorial independence</h2>
+            <p>Affiliate relationships never influence our content. Our reviews, recommendations, and rankings are based solely on product quality, real-world value, and honest assessment. Reader trust comes before any commission.</p>
             <ul>
-                <li>Reader trust over affiliate commissions</li>
-                <li>Product quality and value over commission rates</li>
-                <li>Honest critique over promotional fluff</li>
-            </ul>
-            <p>We only recommend products we've researched, tested, or genuinely believe will provide value to our readers.</p>
-        </div>
-
-        <div class="legal-section">
-            <h2>How we choose what to recommend</h2>
-            <p>Our recommendations are based on:</p>
-            <ul>
-                <li>Extensive research and testing (when possible)</li>
-                <li>Customer reviews and verified feedback</li>
-                <li>Price-to-value ratio</li>
-                <li>Product quality and durability</li>
-                <li>Customer service reputation</li>
-                <li>Industry expert opinions</li>
+                <li>✓ No paid placements disguised as editorial</li>
+                <li>✓ Honest critique — we highlight both pros and cons</li>
+                <li>✓ We only recommend what we genuinely believe in</li>
             </ul>
         </div>
 
         <div class="legal-section">
             <h2>Amazon Associates Program</h2>
-            <p>Trending Wealth is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com and affiliated sites.</p>
+            <p>Trendlin is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com and affiliated sites. As an Amazon Associate, we earn from qualifying purchases.</p>
         </div>
 
         <div class="legal-section">
             <h2>Your support matters</h2>
-            <p>By using our affiliate links, you're directly supporting our work. Your support allows us to:</p>
-            <ul>
-                <li>Keep all our content free and accessible</li>
-                <li>Invest in deeper research and testing</li>
-                <li>Maintain the site without intrusive advertising</li>
-                <li>Continue producing high-quality, honest content</li>
-            </ul>
-            <p><strong>Thank you for your support — it truly means the world to us.</strong></p>
+            <p>By using our affiliate links, you directly support Trendlin. You help us keep all content free, invest in better research, and avoid intrusive advertising. Thank you for being a reader who values transparency.</p>
         </div>
 
-        <div class="legal-section">
-            <h2>Questions?</h2>
-            <p>If you have any questions about our affiliate relationships or how we make money, please contact us at:</p>
-            <p><strong>affiliate@trendingwealth.com</strong></p>
-        </div>
+        <hr>
 
-        <div class="legal-note" style="background:#f3f4f6; padding:20px; border-radius:8px; text-align:center; font-size:0.875rem; color:#6b7280;">
-            This disclosure is provided in compliance with FTC guidelines and reflects our commitment to transparency with our readers.
+        <div style="font-size: 0.75rem; color: #6b7280; text-align: center; margin-top: 24px;">
+            This disclosure complies with FTC guidelines (16 CFR Part 255). Trendlin is committed to complete transparency.
         </div>
     </div>
 </body>

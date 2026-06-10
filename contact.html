@@ -3,143 +3,266 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Trending Wealth</title>
-    <meta name="description" content="Get in touch with the Trending Wealth team. We respond within 24-48 hours.">
-    <link rel="stylesheet" href="/assets/css/critical.css">
-    <script src="/components/loader.js" defer></script>
+    <title>Contact - Trendlin</title>
+    <meta name="description" content="Contact Trendlin. We research trends from across the web and write about them. Email us at hello@trendlin.com.">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #ffffff;
+            color: #111827;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
         .contact-hero {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e9edf2 100%);
-            padding: 60px 0;
+            padding: 80px 0 48px;
+            text-align: center;
+            border-bottom: 1px solid #eef2f6;
+        }
+
+        .contact-hero h1 {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #0a0c12;
+            margin-bottom: 12px;
+        }
+
+        .contact-hero p {
+            font-size: 0.95rem;
+            color: #4b5565;
+        }
+
+        .contact-card {
+            padding: 48px 0 80px;
             text-align: center;
         }
-        .contact-hero h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 16px; }
-        .contact-hero p { color: #6b7280; }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            padding: 80px 0;
+
+        .email-box {
+            background: #f8fafc;
+            border: 1px solid #eef2f8;
+            border-radius: 20px;
+            padding: 48px 32px;
+            margin: 24px 0;
         }
-        .contact-info h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 20px; }
-        .contact-method {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 20px 0;
-            border-bottom: 1px solid #e5e7eb;
+
+        .email-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #6b7280;
+            margin-bottom: 16px;
         }
-        .contact-icon {
-            width: 48px;
-            height: 48px;
-            background: #f3f4f6;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-        }
-        .contact-details h3 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
-        .contact-details p { font-size: 0.875rem; color: #6b7280; }
-        .contact-details a { color: #667eea; text-decoration: none; }
-        .contact-form form { display: flex; flex-direction: column; gap: 20px; }
-        .contact-form input, .contact-form select, .contact-form textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 0.875rem;
-        }
-        .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            ring: 2px solid rgba(102,126,234,0.1);
-        }
-        .submit-btn {
-            background: #0a0a0a;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
+
+        .email-address {
+            font-size: 1.8rem;
             font-weight: 500;
-            cursor: pointer;
-            transition: background 0.2s;
+            margin-bottom: 24px;
         }
-        .submit-btn:hover { background: #667eea; }
+
+        .email-address a {
+            color: #0a0c12;
+            text-decoration: none;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .email-address a:hover {
+            color: #3b6e8b;
+        }
+
+        .response-note {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 16px;
+        }
+
+        .work-note {
+            background: #ffffff;
+            border: 1px solid #eef2f8;
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 32px;
+            text-align: left;
+        }
+
+        .work-note h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: #0a0c12;
+        }
+
+        .work-note p {
+            font-size: 0.85rem;
+            color: #4b5565;
+            line-height: 1.6;
+        }
+
         .faq-section {
-            background: #fafafa;
-            padding: 80px 0;
+            background: #fafcfd;
+            padding: 64px 0;
+            border-top: 1px solid #eef2f6;
         }
+
+        .faq-section h2 {
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 40px;
+            color: #0a0c12;
+        }
+
         .faq-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            margin-top: 48px;
+            gap: 32px;
         }
-        .faq-item h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
-        .faq-item p { font-size: 0.875rem; color: #6b7280; line-height: 1.6; }
-        @media (max-width: 768px) {
-            .contact-grid { grid-template-columns: 1fr; }
-            .faq-grid { grid-template-columns: 1fr; }
-            .contact-hero h1 { font-size: 1.75rem; }
+
+        .faq-item h3 {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #0a0c12;
+        }
+
+        .faq-item p {
+            font-size: 0.85rem;
+            color: #4b5565;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 640px) {
+            .contact-hero h1 {
+                font-size: 1.7rem;
+            }
+            .email-address {
+                font-size: 1.3rem;
+                word-break: break-all;
+            }
+            .faq-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .email-box {
+                padding: 32px 20px;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #0b0e14;
+                color: #eef2f8;
+            }
+            .contact-hero {
+                border-bottom-color: #232b36;
+            }
+            .contact-hero h1 {
+                color: #f0f3fa;
+            }
+            .contact-hero p {
+                color: #b9c2d6;
+            }
+            .email-box {
+                background: #121720;
+                border-color: #232b36;
+            }
+            .email-label {
+                color: #9aa3b8;
+            }
+            .email-address a {
+                color: #f0f3fa;
+                border-bottom-color: #d4af37;
+            }
+            .email-address a:hover {
+                color: #7ab3c8;
+            }
+            .response-note {
+                color: #9aa3b8;
+            }
+            .work-note {
+                background: #121720;
+                border-color: #232b36;
+            }
+            .work-note h3 {
+                color: #eef2fc;
+            }
+            .work-note p {
+                color: #b9c2d6;
+            }
+            .faq-section {
+                background: #0f141c;
+                border-top-color: #232b36;
+            }
+            .faq-section h2 {
+                color: #f0f3fa;
+            }
+            .faq-item h3 {
+                color: #eef2fc;
+            }
+            .faq-item p {
+                color: #b9c2d6;
+            }
         }
     </style>
 </head>
 <body>
-    <section class="contact-hero">
+    <div class="contact-hero">
         <div class="container">
-            <h1>Get in touch</h1>
-            <p>We respond to every message within 24-48 hours.</p>
+            <h1>Contact</h1>
+            <p>Questions about a trend? Want to suggest a source? Just say hello.</p>
         </div>
-    </section>
+    </div>
 
     <div class="container">
-        <div class="contact-grid">
-            <div class="contact-info">
-                <h2>Ways to reach us</h2>
-                <div class="contact-method">
-                    <div class="contact-icon">📧</div>
-                    <div class="contact-details"><h3>Email</h3><p><a href="mailto:hello@trendingwealth.com">hello@trendingwealth.com</a></p><p style="font-size:0.75rem">For general inquiries</p></div>
+        <div class="contact-card">
+            <div class="email-box">
+                <div class="email-label">📧 Email us</div>
+                <div class="email-address">
+                    <a href="mailto:hello@trendlin.com">hello@trendlin.com</a>
                 </div>
-                <div class="contact-method">
-                    <div class="contact-icon">✍️</div>
-                    <div class="contact-details"><h3>Press & Media</h3><p><a href="mailto:press@trendingwealth.com">press@trendingwealth.com</a></p></div>
-                </div>
-                <div class="contact-method">
-                    <div class="contact-icon">🤝</div>
-                    <div class="contact-details"><h3>Partnerships</h3><p><a href="mailto:partners@trendingwealth.com">partners@trendingwealth.com</a></p></div>
-                </div>
-                <div class="contact-method">
-                    <div class="contact-icon">📍</div>
-                    <div class="contact-details"><h3>Office</h3><p>548 Market Street, Suite 94104<br>San Francisco, CA</p></div>
-                </div>
+                <div class="response-note">We typically reply within 2-3 business days.</div>
             </div>
-            <div class="contact-form">
-                <h2>Send a message</h2>
-                <form id="contactForm" onsubmit="event.preventDefault(); alert('Thank you! We'll respond within 24-48 hours.'); this.reset();">
-                    <input type="text" placeholder="Full name" required>
-                    <input type="email" placeholder="Email address" required>
-                    <select required><option value="">Select inquiry type</option><option>General question</option><option>Partnership</option><option>Advertising</option><option>Press</option><option>Feedback</option></select>
-                    <input type="text" placeholder="Subject">
-                    <textarea rows="5" placeholder="Your message..." required></textarea>
-                    <button type="submit" class="submit-btn">Send message →</button>
-                </form>
+
+            <div class="work-note">
+                <h3>🔍 What we do at Trendlin</h3>
+                <p>We research emerging trends from across the web — social media, forums, news outlets, industry reports, and public data — then write clear, insightful articles about them. No newsletter. No signups. No accounts. Just trends, researched and explained.</p>
             </div>
         </div>
     </div>
 
-    <section class="faq-section">
+    <div class="faq-section">
         <div class="container">
-            <h2 style="text-align:center; margin-bottom:16px">Frequently asked</h2>
-            <p style="text-align:center; color:#6b7280;">Quick answers to common questions</p>
+            <h2>Frequently asked</h2>
             <div class="faq-grid">
-                <div class="faq-item"><h3>How quickly do you respond?</h3><p>We respond to all inquiries within 24-48 hours, excluding weekends and holidays.</p></div>
-                <div class="faq-item"><h3>Do you accept guest posts?</h3><p>We're not currently accepting unsolicited guest posts. We work with a curated network of contributors.</p></div>
-                <div class="faq-item"><h3>How do I advertise with you?</h3><p>Please use the partnership option in the form above, and our advertising team will reach out with our media kit.</p></div>
-                <div class="faq-item"><h3>Can I republish your content?</h3><p>We allow limited republication with attribution. Please contact us for approval first.</p></div>
+                <div class="faq-item">
+                    <h3>Do you accept guest posts?</h3>
+                    <p>Not at this time. Trendlin is a solo project — one person researching and writing about trends.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How do I suggest a trend or source?</h3>
+                    <p>Email hello@trendlin.com. If it's relevant and verifiable, we'll look into it.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do you have a newsletter?</h3>
+                    <p>No. No signups, no newsletters, no accounts. Just read the site.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I republish your content?</h3>
+                    <p>Please reach out via email first. Short excerpts with credit and a link back are generally fine.</p>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 </body>
 </html>
