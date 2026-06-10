@@ -1,0 +1,10 @@
+{
+  "build": {
+    "command": null,
+    "directory": "."
+  },
+  "install": {
+    "npm": false,
+    "bun": false
+  }
+}

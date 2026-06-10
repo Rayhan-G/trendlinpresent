@@ -1,6 +1,5 @@
-﻿/about.html /about 301
-/contact.html /contact 301
-/privacy.html /privacy 301
-/terms.html /terms 301
-/categories/*/ /categories/:splat 301
-/* /404.html 404
+﻿# SPA fallback - handle client-side routing
+/* /200.html 200
+
+# Redirect old paths to new (example)
+# /old-path /new-path 301
