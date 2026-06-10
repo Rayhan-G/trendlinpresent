@@ -1,5 +1,0 @@
-﻿# SPA fallback - handle client-side routing
-/* /200.html 200
-
-# Redirect old paths to new (example)
-# /old-path /new-path 301
