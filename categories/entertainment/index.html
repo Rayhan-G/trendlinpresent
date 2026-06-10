@@ -304,14 +304,14 @@
     <div class="hero-content">
         <div class="hero-badge">TRENDLIN ENTERTAINMENT</div>
         <h1>What's <span>worth your time</span></h1>
-        <p>Trends in movies, TV, gaming, music, and pop culture — researched and explained.</p>
+        <p>Trends in movies, TV, gaming, music, books, and pop culture — researched and explained.</p>
     </div>
 </div>
 
 <section class="feed-section">
     <div class="feed-header">
         <h2>🎬 Live from Entertainment</h2>
-        <p>← Swipe → only the freshest posts from movies, TV, gaming, and pop culture</p>
+        <p>← Swipe → only the freshest posts from movies, TV, gaming, books, and pop culture</p>
     </div>
     <div id="live-feed-container" data-category="entertainment">
         <div class="feed-skeleton">
@@ -340,21 +340,23 @@
 <script src="/assets/js/live-feed.js"></script>
 
 <script>
-    // ========== SUBCATEGORIES - DYNAMIC FROM YOUR ACTUAL FOLDER STRUCTURE ==========
-    // These are the actual subfolders under /categories/entertainment/
     const ENTERTAINMENT_SUBCATEGORIES = [
         { slug: 'movies', name: 'Movies', icon: '🎬', tagline: 'Cinema magic awaits', description: 'Reviews, trailers, and behind-the-scenes' },
         { slug: 'tv-shows', name: 'TV Shows', icon: '📺', tagline: 'Binge-worthy series', description: 'Streaming guides & episode recaps' },
         { slug: 'gaming', name: 'Gaming', icon: '🎮', tagline: 'Level up', description: 'Reviews, esports & gaming news' },
-        { slug: 'streaming', name: 'Streaming', icon: '📡', tagline: 'Watch anywhere', description: 'Netflix, Disney+, HBO & more' }
+        { slug: 'streaming', name: 'Streaming', icon: '📡', tagline: 'Watch anywhere', description: 'Netflix, Disney+, HBO & more' },
+        { slug: 'books', name: 'Books', icon: '📚', tagline: 'Pages worth turning', description: 'Reviews, reading lists & author insights' },
+        { slug: 'pop-culture', name: 'Pop Culture', icon: '🌟', tagline: 'What everyone\'s talking about', description: 'Memes, trends & cultural moments' }
     ];
 
-    // Dynamic background images for each subcategory (using Unsplash)
+    // ALL WORKING UNIQUE BACKGROUND IMAGES
     const BG_IMAGES = {
         movies: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&h=1000&fit=crop',
-        'tv-shows': 'https://images.unsplash.com/photo-1578020198024-2b3e2b9d4a7c?w=800&h=1000&fit=crop',
+        'tv-shows': 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&h=1000&fit=crop',
         gaming: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=1000&fit=crop',
-        streaming: 'https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=800&h=1000&fit=crop'
+        streaming: 'https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=800&h=1000&fit=crop',
+        books: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=800&h=1000&fit=crop',
+        'pop-culture': 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=800&h=1000&fit=crop'
     };
 
     async function getArticleCountForSubcategory(slug) {
@@ -380,13 +382,12 @@
         const grid = document.getElementById('subcategory-grid');
         if (!grid) return;
         
-        // First show loading state with real article counts loaded dynamically
         const cards = [];
         
         for (const cat of ENTERTAINMENT_SUBCATEGORIES) {
             const articleCount = await getArticleCountForSubcategory(cat.slug);
             const statText = articleCount ? `${articleCount} articles` : 'Explore';
-            const bgImage = BG_IMAGES[cat.slug] || 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&h=1000&fit=crop';
+            const bgImage = BG_IMAGES[cat.slug];
             
             cards.push(`
                 <a href="/categories/entertainment/${cat.slug}/" class="subcategory-card">
@@ -412,13 +413,9 @@
         grid.innerHTML = cards.join('');
     }
 
-    // ========== LIVE FEED - ENTERTAINMENT ONLY ==========
+    // LIVE FEED FUNCTION (same as before)
     (function() {
-        const CONFIG = {
-            postLifespanHours: 168, // 7 days for entertainment
-            refreshInterval: 300000
-        };
-
+        const CONFIG = { postLifespanHours: 168, refreshInterval: 300000 };
         let filteredEntertainmentPosts = [];
         let container = null;
 
@@ -443,11 +440,7 @@
 
         function filterEntertainmentLivePosts(posts) {
             const now = new Date();
-            const entertainmentOnly = posts.filter(post => {
-                const cat = (post.category || '').toLowerCase();
-                return cat === 'entertainment';
-            });
-            
+            const entertainmentOnly = posts.filter(post => (post.category || '').toLowerCase() === 'entertainment');
             const livePosts = entertainmentOnly.filter(post => {
                 if (!post.date) return true;
                 const postDate = new Date(post.date);
@@ -455,24 +448,13 @@
                 const diffHours = (now - postDate) / (1000 * 60 * 60);
                 return diffHours <= CONFIG.postLifespanHours;
             });
-            
             livePosts.sort((a, b) => new Date(b.date) - new Date(a.date));
             return livePosts;
         }
 
-        function getCategoryIcon(category) {
-            const icons = {
-                movies: '🎬', 'tv-shows': '📺', gaming: '🎮', streaming: '📡'
-            };
-            return icons[category?.toLowerCase()] || '🎭';
-        }
-
-        function getCategoryDisplayName(category) {
-            if (!category) return 'Entertainment';
-            const map = {
-                movies: 'Movies', 'tv-shows': 'TV Shows', gaming: 'Gaming', streaming: 'Streaming'
-            };
-            return map[category.toLowerCase()] || category;
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         }
 
         function renderMediaCarousel(mediaItems, postId) {
@@ -503,11 +485,6 @@
             return html;
         }
 
-        function escapeHtml(str) {
-            if (!str) return '';
-            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        }
-
         function renderPost(post, idx) {
             const postId = `${post.id || idx}-${idx}`;
             const mediaItems = post.media || (post.image ? [{ type: 'image', url: post.image }] : []);
@@ -516,8 +493,6 @@
                 excerptText = post.content.replace(/<[^>]*>/g, '').substring(0, 180) + '...';
             }
             if (!excerptText) excerptText = 'Explore the latest entertainment insights.';
-            const icon = getCategoryIcon(post.subcategory || post.category);
-            const displayCategory = getCategoryDisplayName(post.subcategory || post.category);
             const postDate = post.date ? new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : 'Recent';
             const readTime = post.readTime || (post.content ? Math.ceil(post.content.length / 1000) : 4);
             return `
@@ -526,8 +501,8 @@
                         <div class="post-content">
                             <div class="post-meta">
                                 <div class="post-category">
-                                    <span class="category-icon">${icon}</span>
-                                    <span class="category-name">${displayCategory}</span>
+                                    <span class="category-icon">🎬</span>
+                                    <span class="category-name">Entertainment</span>
                                 </div>
                                 <span class="post-date">${postDate}</span>
                             </div>
