@@ -27,27 +27,34 @@
         }
 
         /* ============================================
-           FOOTER - TRENDLIN (with Social Icons)
+           FOOTER - TRENDLIN (Mobile First)
         ============================================ */
         
         .footer {
             background: #f8fafc;
             border-top: 1px solid #eaeef2;
-            margin-top: 80px;
-            padding: 60px 0 24px;
+            margin-top: 60px;
+            padding: 40px 0 24px;
         }
         
         .footer-container {
+            width: 100%;
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1.5rem;
         }
         
+        /* Mobile First: Single column layout */
         .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
+            display: flex;
+            flex-direction: column;
             gap: 2rem;
             margin-bottom: 2rem;
+        }
+        
+        /* Center content on mobile by default */
+        .footer-col {
+            text-align: center;
         }
         
         .footer-logo {
@@ -55,6 +62,7 @@
             align-items: baseline;
             text-decoration: none;
             margin-bottom: 1rem;
+            justify-content: center;
         }
         
         .logo-text {
@@ -80,7 +88,8 @@
             font-size: 0.875rem;
             line-height: 1.6;
             color: #6b7280;
-            max-width: 250px;
+            max-width: 100%;
+            margin: 0 auto;
         }
         
         .footer-col h3 {
@@ -88,7 +97,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
             color: #9ca3af;
         }
         
@@ -96,6 +105,7 @@
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
+            align-items: center;
         }
         
         .footer-link {
@@ -114,6 +124,7 @@
         .footer-social {
             display: flex;
             gap: 0.75rem;
+            justify-content: center;
         }
         
         .social-link {
@@ -161,13 +172,71 @@
         }
         
         .footer-copyright p {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #9ca3af;
             margin: 0;
         }
         
         .affiliate-note {
             margin-top: 0.5rem;
+        }
+        
+        /* ===== TABLET BREAKPOINT (min-width: 640px) ===== */
+        @media (min-width: 640px) {
+            .footer-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.75rem;
+            }
+            
+            .footer-col {
+                text-align: left;
+            }
+            
+            .footer-logo {
+                justify-content: flex-start;
+            }
+            
+            .about-text {
+                max-width: 250px;
+                margin: 0;
+            }
+            
+            .footer-links {
+                align-items: flex-start;
+            }
+            
+            .footer-social {
+                justify-content: flex-start;
+            }
+        }
+        
+        /* ===== DESKTOP BREAKPOINT (min-width: 1024px) ===== */
+        @media (min-width: 1024px) {
+            .footer {
+                margin-top: 80px;
+                padding: 60px 0 24px;
+            }
+            
+            .footer-container {
+                padding: 0 2rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+                gap: 2rem;
+            }
+            
+            .about-text {
+                font-size: 0.875rem;
+            }
+        }
+        
+        /* ===== LARGE DESKTOP (min-width: 1280px) ===== */
+        @media (min-width: 1280px) {
+            .footer-container {
+                padding: 0 2rem;
+            }
         }
         
         /* Dark Mode Support */
@@ -216,47 +285,6 @@
             
             .footer-copyright p {
                 color: #6b7280;
-            }
-        }
-        
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .footer {
-                padding: 40px 0 24px;
-                margin-top: 60px;
-            }
-            
-            .footer-container {
-                padding: 0 1.5rem;
-            }
-            
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .footer-logo {
-                justify-content: center;
-            }
-            
-            .about-text {
-                max-width: 100%;
-                margin: 0 auto;
-            }
-            
-            .footer-links {
-                align-items: center;
-            }
-            
-            .footer-social {
-                justify-content: center;
             }
         }
     </style>

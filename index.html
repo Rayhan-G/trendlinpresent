@@ -1,808 +1,998 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trendlin | Intelligence for the Modern World</title>
-    <meta
-      name="description"
-      content="Trendlin researches emerging trends from across the web — social media, forums, news outlets, and public data — and writes clear, insightful articles."
-    />
-    <link rel="stylesheet" href="/assets/css/critical.css" />
-    <link rel="stylesheet" href="/assets/css/live-feed.css" />
-    <script src="/components/loader.js" defer></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trendlin | Intelligence for the Modern World</title>
+  <meta name="description" content="Trendlin researches emerging trends from across the web — social media, forums, news outlets, and public data — and writes clear, insightful articles." />
+  <link rel="stylesheet" href="/assets/css/critical.css" />
+  <link rel="stylesheet" href="/assets/css/live-feed.css" />
+  <script src="/components/loader.js" defer></script>
 
-    <!-- Real Analytics: Cloudflare Web Analytics (replace token) -->
-    <script
-      defer
-      src="https://static.cloudflareinsights.com/beacon.min.js"
-      data-cf-beacon='{"token": "YOUR_CLOUDFLARE_SITE_TOKEN"}'
-    ></script>
+  <!-- Real Analytics: Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "YOUR_CLOUDFLARE_SITE_TOKEN"}'></script>
 
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+  <style>
+    /* ===== RESET & BASE (Mobile First) ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      :root {
-        --primary: #667eea;
-        --primary-dark: #5a67d8;
-        --secondary: #764ba2;
-        --accent: #ff4757;
-        --dark: #0a0a0a;
-        --dark-muted: #1a1a1a;
-        --gray: #6b7280;
-        --gray-light: #9ca3af;
-        --light: #fafafa;
-        --border: #e5e7eb;
-      }
+    :root {
+      --primary: #667eea;
+      --primary-dark: #5a67d8;
+      --secondary: #764ba2;
+      --accent: #ff4757;
+      --dark: #0a0a0a;
+      --dark-muted: #1a1a1a;
+      --gray: #6b7280;
+      --gray-light: #9ca3af;
+      --light: #fafafa;
+      --border: #e5e7eb;
+    }
 
-      body {
-        font-family:
-          "Inter",
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          Roboto,
-          sans-serif;
-        background: var(--light);
-        color: var(--dark);
-        line-height: 1.5;
-      }
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.5;
+    }
 
+    .container {
+      width: 100%;
+      padding: 0 20px;
+      margin: 0 auto;
+    }
+
+    /* ===== HERO SECTION (Mobile First - No BG Images) ===== */
+    .hero {
+      min-height: auto;
+      padding: 48px 0;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e9edf2 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 80%;
+      height: 150%;
+      background: radial-gradient(circle, rgba(102,126,234,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 16px;
+      color: var(--dark);
+    }
+
+    .hero-text .accent {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text p {
+      font-size: 1rem;
+      color: var(--gray);
+      margin-bottom: 24px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .stat h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .stat p {
+      font-size: 0.75rem;
+      color: var(--gray);
+      margin: 0;
+    }
+
+    /* Hero decorative element - pure CSS */
+    .hero-visual {
+      flex: 1;
+      min-height: 280px;
+      background: linear-gradient(145deg, var(--primary)10, var(--secondary)10);
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-visual::before {
+      content: "⟡";
+      font-size: 8rem;
+      color: var(--primary);
+      opacity: 0.15;
+      position: absolute;
+      font-weight: 300;
+    }
+
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border: 2px solid rgba(102,126,234,0.2);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .hero-grid-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(102,126,234,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(102,126,234,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* ===== GENERAL SECTIONS ===== */
+    .section {
+      padding: 48px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 100%;
+      margin: 0 auto 40px;
+      padding: 0 16px;
+    }
+
+    .section-header h2 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .section-header p {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    /* ===== FEED SECTION ===== */
+    .feed-section {
+      padding: 40px 0;
+      background: var(--light);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .feed-header {
+      max-width: 100%;
+      margin: 0 auto 24px;
+      padding: 0 20px;
+    }
+
+    .feed-header h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .feed-header p {
+      color: var(--gray);
+      font-size: 0.85rem;
+    }
+
+    /* ===== QUESTION CARD ===== */
+    .question-card {
+      max-width: 100%;
+      margin: 0 auto;
+      text-align: center;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-muted) 100%);
+      color: white;
+      padding: 40px 24px;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .question-card::before {
+      content: "✨";
+      position: absolute;
+      font-size: 12rem;
+      opacity: 0.05;
+      bottom: -30px;
+      right: -30px;
+      pointer-events: none;
+    }
+
+    .question-card h2 {
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+    }
+
+    .question-card p {
+      color: var(--gray-light);
+      margin-bottom: 24px;
+    }
+
+    /* ===== REALITIES GRID (Mobile First) ===== */
+    .realities-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 0 16px;
+    }
+
+    .reality-card {
+      background: white;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reality-card::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .reality-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .reality-card:hover {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .reality-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .reality-card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .reality-card p {
+      color: var(--gray);
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    /* ===== PIVOT SECTION ===== */
+    .pivot-section {
+      background: linear-gradient(135deg, var(--dark) 0%, #1a1f2e 100%);
+      color: white;
+    }
+
+    .pivot-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .pivot-text h3 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .pivot-text p {
+      color: var(--gray-light);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .pivot-list {
+      list-style: none;
+    }
+
+    .pivot-list li {
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gray-light);
+      font-size: 0.9rem;
+    }
+
+    .pivot-list li::before {
+      content: "→";
+      color: var(--primary);
+    }
+
+    /* Pure CSS decorative element for pivot section */
+    .pivot-decoration {
+      flex: 1;
+      min-height: 280px;
+      background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1));
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pivot-decoration .dot-pattern {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(circle, var(--primary) 1px, transparent 1px);
+      background-size: 24px 24px;
+      opacity: 0.15;
+    }
+
+    .pivot-decoration .quote-mark {
+      font-size: 6rem;
+      font-weight: 700;
+      color: var(--primary);
+      opacity: 0.3;
+      font-family: serif;
+    }
+
+    /* ===== CATEGORIES SHOWCASE - No BG Images ===== */
+    .categories-showcase {
+      padding: 48px 0;
+      background: var(--light);
+    }
+
+    .categories-header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 0 20px;
+    }
+
+    .categories-header .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(102, 126, 234, 0.1);
+      border: 1px solid rgba(102, 126, 234, 0.2);
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .categories-header .badge span:first-child {
+      font-size: 0.8rem;
+    }
+
+    .categories-header .badge span:last-child {
+      font-size: 0.7rem;
+      color: var(--primary);
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    .categories-header h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--dark);
+    }
+
+    .categories-header p {
+      color: var(--gray);
+      font-size: 0.95rem;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .categories-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .category-card {
+      position: relative;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: block;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .category-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
+      border-color: var(--primary);
+    }
+
+    /* Decorative gradient overlay instead of background image */
+    .category-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, transparent 50%, rgba(102,126,234,0.06) 100%);
+      border-radius: 0 0 0 100%;
+      transition: all 0.3s ease;
+    }
+
+    .category-card:hover::before {
+      width: 140px;
+      height: 140px;
+      background: linear-gradient(135deg, transparent 50%, rgba(102,126,234,0.12) 100%);
+    }
+
+    .card-content {
+      padding: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, var(--primary)15, var(--secondary)10);
+    }
+
+    .category-card:hover .card-icon {
+      transform: scale(1.05) rotate(3deg);
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--dark);
+      text-transform: capitalize;
+    }
+
+    .card-description {
+      color: var(--gray);
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .explore-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--primary);
+      transition: all 0.2s;
+    }
+
+    .category-card:hover .explore-link {
+      gap: 10px;
+    }
+
+    /* ===== MANIFESTO ===== */
+    .manifesto {
+      background: linear-gradient(135deg, #f0f4f8 0%, #e8edf3 100%);
+      padding: 48px 0;
+    }
+
+    .manifesto-content {
+      max-width: 100%;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .manifesto-content::before,
+    .manifesto-content::after {
+      content: "“";
+      font-size: 5rem;
+      color: var(--primary);
+      opacity: 0.15;
+      position: absolute;
+      font-family: serif;
+    }
+
+    .manifesto-content::before {
+      top: -20px;
+      left: 10px;
+    }
+
+    .manifesto-content::after {
+      content: "”";
+      bottom: -40px;
+      right: 10px;
+    }
+
+    .manifesto blockquote {
+      font-size: 1.25rem;
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--dark);
+      margin-bottom: 24px;
+    }
+
+    .manifesto-author {
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+
+    .loading-spinner {
+      text-align: center;
+      padding: 40px;
+      color: var(--gray);
+    }
+
+    /* ===== TABLET BREAKPOINT (min-width: 768px) ===== */
+    @media (min-width: 768px) {
       .container {
-        max-width: 1200px;
-        margin: 0 auto;
+        max-width: 720px;
         padding: 0 24px;
       }
 
       .hero {
-        min-height: 90vh;
-        display: flex;
-        align-items: center;
-        background: linear-gradient(135deg, #f5f7fa 0%, #e9edf2 100%);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 50%;
-        height: 100%;
-        background: linear-gradient(
-          135deg,
-          rgba(102, 126, 234, 0.08) 0%,
-          rgba(118, 75, 162, 0.08) 100%
-        );
-        clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+        padding: 60px 0;
+        min-height: auto;
       }
 
       .hero-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        flex-direction: row;
         gap: 48px;
         align-items: center;
-        position: relative;
-        z-index: 1;
       }
 
       .hero-text h1 {
-        font-size: 3.5rem;
-        font-weight: 700;
-        line-height: 1.2;
-        margin-bottom: 24px;
-        color: var(--dark);
-      }
-
-      .hero-text .accent {
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--secondary) 100%
-        );
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+        font-size: 2.8rem;
       }
 
       .hero-text p {
-        font-size: 1.125rem;
-        color: var(--gray);
-        margin-bottom: 32px;
-        max-width: 90%;
+        font-size: 1.1rem;
       }
 
       .hero-stats {
-        display: flex;
-        gap: 40px;
-        margin-top: 40px;
+        gap: 32px;
       }
 
       .stat h3 {
         font-size: 1.75rem;
-        font-weight: 700;
-        color: var(--dark);
       }
 
-      .stat p {
-        font-size: 0.875rem;
-        color: var(--gray);
-        margin: 0;
-      }
-
-      .hero-image img {
-        width: 100%;
-        border-radius: 16px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-      }
-
-      .section {
-        padding: 80px 0;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .section-header {
-        text-align: center;
-        max-width: 700px;
-        margin: 0 auto 60px;
-      }
-
-      .section-header h2 {
-        font-size: 2rem;
-        font-weight: 600;
-        margin-bottom: 16px;
-      }
-
-      .section-header p {
-        color: var(--gray);
-        font-size: 1rem;
-      }
-
-      .feed-section {
-        padding: 60px 0;
-        background: var(--light);
-        border-bottom: 1px solid var(--border);
-      }
-
-      .feed-header {
-        max-width: 1280px;
-        margin: 0 auto 32px;
-        padding: 0 24px;
-      }
-
-      .feed-header h2 {
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: var(--dark);
-        margin-bottom: 8px;
-      }
-
-      .feed-header p {
-        color: var(--gray);
-        font-size: 0.9rem;
-      }
-
-      .question-card {
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: center;
-        background: var(--dark);
-        color: white;
-        padding: 60px 48px;
-        border-radius: 24px;
-      }
-
-      .question-card h2 {
-        font-size: 2rem;
-        margin-bottom: 20px;
-      }
-
-      .question-card p {
-        color: var(--gray-light);
-        margin-bottom: 32px;
+      .hero-visual {
+        min-height: 320px;
       }
 
       .realities-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 28px;
       }
 
       .reality-card {
-        background: white;
-        border-radius: 16px;
-        padding: 32px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        border: 1px solid var(--border);
-        transition: all 0.2s;
-      }
-
-      .reality-card:hover {
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        transform: translateY(-2px);
-      }
-
-      .reality-icon {
-        font-size: 2rem;
-        margin-bottom: 20px;
-      }
-
-      .reality-card h3 {
-        font-size: 1.25rem;
-        font-weight: 600;
-        margin-bottom: 12px;
-      }
-
-      .reality-card p {
-        color: var(--gray);
-        font-size: 0.875rem;
-        line-height: 1.6;
-        margin-bottom: 20px;
-      }
-
-      .pivot-section {
-        background: var(--dark);
-        color: white;
+        flex: 1 1 calc(33.333% - 28px);
       }
 
       .pivot-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
-        align-items: center;
+        flex-direction: row;
+        gap: 48px;
       }
 
       .pivot-text h3 {
         font-size: 1.75rem;
-        font-weight: 600;
-        margin-bottom: 20px;
       }
 
-      .pivot-text p {
-        color: var(--gray-light);
-        margin-bottom: 24px;
-        line-height: 1.7;
+      .pivot-decoration {
+        min-height: 320px;
       }
 
-      .pivot-list {
-        list-style: none;
+      .categories-grid {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 24px;
       }
 
-      .pivot-list li {
-        margin-bottom: 16px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        color: var(--gray-light);
+      .category-card {
+        flex: 1 1 calc(50% - 24px);
       }
 
-      .pivot-list li::before {
-        content: "→";
-        color: var(--primary);
+      .question-card h2 {
+        font-size: 1.8rem;
       }
 
-      .pivot-image img {
-        width: 100%;
-        border-radius: 16px;
+      .manifesto blockquote {
+        font-size: 1.4rem;
+      }
+    }
+
+    /* ===== DESKTOP BREAKPOINT (min-width: 1024px) ===== */
+    @media (min-width: 1024px) {
+      .container {
+        max-width: 1200px;
       }
 
-      .categories-showcase {
-        padding: 80px 0;
-        background: var(--light);
+      .hero-text h1 {
+        font-size: 3.5rem;
       }
 
-      .categories-header {
-        text-align: center;
-        margin-bottom: 60px;
+      .hero-text p {
+        max-width: 90%;
       }
 
-      .categories-header .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 6px 16px;
-        background: rgba(102, 126, 234, 0.1);
-        border: 1px solid rgba(102, 126, 234, 0.2);
-        border-radius: 100px;
-        margin-bottom: 20px;
-      }
-
-      .categories-header .badge span:first-child {
-        font-size: 0.8rem;
-      }
-
-      .categories-header .badge span:last-child {
-        font-size: 0.7rem;
-        color: var(--primary);
-        font-weight: 500;
-        letter-spacing: 1px;
+      .category-card {
+        flex: 1 1 calc(33.333% - 24px);
       }
 
       .categories-header h2 {
         font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 16px;
-        color: var(--dark);
       }
 
-      .categories-header p {
-        color: var(--gray);
-        font-size: 1rem;
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      .categories-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-        gap: 28px;
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 0 24px;
-      }
-
-      .category-card {
-        position: relative;
-        background: white;
-        border-radius: 24px;
-        overflow: hidden;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        display: block;
-        border: 1px solid var(--border);
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-      }
-
-      .category-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
-        border-color: var(--primary);
-      }
-
-      .card-bg {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 120px;
-        height: 120px;
-        background-size: cover;
-        background-position: center;
-        opacity: 0.08;
-        border-radius: 0 24px 0 24px;
-        transition: opacity 0.3s ease;
-      }
-
-      .category-card:hover .card-bg {
-        opacity: 0.12;
-      }
-
-      .card-content {
-        padding: 28px;
-        position: relative;
-        z-index: 2;
-      }
-
-      .card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 20px;
-      }
-
-      .card-icon {
-        width: 56px;
-        height: 56px;
-        border-radius: 18px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.8rem;
-        transition: all 0.3s ease;
-      }
-
-      .category-card:hover .card-icon {
-        transform: scale(1.05);
-      }
-
-      .card-title {
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: 12px;
-        color: var(--dark);
-        text-transform: capitalize;
-      }
-
-      .card-description {
-        color: var(--gray);
-        font-size: 0.85rem;
-        line-height: 1.5;
-        margin-bottom: 20px;
-      }
-
-      .explore-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: var(--primary);
-        transition: all 0.2s;
-      }
-
-      .category-card:hover .explore-link {
-        gap: 12px;
-      }
-
-      .manifesto {
-        background: #f0f4f8;
-        padding: 80px 0;
-      }
-
-      .manifesto-content {
+      .question-card {
         max-width: 800px;
+        padding: 60px 48px;
         margin: 0 auto;
-        text-align: center;
+      }
+
+      .question-card h2 {
+        font-size: 2rem;
       }
 
       .manifesto blockquote {
         font-size: 1.5rem;
-        font-weight: 400;
-        line-height: 1.4;
-        color: var(--dark);
-        margin-bottom: 32px;
       }
+    }
 
-      .manifesto-author {
-        font-size: 0.875rem;
-        color: var(--gray);
+    /* ===== LARGE DESKTOP (min-width: 1440px) ===== */
+    @media (min-width: 1440px) {
+      .container {
+        max-width: 1400px;
       }
+    }
 
-      .loading-spinner {
-        text-align: center;
-        padding: 60px;
-        color: var(--gray);
+    /* ===== DARK MODE SUPPORT ===== */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #0b0e14;
+        color: #eef2f8;
       }
-
-      @media (max-width: 768px) {
-        .hero-content {
-          grid-template-columns: 1fr;
-        }
-        .hero-text h1 {
-          font-size: 2.5rem;
-        }
-        .hero-text p {
-          max-width: 100%;
-        }
-        .realities-grid {
-          grid-template-columns: 1fr;
-        }
-        .pivot-grid {
-          grid-template-columns: 1fr;
-        }
-        .categories-grid {
-          grid-template-columns: 1fr;
-        }
-        .section {
-          padding: 48px 0;
-        }
-        .feed-header h2 {
-          font-size: 1.5rem;
-        }
-        .categories-header h2 {
-          font-size: 1.8rem;
-        }
+      .hero {
+        background: linear-gradient(135deg, #0f141c 0%, #131826 100%);
       }
-
-      @media (prefers-color-scheme: dark) {
-        body {
-          background: #0b0e14;
-          color: #eef2f8;
-        }
-        .hero {
-          background: linear-gradient(135deg, #0f141c 0%, #131826 100%);
-        }
-        .hero-text h1 {
-          color: #f0f3fa;
-        }
-        .reality-card {
-          background: #121720;
-          border-color: #232b36;
-        }
-        .reality-card p {
-          color: #b9c2d6;
-        }
-        .category-card {
-          background: #121720;
-          border-color: #232b36;
-        }
-        .card-title {
-          color: #f0f3fa;
-        }
-        .manifesto {
-          background: #0f141c;
-        }
-        .manifesto blockquote {
-          color: #eef2f8;
-        }
+      .hero-text h1 {
+        color: #f0f3fa;
       }
-    </style>
-  </head>
-  <body>
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <div class="hero-text">
-            <h1>
-              Intelligence for the <span class="accent">Modern World</span>
-            </h1>
-            <p>
-              Trendlin researches emerging trends from across the web — social
-              media, forums, news outlets, and public data — and writes clear,
-              insightful articles.
-            </p>
-            <div class="hero-stats">
-              <div class="stat">
-                <h3 id="articleCount">---</h3>
-                <p>Articles</p>
-              </div>
-              <div class="stat">
-                <h3 id="categoryCount">---</h3>
-                <p>Categories</p>
-              </div>
-              <div class="stat">
-                <h3>✓</h3>
-                <p>Free for now</p>
-              </div>
+      .reality-card {
+        background: #121720;
+        border-color: #232b36;
+      }
+      .reality-card p {
+        color: #b9c2d6;
+      }
+      .category-card {
+        background: #121720;
+        border-color: #232b36;
+      }
+      .card-title {
+        color: #f0f3fa;
+      }
+      .card-description {
+        color: #b9c2d6;
+      }
+      .manifesto {
+        background: linear-gradient(135deg, #0f141c 0%, #131826 100%);
+      }
+      .manifesto blockquote {
+        color: #eef2f8;
+      }
+      .categories-showcase {
+        background: #0b0e14;
+      }
+      .categories-header h2 {
+        color: #f0f3fa;
+      }
+      .badge {
+        background: rgba(102,126,234,0.15);
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>
+            Intelligence for the <span class="accent">Modern World</span>
+          </h1>
+          <p>
+            Trendlin researches emerging trends from across the web — social
+            media, forums, news outlets, and public data — and writes clear,
+            insightful articles.
+          </p>
+          <div class="hero-stats">
+            <div class="stat">
+              <h3 id="articleCount">---</h3>
+              <p>Articles</p>
+            </div>
+            <div class="stat">
+              <h3 id="categoryCount">---</h3>
+              <p>Categories</p>
+            </div>
+            <div class="stat">
+              <h3>✓</h3>
+              <p>Free for now</p>
             </div>
           </div>
-          <div class="hero-image">
-            <img
-              src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=500&fit=crop"
-              alt="Signal vs Noise"
-            />
-          </div>
         </div>
-      </div>
-    </section>
-
-    <section class="feed-section">
-      <div class="feed-header">
-        <h2>Recent stories</h2>
-        <p>Fresh perspectives from our trend research</p>
-      </div>
-      <div id="live-feed-container">
-        <div class="loading-spinner">Loading latest stories...</div>
-      </div>
-    </section>
-
-    <div class="section">
-      <div class="container">
-        <div class="question-card">
-          <h2>The world is changing faster than ever.</h2>
-          <p>Are you keeping up?</p>
+        <div class="hero-visual">
+          <div class="hero-grid-pattern"></div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="section">
-      <div class="container">
-        <div class="section-header">
-          <h2>Why Trendlin exists</h2>
+  <section class="feed-section">
+    <div class="feed-header">
+      <h2>Recent stories</h2>
+      <p>Fresh perspectives from our trend research</p>
+    </div>
+    <div id="live-feed-container">
+      <div class="loading-spinner">Loading latest stories...</div>
+    </div>
+  </section>
+
+  <div class="section">
+    <div class="container">
+      <div class="question-card">
+        <h2>The world is changing faster than ever.</h2>
+        <p>Are you keeping up?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Trendlin exists</h2>
+        <p>
+          Most content rewards attention, not understanding. We're building the
+          opposite.
+        </p>
+      </div>
+      <div class="realities-grid">
+        <div class="reality-card">
+          <div class="reality-icon">📱</div>
+          <h3>Information Overload</h3>
           <p>
-            Most content rewards attention, not understanding. We're building
-            the opposite.
+            Endless scrolling. Contradictory advice. No clarity. Most people
+            drown in content without ever finding insight.
           </p>
         </div>
-        <div class="realities-grid">
-          <div class="reality-card">
-            <div class="reality-icon">📱</div>
-            <h3>Information Overload</h3>
-            <p>
-              Endless scrolling. Contradictory advice. No clarity. Most people
-              drown in content without ever finding insight.
-            </p>
-          </div>
-          <div class="reality-card">
-            <div class="reality-icon">🔍</div>
-            <h3>Missing Context</h3>
-            <p>
-              Trends appear, explode, and fade — usually without any explanation
-              of why they matter or where they came from.
-            </p>
-          </div>
-          <div class="reality-card">
-            <div class="reality-icon">⚡</div>
-            <h3>Speed Over Substance</h3>
-            <p>
-              Most coverage prioritizes being first over being right. We
-              prioritize research and clarity over chasing virality.
-            </p>
-          </div>
+        <div class="reality-card">
+          <div class="reality-icon">🔍</div>
+          <h3>Missing Context</h3>
+          <p>
+            Trends appear, explode, and fade — usually without any explanation
+            of why they matter or where they came from.
+          </p>
+        </div>
+        <div class="reality-card">
+          <div class="reality-icon">⚡</div>
+          <h3>Speed Over Substance</h3>
+          <p>
+            Most coverage prioritizes being first over being right. We
+            prioritize research and clarity over chasing virality.
+          </p>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="pivot-section section">
-      <div class="container">
-        <div class="pivot-grid">
-          <div class="pivot-text">
-            <h3>There's another way.</h3>
-            <p>
-              We believe that understanding a few things deeply is better than
-              knowing many things superficially.
-            </p>
-            <ul class="pivot-list">
-              <li>Curated depth over algorithmic noise</li>
-              <li>Research-backed insights over hot takes</li>
-              <li>Long-term thinking over short-term trends</li>
-            </ul>
-          </div>
-          <div class="pivot-image">
-            <img
-              src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500&h=400&fit=crop"
-              alt="Another way"
-            />
-          </div>
+  <div class="pivot-section section">
+    <div class="container">
+      <div class="pivot-grid">
+        <div class="pivot-text">
+          <h3>There's another way.</h3>
+          <p>
+            We believe that understanding a few things deeply is better than
+            knowing many things superficially.
+          </p>
+          <ul class="pivot-list">
+            <li>Curated depth over algorithmic noise</li>
+            <li>Research-backed insights over hot takes</li>
+            <li>Long-term thinking over short-term trends</li>
+          </ul>
+        </div>
+        <div class="pivot-decoration">
+          <div class="dot-pattern"></div>
+          <div class="quote-mark">⟡</div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="categories-showcase">
-      <div class="categories-header">
-        <div class="badge">
-          <span>🎯</span>
-          <span>EXPLORE BY TOPIC</span>
-        </div>
-        <h2>Your Interests, Curated</h2>
-        <p>Each category is built from real trend research.</p>
+  <div class="categories-showcase">
+    <div class="categories-header">
+      <div class="badge">
+        <span>🎯</span>
+        <span>EXPLORE BY TOPIC</span>
       </div>
-      <div class="categories-grid" id="categories-grid">
-        <div class="loading-spinner">Loading categories...</div>
+      <h2>Your Interests, Curated</h2>
+      <p>Each category is built from real trend research.</p>
+    </div>
+    <div class="categories-grid" id="categories-grid">
+      <div class="loading-spinner">Loading categories...</div>
+    </div>
+  </div>
+
+  <div class="manifesto">
+    <div class="container">
+      <div class="manifesto-content">
+        <blockquote>
+          "The modern world doesn't need more information. It needs more
+          wisdom. Trendlin is a sanctuary for the curious mind."
+        </blockquote>
+        <div class="manifesto-author">— Trendlin</div>
       </div>
     </div>
+  </div>
 
-    <div class="manifesto">
-      <div class="container">
-        <div class="manifesto-content">
-          <blockquote>
-            "The modern world doesn't need more information. It needs more
-            wisdom. Trendlin is a sanctuary for the curious mind."
-          </blockquote>
-          <div class="manifesto-author">— Trendlin</div>
-        </div>
-      </div>
-    </div>
+  <script src="/assets/js/live-feed.js"></script>
+  <script>
+    // Category metadata - display names, icons, descriptions (no background images)
+    const CATEGORY_METADATA = {
+      technology: {
+        icon: "💻",
+        name: "Technology",
+        color: "#3b82f6",
+        description: "Future-proof insights for the digital age"
+      },
+      wealth: {
+        icon: "💰",
+        name: "Wealth & Finance",
+        color: "#f59e0b",
+        description: "Smart money moves for financial freedom"
+      },
+      health: {
+        icon: "💊",
+        name: "Health & Wellness",
+        color: "#10b981",
+        description: "Evidence-based wellness strategies"
+      },
+      growth: {
+        icon: "🌱",
+        name: "Personal Growth",
+        color: "#8b5cf6",
+        description: "Level up your life with proven frameworks"
+      },
+      entertainment: {
+        icon: "🎬",
+        name: "Entertainment",
+        color: "#ec4899",
+        description: "Pop culture decoded with depth"
+      },
+      world: {
+        icon: "🌍",
+        name: "World Affairs",
+        color: "#06b6d4",
+        description: "Global perspectives that matter"
+      },
+      lifestyle: {
+        icon: "✨",
+        name: "Lifestyle",
+        color: "#f97316",
+        description: "Live intentionally, not automatically"
+      }
+    };
 
-    <script src="/assets/js/live-feed.js"></script>
-    <script>
-      // Category metadata - only display names and icons (no fake stats)
-      const CATEGORY_METADATA = {
-        technology: {
-          icon: "💻",
-          name: "Technology",
-          color: "#3b82f6",
-          description: "Future-proof insights for the digital age",
-          bgImage:
-            "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=200&h=200&fit=crop",
-        },
-        wealth: {
-          icon: "💰",
-          name: "Wealth & Finance",
-          color: "#f59e0b",
-          description: "Smart money moves for financial freedom",
-          bgImage:
-            "https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?w=200&h=200&fit=crop",
-        },
-        health: {
-          icon: "💊",
-          name: "Health & Wellness",
-          color: "#10b981",
-          description: "Evidence-based wellness strategies",
-          bgImage:
-            "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=200&h=200&fit=crop",
-        },
-        growth: {
-          icon: "🌱",
-          name: "Personal Growth",
-          color: "#8b5cf6",
-          description: "Level up your life with proven frameworks",
-          bgImage:
-            "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=200&h=200&fit=crop",
-        },
-        entertainment: {
-          icon: "🎬",
-          name: "Entertainment",
-          color: "#ec4899",
-          description: "Pop culture decoded with depth",
-          bgImage:
-            "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=200&h=200&fit=crop",
-        },
-        world: {
-          icon: "🌍",
-          name: "World Affairs",
-          color: "#06b6d4",
-          description: "Global perspectives that matter",
-          bgImage:
-            "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=200&h=200&fit=crop",
-        },
-        lifestyle: {
-          icon: "✨",
-          name: "Lifestyle",
-          color: "#f97316",
-          description: "Live intentionally, not automatically",
-          bgImage:
-            "https://images.unsplash.com/photo-1486718448742-163732cd1544?w=200&h=200&fit=crop",
-        },
-      };
-
-      async function loadRealStats() {
-        try {
-          const postsRes = await fetch("/data/posts.json");
-          if (postsRes.ok) {
-            const postsData = await postsRes.json();
-            const articleCountElem = document.getElementById("articleCount");
-            if (articleCountElem) {
-              const count = Array.isArray(postsData)
-                ? postsData.length
-                : postsData.posts
-                  ? postsData.posts.length
-                  : "100+";
-              articleCountElem.textContent =
-                typeof count === "number" ? count.toLocaleString() : count;
-            }
-          } else {
-            document.getElementById("articleCount").textContent = "100+";
+    async function loadRealStats() {
+      try {
+        const postsRes = await fetch("/data/posts.json");
+        if (postsRes.ok) {
+          const postsData = await postsRes.json();
+          const articleCountElem = document.getElementById("articleCount");
+          if (articleCountElem) {
+            const count = Array.isArray(postsData) ? postsData.length : postsData.posts ? postsData.posts.length : "100+";
+            articleCountElem.textContent = typeof count === "number" ? count.toLocaleString() : count;
           }
-        } catch (e) {
+        } else {
           document.getElementById("articleCount").textContent = "100+";
         }
-
-        const categoryCountElem = document.getElementById("categoryCount");
-        if (categoryCountElem) {
-          categoryCountElem.textContent = "7";
-        }
+      } catch (e) {
+        document.getElementById("articleCount").textContent = "100+";
       }
 
-      async function renderCategoryCards() {
-        const grid = document.getElementById("categories-grid");
-        if (!grid) return;
-
-        const categories = Object.keys(CATEGORY_METADATA);
-
-        grid.innerHTML = categories
-          .map((slug) => {
-            const cat = CATEGORY_METADATA[slug];
-            return `
-                    <a href="/categories/${slug}/" class="category-card">
-                        <div class="card-bg" style="background-image: url('${cat.bgImage}');"></div>
-                        <div class="card-content">
-                            <div class="card-header">
-                                <div class="card-icon" style="background: linear-gradient(135deg, ${cat.color}20, ${cat.color}10);">
-                                    ${cat.icon}
-                                </div>
-                            </div>
-                            <h3 class="card-title">${cat.name}</h3>
-                            <p class="card-description">${cat.description}</p>
-                            <div class="explore-link">
-                                Explore category <span>→</span>
-                            </div>
-                        </div>
-                    </a>
-                `;
-          })
-          .join("");
+      const categoryCountElem = document.getElementById("categoryCount");
+      if (categoryCountElem) {
+        categoryCountElem.textContent = "7";
       }
+    }
 
-      document.addEventListener("DOMContentLoaded", () => {
-        loadRealStats();
-        renderCategoryCards();
-      });
-    </script>
-  </body>
+    async function renderCategoryCards() {
+      const grid = document.getElementById("categories-grid");
+      if (!grid) return;
+
+      const categories = Object.keys(CATEGORY_METADATA);
+
+      grid.innerHTML = categories.map((slug) => {
+        const cat = CATEGORY_METADATA[slug];
+        const gradientStyle = `linear-gradient(135deg, ${cat.color}20, ${cat.color}08)`;
+        return `
+          <a href="/categories/${slug}/" class="category-card">
+            <div class="card-content">
+              <div class="card-header">
+                <div class="card-icon" style="background: ${gradientStyle};">
+                  ${cat.icon}
+                </div>
+              </div>
+              <h3 class="card-title">${cat.name}</h3>
+              <p class="card-description">${cat.description}</p>
+              <div class="explore-link">
+                Explore category <span>→</span>
+              </div>
+            </div>
+          </a>
+        `;
+      }).join("");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadRealStats();
+      renderCategoryCards();
+    });
+  </script>
+</body>
 </html>

@@ -13,14 +13,107 @@
         body { background: #ffffff; color: #111827; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.5; }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
 
-        .hero { min-height: 40vh; display: flex; align-items: center; background: linear-gradient(135deg, #0a2a1a 0%, #0a0a0a 100%); position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1920&h=1080&fit=crop'); background-size: cover; background-position: center; opacity: 0.15; animation: slowZoom 20s ease-out infinite alternate; }
-        @keyframes slowZoom { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }
-        .hero-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; text-align: center; padding: 0 24px; }
-        .hero-badge { display: inline-block; background: rgba(16, 185, 129, 0.2); backdrop-filter: blur(10px); color: #34d399; padding: 6px 20px; border-radius: 100px; font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 32px; border: 1px solid rgba(16, 185, 129, 0.3); }
-        .hero h1 { font-size: 2.5rem; font-weight: 700; line-height: 1.2; margin-bottom: 24px; color: white; letter-spacing: -0.02em; }
-        .hero h1 span { background: linear-gradient(135deg, #34d399, #10b981); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .hero p { font-size: 0.9rem; color: #9ca3af; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+        /* HERO - PURE CSS, NO COPYRIGHT IMAGES */
+        .hero { 
+            min-height: 40vh; 
+            display: flex; 
+            align-items: center; 
+            background: linear-gradient(135deg, #0a2a1a 0%, #0a0a0a 100%); 
+            position: relative; 
+            overflow: hidden; 
+        }
+        
+        /* Animated gradient orbs instead of background image */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.25), transparent);
+            top: -120px;
+            right: -100px;
+            border-radius: 50%;
+            animation: floatOrb1 16s infinite alternate;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(52, 211, 153, 0.15), transparent);
+            bottom: -150px;
+            left: -120px;
+            border-radius: 50%;
+            animation: floatOrb2 20s infinite alternate;
+        }
+        
+        @keyframes floatOrb1 {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            100% { transform: translate(-60px, 60px) scale(1.4); opacity: 0.6; }
+        }
+        
+        @keyframes floatOrb2 {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+            100% { transform: translate(70px, -50px) scale(1.5); opacity: 0.5; }
+        }
+        
+        /* Animated grid pattern */
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(16, 185, 129, 0.06) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(16, 185, 129, 0.06) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 25s linear infinite;
+        }
+        
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
+        }
+        
+        .hero-content { 
+            position: relative; 
+            z-index: 2; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            text-align: center; 
+            padding: 0 24px; 
+        }
+        .hero-badge { 
+            display: inline-block; 
+            background: rgba(16, 185, 129, 0.2); 
+            backdrop-filter: blur(10px); 
+            color: #34d399; 
+            padding: 6px 20px; 
+            border-radius: 100px; 
+            font-size: 0.7rem; 
+            letter-spacing: 2px; 
+            margin-bottom: 32px; 
+            border: 1px solid rgba(16, 185, 129, 0.3); 
+        }
+        .hero h1 { 
+            font-size: 2.5rem; 
+            font-weight: 700; 
+            line-height: 1.2; 
+            margin-bottom: 24px; 
+            color: white; 
+            letter-spacing: -0.02em; 
+        }
+        .hero h1 span { 
+            background: linear-gradient(135deg, #34d399, #10b981); 
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            color: transparent; 
+        }
+        .hero p { 
+            font-size: 0.9rem; 
+            color: #9ca3af; 
+            max-width: 600px; 
+            margin: 0 auto; 
+            line-height: 1.6; 
+        }
 
         .feed-section {
             padding: 60px 0 40px 0;
@@ -43,7 +136,7 @@
             font-size: 0.85rem;
         }
 
-        /* ========== SUBCATEGORY GRID (Beautiful Cards from React Component) ========== */
+        /* ========== SUBCATEGORY GRID - NO COPYRIGHT IMAGES, PURE CSS ========== */
         .subcategory-showcase {
             padding: 60px 0;
             background: linear-gradient(135deg, #ffffff 0%, #ecfdf5 100%);
@@ -87,32 +180,52 @@
             gap: 24px;
         }
 
+        /* PURE CSS CARDS - NO BACKGROUND IMAGES */
         .subcategory-card {
             position: relative;
             height: 360px;
             border-radius: 20px;
             overflow: hidden;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             text-decoration: none;
             display: block;
         }
 
-        .subcategory-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
+        /* Individual card background gradients */
+        .subcategory-card[data-cat="productivity"] { background: linear-gradient(135deg, #1a2a1a, #0a1a0a); }
+        .subcategory-card[data-cat="habits"] { background: linear-gradient(135deg, #1a2a2a, #0a1a1a); }
+        .subcategory-card[data-cat="mindset"] { background: linear-gradient(135deg, #2a1a2a, #1a0a1a); }
+        .subcategory-card[data-cat="career"] { background: linear-gradient(135deg, #1a1a2a, #0a0a1a); }
+        .subcategory-card[data-cat="leadership"] { background: linear-gradient(135deg, #2a2a1a, #1a1a0a); }
+        .subcategory-card[data-cat="communication"] { background: linear-gradient(135deg, #1a2a2a, #0a1a2a); }
 
-        .card-bg {
+        /* Animated gradient border */
+        .subcategory-card::before {
+            content: '';
             position: absolute;
             inset: 0;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.5s ease;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(135deg, #10b981, #34d399, #059669, #10b981);
+            background-size: 300% 300%;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s;
+            animation: borderShift 4s ease infinite;
         }
 
-        .subcategory-card:hover .card-bg {
-            transform: scale(1.08);
+        .subcategory-card:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes borderShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .gradient-overlay {
@@ -120,10 +233,35 @@
             inset: 0;
             background: linear-gradient(135deg, rgba(16, 185, 129, 0.85), rgba(5, 150, 105, 0.85));
             transition: opacity 0.3s;
+            opacity: 0.85;
         }
 
         .subcategory-card:hover .gradient-overlay {
-            opacity: 0.92;
+            opacity: 0.95;
+        }
+
+        /* Floating particles */
+        .card-particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .card-particles span {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(52, 211, 153, 0.5);
+            border-radius: 50%;
+            animation: particleFloat 10s infinite linear;
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(100%) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-30%) rotate(360deg); opacity: 0; }
         }
 
         .card-content-wrapper {
@@ -152,6 +290,11 @@
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
+            transition: transform 0.3s;
+        }
+
+        .subcategory-card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .card-bottom {
@@ -194,6 +337,17 @@
             color: white;
         }
 
+        .stats-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 8px;
+        }
+
         .featured-section, .articles-section, .sidebar-section {
             display: none !important;
         }
@@ -212,6 +366,7 @@
 </head>
 <body>
     <div class="hero">
+        <div class="hero-grid"></div>
         <div class="hero-content">
             <div class="hero-badge">TRENDLIN GROWTH</div>
             <h1>Become 1% <span>better every day</span></h1>
@@ -252,7 +407,6 @@
 
     <script>
         // ========== SUBCATEGORIES - DYNAMIC FROM YOUR ACTUAL FOLDER STRUCTURE ==========
-        // These are the actual subfolders under /categories/growth/
         const GROWTH_SUBCATEGORIES = [
             { slug: 'productivity', name: 'Productivity', icon: '⚡', tagline: 'Do more of what matters', description: 'Deep work, time management & workflow optimization' },
             { slug: 'habits', name: 'Habits', icon: '🔄', tagline: 'Small actions, big results', description: 'Atomic habits, routines & behavior change' },
@@ -262,15 +416,17 @@
             { slug: 'communication', name: 'Communication', icon: '💬', tagline: 'Speak with impact', description: 'Public speaking, writing & interpersonal skills' }
         ];
 
-        // Dynamic background images for each subcategory
-        const BG_IMAGES = {
-            productivity: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&h=1000&fit=crop',
-            habits: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=1000&fit=crop',
-            mindset: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&h=1000&fit=crop',
-            career: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=1000&fit=crop',
-            leadership: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=1000&fit=crop',
-            communication: 'https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=800&h=1000&fit=crop'
-        };
+        // Generate random particles for each card
+        function generateParticles() {
+            let particles = '';
+            for (let i = 0; i < 15; i++) {
+                const left = Math.random() * 100;
+                const delay = Math.random() * 10;
+                const duration = 6 + Math.random() * 7;
+                particles += `<span style="left: ${left}%; bottom: -10px; animation-delay: ${delay}s; animation-duration: ${duration}s;"></span>`;
+            }
+            return particles;
+        }
 
         async function getArticleCountForSubcategory(slug) {
             try {
@@ -299,13 +455,14 @@
             
             for (const cat of GROWTH_SUBCATEGORIES) {
                 const articleCount = await getArticleCountForSubcategory(cat.slug);
-                const statText = articleCount ? `${articleCount} articles` : 'Explore';
-                const bgImage = BG_IMAGES[cat.slug] || 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&h=1000&fit=crop';
+                const statText = articleCount ? `${articleCount} articles` : 'Explore →';
                 
                 cards.push(`
-                    <a href="/categories/growth/${cat.slug}/" class="subcategory-card">
-                        <div class="card-bg" style="background-image: url('${bgImage}');"></div>
+                    <a href="/categories/growth/${cat.slug}/" class="subcategory-card" data-cat="${cat.slug}">
                         <div class="gradient-overlay"></div>
+                        <div class="card-particles">
+                            ${generateParticles()}
+                        </div>
                         <div class="card-content-wrapper">
                             <div class="card-top">
                                 <div class="card-icon">${cat.icon}</div>
@@ -329,7 +486,7 @@
         // ========== LIVE FEED - GROWTH ONLY ==========
         (function() {
             const CONFIG = {
-                postLifespanHours: 168, // 7 days for growth content
+                postLifespanHours: 168,
                 refreshInterval: 300000
             };
 

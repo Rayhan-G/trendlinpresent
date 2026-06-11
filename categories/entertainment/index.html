@@ -28,6 +28,7 @@
             padding: 0 24px;
         }
 
+        /* HERO SECTION - PURE CSS, NO COPYRIGHT IMAGES */
         .hero {
             min-height: 40vh;
             display: flex;
@@ -37,20 +38,54 @@
             overflow: hidden;
         }
 
+        /* Animated gradient orbs instead of background image */
         .hero::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1920&h=1080&fit=crop');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.1;
-            animation: slowZoom 20s ease-out infinite alternate;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.3), transparent);
+            top: -100px;
+            right: -100px;
+            border-radius: 50%;
+            animation: floatOrb 15s infinite alternate;
         }
 
-        @keyframes slowZoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.2), transparent);
+            bottom: -150px;
+            left: -150px;
+            border-radius: 50%;
+            animation: floatOrb2 18s infinite alternate;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            100% { transform: translate(-50px, 50px) scale(1.3); opacity: 0.6; }
+        }
+
+        @keyframes floatOrb2 {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+            100% { transform: translate(60px, -40px) scale(1.4); opacity: 0.5; }
+        }
+
+        /* Animated grid pattern overlay */
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(139, 92, 246, 0.08) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(139, 92, 246, 0.08) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
         }
 
         .hero-content {
@@ -166,32 +201,76 @@
             gap: 24px;
         }
 
+        /* PURE CSS CARDS - NO BACKGROUND IMAGES */
         .subcategory-card {
             position: relative;
             height: 360px;
             border-radius: 20px;
             overflow: hidden;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             text-decoration: none;
             display: block;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
         }
 
-        .subcategory-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-bg {
+        /* Animated gradient border */
+        .subcategory-card::before {
+            content: '';
             position: absolute;
             inset: 0;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.5s ease;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(135deg, #8b5cf6, #ec4899, #8b5cf6);
+            background-size: 200% 200%;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s;
+            animation: gradientShift 3s ease infinite;
         }
 
-        .subcategory-card:hover .card-bg {
-            transform: scale(1.08);
+        .subcategory-card:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Colored gradient overlays per category */
+        .subcategory-card[data-cat="movies"] { background: linear-gradient(135deg, #1a0a2a, #2a0a3a); }
+        .subcategory-card[data-cat="tv-shows"] { background: linear-gradient(135deg, #0a2a2a, #0a3a3a); }
+        .subcategory-card[data-cat="gaming"] { background: linear-gradient(135deg, #2a1a0a, #3a2a0a); }
+        .subcategory-card[data-cat="streaming"] { background: linear-gradient(135deg, #1a0a1a, #2a0a2a); }
+        .subcategory-card[data-cat="books"] { background: linear-gradient(135deg, #0a1a2a, #0a2a3a); }
+        .subcategory-card[data-cat="pop-culture"] { background: linear-gradient(135deg, #2a0a1a, #3a0a2a); }
+
+        /* Decorative floating particles */
+        .card-particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .card-particles span {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(139, 92, 246, 0.4);
+            border-radius: 50%;
+            animation: particleFloat 8s infinite linear;
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(100%) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-20%) rotate(360deg); opacity: 0; }
         }
 
         .gradient-overlay {
@@ -199,10 +278,11 @@
             inset: 0;
             background: linear-gradient(135deg, rgba(139, 92, 246, 0.85), rgba(236, 72, 153, 0.85));
             transition: opacity 0.3s;
+            opacity: 0.85;
         }
 
         .subcategory-card:hover .gradient-overlay {
-            opacity: 0.92;
+            opacity: 0.95;
         }
 
         .card-content-wrapper {
@@ -231,6 +311,11 @@
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
+            transition: transform 0.3s;
+        }
+
+        .subcategory-card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .card-bottom {
@@ -273,6 +358,17 @@
             color: white;
         }
 
+        .stats-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 8px;
+        }
+
         .loading {
             text-align: center;
             padding: 40px;
@@ -301,6 +397,7 @@
 <body>
 
 <div class="hero">
+    <div class="hero-grid"></div>
     <div class="hero-content">
         <div class="hero-badge">TRENDLIN ENTERTAINMENT</div>
         <h1>What's <span>worth your time</span></h1>
@@ -341,23 +438,13 @@
 
 <script>
     const ENTERTAINMENT_SUBCATEGORIES = [
-        { slug: 'movies', name: 'Movies', icon: '🎬', tagline: 'Cinema magic awaits', description: 'Reviews, trailers, and behind-the-scenes' },
-        { slug: 'tv-shows', name: 'TV Shows', icon: '📺', tagline: 'Binge-worthy series', description: 'Streaming guides & episode recaps' },
-        { slug: 'gaming', name: 'Gaming', icon: '🎮', tagline: 'Level up', description: 'Reviews, esports & gaming news' },
-        { slug: 'streaming', name: 'Streaming', icon: '📡', tagline: 'Watch anywhere', description: 'Netflix, Disney+, HBO & more' },
-        { slug: 'books', name: 'Books', icon: '📚', tagline: 'Pages worth turning', description: 'Reviews, reading lists & author insights' },
-        { slug: 'pop-culture', name: 'Pop Culture', icon: '🌟', tagline: 'What everyone\'s talking about', description: 'Memes, trends & cultural moments' }
+        { slug: 'movies', name: 'Movies', icon: '🎬', tagline: 'Cinema magic awaits', description: 'Reviews, trailers, and behind-the-scenes', color: '#8b5cf6' },
+        { slug: 'tv-shows', name: 'TV Shows', icon: '📺', tagline: 'Binge-worthy series', description: 'Streaming guides & episode recaps', color: '#06b6d4' },
+        { slug: 'gaming', name: 'Gaming', icon: '🎮', tagline: 'Level up', description: 'Reviews, esports & gaming news', color: '#f59e0b' },
+        { slug: 'streaming', name: 'Streaming', icon: '📡', tagline: 'Watch anywhere', description: 'Netflix, Disney+, HBO & more', color: '#ec4899' },
+        { slug: 'books', name: 'Books', icon: '📚', tagline: 'Pages worth turning', description: 'Reviews, reading lists & author insights', color: '#10b981' },
+        { slug: 'pop-culture', name: 'Pop Culture', icon: '🌟', tagline: 'What everyone\'s talking about', description: 'Memes, trends & cultural moments', color: '#f97316' }
     ];
-
-    // ALL WORKING UNIQUE BACKGROUND IMAGES
-    const BG_IMAGES = {
-        movies: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&h=1000&fit=crop',
-        'tv-shows': 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&h=1000&fit=crop',
-        gaming: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=1000&fit=crop',
-        streaming: 'https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=800&h=1000&fit=crop',
-        books: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=800&h=1000&fit=crop',
-        'pop-culture': 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=800&h=1000&fit=crop'
-    };
 
     async function getArticleCountForSubcategory(slug) {
         try {
@@ -378,6 +465,18 @@
         return null;
     }
 
+    // Generate random particles for each card
+    function generateParticles() {
+        let particles = '';
+        for (let i = 0; i < 12; i++) {
+            const left = Math.random() * 100;
+            const delay = Math.random() * 8;
+            const duration = 5 + Math.random() * 6;
+            particles += `<span style="left: ${left}%; bottom: -10px; animation-delay: ${delay}s; animation-duration: ${duration}s;"></span>`;
+        }
+        return particles;
+    }
+
     async function renderSubcategoryGrid() {
         const grid = document.getElementById('subcategory-grid');
         if (!grid) return;
@@ -386,13 +485,14 @@
         
         for (const cat of ENTERTAINMENT_SUBCATEGORIES) {
             const articleCount = await getArticleCountForSubcategory(cat.slug);
-            const statText = articleCount ? `${articleCount} articles` : 'Explore';
-            const bgImage = BG_IMAGES[cat.slug];
+            const statText = articleCount ? `${articleCount} articles` : 'Explore →';
             
             cards.push(`
-                <a href="/categories/entertainment/${cat.slug}/" class="subcategory-card">
-                    <div class="card-bg" style="background-image: url('${bgImage}');"></div>
+                <a href="/categories/entertainment/${cat.slug}/" class="subcategory-card" data-cat="${cat.slug}">
                     <div class="gradient-overlay"></div>
+                    <div class="card-particles">
+                        ${generateParticles()}
+                    </div>
                     <div class="card-content-wrapper">
                         <div class="card-top">
                             <div class="card-icon">${cat.icon}</div>
@@ -413,7 +513,7 @@
         grid.innerHTML = cards.join('');
     }
 
-    // LIVE FEED FUNCTION (same as before)
+    // LIVE FEED FUNCTION
     (function() {
         const CONFIG = { postLifespanHours: 168, refreshInterval: 300000 };
         let filteredEntertainmentPosts = [];

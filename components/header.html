@@ -3,112 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Trendlin | Figma Premium Navbar</title>
-    <!-- Google Fonts: Figma favorites - Inter -->
+    <title>Trendlin | Navigation Component</title>
+    
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 - Using latest CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        /* ===== RESET & VARIABLES ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #ffffff;
-            min-height: 100vh;
-        }
-
-        /* Design tokens (Figma variables style) */
         :root {
-            --spacing-2: 2px;
-            --spacing-4: 4px;
-            --spacing-6: 6px;
-            --spacing-8: 8px;
-            --spacing-10: 10px;
-            --spacing-12: 12px;
-            --spacing-16: 16px;
-            --spacing-20: 20px;
-            --spacing-24: 24px;
-            --spacing-32: 32px;
-            --spacing-40: 40px;
-            --spacing-48: 48px;
-            --spacing-64: 64px;
+            --primary: #667eea;
+            --primary-dark: #5a67d8;
+            --secondary: #764ba2;
+            --accent: #ff4757;
+            --dark: #0a0a0a;
+            --dark-muted: #1a1a1a;
+            --gray: #6b7280;
+            --gray-light: #9ca3af;
+            --light: #fafafa;
+            --border: #e5e7eb;
+            --white: #ffffff;
             
-            --color-primary: #18181B;
-            --color-secondary: #3F3F46;
-            --color-tertiary: #71717A;
-            --color-accent: #6366F1;
-            --color-accent-light: #818CF8;
-            --color-accent-gradient-start: #6366F1;
-            --color-accent-gradient-end: #8B5CF6;
-            --color-success: #10B981;
-            --color-warning: #F59E0B;
-            --color-border: #E4E4E7;
-            --color-bg: #FFFFFF;
-            --color-bg-secondary: #FAFAFA;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
             
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
             --radius-xl: 24px;
             --radius-full: 9999px;
-            
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
         }
 
-        .site-header {
-            background: var(--color-bg);
-            border-bottom: 1px solid var(--color-border);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.5;
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 var(--spacing-32);
+            padding: 0 24px;
         }
 
-        @media (max-width: 1024px) {
-            .container {
-                padding: 0 var(--spacing-24);
-            }
-        }
-
-        @media (max-width: 640px) {
-            .container {
-                padding: 0 var(--spacing-16);
-            }
+        /* ===== HEADER & NAVIGATION ===== */
+        .site-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
         }
 
         .header-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: var(--spacing-16) 0;
-            gap: var(--spacing-48);
+            padding: 16px 0;
         }
 
-        /* Logo - Updated to match footer trendlin style */
+        /* Logo */
         .logo a {
             text-decoration: none;
             display: flex;
             align-items: baseline;
-            gap: 0;
-            transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
         }
 
         .logo-text {
-            font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: -0.02em;
             background: linear-gradient(135deg, #1a1a1a 0%, #404040 100%);
             -webkit-background-clip: text;
             background-clip: text;
@@ -116,271 +92,233 @@
         }
 
         .logo-dot {
-            font-size: 1.5rem;
-            font-weight: 700;
             background: linear-gradient(135deg, #e11d48 0%, #f43f5e 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
-        /* Navigation */
-        .main-nav ul {
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: none;
+        }
+
+        .desktop-nav ul {
             display: flex;
-            gap: var(--spacing-8);
+            gap: 8px;
             list-style: none;
-            margin: 0;
-            padding: 0;
             align-items: center;
         }
 
-        .main-nav li {
-            position: relative;
-        }
-
-        .main-nav a {
+        .desktop-nav a {
             text-decoration: none;
+            font-size: 14px;
             font-weight: 500;
-            font-size: 14px;
-            font-family: 'Inter', sans-serif;
-            color: var(--color-secondary);
-            transition: all 0.2s ease;
-            padding: var(--spacing-8) var(--spacing-12);
-            letter-spacing: -0.01em;
-            display: inline-flex;
-            align-items: center;
-            gap: var(--spacing-8);
+            color: var(--gray);
+            padding: 8px 16px;
             border-radius: var(--radius-md);
-            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
         }
 
-        .main-nav a:hover {
-            background: var(--color-bg-secondary);
-            color: var(--color-primary);
+        .desktop-nav a:hover {
+            background: var(--light);
+            color: var(--dark);
         }
 
-        .main-nav a.active {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.06));
-            color: var(--color-accent);
-            font-weight: 600;
+        .desktop-nav a.active {
+            color: var(--primary);
+            background: rgba(102, 126, 234, 0.1);
         }
 
-        .main-nav a.active::before {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: var(--spacing-12);
-            right: var(--spacing-12);
-            height: 2px;
-            background: linear-gradient(90deg, var(--color-accent-gradient-start), var(--color-accent-gradient-end));
-            border-radius: 2px;
-        }
-
-        /* Icons */
-        .main-nav a i {
-            font-size: 14px;
-            transition: transform 0.2s ease, color 0.2s ease;
-            color: var(--color-tertiary);
-            min-width: 16px;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .main-nav a:hover i {
-            transform: translateY(-1px);
-            color: var(--color-accent);
-        }
-
-        .main-nav a.active i {
-            color: var(--color-accent);
-        }
-
-        /* Shop Link */
-        .main-nav a.shop-link {
-            background: linear-gradient(135deg, #18181B, #27272A);
+        .desktop-nav a.shop-link {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white !important;
-            padding: var(--spacing-8) var(--spacing-20);
+            padding: 8px 24px;
             border-radius: var(--radius-full);
-            font-weight: 600;
-            gap: var(--spacing-8);
-            box-shadow: var(--shadow-sm);
-            margin-left: var(--spacing-4);
         }
 
-        .main-nav a.shop-link i {
-            color: white;
-            font-size: 13px;
-        }
-
-        .main-nav a.shop-link:hover {
-            background: linear-gradient(135deg, #27272A, #3F3F46);
-            transform: translateY(-1px);
+        .desktop-nav a.shop-link:hover {
+            transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
 
-        .main-nav a.shop-link:hover i {
-            transform: rotate(5deg) scale(1.05);
-            color: white;
-        }
-
-        .main-nav a.shop-link.active {
-            background: linear-gradient(135deg, var(--color-accent-gradient-start), var(--color-accent-gradient-end));
-        }
-
-        .main-nav a.shop-link.active::before {
+        /* ===== CSS ONLY HAMBURGER MENU ===== */
+        #menu-toggle {
             display: none;
         }
 
-        /* Mobile Toggle */
-        .menu-toggle {
-            display: none;
-            background: transparent;
-            border: none;
+        .hamburger {
             cursor: pointer;
-            padding: var(--spacing-8);
+            padding: 8px 12px;
+            border-radius: var(--radius-md);
+            transition: background 0.2s ease;
+            user-select: none;
+            display: flex;
             flex-direction: column;
             gap: 6px;
-            border-radius: var(--radius-md);
-            transition: background 0.2s;
         }
 
-        .menu-toggle:hover {
-            background: var(--color-bg-secondary);
+        .hamburger:hover {
+            background: var(--light);
         }
 
-        .menu-toggle span {
+        .hamburger span {
             display: block;
-            width: 20px;
+            width: 24px;
             height: 2px;
-            background: var(--color-primary);
+            background: var(--dark);
             border-radius: 2px;
-            transition: 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transition: 0.2s ease;
         }
 
-        /* Responsive */
-        @media (max-width: 1024px) and (min-width: 769px) {
-            .main-nav ul {
-                gap: var(--spacing-4);
-            }
-            .main-nav a {
-                font-size: 13px;
-                padding: var(--spacing-6) var(--spacing-10);
-            }
-            .main-nav a.shop-link {
-                padding: var(--spacing-6) var(--spacing-16);
-            }
+        /* Mobile Menu Panel */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: min(320px, 85%);
+            height: 100%;
+            background: var(--white);
+            box-shadow: var(--shadow-xl);
+            z-index: 1001;
+            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 80px 24px 32px;
+            overflow-y: auto;
         }
 
-        @media (max-width: 768px) {
-            .header-inner {
-                padding: var(--spacing-12) 0;
-            }
-            
-            .logo-text, .logo-dot {
-                font-size: 1.25rem;
-            }
-            
-            .main-nav {
+        .mobile-menu-header {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .mobile-menu-close {
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--gray);
+            transition: color 0.2s ease;
+            display: inline-block;
+            padding: 8px;
+        }
+
+        .mobile-menu-close:hover {
+            color: var(--dark);
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu li {
+            margin-bottom: 8px;
+        }
+
+        .mobile-menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--gray);
+            border-radius: var(--radius-md);
+            transition: all 0.2s ease;
+        }
+
+        .mobile-menu a:hover {
+            background: var(--light);
+            color: var(--dark);
+        }
+
+        .mobile-menu a i {
+            width: 24px;
+            font-size: 18px;
+        }
+
+        .mobile-menu a.shop-link {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white !important;
+            margin-top: 16px;
+            justify-content: center;
+        }
+
+        .mobile-menu a.shop-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Show menu when checkbox is checked */
+        #menu-toggle:checked ~ .mobile-menu {
+            left: 0;
+        }
+
+        #menu-toggle:checked ~ .mobile-overlay {
+            display: block;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (min-width: 768px) {
+            .hamburger {
                 display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--color-bg);
-                padding: var(--spacing-20) var(--spacing-20) var(--spacing-24);
-                border-bottom: 1px solid var(--color-border);
-                box-shadow: var(--shadow-xl);
-                z-index: 999;
-                animation: figmaFadeIn 0.25s ease-out;
             }
             
-            .main-nav.active {
+            .desktop-nav {
                 display: block;
             }
-            
-            .main-nav ul {
-                flex-direction: column;
-                gap: var(--spacing-4);
-                align-items: stretch;
-            }
-            
-            .main-nav li {
-                width: 100%;
-            }
-            
-            .main-nav a {
-                display: flex;
-                padding: var(--spacing-12) var(--spacing-16);
-                font-size: 15px;
-                width: 100%;
-                justify-content: flex-start;
-                border-radius: var(--radius-md);
-            }
-            
-            .main-nav a.active::before {
-                display: none;
-            }
-            
-            .main-nav a.active {
-                background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.08));
-                border-left: 3px solid var(--color-accent);
-                border-radius: var(--radius-md);
-            }
-            
-            .main-nav a.shop-link {
-                justify-content: center;
-                margin-top: var(--spacing-8);
-                background: linear-gradient(135deg, var(--color-accent-gradient-start), var(--color-accent-gradient-end));
-            }
-            
-            .menu-toggle {
-                display: flex;
-            }
         }
-        
-        @media (max-width: 480px) {
+
+        @media (max-width: 767px) {
             .container {
-                padding: 0 var(--spacing-12);
+                padding: 0 20px;
             }
             
-            .main-nav {
-                padding: var(--spacing-16);
+            .header-inner {
+                padding: 12px 0;
             }
             
-            .main-nav a {
-                padding: var(--spacing-10) var(--spacing-12);
-                font-size: 14px;
+            .logo a {
+                font-size: 1.5rem;
             }
         }
 
-        @keyframes figmaFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-8px);
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --light: #0b0e14;
+                --dark: #eef2f8;
+                --white: #121720;
+                --border: #232b36;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            .site-header {
+                background: rgba(18, 23, 32, 0.95);
             }
-        }
-
-        .site-header.scrolled {
-            box-shadow: var(--shadow-lg);
-            border-bottom-color: transparent;
-        }
-
-        .main-nav a:focus-visible,
-        .menu-toggle:focus-visible,
-        .logo a:focus-visible {
-            outline: none;
-            box-shadow: 0 0 0 2px var(--color-accent-light);
-            border-radius: var(--radius-md);
         }
     </style>
 </head>
 <body>
 
-<header class="site-header" id="siteHeader">
+<input type="checkbox" id="menu-toggle">
+
+<header class="site-header">
     <div class="container">
         <div class="header-inner">
             <div class="logo">
@@ -389,157 +327,54 @@
                     <span class="logo-dot">.</span>
                 </a>
             </div>
-            
-            <nav class="main-nav" id="mainNav">
+
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav">
                 <ul>
                     <li><a href="/"><i class="fas fa-th-large"></i> Home</a></li>
                     <li><a href="/categories/technology/"><i class="fas fa-microchip"></i> Technology</a></li>
-                    <li><a href="/categories/health/"><i class="fas fa-heart"></i> Health</a></li>
+                    <li><a href="/categories/health/"><i class="fas fa-heartbeat"></i> Health</a></li>
                     <li><a href="/categories/wealth/"><i class="fas fa-chart-line"></i> Wealth</a></li>
                     <li><a href="/categories/growth/"><i class="fas fa-brain"></i> Growth</a></li>
-                    <li><a href="/categories/entertainment/"><i class="fas fa-clapperboard"></i> Entertainment</a></li>
+                    <li><a href="/categories/entertainment/"><i class="fas fa-film"></i> Entertainment</a></li>
                     <li><a href="/categories/world/"><i class="fas fa-globe"></i> World</a></li>
-                    <!-- LIFESTYLE - Using fa-star (solid star) which works in all Font Awesome versions -->
-                    <li><a href="/categories/lifestyle/"><i class="fas fa-star"></i> Lifestyle</a></li>
+                    <li><a href="/categories/lifestyle/"><i class="fas fa-spa"></i> Lifestyle</a></li>
                     <li><a href="/affiliate-shop/" class="shop-link"><i class="fas fa-store"></i> Shop</a></li>
                 </ul>
             </nav>
-            
-            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
+
+            <!-- Hamburger Label (CSS Only - No JavaScript!) -->
+            <label for="menu-toggle" class="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
         </div>
     </div>
 </header>
 
-<script>
-    (function() {
-        const menuToggle = document.getElementById('menuToggle');
-        const mainNav = document.getElementById('mainNav');
-        const header = document.getElementById('siteHeader');
-        
-        // Mobile menu toggle
-        if (menuToggle && mainNav) {
-            menuToggle.addEventListener('click', function(e) {
-                e.stopPropagation();
-                mainNav.classList.toggle('active');
-                
-                const spans = menuToggle.querySelectorAll('span');
-                if (mainNav.classList.contains('active')) {
-                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                    spans[1].style.opacity = '0';
-                    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-                } else {
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
-                }
-            });
-            
-            // Close menu when clicking a link
-            const navLinks = document.querySelectorAll('.main-nav a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    if (window.innerWidth <= 768 && mainNav.classList.contains('active')) {
-                        mainNav.classList.remove('active');
-                        const spans = menuToggle.querySelectorAll('span');
-                        spans[0].style.transform = 'none';
-                        spans[1].style.opacity = '1';
-                        spans[2].style.transform = 'none';
-                    }
-                });
-            });
-            
-            // Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (window.innerWidth <= 768 && mainNav.classList.contains('active')) {
-                    const isClickInsideNav = mainNav.contains(event.target);
-                    const isClickOnToggle = menuToggle.contains(event.target);
-                    if (!isClickInsideNav && !isClickOnToggle) {
-                        mainNav.classList.remove('active');
-                        const spans = menuToggle.querySelectorAll('span');
-                        spans[0].style.transform = 'none';
-                        spans[1].style.opacity = '1';
-                        spans[2].style.transform = 'none';
-                    }
-                }
-            });
-            
-            // Handle resize
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768 && mainNav.classList.contains('active')) {
-                    mainNav.classList.remove('active');
-                    const spans = menuToggle.querySelectorAll('span');
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
-                }
-            });
-        }
-        
-        // Active state detection
-        const currentPath = window.location.pathname;
-        const navItems = document.querySelectorAll('.main-nav a');
-        
-        const normalizePath = (path) => {
-            if (path === '/') return '/';
-            return path.replace(/\/$/, '');
-        };
-        
-        const normalizedCurrent = normalizePath(currentPath);
-        
-        navItems.forEach(link => {
-            const href = link.getAttribute('href');
-            if (!href) return;
-            let normalizedHref = normalizePath(href);
-            
-            link.classList.remove('active');
-            
-            if (normalizedCurrent === '/' && normalizedHref === '/') {
-                link.classList.add('active');
-            }
-            else if (normalizedCurrent.includes('/categories/') && normalizedHref.includes('/categories/')) {
-                const currentCategory = normalizedCurrent.split('/categories/')[1]?.replace(/\/$/, '');
-                const linkCategory = normalizedHref.split('/categories/')[1]?.replace(/\/$/, '');
-                if (currentCategory && linkCategory && currentCategory === linkCategory) {
-                    link.classList.add('active');
-                }
-            }
-            else if (normalizedCurrent.includes('/affiliate-shop/') && normalizedHref.includes('/affiliate-shop/')) {
-                link.classList.add('active');
-            }
-            else if (normalizedCurrent === normalizedHref) {
-                link.classList.add('active');
-            }
-        });
-        
-        // Scroll effect
-        if (header) {
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 10) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-        }
-        
-        // Escape key to close menu
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && mainNav && mainNav.classList.contains('active')) {
-                mainNav.classList.remove('active');
-                const spans = menuToggle.querySelectorAll('span');
-                if (spans.length) {
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
-                }
-            }
-        });
-        
-        console.log('✨ Trendlin navbar active — Logo matches footer trendlin style ✨');
-    })();
-</script>
+<!-- Mobile Menu Overlay -->
+<label for="menu-toggle" class="mobile-overlay" aria-label="Close menu"></label>
+
+<!-- Mobile Menu Panel -->
+<nav class="mobile-menu">
+    <div class="mobile-menu-header">
+        <label for="menu-toggle" class="mobile-menu-close" aria-label="Close menu">✕</label>
+    </div>
+    <ul>
+        <li><a href="/"><i class="fas fa-th-large"></i> Home</a></li>
+        <li><a href="/categories/technology/"><i class="fas fa-microchip"></i> Technology</a></li>
+        <li><a href="/categories/health/"><i class="fas fa-heartbeat"></i> Health</a></li>
+        <li><a href="/categories/wealth/"><i class="fas fa-chart-line"></i> Wealth</a></li>
+        <li><a href="/categories/growth/"><i class="fas fa-brain"></i> Growth</a></li>
+        <li><a href="/categories/entertainment/"><i class="fas fa-film"></i> Entertainment</a></li>
+        <li><a href="/categories/world/"><i class="fas fa-globe"></i> World</a></li>
+        <li><a href="/categories/lifestyle/"><i class="fas fa-spa"></i> Lifestyle</a></li>
+        <li><a href="/affiliate-shop/" class="shop-link"><i class="fas fa-store"></i> Shop</a></li>
+    </ul>
+</nav>
+
+<!-- Your existing page content goes here -->
 
 </body>
 </html>
