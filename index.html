@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes" />
   <title>Trendlin | Intelligence for the Modern World</title>
   <meta name="description" content="Trendlin researches emerging trends from across the web — social media, forums, news outlets, and public data — and writes clear, insightful articles." />
+  
+  <!-- All original linking and connections preserved -->
   <link rel="stylesheet" href="/assets/css/critical.css" />
   <link rel="stylesheet" href="/assets/css/live-feed.css" />
   <script src="/components/loader.js" defer></script>
 
-  <!-- Real Analytics: Cloudflare Web Analytics -->
+  <!-- Real Analytics: Cloudflare Web Analytics (unchanged) -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "YOUR_CLOUDFLARE_SITE_TOKEN"}'></script>
 
   <style>
@@ -18,6 +20,50 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      /* CRITICAL FIX: Removes the default blue flash/thumbprint highlight on mobile taps */
+      -webkit-tap-highlight-color: transparent;
+      /* Remove focus ring for touch devices (we add custom focus for accessibility) */
+    }
+
+    /* Custom accessible focus indicator that doesn't rely on blue flash */
+    :focus {
+      outline: none;
+    }
+
+    :focus-visible {
+      outline: 2px solid #667eea;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* For touch devices, we use a subtle smooth transition instead of abrupt blue */
+    button, 
+    a, 
+    .category-card, 
+    .explore-link,
+    [role="button"],
+    .clickable {
+      touch-action: manipulation;
+      transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    /* Active state uses subtle opacity and scale instead of native blue flash */
+    button:active,
+    a:active,
+    .category-card:active,
+    .clickable:active {
+      transform: scale(0.97);
+      opacity: 0.85;
+      transition-duration: 0.05s;
+    }
+
+    /* Ensure no blue outline appears on any interactive element during tap */
+    input:focus,
+    textarea:focus,
+    select:focus,
+    button:focus,
+    a:focus {
+      outline: none;
     }
 
     :root {
@@ -116,7 +162,6 @@
       margin: 0;
     }
 
-    /* Hero decorative element - pure CSS */
     .hero-visual {
       flex: 1;
       min-height: 280px;
@@ -272,13 +317,21 @@
       transition: transform 0.3s ease;
     }
 
-    .reality-card:hover::after {
-      transform: scaleX(1);
+    /* Hover effects preserved for desktop, but for mobile we use active state */
+    @media (hover: hover) {
+      .reality-card:hover::after {
+        transform: scaleX(1);
+      }
+      .reality-card:hover {
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        transform: translateY(-3px);
+      }
     }
 
-    .reality-card:hover {
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-      transform: translateY(-3px);
+    /* Mobile active state without blue flash */
+    .reality-card:active {
+      transform: scale(0.98);
+      transition-duration: 0.05s;
     }
 
     .reality-icon {
@@ -341,7 +394,6 @@
       color: var(--primary);
     }
 
-    /* Pure CSS decorative element for pivot section */
     .pivot-decoration {
       flex: 1;
       min-height: 280px;
@@ -439,15 +491,25 @@
       display: block;
       border: 1px solid var(--border);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      /* Prevent blue flash on tap */
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .category-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
-      border-color: var(--primary);
+    /* Mobile-friendly active state (no blue flash, smooth feedback) */
+    .category-card:active {
+      transform: scale(0.97);
+      transition-duration: 0.05s;
+      opacity: 0.9;
     }
 
-    /* Decorative gradient overlay instead of background image */
+    @media (hover: hover) {
+      .category-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
+        border-color: var(--primary);
+      }
+    }
+
     .category-card::before {
       content: "";
       position: absolute;
@@ -458,12 +520,15 @@
       background: linear-gradient(135deg, transparent 50%, rgba(102,126,234,0.06) 100%);
       border-radius: 0 0 0 100%;
       transition: all 0.3s ease;
+      pointer-events: none;
     }
 
-    .category-card:hover::before {
-      width: 140px;
-      height: 140px;
-      background: linear-gradient(135deg, transparent 50%, rgba(102,126,234,0.12) 100%);
+    @media (hover: hover) {
+      .category-card:hover::before {
+        width: 140px;
+        height: 140px;
+        background: linear-gradient(135deg, transparent 50%, rgba(102,126,234,0.12) 100%);
+      }
     }
 
     .card-content {
@@ -491,8 +556,10 @@
       background: linear-gradient(135deg, var(--primary)15, var(--secondary)10);
     }
 
-    .category-card:hover .card-icon {
-      transform: scale(1.05) rotate(3deg);
+    @media (hover: hover) {
+      .category-card:hover .card-icon {
+        transform: scale(1.05) rotate(3deg);
+      }
     }
 
     .card-title {
@@ -520,8 +587,10 @@
       transition: all 0.2s;
     }
 
-    .category-card:hover .explore-link {
-      gap: 10px;
+    @media (hover: hover) {
+      .category-card:hover .explore-link {
+        gap: 10px;
+      }
     }
 
     /* ===== MANIFESTO ===== */
@@ -546,6 +615,7 @@
       opacity: 0.15;
       position: absolute;
       font-family: serif;
+      pointer-events: none;
     }
 
     .manifesto-content::before {
@@ -702,7 +772,7 @@
       }
     }
 
-    /* ===== DARK MODE SUPPORT ===== */
+    /* ===== DARK MODE SUPPORT (preserved) ===== */
     @media (prefers-color-scheme: dark) {
       body {
         background: #0b0e14;
@@ -745,6 +815,25 @@
       }
       .badge {
         background: rgba(102,126,234,0.15);
+      }
+    }
+
+    /* Additional mobile-first optimizations */
+    @media (max-width: 480px) {
+      .hero-text h1 {
+        font-size: 1.9rem;
+      }
+      .hero {
+        padding: 36px 0;
+      }
+      .section {
+        padding: 36px 0;
+      }
+      .category-card:active {
+        transform: scale(0.96);
+      }
+      button:active, a:active {
+        transform: scale(0.96);
       }
     }
   </style>
@@ -890,6 +979,7 @@
     </div>
   </div>
 
+  <!-- All original scripts preserved with their linking unchanged -->
   <script src="/assets/js/live-feed.js"></script>
   <script>
     // Category metadata - display names, icons, descriptions (no background images)
