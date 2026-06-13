@@ -85,7 +85,7 @@
       width: 100%;
     }
 
-    /* ===== ULTRA PREMIUM HERO SECTION ===== */
+    /* ===== HERO SECTION ===== */
     .hero {
       padding: 60px 0 50px;
       background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
@@ -280,7 +280,7 @@
       100% { transform: translateY(-40px); opacity: 0; }
     }
 
-    /* ===== CAROUSEL - MEDIA FIRST ON MOBILE ===== */
+    /* ===== CAROUSEL SECTION ===== */
     .feed-section {
       padding: var(--space-12) 0;
       background: var(--bg-app);
@@ -371,6 +371,7 @@
 
     .depth-card:hover { transform: translateY(-10px); filter: drop-shadow(0 30px 35px rgba(0, 0, 0, 0.25)); }
     
+    /* DESKTOP LAYOUT - Text Left, Media Right */
     .seamless-card {
       display: flex;
       background: #FFFFFF;
@@ -380,26 +381,20 @@
       height: 620px;
     }
     
-    /* Mobile layout - Media FIRST using flex order */
+    /* MOBILE LAYOUT - Media Top, Text Below */
     @media (max-width: 900px) {
       .seamless-card {
         flex-direction: column;
         height: auto;
       }
-      .text-panel, .media-panel { 
-        flex: auto; 
+      .text-panel { 
         width: 100%; 
-        height: auto; 
+        order: 2;
       }
-      /* Media panel FIRST - at the top */
       .media-panel { 
+        width: 100%; 
         order: 1;
         min-height: 260px;
-        border-radius: 28px 28px 0 0;
-      }
-      /* Text panel SECOND - below media */
-      .text-panel { 
-        order: 2;
       }
       .title-panel h2 { 
         font-size: 1.3rem; 
@@ -420,7 +415,6 @@
 
     .text-panel {
       flex: 0 0 60%;
-      width: 60%;
       display: flex;
       flex-direction: column;
       background: #FFFFFF;
@@ -555,7 +549,6 @@
 
     .media-panel {
       flex: 0 0 40%;
-      width: 40%;
       position: relative;
       background: #1a1a2e;
       overflow: hidden;
@@ -1395,7 +1388,7 @@
 <!-- Header will be loaded here dynamically -->
 <div id="header-placeholder"></div>
 
-<!-- ===== ULTRA PREMIUM HERO SECTION ===== -->
+<!-- ===== HERO SECTION ===== -->
 <section class="hero">
   <div class="container">
     <div class="hero-content">
@@ -1438,7 +1431,7 @@
   </div>
 </section>
 
-<!-- LIVE POSTS CAROUSEL SECTION - MEDIA FIRST ON MOBILE -->
+<!-- LIVE POSTS CAROUSEL SECTION -->
 <section class="feed-section">
   <div class="container">
     <div class="feed-header">
