@@ -9,7 +9,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* CRITICAL: Removes default mobile blue flash/thunder highlight on all elements */
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -20,7 +19,6 @@
             flex-direction: column;
         }
 
-        /* Custom focus for accessibility without intrusive blue */
         :focus {
             outline: none;
         }
@@ -30,7 +28,6 @@
             border-radius: 4px;
         }
 
-        /* All interactive elements get smooth touch feedback - no blue flash */
         a, 
         .footer-link,
         .social-link,
@@ -40,7 +37,6 @@
             transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
 
-        /* Active state: subtle scale + opacity instead of ugly blue flash */
         a:active,
         .footer-link:active,
         .social-link:active,
@@ -50,14 +46,13 @@
             transition-duration: 0.05s;
         }
 
-        /* Hover effects preserved for desktop only */
         @media (hover: hover) {
             .footer-link:hover {
                 color: #111827;
                 text-decoration: underline;
             }
             .social-link:hover {
-                transform: translateY(-2px);
+                transform: translateY(-3px);
             }
             .social-link.x:hover {
                 background: #000000;
@@ -73,7 +68,6 @@
             }
         }
 
-        /* Demo content to show spacing */
         .demo-content {
             flex: 1;
             padding: 4rem 2rem;
@@ -93,7 +87,7 @@
         }
 
         /* ============================================
-           FOOTER - TRENDLIN (Mobile First)
+           FOOTER - TRENDLIN (Enhanced with proper links)
         ============================================ */
         
         .footer {
@@ -110,7 +104,6 @@
             padding: 0 1.5rem;
         }
         
-        /* Mobile First: Single column layout */
         .footer-grid {
             display: flex;
             flex-direction: column;
@@ -118,7 +111,6 @@
             margin-bottom: 2rem;
         }
         
-        /* Center content on mobile by default */
         .footer-col {
             text-align: center;
         }
@@ -184,7 +176,6 @@
             display: inline-block;
         }
         
-        /* Social Icons */
         .footer-social {
             display: flex;
             gap: 0.75rem;
@@ -227,7 +218,7 @@
             margin-top: 0.5rem;
         }
         
-        /* ===== TABLET BREAKPOINT (min-width: 640px) ===== */
+        /* ===== TABLET BREAKPOINT ===== */
         @media (min-width: 640px) {
             .footer-grid {
                 display: grid;
@@ -257,7 +248,7 @@
             }
         }
         
-        /* ===== DESKTOP BREAKPOINT (min-width: 1024px) ===== */
+        /* ===== DESKTOP BREAKPOINT ===== */
         @media (min-width: 1024px) {
             .footer {
                 margin-top: 80px;
@@ -278,7 +269,7 @@
             }
         }
         
-        /* ===== LARGE DESKTOP (min-width: 1280px) ===== */
+        /* ===== LARGE DESKTOP ===== */
         @media (min-width: 1280px) {
             .footer-container {
                 padding: 0 2rem;
@@ -346,7 +337,6 @@
             }
         }
         
-        /* Touch device optimizations - ensure no blue flash on any interactive element */
         .footer-link,
         .social-link,
         .footer-logo {
@@ -354,7 +344,6 @@
             tap-highlight-color: transparent;
         }
         
-        /* Prevent unwanted outline on active states */
         .footer-link:active,
         .social-link:active,
         .footer-logo:active {
@@ -363,7 +352,6 @@
     </style>
 </head>
 <body>
-    <!-- Demo content to show the footer properly spaced -->
     <main class="demo-content">
         <h1>Trendlin</h1>
         <p>Intelligence for the modern world — curated trends, research-backed insights, and clear analysis.</p>
@@ -372,16 +360,18 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-grid">
+                <!-- Brand Column -->
                 <div class="footer-col">
-                    <div class="footer-logo">
+                    <a href="/" class="footer-logo">
                         <span class="logo-text">trendlin</span>
                         <span class="logo-dot">.</span>
-                    </div>
+                    </a>
                     <p class="about-text">
                         Curating the latest trends and insights to help you stay ahead in a fast-changing world.
                     </p>
                 </div>
 
+                <!-- Categories Column -->
                 <div class="footer-col">
                     <h3>Categories</h3>
                     <div class="footer-links">
@@ -395,6 +385,7 @@
                     </div>
                 </div>
 
+                <!-- Company Column -->
                 <div class="footer-col">
                     <h3>Company</h3>
                     <div class="footer-links">
@@ -406,20 +397,21 @@
                     </div>
                 </div>
 
+                <!-- Social Column -->
                 <div class="footer-col">
                     <h3>Follow Us</h3>
                     <div class="footer-social">
-                        <a href="https://x.com/trendlinsocial" target="_blank" rel="noopener noreferrer" class="social-link x">
+                        <a href="https://x.com/trendlinsocial" target="_blank" rel="noopener noreferrer" class="social-link x" aria-label="X (Twitter)">
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                             </svg>
                         </a>
-                        <a href="https://www.facebook.com/trendlinsocial" target="_blank" rel="noopener noreferrer" class="social-link facebook">
+                        <a href="https://www.facebook.com/trendlinsocial" target="_blank" rel="noopener noreferrer" class="social-link facebook" aria-label="Facebook">
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                             </svg>
                         </a>
-                        <a href="https://www.instagram.com/trendlinsocial/" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+                        <a href="https://www.instagram.com/trendlinsocial/" target="_blank" rel="noopener noreferrer" class="social-link instagram" aria-label="Instagram">
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"/>
                             </svg>
@@ -434,5 +426,36 @@
             </div>
         </div>
     </footer>
+
+    <!-- Simple script to handle active link highlighting based on current URL -->
+    <script>
+        (function() {
+            const currentPath = window.location.pathname;
+            
+            // Select all footer links
+            const footerLinks = document.querySelectorAll('.footer-link');
+            
+            footerLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                
+                if (!href || href === '#') return;
+                
+                // Remove leading slash for comparison if needed
+                let cleanHref = href;
+                let cleanPath = currentPath;
+                
+                // Exact match for home
+                if (href === '/' && (currentPath === '/' || currentPath === '')) {
+                    link.style.fontWeight = '600';
+                    link.style.color = '#e11d48';
+                }
+                // For category pages and other links
+                else if (href !== '/' && currentPath.startsWith(href)) {
+                    link.style.fontWeight = '500';
+                    link.style.color = '#111827';
+                }
+            });
+        })();
+    </script>
 </body>
 </html>

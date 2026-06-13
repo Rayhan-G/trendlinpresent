@@ -2,81 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-    <title>Trendlin | Navigation Component</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Trendlin | Premium Navigation</title>
     
-    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* ===== RESET & VARIABLES ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        :focus {
-            outline: none;
-        }
-        :focus-visible {
-            outline: 2px solid #667eea;
-            outline-offset: 2px;
-            border-radius: 6px;
-        }
-
-        a, 
-        .hamburger,
-        .mobile-menu-close,
-        .mobile-overlay,
-        label,
-        .desktop-nav a {
-            cursor: pointer;
-            touch-action: manipulation;
-            transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        a:active,
-        .hamburger:active,
-        .mobile-menu-close:active,
-        .desktop-nav a:active {
-            transform: scale(0.96);
-            opacity: 0.85;
-            transition-duration: 0.05s;
-        }
-
-        @media (hover: hover) {
-            .desktop-nav a:hover {
-                background: var(--light);
-                color: var(--dark);
-            }
-            .desktop-nav a.shop-link:hover {
-                transform: translateY(-2px);
-                box-shadow: var(--shadow-md);
-            }
-            .hamburger:hover {
-                background: var(--light);
-            }
-            .mobile-menu-close:hover {
-                color: var(--dark);
-            }
         }
 
         :root {
             --primary: #667eea;
             --primary-dark: #5a67d8;
             --secondary: #764ba2;
-            --accent: #ff4757;
             --dark: #0a0a0a;
             --dark-muted: #1a1a1a;
             --gray: #6b7280;
             --gray-light: #9ca3af;
             --light: #fafafa;
-            --border: #e5e7eb;
             --white: #ffffff;
+            --border: #e5e7eb;
+            
+            --home: #8b5cf6;
+            --tech: #3b82f6;
+            --health: #10b981;
+            --wealth: #f59e0b;
+            --growth: #ec4899;
+            --entertainment: #ef4444;
+            --world: #06b6d4;
+            --lifestyle: #f97316;
             
             --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -84,7 +42,7 @@
             --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
             
             --radius-sm: 8px;
-            --radius-md: 12px;
+            --radius-md: 10px;
             --radius-lg: 16px;
             --radius-xl: 24px;
             --radius-full: 9999px;
@@ -95,24 +53,24 @@
             background: var(--light);
             color: var(--dark);
             line-height: 1.5;
-            overflow-x: hidden;
+            min-height: 100vh;
         }
 
         .container {
-            max-width: 1280px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
         /* ===== HEADER & NAVIGATION ===== */
         .site-header {
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.98);
+            transition: all 0.3s ease;
         }
 
         .header-inner {
@@ -130,6 +88,11 @@
             font-size: 1.75rem;
             font-weight: 800;
             letter-spacing: -0.02em;
+            transition: transform 0.2s ease;
+        }
+
+        .logo a:hover {
+            transform: scale(1.02);
         }
 
         .logo-text {
@@ -153,9 +116,13 @@
 
         .desktop-nav ul {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             list-style: none;
             align-items: center;
+        }
+
+        .desktop-nav li {
+            position: relative;
         }
 
         .desktop-nav a {
@@ -163,7 +130,7 @@
             font-size: 14px;
             font-weight: 500;
             color: var(--gray);
-            padding: 8px 16px;
+            padding: 8px 18px;
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
@@ -171,16 +138,78 @@
             transition: all 0.2s ease;
         }
 
+        /* Icon Colors */
+        .desktop-nav li:first-child a i { color: var(--home); }
+        .desktop-nav li:nth-child(2) a i { color: var(--tech); }
+        .desktop-nav li:nth-child(3) a i { color: var(--health); }
+        .desktop-nav li:nth-child(4) a i { color: var(--wealth); }
+        .desktop-nav li:nth-child(5) a i { color: var(--growth); }
+        .desktop-nav li:nth-child(6) a i { color: var(--entertainment); }
+        .desktop-nav li:nth-child(7) a i { color: var(--world); }
+        .desktop-nav li:nth-child(8) a i { color: var(--lifestyle); }
+
+        .desktop-nav a:hover {
+            background: var(--light);
+            color: var(--dark);
+        }
+
+        .desktop-nav a:hover i {
+            transform: translateY(-2px) scale(1.05);
+        }
+
         .desktop-nav a.active {
             color: var(--primary);
             background: rgba(102, 126, 234, 0.1);
         }
 
+        /* Active state with icon color matching */
+        .desktop-nav li:first-child a.active i { color: var(--home); }
+        .desktop-nav li:nth-child(2) a.active i { color: var(--tech); }
+        .desktop-nav li:nth-child(3) a.active i { color: var(--health); }
+        .desktop-nav li:nth-child(4) a.active i { color: var(--wealth); }
+        .desktop-nav li:nth-child(5) a.active i { color: var(--growth); }
+        .desktop-nav li:nth-child(6) a.active i { color: var(--entertainment); }
+        .desktop-nav li:nth-child(7) a.active i { color: var(--world); }
+        .desktop-nav li:nth-child(8) a.active i { color: var(--lifestyle); }
+
+        /* Professional Shop Button */
         .desktop-nav a.shop-link {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, #f59e0b, #ea580c);
             color: white !important;
             padding: 8px 24px;
             border-radius: var(--radius-full);
+            margin-left: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .desktop-nav a.shop-link i {
+            color: white !important;
+            transition: transform 0.2s ease;
+        }
+
+        .desktop-nav a.shop-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        .desktop-nav a.shop-link:hover i {
+            transform: translateX(3px);
+        }
+
+        .desktop-nav a.shop-link::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .desktop-nav a.shop-link:hover::before {
+            left: 100%;
         }
 
         /* ===== CSS ONLY HAMBURGER MENU ===== */
@@ -199,6 +228,10 @@
             gap: 6px;
         }
 
+        .hamburger:hover {
+            background: var(--light);
+        }
+
         .hamburger span {
             display: block;
             width: 24px;
@@ -206,7 +239,6 @@
             background: var(--dark);
             border-radius: 2px;
             transition: 0.2s ease;
-            pointer-events: none;
         }
 
         /* Mobile Menu Panel */
@@ -237,7 +269,15 @@
             transition: color 0.2s ease;
             display: inline-block;
             padding: 8px;
-            line-height: 1;
+            width: 44px;
+            height: 44px;
+            text-align: center;
+            border-radius: var(--radius-full);
+        }
+
+        .mobile-menu-close:hover {
+            background: var(--light);
+            color: var(--dark);
         }
 
         .mobile-menu ul {
@@ -264,6 +304,7 @@
         .mobile-menu a:hover {
             background: var(--light);
             color: var(--dark);
+            transform: translateX(5px);
         }
 
         .mobile-menu a i {
@@ -271,11 +312,30 @@
             font-size: 18px;
         }
 
+        /* Mobile menu icon colors */
+        .mobile-menu li:first-child a i { color: var(--home); }
+        .mobile-menu li:nth-child(2) a i { color: var(--tech); }
+        .mobile-menu li:nth-child(3) a i { color: var(--health); }
+        .mobile-menu li:nth-child(4) a i { color: var(--wealth); }
+        .mobile-menu li:nth-child(5) a i { color: var(--growth); }
+        .mobile-menu li:nth-child(6) a i { color: var(--entertainment); }
+        .mobile-menu li:nth-child(7) a i { color: var(--world); }
+        .mobile-menu li:nth-child(8) a i { color: var(--lifestyle); }
+
         .mobile-menu a.shop-link {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, #f59e0b, #ea580c);
             color: white !important;
             margin-top: 16px;
             justify-content: center;
+        }
+
+        .mobile-menu a.shop-link i {
+            color: white !important;
+        }
+
+        .mobile-menu a.shop-link:hover {
+            transform: translateX(5px);
+            background: linear-gradient(135deg, #ea580c, #f59e0b);
         }
 
         /* Mobile Menu Overlay */
@@ -302,17 +362,31 @@
         }
 
         /* ===== RESPONSIVE DESIGN ===== */
-        @media (min-width: 768px) {
-            .hamburger {
-                display: none;
-            }
-            
+        @media (min-width: 1024px) {
             .desktop-nav {
                 display: block;
             }
+            
+            .hamburger {
+                display: none;
+            }
         }
 
-        @media (max-width: 767px) {
+        @media (max-width: 1023px) {
+            .desktop-nav {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
             .header-inner {
                 padding: 12px 0;
             }
@@ -332,13 +406,14 @@
             }
             
             .site-header {
-                background: rgba(18, 23, 32, 0.98);
+                background: rgba(18, 23, 32, 0.95);
             }
-        }
-        
-        /* Fix for iOS momentum scrolling */
-        .mobile-menu {
-            -webkit-overflow-scrolling: touch;
+            
+            .logo-text {
+                background: linear-gradient(135deg, #e0e0f0 0%, #c0c0e0 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+            }
         }
     </style>
 </head>
@@ -359,19 +434,19 @@
             <!-- Desktop Navigation -->
             <nav class="desktop-nav">
                 <ul>
-                    <li><a href="/"><i class="fas fa-th-large"></i> Home</a></li>
-                    <li><a href="/categories/technology/"><i class="fas fa-microchip"></i> Technology</a></li>
-                    <li><a href="/categories/health/"><i class="fas fa-heartbeat"></i> Health</a></li>
-                    <li><a href="/categories/wealth/"><i class="fas fa-chart-line"></i> Wealth</a></li>
-                    <li><a href="/categories/growth/"><i class="fas fa-brain"></i> Growth</a></li>
-                    <li><a href="/categories/entertainment/"><i class="fas fa-film"></i> Entertainment</a></li>
-                    <li><a href="/categories/world/"><i class="fas fa-globe"></i> World</a></li>
-                    <li><a href="/categories/lifestyle/"><i class="fas fa-spa"></i> Lifestyle</a></li>
-                    <li><a href="/affiliate-shop/" class="shop-link"><i class="fas fa-store"></i> Shop</a></li>
+                    <li><a href="/" class="nav-link active"><i class="fas fa-compass"></i> Home</a></li>
+                    <li><a href="/categories/technology/" class="nav-link"><i class="fas fa-microchip"></i> Technology</a></li>
+                    <li><a href="/categories/health/" class="nav-link"><i class="fas fa-heart-pulse"></i> Health</a></li>
+                    <li><a href="/categories/wealth/" class="nav-link"><i class="fas fa-chart-line"></i> Wealth</a></li>
+                    <li><a href="/categories/growth/" class="nav-link"><i class="fas fa-brain"></i> Growth</a></li>
+                    <li><a href="/categories/entertainment/" class="nav-link"><i class="fas fa-clapperboard"></i> Entertainment</a></li>
+                    <li><a href="/categories/world/" class="nav-link"><i class="fas fa-globe-americas"></i> World</a></li>
+                    <li><a href="/categories/lifestyle/" class="nav-link"><i class="fas fa-leaf"></i> Lifestyle</a></li>
+                    <li><a href="/affiliate-shop/" class="shop-link"><i class="fas fa-bag-shopping"></i> Shop</a></li>
                 </ul>
             </nav>
 
-            <!-- Hamburger Label (CSS Only - No JavaScript!) -->
+            <!-- Hamburger Label (CSS Only - No JavaScript needed!) -->
             <label for="menu-toggle" class="hamburger" aria-label="Menu">
                 <span></span>
                 <span></span>
@@ -390,19 +465,46 @@
         <label for="menu-toggle" class="mobile-menu-close" aria-label="Close menu">✕</label>
     </div>
     <ul>
-        <li><a href="/"><i class="fas fa-th-large"></i> Home</a></li>
+        <li><a href="/"><i class="fas fa-compass"></i> Home</a></li>
         <li><a href="/categories/technology/"><i class="fas fa-microchip"></i> Technology</a></li>
-        <li><a href="/categories/health/"><i class="fas fa-heartbeat"></i> Health</a></li>
+        <li><a href="/categories/health/"><i class="fas fa-heart-pulse"></i> Health</a></li>
         <li><a href="/categories/wealth/"><i class="fas fa-chart-line"></i> Wealth</a></li>
         <li><a href="/categories/growth/"><i class="fas fa-brain"></i> Growth</a></li>
-        <li><a href="/categories/entertainment/"><i class="fas fa-film"></i> Entertainment</a></li>
-        <li><a href="/categories/world/"><i class="fas fa-globe"></i> World</a></li>
-        <li><a href="/categories/lifestyle/"><i class="fas fa-spa"></i> Lifestyle</a></li>
-        <li><a href="/affiliate-shop/" class="shop-link"><i class="fas fa-store"></i> Shop</a></li>
+        <li><a href="/categories/entertainment/"><i class="fas fa-clapperboard"></i> Entertainment</a></li>
+        <li><a href="/categories/world/"><i class="fas fa-globe-americas"></i> World</a></li>
+        <li><a href="/categories/lifestyle/"><i class="fas fa-leaf"></i> Lifestyle</a></li>
+        <li><a href="/affiliate-shop/" class="shop-link"><i class="fas fa-bag-shopping"></i> Shop</a></li>
     </ul>
 </nav>
 
-<!-- The rest of your page content would go here - hero section removed -->
+<!-- Simple script for active link highlighting based on current URL -->
+<script>
+    (function() {
+        // Get current path
+        const currentPath = window.location.pathname;
+        
+        // Select all navigation links (both desktop and mobile)
+        const allLinks = document.querySelectorAll('.desktop-nav a, .mobile-menu a');
+        
+        allLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            
+            // Skip shop link (it has different styling)
+            if (link.classList.contains('shop-link')) return;
+            
+            // Check if href matches current path
+            if (href && href !== '/' && currentPath.startsWith(href)) {
+                link.classList.add('active');
+            }
+            // For home page exact match
+            else if (href === '/' && (currentPath === '/' || currentPath === '')) {
+                link.classList.add('active');
+            }
+        });
+    })();
+</script>
+
+<!-- Your page content would go here -->
 
 </body>
 </html>

@@ -54,11 +54,14 @@
       --radius-md: 10px;
       --radius-lg: 16px;
       --radius-xl: 24px;
+      --radius-2xl: 32px;
+      --radius-3xl: 48px;
       --radius-full: 999px;
       --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.03), 0 1px 1px rgba(0, 0, 0, 0.02);
       --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
       --shadow-md: 0 8px 16px -6px rgba(0, 0, 0, 0.06), 0 4px 8px -4px rgba(0, 0, 0, 0.04);
       --shadow-lg: 0 20px 28px -12px rgba(0, 0, 0, 0.1), 0 8px 12px -6px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 25px 40px -12px rgba(0, 0, 0, 0.15);
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, system-ui, sans-serif;
     }
 
@@ -77,323 +80,234 @@
       padding: 0 var(--space-6);
     }
 
-    /* ===== HEADER & NAVIGATION ===== */
-    .site-header {
-      background: var(--white);
-      border-bottom: 1px solid var(--border-light);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.98);
-    }
-
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 0;
-    }
-
-    .logo a {
-      text-decoration: none;
-      display: flex;
-      align-items: baseline;
-      font-size: 1.75rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-    .logo-text {
-      background: linear-gradient(135deg, #1a1a1a 0%, #404040 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .logo-dot {
-      background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    /* Desktop Navigation */
-    .desktop-nav {
-      display: none;
-    }
-
-    .desktop-nav ul {
-      display: flex;
-      gap: 8px;
-      list-style: none;
-      align-items: center;
-    }
-
-    .desktop-nav a {
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--gray-600);
-      padding: 8px 16px;
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s ease;
-    }
-
-    .desktop-nav a:hover {
-      background: var(--gray-100);
-      color: var(--gray-900);
-    }
-
-    .desktop-nav a.active {
-      color: var(--primary-500);
-      background: rgba(102, 126, 234, 0.1);
-    }
-
-    .desktop-nav a.shop-link {
-      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
-      color: white !important;
-      padding: 8px 24px;
-      border-radius: var(--radius-full);
-    }
-
-    /* Hamburger Menu */
-    #menu-toggle {
-      display: none;
-    }
-
-    .hamburger {
-      cursor: pointer;
-      padding: 8px 12px;
-      border-radius: var(--radius-md);
-      transition: background 0.2s ease;
-      user-select: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--gray-900);
-      border-radius: 2px;
-      transition: 0.2s ease;
-      pointer-events: none;
-    }
-
-    /* Mobile Menu Panel */
-    .mobile-menu {
-      position: fixed;
-      top: 0;
-      left: -100%;
-      width: min(320px, 85%);
-      height: 100%;
-      background: var(--white);
-      box-shadow: var(--shadow-xl);
-      z-index: 1001;
-      transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      padding: 80px 24px 32px;
-      overflow-y: auto;
-    }
-
-    .mobile-menu-header {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
-
-    .mobile-menu-close {
-      font-size: 28px;
-      cursor: pointer;
-      color: var(--gray-600);
-      transition: color 0.2s ease;
-      display: inline-block;
-      padding: 8px;
-      line-height: 1;
-    }
-
-    .mobile-menu ul {
-      list-style: none;
-    }
-
-    .mobile-menu li {
-      margin-bottom: 8px;
-    }
-
-    .mobile-menu a {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 16px;
-      text-decoration: none;
-      font-size: 16px;
-      font-weight: 500;
-      color: var(--gray-600);
-      border-radius: var(--radius-md);
-      transition: all 0.2s ease;
-    }
-
-    .mobile-menu a:hover {
-      background: var(--gray-100);
-      color: var(--gray-900);
-    }
-
-    .mobile-menu a i {
-      width: 24px;
-      font-size: 18px;
-    }
-
-    .mobile-menu a.shop-link {
-      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
-      color: white !important;
-      margin-top: 16px;
-      justify-content: center;
-    }
-
-    .mobile-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
+    /* Placeholder for dynamically loaded components */
+    #header-placeholder, #footer-placeholder {
       width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(4px);
-      z-index: 1000;
-      display: none;
-      cursor: pointer;
     }
 
-    #menu-toggle:checked ~ .mobile-menu {
-      left: 0;
-    }
-
-    #menu-toggle:checked ~ .mobile-overlay {
-      display: block;
-    }
-
-    /* Hero Section */
+    /* ===== ULTRA PREMIUM HERO SECTION ===== */
     .hero {
-      padding: var(--space-16) 0 var(--space-12);
-      background: linear-gradient(135deg, var(--white) 0%, var(--gray-100) 100%);
-      border-bottom: 1px solid var(--border-light);
+      padding: 60px 0 50px;
+      background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
       position: relative;
       overflow: hidden;
     }
+
     .hero::before {
       content: '';
       position: absolute;
       top: -30%;
-      right: -10%;
-      width: 60%;
-      height: 140%;
-      background: radial-gradient(circle, rgba(15,110,255,0.04) 0%, transparent 70%);
+      right: -15%;
+      width: 50%;
+      height: 130%;
+      background: radial-gradient(circle, rgba(15, 110, 255, 0.08), transparent 70%);
       pointer-events: none;
+      animation: heroFloat1 12s ease-in-out infinite alternate;
     }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -15%;
+      width: 45%;
+      height: 120%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.06), transparent 70%);
+      pointer-events: none;
+      animation: heroFloat2 15s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroFloat1 {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+      100% { transform: translate(-30px, 30px) scale(1.15); opacity: 0.6; }
+    }
+
+    @keyframes heroFloat2 {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+      100% { transform: translate(40px, -25px) scale(1.2); opacity: 0.5; }
+    }
+
     .hero-content {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--space-12);
+      gap: 48px;
       align-items: center;
       position: relative;
       z-index: 2;
     }
-    .hero-text { flex: 1.2; }
+
+    .hero-text {
+      flex: 1.2;
+    }
+
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: var(--space-2);
-      background: var(--primary-50);
-      padding: var(--space-1) var(--space-3);
-      border-radius: var(--radius-full);
-      font-size: 0.75rem;
-      font-weight: 500;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(15, 110, 255, 0.1), rgba(139, 92, 246, 0.06));
+      backdrop-filter: blur(8px);
+      padding: 5px 14px;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       color: var(--primary-500);
-      margin-bottom: var(--space-4);
+      margin-bottom: 24px;
+      border: 1px solid rgba(15, 110, 255, 0.15);
     }
+
     .hero-text h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
+      font-size: 3.2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
       line-height: 1.2;
-      margin-bottom: var(--space-4);
-      background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-700) 100%);
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #2d2d5e 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
+
     .hero-text .accent {
       background: linear-gradient(135deg, var(--primary-500) 0%, #8B5CF6 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
+
     .hero-text p {
-      font-size: 1.125rem;
+      font-size: 1rem;
       color: var(--text-secondary);
       max-width: 90%;
-      margin-bottom: var(--space-8);
+      margin-bottom: 32px;
+      line-height: 1.6;
     }
-    .hero-stats { display: flex; gap: var(--space-8); flex-wrap: wrap; }
+
+    .hero-stats {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
     .stat-item {
-      background: var(--surface-card);
-      padding: var(--space-2) var(--space-5);
-      border-radius: var(--radius-full);
-      border: 1px solid var(--border-light);
-      box-shadow: var(--shadow-xs);
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      padding: 8px 20px;
+      border-radius: 100px;
+      border: 1px solid rgba(15, 110, 255, 0.1);
+      transition: all 0.25s ease;
     }
-    .stat-number { font-size: 1.75rem; font-weight: 700; color: var(--gray-900); }
-    .stat-label { font-size: 0.75rem; color: var(--text-tertiary); font-weight: 500; }
+
+    .stat-number {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--gray-900);
+      letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      color: var(--text-tertiary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
     .hero-visual {
-      flex: 1;
+      flex: 0.9;
       min-height: 320px;
-      background: var(--surface-card);
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--border-light);
-      box-shadow: var(--shadow-md);
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(8px);
+      border-radius: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: var(--shadow-lg);
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       overflow: hidden;
     }
+
     .figma-grid {
       position: absolute;
       inset: 0;
-      background-image: linear-gradient(var(--gray-200) 1px, transparent 1px), linear-gradient(90deg, var(--gray-200) 1px, transparent 1px);
+      background-image: linear-gradient(var(--gray-200) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--gray-200) 1px, transparent 1px);
       background-size: 32px 32px;
-      opacity: 0.6;
-    }
-    .visual-badge {
-      background: rgba(255,255,255,0.8);
-      backdrop-filter: blur(12px);
-      padding: var(--space-3) var(--space-6);
-      border-radius: var(--radius-full);
-      font-weight: 500;
-      font-size: 0.9rem;
-      border: 1px solid rgba(0,0,0,0.05);
-      z-index: 2;
+      opacity: 0.4;
     }
 
-    /* Feed Section with Custom Carousel */
+    .visual-badge {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border: 1px solid rgba(15, 110, 255, 0.15);
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .visual-badge i {
+      color: var(--primary-500);
+    }
+
+    .visual-dot {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: var(--primary-500);
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: floatDot 6s infinite linear;
+    }
+
+    .dot-1 { top: 20%; left: 15%; animation-delay: 0s; }
+    .dot-2 { top: 60%; right: 20%; animation-delay: 2s; background: #8B5CF6; }
+    .dot-3 { bottom: 25%; left: 20%; animation-delay: 4s; }
+    .dot-4 { top: 40%; right: 30%; animation-delay: 1s; width: 4px; height: 4px; }
+
+    @keyframes floatDot {
+      0% { transform: translateY(0); opacity: 0; }
+      20% { opacity: 0.5; }
+      80% { opacity: 0.5; }
+      100% { transform: translateY(-40px); opacity: 0; }
+    }
+
+    /* ===== CAROUSEL - MEDIA FIRST ON MOBILE ===== */
     .feed-section {
       padding: var(--space-12) 0;
       background: var(--bg-app);
     }
+
     .feed-header {
       max-width: 1280px;
       margin: 0 auto var(--space-6);
       padding: 0 var(--space-6);
     }
+
     .feed-header h2 { font-size: 1.5rem; font-weight: 600; }
     .feed-header p { color: var(--text-secondary); margin-top: 8px; }
 
-    /* Custom Carousel Styles */
-    .carousel-wrapper { position: relative; max-width: 100%; overflow: visible; padding: 0 20px; }
+    .carousel-wrapper { 
+      position: relative; 
+      max-width: 100%; 
+      overflow: visible; 
+      padding: 0 10px;
+    }
+    
+    @media (min-width: 1024px) {
+      .carousel-wrapper { 
+        padding: 0 60px;
+      }
+    }
+
     .carousel-track-container {
       overflow-x: auto;
       overflow-y: visible;
@@ -404,29 +318,59 @@
       padding: 20px 0 30px;
       scrollbar-color: var(--primary-500) var(--gray-200);
     }
+    
     .carousel-track-container::-webkit-scrollbar { height: 6px; }
     .carousel-track-container::-webkit-scrollbar-track { background: var(--gray-200); border-radius: 10px; }
     .carousel-track-container::-webkit-scrollbar-thumb { background: var(--primary-500); border-radius: 10px; }
+    
     .carousel-track {
       display: flex;
-      gap: 30px;
-      padding: 10px calc(50% - 430px) 20px calc(50% - 430px);
+      gap: 24px;
       scroll-snap-type: x mandatory;
     }
+    
+    @media (min-width: 1024px) {
+      .carousel-track {
+        padding: 10px calc(50% - 430px) 20px calc(50% - 430px);
+        gap: 30px;
+      }
+    }
+    
+    @media (max-width: 1023px) {
+      .carousel-track {
+        padding: 10px 16px 20px 16px;
+        gap: 16px;
+      }
+    }
 
-    .loading-spinner { text-align: center; padding: 80px; font-size: 1.2rem; color: var(--text-tertiary); }
-    .feed-empty { text-align: center; padding: 80px 24px; background: white; border-radius: 24px; max-width: 600px; margin: 0 auto; }
-    .empty-icon { font-size: 64px; margin-bottom: 20px; }
-
-    /* Custom Depth Card */
     .depth-card {
-      flex: 0 0 860px;
       scroll-snap-align: center;
       transition: transform 0.3s ease, filter 0.3s ease;
       cursor: pointer;
       filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.15));
     }
+    
+    @media (min-width: 1024px) {
+      .depth-card {
+        flex: 0 0 860px;
+      }
+    }
+    
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .depth-card {
+        flex: 0 0 70vw;
+      }
+    }
+    
+    @media (max-width: 767px) {
+      .depth-card {
+        flex: 0 0 calc(100vw - 80px);
+        min-width: 280px;
+      }
+    }
+
     .depth-card:hover { transform: translateY(-10px); filter: drop-shadow(0 30px 35px rgba(0, 0, 0, 0.25)); }
+    
     .seamless-card {
       display: flex;
       background: #FFFFFF;
@@ -435,6 +379,45 @@
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
       height: 620px;
     }
+    
+    /* Mobile layout - Media FIRST using flex order */
+    @media (max-width: 900px) {
+      .seamless-card {
+        flex-direction: column;
+        height: auto;
+      }
+      .text-panel, .media-panel { 
+        flex: auto; 
+        width: 100%; 
+        height: auto; 
+      }
+      /* Media panel FIRST - at the top */
+      .media-panel { 
+        order: 1;
+        min-height: 260px;
+        border-radius: 28px 28px 0 0;
+      }
+      /* Text panel SECOND - below media */
+      .text-panel { 
+        order: 2;
+      }
+      .title-panel h2 { 
+        font-size: 1.3rem; 
+      }
+      .desc-panel { 
+        max-height: 200px; 
+      }
+      .title-panel {
+        padding: 20px 20px 16px 20px;
+      }
+      .desc-panel {
+        padding: 18px 20px;
+      }
+      .source-panel {
+        padding: 16px 20px;
+      }
+    }
+
     .text-panel {
       flex: 0 0 60%;
       width: 60%;
@@ -443,6 +426,7 @@
       background: #FFFFFF;
       height: 100%;
     }
+
     .title-panel {
       background: linear-gradient(135deg, #FFFFFF 0%, #F8F6F2 100%);
       padding: 28px 28px 22px 28px;
@@ -452,6 +436,7 @@
       margin-bottom: -10px;
       flex-shrink: 0;
     }
+
     .live-tag {
       display: inline-flex;
       align-items: center;
@@ -464,6 +449,7 @@
       color: #B45A2C;
       margin-bottom: 16px;
     }
+
     .pulse-dot {
       width: 10px;
       height: 10px;
@@ -471,11 +457,13 @@
       border-radius: 50%;
       animation: pulseAnim 1.3s infinite;
     }
+
     @keyframes pulseAnim {
       0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(225,85,84,0.7);}
       70% { transform: scale(1.3); box-shadow: 0 0 0 8px rgba(225,85,84,0);}
       100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(225,85,84,0);}
     }
+
     .title-panel h2 {
       font-size: 1.7rem;
       font-weight: 800;
@@ -487,6 +475,7 @@
       color: transparent;
       margin-bottom: 0;
     }
+
     .desc-panel {
       background: #F5F0E8;
       padding: 24px 28px 24px 28px;
@@ -501,12 +490,15 @@
       overflow-y: auto;
       overflow-x: hidden;
     }
+
     .desc-panel::-webkit-scrollbar { width: 6px; }
     .desc-panel::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.08); border-radius: 10px; }
     .desc-panel::-webkit-scrollbar-thumb { background: #0F6EFF; border-radius: 10px; }
     .desc-panel p { font-size: 1rem; line-height: 1.65; color: #3a4a55; font-weight: 450; margin-bottom: 20px; flex-shrink: 0; }
+    
     .tag-list { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 8px; flex-shrink: 0; }
     .tag-list span { background: rgba(0, 0, 0, 0.06); font-size: 0.7rem; padding: 5px 14px; border-radius: 30px; font-weight: 600; color: #5a6a7a; }
+    
     .scroll-hint {
       position: sticky;
       bottom: 0;
@@ -522,6 +514,7 @@
       pointer-events: none;
       flex-shrink: 0;
     }
+
     .source-panel {
       background: #D8D0C4;
       background-image: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 2px, transparent 2px, transparent 12px);
@@ -533,6 +526,7 @@
       flex-shrink: 0;
       border-top: 1px solid rgba(0,0,0,0.05);
     }
+
     .source-label {
       display: inline-flex;
       align-items: center;
@@ -547,6 +541,7 @@
       margin-bottom: 14px;
       text-transform: uppercase;
     }
+
     .source-title-link a {
       font-size: 1rem;
       font-weight: 700;
@@ -555,7 +550,9 @@
       transition: color 0.2s;
       line-height: 1.4;
     }
+
     .source-title-link a:hover { color: #0F6EFF; text-decoration: underline; }
+
     .media-panel {
       flex: 0 0 40%;
       width: 40%;
@@ -564,6 +561,7 @@
       overflow: hidden;
       height: 100%;
     }
+
     .media-carousel { width: 100%; height: 100%; position: relative; }
     .media-slide {
       position: absolute;
@@ -584,6 +582,7 @@
       color: white;
       font-weight: 600;
     }
+
     .media-prev, .media-next {
       position: absolute;
       top: 50%;
@@ -592,17 +591,27 @@
       backdrop-filter: blur(4px);
       color: white;
       border: none;
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       cursor: pointer;
-      font-size: 20px;
+      font-size: 18px;
       z-index: 15;
       transition: all 0.2s;
     }
+
+    @media (min-width: 768px) {
+      .media-prev, .media-next {
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+      }
+    }
+
     .media-prev:hover, .media-next:hover { background: rgba(0,0,0,0.85); transform: translateY(-50%) scale(1.05); }
     .media-prev { left: 12px; }
     .media-next { right: 12px; }
+    
     .media-dots {
       position: absolute;
       bottom: 16px;
@@ -621,13 +630,11 @@
     }
     .media-dots .dot.active { background: white; width: 24px; border-radius: 4px; }
     
-    /* Manual Scroll Buttons */
+    /* Navigation Buttons */
     .carousel-nav {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 52px;
-      height: 52px;
       background: white;
       border: 1px solid var(--border-light);
       border-radius: 50%;
@@ -635,136 +642,649 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 28px;
       transition: all 0.2s ease;
       box-shadow: var(--shadow-md);
       z-index: 25;
       color: var(--text-primary);
     }
+    
+    @media (min-width: 1024px) {
+      .carousel-nav {
+        width: 52px;
+        height: 52px;
+        font-size: 28px;
+      }
+      .nav-prev { left: 0; }
+      .nav-next { right: 0; }
+    }
+    
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .carousel-nav {
+        width: 44px;
+        height: 44px;
+        font-size: 24px;
+      }
+      .nav-prev { left: 5px; }
+      .nav-next { right: 5px; }
+    }
+    
+    @media (max-width: 767px) {
+      .carousel-nav {
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+        background: rgba(255,255,255,0.95);
+      }
+      .nav-prev { left: 0; }
+      .nav-next { right: 0; }
+    }
+
     .carousel-nav:hover { background: var(--primary-500); color: white; border-color: var(--primary-500); transform: translateY(-50%) scale(1.05); }
     .carousel-nav:active { transform: translateY(-50%) scale(0.98); }
-    .nav-prev { left: 16px; }
-    .nav-next { right: 16px; }
 
-    /* Other Sections */
-    .section { padding: var(--space-16) 0; border-bottom: 1px solid var(--border-light); }
-    .section-header { text-align: center; max-width: 720px; margin: 0 auto var(--space-12); }
-    .section-header h2 { font-size: 2rem; font-weight: 700; margin-bottom: var(--space-3); }
-    .question-card {
-      max-width: 900px;
-      margin: 0 auto;
-      background: linear-gradient(135deg, var(--gray-900) 0%, #2C2C3A 100%);
-      border-radius: var(--radius-xl);
-      padding: var(--space-12) var(--space-10);
+    .loading-spinner { text-align: center; padding: 80px; font-size: 1.2rem; color: var(--text-tertiary); }
+    .feed-empty { text-align: center; padding: 80px 24px; background: white; border-radius: 24px; max-width: 600px; margin: 0 auto; }
+    .empty-icon { font-size: 64px; margin-bottom: 20px; }
+
+    /* Why Trendlin Section */
+    .why-section {
+      padding: var(--space-16) 0;
+      position: relative;
+    }
+
+    .why-section .section-header {
       text-align: center;
-      box-shadow: var(--shadow-lg);
-      color: white;
+      margin-bottom: 64px;
+      position: relative;
     }
-    .question-card h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: var(--space-3); color: white; }
-    .question-card p { color: var(--gray-300); }
-    .realities-grid { display: flex; flex-wrap: wrap; gap: var(--space-6); justify-content: center; }
-    .reality-card {
-      flex: 1 1 280px;
-      background: var(--surface-card);
-      border-radius: var(--radius-lg);
-      padding: var(--space-6);
-      border: 1px solid var(--border-light);
-      transition: all 0.25s;
-      box-shadow: var(--shadow-xs);
+
+    .why-section .section-header::before,
+    .why-section .section-header::after {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.3;
+      z-index: -1;
+      pointer-events: none;
     }
-    .reality-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--primary-100); }
-    .reality-icon { font-size: 2.2rem; margin-bottom: var(--space-4); }
-    .reality-card h3 { font-size: 1.25rem; margin-bottom: var(--space-2); }
-    .reality-card p { color: var(--text-secondary); font-size: 0.875rem; }
-    .pivot-section { background: var(--white); border-bottom: 1px solid var(--border-light); }
-    .pivot-grid { display: flex; flex-wrap: wrap; gap: var(--space-12); align-items: center; }
-    .pivot-text h3 { font-size: 1.75rem; font-weight: 700; margin-bottom: var(--space-4); }
-    .pivot-list { list-style: none; margin-top: var(--space-6); }
-    .pivot-list li { margin-bottom: var(--space-3); display: flex; gap: var(--space-3); align-items: center; color: var(--text-secondary); }
-    .pivot-list li::before { content: "✦"; color: var(--primary-500); font-weight: 600; }
-    .pivot-decoration {
-      flex: 1;
-      min-height: 280px;
-      background: linear-gradient(145deg, var(--primary-50), var(--gray-100));
-      border-radius: var(--radius-xl);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--border-light);
+
+    .why-section .section-header::before {
+      background: var(--primary-500);
+      top: -50px;
+      left: 10%;
+      animation: floatOrb 12s infinite alternate;
     }
-    .categories-showcase { padding: var(--space-16) 0; }
-    .categories-header { text-align: center; margin-bottom: var(--space-12); }
-    .categories-header .badge {
+
+    .why-section .section-header::after {
+      background: #8B5CF6;
+      bottom: -50px;
+      right: 10%;
+      animation: floatOrb 15s infinite alternate-reverse;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+      100% { transform: translate(30px, -30px) scale(1.2); opacity: 0.4; }
+    }
+
+    .why-section .badge {
       display: inline-flex;
-      gap: var(--space-2);
-      background: var(--primary-50);
-      padding: var(--space-1) var(--space-4);
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(15, 110, 255, 0.1), rgba(139, 92, 246, 0.08));
+      backdrop-filter: blur(10px);
+      padding: 6px 20px;
       border-radius: var(--radius-full);
       font-size: 0.7rem;
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       color: var(--primary-500);
-      margin-bottom: var(--space-4);
+      margin-bottom: 24px;
+      border: 1px solid rgba(15, 110, 255, 0.2);
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .categories-header h2 { font-size: 2rem; font-weight: 700; margin-bottom: var(--space-2); }
-    .categories-grid { display: flex; flex-wrap: wrap; gap: var(--space-6); justify-content: center; }
-    .category-card {
-      flex: 1 1 300px;
-      background: var(--surface-card);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-light);
-      text-decoration: none;
-      display: block;
-      transition: all 0.2s ease;
-      box-shadow: var(--shadow-xs);
-      cursor: pointer;
+
+    .why-section .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-700) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 16px;
     }
-    .category-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--primary-200); }
-    .card-content { padding: var(--space-6); }
-    .card-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: var(--radius-md);
+
+    .why-section .section-header p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .realities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+      margin-top: 32px;
+    }
+
+    @media (max-width: 900px) {
+      .realities-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .why-section .section-header h2 {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .why-section .section-header h2 {
+        font-size: 1.5rem;
+      }
+      .why-section .section-header {
+        margin-bottom: 40px;
+      }
+    }
+
+    .reality-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius-2xl);
+      padding: 32px;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .reality-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-2xl);
+      padding: 1.5px;
+      background: linear-gradient(135deg, transparent 0%, transparent 30%, rgba(15, 110, 255, 0.4) 50%, rgba(139, 92, 246, 0.4) 70%, transparent 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
+
+    .reality-card:hover::before { opacity: 1; }
+    .reality-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); border-color: rgba(15, 110, 255, 0.2); }
+
+    .reality-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.8rem;
-      background: var(--primary-50);
-      margin-bottom: var(--space-4);
+      margin-bottom: 24px;
+      transition: all 0.3s ease;
     }
-    .card-title { font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-2); }
-    .card-description { color: var(--text-secondary); font-size: 0.875rem; line-height: 1.5; margin-bottom: var(--space-4); }
-    .explore-link { display: inline-flex; align-items: center; gap: var(--space-1); font-weight: 500; color: var(--primary-500); font-size: 0.875rem; }
 
-    /* Footer */
-    .site-footer {
-      background: var(--white);
-      border-top: 1px solid var(--border-light);
-      padding: var(--space-12) 0;
+    @media (max-width: 768px) {
+      .reality-card {
+        padding: 24px;
+      }
+      .reality-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+      }
+      .reality-card h3 {
+        font-size: 1.2rem;
+      }
+      .reality-card p {
+        font-size: 0.85rem;
+      }
+    }
+
+    .reality-card:nth-child(1) .reality-icon { color: #0F6EFF; background: linear-gradient(135deg, rgba(15, 110, 255, 0.12), rgba(15, 110, 255, 0.05)); }
+    .reality-card:nth-child(2) .reality-icon { color: #10B981; background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(16, 185, 129, 0.05)); }
+    .reality-card:nth-child(3) .reality-icon { color: #8B5CF6; background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(139, 92, 246, 0.05)); }
+
+    .reality-card:hover .reality-icon { transform: scale(1.05) rotate(3deg); }
+    .reality-card h3 { font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; }
+    .reality-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* Pivot Section */
+    .pivot-section {
+      padding: var(--space-16) 0;
+      position: relative;
+    }
+
+    .pivot-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+
+    .pivot-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius-3xl);
+      padding: 64px 56px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: var(--shadow-xl);
+    }
+
+    @media (max-width: 968px) {
+      .pivot-card {
+        padding: 40px 28px;
+        border-radius: var(--radius-2xl);
+      }
+      .pivot-grid {
+        flex-direction: column;
+        gap: 32px;
+      }
+      .pivot-text h3 {
+        font-size: 1.8rem;
+      }
+      .pivot-subhead {
+        font-size: 0.95rem;
+        margin-bottom: 24px;
+      }
+      .pivot-decoration {
+        min-height: 280px;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .pivot-card {
+        padding: 28px 20px;
+      }
+      .pivot-text h3 {
+        font-size: 1.5rem;
+      }
+      .pivot-list li {
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      .list-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+      .list-title {
+        font-size: 0.9rem;
+      }
+      .list-desc {
+        font-size: 0.75rem;
+      }
+      .brain-icon {
+        font-size: 3rem;
+      }
+      .brain-text {
+        font-size: 0.85rem;
+      }
+    }
+
+    .pivot-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 80%;
+      height: 150%;
+      background: radial-gradient(circle, rgba(15, 110, 255, 0.04), transparent 70%);
+      pointer-events: none;
+      animation: floatBg 20s infinite alternate;
+    }
+
+    .pivot-card::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 60%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.04), transparent 70%);
+      pointer-events: none;
+      animation: floatBg2 18s infinite alternate;
+    }
+
+    @keyframes floatBg {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+      100% { transform: translate(-30px, 30px) scale(1.1); opacity: 0.6; }
+    }
+
+    @keyframes floatBg2 {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+      100% { transform: translate(40px, -20px) scale(1.15); opacity: 0.5; }
+    }
+
+    .pivot-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 56px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .pivot-text { flex: 1.2; }
+    .pivot-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(15, 110, 255, 0.1), rgba(139, 92, 246, 0.08));
+      backdrop-filter: blur(10px);
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--primary-500);
+      margin-bottom: 24px;
+      border: 1px solid rgba(15, 110, 255, 0.2);
+      width: fit-content;
+    }
+
+    .pivot-text h3 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-700) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 16px;
+    }
+
+    .pivot-subhead {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 40px;
+      max-width: 90%;
+    }
+
+    .pivot-list {
+      list-style: none;
+      margin-top: 32px;
+    }
+
+    .pivot-list li {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+      padding: 8px 0;
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    .pivot-list li:hover { transform: translateX(8px); }
+
+    .list-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, rgba(15, 110, 255, 0.1), rgba(139, 92, 246, 0.08));
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(15, 110, 255, 0.15);
+    }
+
+    .pivot-list li:hover .list-icon {
+      transform: scale(1.05) rotate(3deg);
+      background: linear-gradient(135deg, rgba(15, 110, 255, 0.15), rgba(139, 92, 246, 0.12));
+    }
+
+    .pivot-list li:nth-child(1) .list-icon { color: #0F6EFF; }
+    .pivot-list li:nth-child(2) .list-icon { color: #10B981; }
+    .pivot-list li:nth-child(3) .list-icon { color: #8B5CF6; }
+
+    .list-content { flex: 1; }
+    .list-title { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+    .list-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+
+    .pivot-decoration {
+      flex: 0.8;
+      min-height: 420px;
+      background: linear-gradient(145deg, rgba(15, 110, 255, 0.05), rgba(139, 92, 246, 0.03));
+      border-radius: var(--radius-2xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(15, 110, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .brain-container { text-align: center; position: relative; z-index: 2; }
+    .brain-icon {
+      font-size: 5rem;
+      background: linear-gradient(135deg, #0F6EFF, #8B5CF6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: brainPulse 3s ease-in-out infinite;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    @keyframes brainPulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.05); opacity: 1; text-shadow: 0 0 20px rgba(15, 110, 255, 0.3); }
+      100% { transform: scale(1); opacity: 0.7; }
+    }
+
+    .brain-text { font-size: 1rem; font-weight: 600; color: #0F6EFF; margin-top: 16px; letter-spacing: 1px; }
+    .brain-subtext { font-size: 0.7rem; color: var(--text-tertiary); margin-top: 8px; }
+
+    .floating-particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #0F6EFF;
+      border-radius: 50%;
+      opacity: 0.4;
+      animation: floatParticle 8s infinite linear;
+    }
+
+    .particle-1 { top: 20%; left: 15%; animation-delay: 0s; width: 6px; height: 6px; }
+    .particle-2 { top: 60%; right: 20%; animation-delay: 2s; width: 4px; height: 4px; background: #8B5CF6; }
+    .particle-3 { bottom: 25%; left: 25%; animation-delay: 4s; width: 5px; height: 5px; background: #10B981; }
+    .particle-4 { top: 40%; right: 35%; animation-delay: 1s; width: 3px; height: 3px; background: #F59E0B; }
+    .particle-5 { bottom: 40%; left: 10%; animation-delay: 6s; width: 4px; height: 4px; background: #EC4899; }
+    .particle-6 { top: 70%; left: 45%; animation-delay: 3s; width: 5px; height: 5px; background: #06B6D4; }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(0) translateX(0); opacity: 0; }
+      20% { opacity: 0.6; }
+      80% { opacity: 0.6; }
+      100% { transform: translateY(-60px) translateX(20px); opacity: 0; }
+    }
+
+    /* Categories Grid */
+    .categories-showcase { padding: var(--space-16) 0; position: relative; }
+    .categories-header { text-align: center; margin-bottom: var(--space-12); position: relative; }
+    .categories-header .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: linear-gradient(135deg, var(--primary-50), rgba(139, 92, 246, 0.08));
+      backdrop-filter: blur(10px);
+      padding: var(--space-2) var(--space-5);
+      border-radius: var(--radius-full);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--primary-500);
+      margin-bottom: var(--space-5);
+      border: 1px solid rgba(15, 110, 255, 0.2);
+    }
+    
+    .categories-header h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-700) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: var(--space-3);
+    }
+    
+    .categories-header p { font-size: 1rem; color: var(--text-secondary); max-width: 500px; margin: 0 auto; }
+
+    @media (max-width: 900px) {
+      .categories-header h2 {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .categories-header h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+    .categories-grid { 
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--space-8);
       margin-top: var(--space-8);
     }
-    .footer-content {
-      text-align: center;
-      color: var(--text-secondary);
-      font-size: 0.875rem;
+
+    @media (max-width: 900px) {
+      .categories-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
     }
-    .footer-content p {
-      margin-bottom: var(--space-2);
-    }
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: var(--space-6);
-      margin-top: var(--space-4);
-      flex-wrap: wrap;
-    }
-    .footer-links a {
-      color: var(--text-secondary);
+
+    .category-card {
+      position: relative;
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      cursor: pointer;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
       text-decoration: none;
-      transition: color 0.2s;
+      display: block;
     }
-    .footer-links a:hover {
-      color: var(--primary-500);
+
+    @media (max-width: 768px) {
+      .category-card {
+        padding: 24px;
+      }
     }
+
+    .category-card:nth-child(1) { background: linear-gradient(135deg, #0F6EFF08, #0F6EFF15); border: 1px solid rgba(15, 110, 255, 0.2); }
+    .category-card:nth-child(2) { background: linear-gradient(135deg, #F5A62308, #F5A62315); border: 1px solid rgba(245, 166, 35, 0.2); }
+    .category-card:nth-child(3) { background: linear-gradient(135deg, #10B98108, #10B98115); border: 1px solid rgba(16, 185, 129, 0.2); }
+    .category-card:nth-child(4) { background: linear-gradient(135deg, #8B5CF608, #8B5CF615); border: 1px solid rgba(139, 92, 246, 0.2); }
+    .category-card:nth-child(5) { background: linear-gradient(135deg, #EC489908, #EC489915); border: 1px solid rgba(236, 72, 153, 0.2); }
+    .category-card:nth-child(6) { background: linear-gradient(135deg, #06B6D408, #06B6D415); border: 1px solid rgba(6, 182, 212, 0.2); }
+    .category-card:nth-child(7) { background: linear-gradient(135deg, #F9731608, #F9731615); border: 1px solid rgba(249, 115, 22, 0.2); }
+
+    .category-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); }
+
+    .card-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: var(--space-5);
+      transition: all 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .card-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 1.6rem;
+      }
+      .card-title {
+        font-size: 1.2rem;
+      }
+      .card-description {
+        font-size: 0.8rem;
+      }
+    }
+
+    .category-card:nth-child(1) .card-icon { color: #0F6EFF; background: rgba(15, 110, 255, 0.1); }
+    .category-card:nth-child(2) .card-icon { color: #F5A623; background: rgba(245, 166, 35, 0.1); }
+    .category-card:nth-child(3) .card-icon { color: #10B981; background: rgba(16, 185, 129, 0.1); }
+    .category-card:nth-child(4) .card-icon { color: #8B5CF6; background: rgba(139, 92, 246, 0.1); }
+    .category-card:nth-child(5) .card-icon { color: #EC4899; background: rgba(236, 72, 153, 0.1); }
+    .category-card:nth-child(6) .card-icon { color: #06B6D4; background: rgba(6, 182, 212, 0.1); }
+    .category-card:nth-child(7) .card-icon { color: #F97316; background: rgba(249, 115, 22, 0.1); }
+
+    .category-card:hover .card-icon { transform: scale(1.05) translateY(-4px); }
+    .card-title { font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-2); }
+    .card-description { color: var(--text-secondary); font-size: 0.875rem; line-height: 1.5; margin-bottom: var(--space-4); }
+    .explore-link { display: inline-flex; align-items: center; gap: var(--space-2); font-weight: 500; font-size: 0.875rem; transition: all 0.3s ease; }
+    .category-card:nth-child(1) .explore-link { color: #0F6EFF; }
+    .category-card:nth-child(2) .explore-link { color: #F5A623; }
+    .category-card:nth-child(3) .explore-link { color: #10B981; }
+    .category-card:nth-child(4) .explore-link { color: #8B5CF6; }
+    .category-card:nth-child(5) .explore-link { color: #EC4899; }
+    .category-card:nth-child(6) .explore-link { color: #06B6D4; }
+    .category-card:nth-child(7) .explore-link { color: #F97316; }
+    .explore-link span { transition: transform 0.3s ease; }
+    .explore-link:hover { gap: var(--space-3); }
+    .explore-link:hover span { transform: translateX(4px); }
+
+    /* Question Card */
+    .question-card {
+      max-width: 900px;
+      margin: 40px auto 0;
+      background: linear-gradient(135deg, var(--gray-900) 0%, #2C2C3A 100%);
+      border-radius: var(--radius-xl);
+      padding: 48px 40px;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .question-card {
+        margin: 30px 20px;
+        padding: 32px 24px;
+      }
+      .question-card h2 {
+        font-size: 1.4rem;
+      }
+      .question-card p {
+        font-size: 0.9rem;
+      }
+    }
+
+    .question-card h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 12px; color: white; }
+    .question-card p { color: var(--gray-300); }
 
     /* Manifesto */
     .manifesto {
@@ -773,6 +1293,16 @@
       border-top: 1px solid var(--border-light);
       text-align: center;
     }
+
+    @media (max-width: 768px) {
+      .manifesto {
+        padding: 60px 20px;
+      }
+      .manifesto blockquote {
+        font-size: 1.2rem;
+      }
+    }
+
     .manifesto blockquote {
       font-size: 1.5rem;
       max-width: 800px;
@@ -781,38 +1311,62 @@
       color: var(--gray-800);
     }
 
-    @media (max-width: 1024px) {
-      .carousel-track { padding: 10px 24px 20px 24px; }
-      .carousel-nav { width: 44px; height: 44px; font-size: 24px; }
-      .nav-prev { left: 8px; }
-      .nav-next { right: 8px; }
-    }
-    @media (max-width: 900px) {
-      .depth-card { flex: 0 0 92vw; }
-      .seamless-card { flex-direction: column; height: auto; }
-      .text-panel, .media-panel { flex: auto; width: 100%; height: auto; }
-      .media-panel { min-height: 320px; }
-      .title-panel h2 { font-size: 1.4rem; }
-      .carousel-track { padding: 10px 16px 20px 16px; }
-      .desc-panel { min-height: 200px; max-height: 250px; }
-    }
+    /* Mobile General Adjustments */
     @media (max-width: 768px) {
-      .container { padding: 0 var(--space-4); }
-      .hero-text h1 { font-size: 2.2rem; }
-      .section { padding: var(--space-10) 0; }
-      .categories-header h2 { font-size: 1.6rem; }
-      .carousel-nav { width: 40px; height: 40px; font-size: 20px; }
-      .desktop-nav { display: none; }
-      .hamburger { display: flex; }
+      .container {
+        padding: 0 20px;
+      }
+      .hero {
+        padding: 40px 0;
+      }
+      .hero-text h1 {
+        font-size: 1.8rem;
+      }
+      .hero-text p {
+        font-size: 0.9rem;
+        max-width: 100%;
+      }
+      .hero-stats {
+        gap: 12px;
+        justify-content: center;
+      }
+      .stat-item {
+        padding: 6px 14px;
+      }
+      .stat-number {
+        font-size: 1.2rem;
+      }
+      .stat-label {
+        font-size: 0.6rem;
+      }
+      .hero-badge {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 32px;
+      }
+      .hero-visual {
+        min-height: 240px;
+        width: 100%;
+      }
+      .visual-badge {
+        padding: 8px 16px;
+        font-size: 0.7rem;
+      }
     }
-    @media (min-width: 769px) {
-      .hamburger { display: none; }
-      .desktop-nav { display: block; }
-    }
+
+    /* Dark Mode Support */
     @media (prefers-color-scheme: dark) {
-      body { background: #1a1a24; background-image: none; }
-      .hero { background: linear-gradient(135deg, #1a1a24, #222230); }
-      .site-header { background: rgba(18, 23, 32, 0.98); }
+      body { background: #1a1a24; }
+      .hero { background: linear-gradient(135deg, #1a1a24, #1f1f2e); }
+      .hero-text h1 { background: linear-gradient(135deg, #e0e0f0 0%, #c0c0e0 100%); -webkit-background-clip: text; background-clip: text; }
+      .stat-item { background: rgba(30, 30, 42, 0.7); border-color: rgba(255, 255, 255, 0.05); }
+      .stat-number { color: #e0e0f0; }
+      .hero-visual { background: rgba(30, 30, 42, 0.4); border-color: rgba(255, 255, 255, 0.05); }
+      .visual-badge { background: rgba(30, 30, 42, 0.95); color: #e0e0f0; }
       .seamless-card { background: #242430; }
       .text-panel { background: #242430; }
       .title-panel { background: #242430; }
@@ -820,597 +1374,449 @@
       .desc-panel { background: #2a2a36; }
       .desc-panel p { color: #c0c0d0; }
       .source-panel { background: #333342; }
-      .source-label { background: rgba(100,100,120,0.2); color: #c0b0a0; }
-      .source-title-link a { color: #d0d0e0; }
-      .scroll-hint { background: rgba(42, 42, 54, 0.95); color: #a0a0b0; }
       .carousel-nav { background: #2a2a36; border-color: #3a3a4a; color: #e0e0f0; }
       .carousel-nav:hover { background: var(--primary-500); color: white; }
-      .reality-card, .category-card { background: #1e1e2a; color: #e0e0f0; }
+      .reality-card { background: rgba(30, 30, 42, 0.8); border-color: rgba(255, 255, 255, 0.05); }
+      .reality-card h3 { color: #e0e0f0; }
+      .category-card { background: #1e1e2a; }
       .card-title { color: #e0e0f0; }
+      .why-section .section-header h2,
+      .categories-header h2,
+      .pivot-text h3 { background: linear-gradient(135deg, #e0e0f0 0%, #c0c0e0 100%); -webkit-background-clip: text; background-clip: text; }
       .manifesto { background: #1a1a24; color: #e0e0f0; }
-      .hero-visual, .stat-item { background: #242430; color: #e0e0f0; }
-      .site-footer { background: #1a1a24; }
+      .pivot-card { background: rgba(18, 23, 32, 0.7); border-color: rgba(255, 255, 255, 0.05); }
+      .list-title { color: #e0e0f0; }
+      .pivot-decoration { background: linear-gradient(145deg, rgba(15, 110, 255, 0.08), rgba(139, 92, 246, 0.05)); }
     }
   </style>
 </head>
 <body>
 
-<input type="checkbox" id="menu-toggle">
+<!-- Header will be loaded here dynamically -->
+<div id="header-placeholder"></div>
 
-<!-- Header / Navigation -->
-<header class="site-header">
-    <div class="container">
-        <div class="header-inner">
-            <div class="logo">
-                <a href="/">
-                    <span class="logo-text">trendlin</span>
-                    <span class="logo-dot">.</span>
-                </a>
-            </div>
-
-            <!-- Desktop Navigation -->
-            <nav class="desktop-nav">
-                <ul>
-                    <li><a href="/"><i class="fas fa-th-large"></i> Home</a></li>
-                    <li><a href="/categories/technology/"><i class="fas fa-microchip"></i> Technology</a></li>
-                    <li><a href="/categories/health/"><i class="fas fa-heartbeat"></i> Health</a></li>
-                    <li><a href="/categories/wealth/"><i class="fas fa-chart-line"></i> Wealth</a></li>
-                    <li><a href="/categories/growth/"><i class="fas fa-brain"></i> Growth</a></li>
-                    <li><a href="/categories/entertainment/"><i class="fas fa-film"></i> Entertainment</a></li>
-                    <li><a href="/categories/world/"><i class="fas fa-globe"></i> World</a></li>
-                    <li><a href="/categories/lifestyle/"><i class="fas fa-spa"></i> Lifestyle</a></li>
-                    <li><a href="/affiliate-shop/" class="shop-link"><i class="fas fa-store"></i> Shop</a></li>
-                </ul>
-            </nav>
-
-            <!-- Hamburger Label -->
-            <label for="menu-toggle" class="hamburger" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
+<!-- ===== ULTRA PREMIUM HERO SECTION ===== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <i class="fas fa-chart-line"></i>
+          <span>INTELLIGENCE PLATFORM</span>
         </div>
-    </div>
-</header>
-
-<!-- Mobile Menu Overlay -->
-<label for="menu-toggle" class="mobile-overlay" aria-label="Close menu"></label>
-
-<!-- Mobile Menu Panel -->
-<nav class="mobile-menu">
-    <div class="mobile-menu-header">
-        <label for="menu-toggle" class="mobile-menu-close" aria-label="Close menu">✕</label>
-    </div>
-    <ul>
-        <li><a href="/"><i class="fas fa-th-large"></i> Home</a></li>
-        <li><a href="/categories/technology/"><i class="fas fa-microchip"></i> Technology</a></li>
-        <li><a href="/categories/health/"><i class="fas fa-heartbeat"></i> Health</a></li>
-        <li><a href="/categories/wealth/"><i class="fas fa-chart-line"></i> Wealth</a></li>
-        <li><a href="/categories/growth/"><i class="fas fa-brain"></i> Growth</a></li>
-        <li><a href="/categories/entertainment/"><i class="fas fa-film"></i> Entertainment</a></li>
-        <li><a href="/categories/world/"><i class="fas fa-globe"></i> World</a></li>
-        <li><a href="/categories/lifestyle/"><i class="fas fa-spa"></i> Lifestyle</a></li>
-        <li><a href="/affiliate-shop/" class="shop-link"><i class="fas fa-store"></i> Shop</a></li>
-    </ul>
-</nav>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-text">
-          <div class="hero-badge"><span>📡</span> <span>TREND INTELLIGENCE v2.0</span></div>
-          <h1>Intelligence for the <span class="accent">Modern World</span></h1>
-          <p>Trendlin researches emerging trends from across the web — social media, forums, news outlets, and public data — and writes clear, insightful articles.</p>
-          <div class="hero-stats">
-            <div class="stat-item"><div class="stat-number" id="postCount">---</div><div class="stat-label">Live Posts</div></div>
-            <div class="stat-item"><div class="stat-number" id="categoryCount">---</div><div class="stat-label">Research Verticals</div></div>
-            <div class="stat-item"><div class="stat-number">✓</div><div class="stat-label">Free Enterprise Tier</div></div>
+        <h1>Intelligence for the <span class="accent">Modern World</span></h1>
+        <p>Trendlin researches emerging trends from across the web — social media, forums, news outlets, and public data — and writes clear, insightful articles.</p>
+        
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number" id="postCount">---</div>
+            <div class="stat-label">Live Posts</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" id="categoryCount">---</div>
+            <div class="stat-label">Verticals</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">✓</div>
+            <div class="stat-label">Free Tier</div>
           </div>
         </div>
-        <div class="hero-visual">
-          <div class="figma-grid"></div>
-          <div class="visual-badge">⟡ Custom Live Posts Carousel · Manual Scroll Working ⟡</div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="figma-grid"></div>
+        <div class="visual-dot dot-1"></div>
+        <div class="visual-dot dot-2"></div>
+        <div class="visual-dot dot-3"></div>
+        <div class="visual-dot dot-4"></div>
+        <div class="visual-badge">
+          <i class="fas fa-chart-line"></i>
+          <span>Real-time Intelligence</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CUSTOM LIVE POSTS CAROUSEL SECTION -->
-  <section class="feed-section">
+<!-- LIVE POSTS CAROUSEL SECTION - MEDIA FIRST ON MOBILE -->
+<section class="feed-section">
+  <div class="container">
     <div class="feed-header">
       <h2>📋 Live Intelligence Feed</h2>
-      <p class="text-sm" style="color: var(--text-secondary);">← Click the left/right buttons → Manual horizontal scroll now working!</p>
+      <p>← Click the left/right buttons → Manual horizontal scroll working!</p>
     </div>
     <div class="carousel-wrapper">
-      <button class="carousel-nav nav-prev" id="prevBtn" aria-label="Previous post">‹</button>
+      <button class="carousel-nav nav-prev" id="prevBtn">‹</button>
       <div class="carousel-track-container" id="trackContainer">
         <div class="carousel-track" id="carouselTrack">
           <div class="loading-spinner">Loading live posts from /data/live-posts.json...</div>
         </div>
       </div>
-      <button class="carousel-nav nav-next" id="nextBtn" aria-label="Next post">›</button>
+      <button class="carousel-nav nav-next" id="nextBtn">›</button>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Question Block -->
-  <div class="section"><div class="container"><div class="question-card"><h2>The world is changing faster than ever.</h2><p>Are you equipped with real strategic foresight?</p></div></div></div>
+<!-- Question Block -->
+<div class="question-card">
+  <div class="container">
+    <h2>The world is changing faster than ever.</h2>
+    <p>Are you equipped with real strategic foresight?</p>
+  </div>
+</div>
 
-  <!-- Why Trendlin Pillars -->
-  <div class="section"><div class="container"><div class="section-header"><h2>Why forward-thinking teams rely on Trendlin</h2><p>Clarity, context, and curated depth</p></div><div class="realities-grid"><div class="reality-card"><div class="reality-icon">📊</div><h3>Signal Intelligence</h3><p>Filtering information overload to surface what actually matters for decision making.</p></div><div class="reality-card"><div class="reality-icon">🔍</div><h3>Full-Context Research</h3><p>We map the origin, trajectory, and real-world impact of every trend.</p></div><div class="reality-card"><div class="reality-icon">⚡</div><h3>Rigor + Speed</h3><p>Real-time signals validated through cross-data verification — no hot takes.</p></div></div></div></div>
+<!-- WHY TRENDLIN SECTION -->
+<div class="why-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge">
+        <i class="fas fa-building"></i>
+        <span>WHY TRENDLIN</span>
+      </div>
+      <h2>Why forward-thinking teams rely on Trendlin</h2>
+      <p>Clarity, context, and curated depth</p>
+    </div>
 
-  <!-- Pivot Section -->
-  <div class="pivot-section section"><div class="container"><div class="pivot-grid"><div class="pivot-text"><h3>There’s a better way to navigate complexity.</h3><p>We replace reactive scrolling with proactive understanding.</p><ul class="pivot-list"><li>Curated depth over algorithmic noise</li><li>Research-backed insights over speculation</li><li>Long-term strategic foresight</li></ul></div><div class="pivot-decoration"><div style="font-size: 3rem; opacity: 0.7;">🧠</div></div></div></div></div>
+    <div class="realities-grid">
+      <div class="reality-card">
+        <div class="reality-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Signal Intelligence</h3>
+        <p>Filtering information overload to surface what actually matters for decision making.</p>
+      </div>
+      <div class="reality-card">
+        <div class="reality-icon"><i class="fas fa-globe"></i></div>
+        <h3>Full-Context Research</h3>
+        <p>We map the origin, trajectory, and real-world impact of every trend.</p>
+      </div>
+      <div class="reality-card">
+        <div class="reality-icon"><i class="fas fa-bolt"></i></div>
+        <h3>Rigor + Speed</h3>
+        <p>Real-time signals validated through cross-data verification — no hot takes.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <!-- Categories Grid - Premium Figma Style -->
-  <div class="categories-showcase"><div class="categories-header"><div class="badge"><span>🎯</span><span>EXPLORE INTELLIGENCE VERTICALS</span></div><h2>Your Interests, Curated with Depth</h2><p>Each category built from real-time trend research.</p></div><div class="categories-grid" id="categories-grid"><div class="loading-spinner">Loading category suite...</div></div></div>
-
-  <!-- Manifesto -->
-  <div class="manifesto"><div class="container"><div class="manifesto-content"><blockquote>“The modern world doesn't need more information. It needs more wisdom. Trendlin is a sanctuary for the curious mind.”</blockquote><div style="margin-top: var(--space-4); color: var(--text-tertiary);">— Trendlin Intelligence</div></div></div></div>
-
-  <!-- Footer -->
-  <!-- FOOTER - TRENDLIN (Clean, Mobile-First, No Blue Flash) -->
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <div class="footer-logo">
-                    <span class="logo-text">trendlin</span>
-                    <span class="logo-dot">.</span>
-                </div>
-                <p class="about-text">
-                    Curating the latest trends and insights to help you stay ahead in a fast-changing world.
-                </p>
-            </div>
-
-            <div class="footer-col">
-                <h3>Categories</h3>
-                <div class="footer-links">
-                    <a href="/categories/technology/" class="footer-link">Technology</a>
-                    <a href="/categories/health/" class="footer-link">Health</a>
-                    <a href="/categories/wealth/" class="footer-link">Wealth</a>
-                    <a href="/categories/growth/" class="footer-link">Growth</a>
-                    <a href="/categories/entertainment/" class="footer-link">Entertainment</a>
-                    <a href="/categories/world/" class="footer-link">World</a>
-                    <a href="/categories/lifestyle/" class="footer-link">Lifestyle</a>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h3>Company</h3>
-                <div class="footer-links">
-                    <a href="/about.html" class="footer-link">About</a>
-                    <a href="/contact.html" class="footer-link">Contact</a>
-                    <a href="/privacy.html" class="footer-link">Privacy</a>
-                    <a href="/terms.html" class="footer-link">Terms</a>
-                    <a href="/affiliate-disclosure.html" class="footer-link">Affiliate</a>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h3>Follow Us</h3>
-                <div class="footer-social">
-                    <a href="https://x.com/trendlinsocial" target="_blank" rel="noopener noreferrer" class="social-link">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.facebook.com/trendlinsocial" target="_blank" rel="noopener noreferrer" class="social-link">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.instagram.com/trendlinsocial/" target="_blank" rel="noopener noreferrer" class="social-link">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+<!-- BETTER WAY SECTION -->
+<div class="pivot-section">
+  <div class="pivot-container">
+    <div class="pivot-card">
+      <div class="pivot-grid">
+        <div class="pivot-text">
+          <div class="pivot-badge">
+            <i class="fas fa-compass"></i>
+            <span>OUR PHILOSOPHY</span>
+          </div>
+          <h3>There’s a better way to<br>navigate complexity.</h3>
+          <p class="pivot-subhead">We replace reactive scrolling with proactive understanding.</p>
+          
+          <ul class="pivot-list">
+            <li>
+              <div class="list-icon"><i class="fas fa-chart-line"></i></div>
+              <div class="list-content">
+                <div class="list-title">Curated depth over algorithmic noise</div>
+                <div class="list-desc">We filter through the chaos to deliver only what truly matters for your decisions.</div>
+              </div>
+            </li>
+            <li>
+              <div class="list-icon"><i class="fas fa-flask"></i></div>
+              <div class="list-content">
+                <div class="list-title">Research-backed insights over speculation</div>
+                <div class="list-desc">Every insight is validated through rigorous cross-data verification and expert analysis.</div>
+              </div>
+            </li>
+            <li>
+              <div class="list-icon"><i class="fas fa-eye"></i></div>
+              <div class="list-content">
+                <div class="list-title">Long-term strategic foresight</div>
+                <div class="list-desc">We help you see around corners and prepare for what's next, not just what's now.</div>
+              </div>
+            </li>
+          </ul>
         </div>
 
-        <div class="footer-copyright">
-            <p>© 2024 trendlin. All rights reserved.</p>
-            <p class="affiliate-note">As an Amazon Associate, we earn from qualifying purchases.</p>
+        <div class="pivot-decoration">
+          <div class="floating-particle particle-1"></div>
+          <div class="floating-particle particle-2"></div>
+          <div class="floating-particle particle-3"></div>
+          <div class="floating-particle particle-4"></div>
+          <div class="floating-particle particle-5"></div>
+          <div class="floating-particle particle-6"></div>
+          
+          <div class="brain-container">
+            <div class="brain-icon"><i class="fas fa-brain"></i></div>
+            <div class="brain-text">STRATEGIC MINDSET</div>
+            <div class="brain-subtext">Forward-thinking intelligence</div>
+          </div>
         </div>
+      </div>
     </div>
-</footer>
+  </div>
+</div>
 
-<style>
-    .footer {
-        background: #f8fafc;
-        border-top: 1px solid #eaeef2;
-        margin-top: 60px;
-        padding: 40px 0 24px;
-    }
-    .footer-container {
-        width: 100%;
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 0 1.5rem;
-    }
-    .footer-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        margin-bottom: 2rem;
-    }
-    .footer-col {
-        text-align: center;
-    }
-    .footer-logo {
-        display: inline-flex;
-        align-items: baseline;
-        text-decoration: none;
-        margin-bottom: 1rem;
-    }
-    .logo-text {
-        font-size: 1.5rem;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        background: linear-gradient(135deg, #1a1a1a 0%, #404040 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-    .logo-dot {
-        font-size: 1.5rem;
-        font-weight: 700;
-        background: linear-gradient(135deg, #e11d48 0%, #f43f5e 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-    .about-text {
-        font-size: 0.875rem;
-        line-height: 1.6;
-        color: #6b7280;
-        max-width: 100%;
-        margin: 0 auto;
-    }
-    .footer-col h3 {
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 1rem;
-        color: #9ca3af;
-    }
-    .footer-links {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        align-items: center;
-    }
-    .footer-link {
-        font-size: 0.85rem;
-        color: #6b7280;
-        text-decoration: none;
-        -webkit-tap-highlight-color: transparent;
-        display: inline-block;
-    }
-    .footer-social {
-        display: flex;
-        gap: 0.75rem;
-        justify-content: center;
-    }
-    .social-link {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
-        background: #f3f4f6;
-        color: #4b5563;
-        transition: all 0.2s ease;
-        text-decoration: none;
-        -webkit-tap-highlight-color: transparent;
-    }
-    .footer-copyright {
-        text-align: center;
-        padding-top: 2rem;
-        border-top: 1px solid #eaeef2;
-    }
-    .footer-copyright p {
-        font-size: 0.7rem;
-        color: #9ca3af;
-        margin: 0;
-    }
-    .affiliate-note {
-        margin-top: 0.5rem;
-    }
-    @media (min-width: 640px) {
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.75rem;
-        }
-        .footer-col {
-            text-align: left;
-        }
-        .footer-logo {
-            justify-content: flex-start;
-        }
-        .about-text {
-            max-width: 250px;
-            margin: 0;
-        }
-        .footer-links {
-            align-items: flex-start;
-        }
-        .footer-social {
-            justify-content: flex-start;
-        }
-    }
-    @media (min-width: 1024px) {
-        .footer {
-            margin-top: 80px;
-            padding: 60px 0 24px;
-        }
-        .footer-grid {
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 2rem;
-        }
-    }
-    @media (prefers-color-scheme: dark) {
-        .footer {
-            background: #0f0f13;
-            border-top-color: #1f1f2a;
-        }
-        .logo-text {
-            background: linear-gradient(135deg, #e4e4e7 0%, #a1a1aa 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
-        .about-text, .footer-link {
-            color: #9ca3af;
-        }
-        .footer-link:hover {
-            color: #f1f5f9;
-        }
-        .social-link {
-            background: #1f1f2a;
-            color: #9ca3af;
-        }
-        .footer-copyright {
-            border-top-color: #1f1f2a;
-        }
-        .footer-copyright p {
-            color: #6b7280;
-        }
-    }
-    .footer-link, .social-link, .footer-logo {
-        -webkit-tap-highlight-color: transparent;
-    }
-    .footer-link:active, .social-link:active, .footer-logo:active {
-        transform: scale(0.96);
-        opacity: 0.85;
-        transition-duration: 0.05s;
-        outline: none;
-    }
-</style>
+<!-- CATEGORIES GRID -->
+<div class="categories-showcase">
+  <div class="container">
+    <div class="categories-header">
+      <div class="badge"><span>🎯</span> EXPLORE INTELLIGENCE VERTICALS</div>
+      <h2>Your Interests, Curated with Depth</h2>
+      <p>Each category built from real-time trend research.</p>
+    </div>
+    <div class="categories-grid" id="categories-grid">
+      <div class="loading-spinner">Loading category suite...</div>
+    </div>
+  </div>
+</div>
 
-  <script>
-    let feedPosts = [];
+<!-- MANIFESTO -->
+<div class="manifesto">
+  <div class="container">
+    <blockquote>“The modern world doesn't need more information. It needs more wisdom. Trendlin is a sanctuary for the curious mind.”</blockquote>
+    <div style="margin-top: 20px; color: var(--text-tertiary);">— Trendlin Intelligence</div>
+  </div>
+</div>
 
-    function escapeHtml(str) { return String(str || '').replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m])); }
+<!-- Footer Placeholder -->
+<div id="footer-placeholder"></div>
 
-    function getCategoryIcon(category) {
-      const icons = { technology: '💻', wealth: '💰', health: '💊', growth: '🌱', entertainment: '🎬', world: '🌍', lifestyle: '✨' };
-      return icons[category?.toLowerCase()] || '📄';
+<script>
+  // Component Loader - Loads header and footer from external files
+  (function() {
+    function loadComponent(elementId, filePath) {
+      fetch(filePath)
+        .then(response => {
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          return response.text();
+        })
+        .then(html => {
+          document.getElementById(elementId).innerHTML = html;
+          console.log(`✅ Loaded: ${filePath}`);
+        })
+        .catch(error => {
+          console.error(`❌ Failed to load ${filePath}:`, error);
+          document.getElementById(elementId).innerHTML = `<div style="text-align:center;padding:20px;color:red;">Failed to load component</div>`;
+        });
     }
 
-    function getCategoryBadge(category) {
-      const badges = { technology: '🔵 TECH', wealth: '🟡 WEALTH', health: '🟢 HEALTH', growth: '🟠 GROWTH', entertainment: '🎬 ENTERTAINMENT', world: '🌍 WORLD', lifestyle: '✨ LIFESTYLE' };
-      return badges[category?.toLowerCase()] || '📡 LIVE';
-    }
+    loadComponent('header-placeholder', '/components/header.html');
+    loadComponent('footer-placeholder', '/components/footer.html');
+  })();
 
-    function buildMedia(mediaId, mediaItems) {
-      if (!mediaItems || mediaItems.length === 0) return `<div class="no-media">🎬 No media</div>`;
-      const multiple = mediaItems.length > 1;
-      let html = `<div class="media-carousel" data-media-id="${mediaId}" style="height:100%;">`;
-      html += `<div id="media-${mediaId}" style="position:relative; width:100%; height:100%;">`;
-      mediaItems.forEach((item, idx) => {
-        const url = item.url || item;
-        html += `<div class="media-slide" style="opacity:${idx === 0 ? 1 : 0}"><img src="${url}" alt="Post visual" loading="lazy" onerror="this.src='https://placehold.co/800x500?text=Image+Not+Found'"></div>`;
-      });
-      html += `</div>`;
-      if (multiple) {
-        html += `<button class="media-prev" data-target="media-${mediaId}">‹</button>`;
-        html += `<button class="media-next" data-target="media-${mediaId}">›</button>`;
-        html += `<div class="media-dots">${mediaItems.map((_, idx) => `<span class="dot ${idx === 0 ? 'active' : ''}" data-idx="${idx}"></span>`).join('')}</div>`;
-      }
-      html += `</div>`;
-      return html;
-    }
+  // ===== JAVASCRIPT - COMPLETELY FUNCTIONAL =====
+  let feedPosts = [];
 
-    function renderCards() {
-      const track = document.getElementById('carouselTrack');
-      if (!track) return;
+  function escapeHtml(str) { return String(str || '').replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m])); }
+
+  function getCategoryIcon(category) {
+    const icons = { technology: '💻', wealth: '💰', health: '💊', growth: '🌱', entertainment: '🎬', world: '🌍', lifestyle: '✨' };
+    return icons[category?.toLowerCase()] || '📄';
+  }
+
+  function getCategoryBadge(category) {
+    const badges = { technology: '🔵 TECH', wealth: '🟡 WEALTH', health: '🟢 HEALTH', growth: '🟠 GROWTH', entertainment: '🎬 ENTERTAINMENT', world: '🌍 WORLD', lifestyle: '✨ LIFESTYLE' };
+    return badges[category?.toLowerCase()] || '📡 LIVE';
+  }
+
+  function buildMedia(mediaId, mediaItems) {
+    if (!mediaItems || mediaItems.length === 0) return `<div class="no-media">🎬 No media</div>`;
+    const multiple = mediaItems.length > 1;
+    let html = `<div class="media-carousel" data-media-id="${mediaId}" style="height:100%;">`;
+    html += `<div id="media-${mediaId}" style="position:relative; width:100%; height:100%;">`;
+    mediaItems.forEach((item, idx) => {
+      const url = item.url || item;
+      html += `<div class="media-slide" style="opacity:${idx === 0 ? 1 : 0}"><img src="${url}" alt="Post visual" loading="lazy" onerror="this.src='https://placehold.co/800x500?text=Image+Not+Found'"></div>`;
+    });
+    html += `</div>`;
+    if (multiple) {
+      html += `<button class="media-prev" data-target="media-${mediaId}">‹</button>`;
+      html += `<button class="media-next" data-target="media-${mediaId}">›</button>`;
+      html += `<div class="media-dots">${mediaItems.map((_, idx) => `<span class="dot ${idx === 0 ? 'active' : ''}" data-idx="${idx}"></span>`).join('')}</div>`;
+    }
+    html += `</div>`;
+    return html;
+  }
+
+  function renderCards() {
+    const track = document.getElementById('carouselTrack');
+    if (!track) return;
+    
+    if (!feedPosts || feedPosts.length === 0) {
+      track.innerHTML = `<div class="feed-empty"><div class="empty-icon">📭</div><h3>No live posts available</h3><p>Make sure /data/live-posts.json exists with recent posts.</p></div>`;
+      return;
+    }
+    
+    document.getElementById('postCount').textContent = feedPosts.length;
+    
+    track.innerHTML = feedPosts.map((post, idx) => {
+      const excerpt = (post.excerpt || post.content || '').substring(0, 350);
+      const categoryIcon = getCategoryIcon(post.category);
+      const categoryBadge = getCategoryBadge(post.category);
+      const mediaItems = post.media || (post.image ? [{ url: post.image }] : []);
+      const sourceUrl = post.sourceUrl || post.url || '#';
       
-      if (!feedPosts || feedPosts.length === 0) {
-        track.innerHTML = `<div class="feed-empty"><div class="empty-icon">📭</div><h3>No live posts available</h3><p>Make sure /data/live-posts.json exists with recent posts.</p></div>`;
-        return;
-      }
-      
-      document.getElementById('postCount').textContent = feedPosts.length;
-      
-      track.innerHTML = feedPosts.map((post, idx) => {
-        const excerpt = (post.excerpt || post.content || '').substring(0, 350);
-        const categoryIcon = getCategoryIcon(post.category);
-        const categoryBadge = getCategoryBadge(post.category);
-        const mediaItems = post.media || (post.image ? [{ url: post.image }] : []);
-        const sourceUrl = post.sourceUrl || post.url || '#';
-        
-        return `
-          <div class="depth-card">
-            <div class="seamless-card">
-              <div class="text-panel">
-                <div class="title-panel">
-                  <div class="live-tag"><span class="pulse-dot"></span><span>${categoryIcon} ${categoryBadge}</span></div>
-                  <h2>${escapeHtml(post.title)}</h2>
-                </div>
-                <div class="desc-panel">
-                  <p>${escapeHtml(excerpt)}${excerpt.length >= 350 ? '...' : ''}</p>
-                  ${post.tags ? `<div class="tag-list">${post.tags.map(t => `<span>${escapeHtml(t)}</span>`).join('')}</div>` : ''}
-                  <div class="scroll-hint">↓ scroll ↓</div>
-                </div>
-                <div class="source-panel">
-                  <div class="source-label"><span>📎</span> SOURCE</div>
-                  <div class="source-title-link">
-                    <a href="${sourceUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(post.title)}</a>
-                  </div>
+      return `
+        <div class="depth-card">
+          <div class="seamless-card">
+            <div class="text-panel">
+              <div class="title-panel">
+                <div class="live-tag"><span class="pulse-dot"></span><span>${categoryIcon} ${categoryBadge}</span></div>
+                <h2>${escapeHtml(post.title)}</h2>
+              </div>
+              <div class="desc-panel">
+                <p>${escapeHtml(excerpt)}${excerpt.length >= 350 ? '...' : ''}</p>
+                ${post.tags ? `<div class="tag-list">${post.tags.map(t => `<span>${escapeHtml(t)}</span>`).join('')}</div>` : ''}
+                <div class="scroll-hint">↓ scroll ↓</div>
+              </div>
+              <div class="source-panel">
+                <div class="source-label"><span>📎</span> SOURCE</div>
+                <div class="source-title-link">
+                  <a href="${sourceUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(post.title)}</a>
                 </div>
               </div>
-              <div class="media-panel">
-                ${buildMedia(post.id, mediaItems)}
-              </div>
+            </div>
+            <div class="media-panel">
+              ${buildMedia(post.id, mediaItems)}
             </div>
           </div>
+        </div>
+      `;
+    }).join('');
+    
+    attachMediaEvents();
+    attachCarouselEvents();
+  }
+
+  function attachMediaEvents() {
+    document.querySelectorAll('.media-prev, .media-next').forEach(btn => {
+      btn.removeEventListener('click', handleMediaNav);
+      btn.addEventListener('click', handleMediaNav);
+    });
+    document.querySelectorAll('.media-dots .dot').forEach(dot => {
+      dot.removeEventListener('click', handleDotNav);
+      dot.addEventListener('click', handleDotNav);
+    });
+  }
+
+  function handleMediaNav(e) {
+    e.stopPropagation();
+    const btn = e.currentTarget;
+    const targetId = btn.dataset.target;
+    const container = document.getElementById(targetId);
+    if (!container) return;
+    const slides = container.querySelectorAll('.media-slide');
+    const dotsContainer = btn.parentElement?.querySelector('.media-dots');
+    let activeIdx = Array.from(slides).findIndex(s => getComputedStyle(s).opacity === '1');
+    if (activeIdx === -1) activeIdx = 0;
+    const isPrev = btn.classList.contains('media-prev');
+    const newIdx = isPrev ? (activeIdx - 1 + slides.length) % slides.length : (activeIdx + 1) % slides.length;
+    slides.forEach((s, i) => { s.style.opacity = i === newIdx ? '1' : '0'; });
+    if (dotsContainer) {
+      dotsContainer.querySelectorAll('.dot').forEach((dot, i) => dot.classList.toggle('active', i === newIdx));
+    }
+  }
+
+  function handleDotNav(e) {
+    e.stopPropagation();
+    const dot = e.currentTarget;
+    const dotsContainer = dot.closest('.media-dots');
+    const mediaCarousel = dotsContainer?.closest('.media-carousel');
+    const targetId = mediaCarousel?.dataset.mediaId;
+    const container = document.getElementById(`media-${targetId}`);
+    if (!container) return;
+    const slides = container.querySelectorAll('.media-slide');
+    const idx = parseInt(dot.dataset.idx);
+    slides.forEach((s, i) => { s.style.opacity = i === idx ? '1' : '0'; });
+    dotsContainer?.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+  }
+
+  function attachCarouselEvents() {
+    const scrollContainer = document.getElementById('trackContainer');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    if (scrollContainer && prevBtn && nextBtn) {
+      const getScrollAmount = () => {
+        const card = document.querySelector('.depth-card');
+        if (card) return card.offsetWidth + 30;
+        return 890;
+      };
+      
+      const newPrevBtn = prevBtn.cloneNode(true);
+      const newNextBtn = nextBtn.cloneNode(true);
+      prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
+      nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
+      
+      const finalPrevBtn = document.getElementById('prevBtn');
+      const finalNextBtn = document.getElementById('nextBtn');
+      
+      if (finalPrevBtn) {
+        finalPrevBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          scrollContainer.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+        });
+      }
+      if (finalNextBtn) {
+        finalNextBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          scrollContainer.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+        });
+      }
+    }
+  }
+
+  const verticals = [
+    { icon: '<i class="fas fa-microchip"></i>', name: "Technology", desc: "Deep tech trends & AI breakthroughs", color: "#0F6EFF", link: "/categories/technology/" },
+    { icon: '<i class="fas fa-chart-line"></i>', name: "Wealth", desc: "Macro shifts, markets & finance", color: "#F5A623", link: "/categories/wealth/" },
+    { icon: '<i class="fas fa-heartbeat"></i>', name: "Health", desc: "Longevity, wellness & biohacking", color: "#10B981", link: "/categories/health/" },
+    { icon: '<i class="fas fa-brain"></i>', name: "Growth", desc: "Performance & strategic mindset", color: "#8B5CF6", link: "/categories/growth/" },
+    { icon: '<i class="fas fa-film"></i>', name: "Entertainment", desc: "Movies, gaming & pop culture", color: "#EC4899", link: "/categories/entertainment/" },
+    { icon: '<i class="fas fa-globe"></i>', name: "World", desc: "Global affairs & climate", color: "#06B6D4", link: "/categories/world/" },
+    { icon: '<i class="fas fa-spa"></i>', name: "Lifestyle", desc: "Minimalism & home", color: "#F97316", link: "/categories/lifestyle/" }
+  ];
+
+  function renderCategories() {
+    const grid = document.getElementById('categories-grid');
+    if (grid) {
+      grid.innerHTML = verticals.map(v => {
+        return `
+          <a href="${v.link}" class="category-card">
+            <div class="card-content">
+              <div class="card-icon">${v.icon}</div>
+              <h3 class="card-title">${v.name}</h3>
+              <p class="card-description">${v.desc}</p>
+              <div class="explore-link">Explore category <span>→</span></div>
+            </div>
+          </a>
         `;
       }).join('');
-      
-      attachMediaEvents();
-      attachCarouselEvents();
+      document.getElementById('categoryCount').textContent = verticals.length;
     }
+  }
 
-    function attachMediaEvents() {
-      document.querySelectorAll('.media-prev, .media-next').forEach(btn => {
-        btn.removeEventListener('click', handleMediaNav);
-        btn.addEventListener('click', handleMediaNav);
-      });
-      document.querySelectorAll('.media-dots .dot').forEach(dot => {
-        dot.removeEventListener('click', handleDotNav);
-        dot.addEventListener('click', handleDotNav);
-      });
-    }
-
-    function handleMediaNav(e) {
-      e.stopPropagation();
-      const btn = e.currentTarget;
-      const targetId = btn.dataset.target;
-      const container = document.getElementById(targetId);
-      if (!container) return;
-      const slides = container.querySelectorAll('.media-slide');
-      const dotsContainer = btn.parentElement?.querySelector('.media-dots');
-      let activeIdx = Array.from(slides).findIndex(s => getComputedStyle(s).opacity === '1');
-      if (activeIdx === -1) activeIdx = 0;
-      const isPrev = btn.classList.contains('media-prev');
-      const newIdx = isPrev ? (activeIdx - 1 + slides.length) % slides.length : (activeIdx + 1) % slides.length;
-      slides.forEach((s, i) => { s.style.opacity = i === newIdx ? '1' : '0'; });
-      if (dotsContainer) {
-        dotsContainer.querySelectorAll('.dot').forEach((dot, i) => dot.classList.toggle('active', i === newIdx));
+  async function fetchLivePosts() {
+    try {
+      const response = await fetch('/data/live-posts.json?t=' + Date.now());
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      feedPosts = data.posts || [];
+      console.log(`✅ Loaded ${feedPosts.length} LIVE posts from /data/live-posts.json`);
+      renderCards();
+    } catch (error) {
+      console.error('❌ Failed to load live posts:', error);
+      const track = document.getElementById('carouselTrack');
+      if (track) {
+        track.innerHTML = `<div class="feed-empty"><div class="empty-icon">⚠️</div><h3>Failed to load live posts</h3><p>Make sure /data/live-posts.json exists.</p><p style="margin-top:12px; font-size:0.8rem;">Error: ${error.message}</p></div>`;
       }
     }
+  }
 
-    function handleDotNav(e) {
-      e.stopPropagation();
-      const dot = e.currentTarget;
-      const dotsContainer = dot.closest('.media-dots');
-      const mediaCarousel = dotsContainer?.closest('.media-carousel');
-      const targetId = mediaCarousel?.dataset.mediaId;
-      const container = document.getElementById(`media-${targetId}`);
-      if (!container) return;
-      const slides = container.querySelectorAll('.media-slide');
-      const idx = parseInt(dot.dataset.idx);
-      slides.forEach((s, i) => { s.style.opacity = i === idx ? '1' : '0'; });
-      dotsContainer?.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === idx));
-    }
+  document.addEventListener('DOMContentLoaded', () => {
+    renderCategories();
+    fetchLivePosts();
+  });
+</script>
 
-    function attachCarouselEvents() {
-      const scrollContainer = document.getElementById('trackContainer');
-      const prevBtn = document.getElementById('prevBtn');
-      const nextBtn = document.getElementById('nextBtn');
-      
-      if (scrollContainer && prevBtn && nextBtn) {
-        const getScrollAmount = () => {
-          const card = document.querySelector('.depth-card');
-          if (card) {
-            return card.offsetWidth + 30;
-          }
-          return 890;
-        };
-        
-        const newPrevBtn = prevBtn.cloneNode(true);
-        const newNextBtn = nextBtn.cloneNode(true);
-        prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
-        nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
-        
-        const finalPrevBtn = document.getElementById('prevBtn');
-        const finalNextBtn = document.getElementById('nextBtn');
-        
-        if (finalPrevBtn) {
-          finalPrevBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            const amount = getScrollAmount();
-            scrollContainer.scrollBy({ left: -amount, behavior: 'smooth' });
-          });
-        }
-        
-        if (finalNextBtn) {
-          finalNextBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            const amount = getScrollAmount();
-            scrollContainer.scrollBy({ left: amount, behavior: 'smooth' });
-          });
-        }
-      }
-    }
-
-    const verticals = [
-      { icon: "💻", name: "Technology", desc: "Deep tech trends & AI breakthroughs", color: "#0F6EFF" },
-      { icon: "💰", name: "Wealth", desc: "Macro shifts, markets & finance", color: "#F5A623" },
-      { icon: "💊", name: "Health", desc: "Longevity, wellness & biohacking", color: "#10B981" },
-      { icon: "🌱", name: "Growth", desc: "Performance & strategic mindset", color: "#8B5CF6" },
-      { icon: "🎬", name: "Entertainment", desc: "Movies, gaming & pop culture", color: "#EC4899" },
-      { icon: "🌍", name: "World", desc: "Global affairs & climate", color: "#06B6D4" },
-      { icon: "✨", name: "Lifestyle", desc: "Minimalism & home", color: "#F97316" }
-    ];
-
-    function renderCategories() {
-      const grid = document.getElementById('categories-grid');
-      if (grid) {
-        grid.innerHTML = verticals.map(v => {
-          const gradientBg = `linear-gradient(135deg, ${v.color}12, ${v.color}04)`;
-          return `
-            <div class="category-card">
-              <div class="card-content">
-                <div class="card-icon" style="background: ${gradientBg};">${v.icon}</div>
-                <h3 class="card-title">${v.name}</h3>
-                <p class="card-description">${v.desc}</p>
-                <div class="explore-link">Explore category <span>→</span></div>
-              </div>
-            </div>
-          `;
-        }).join('');
-        document.getElementById('categoryCount').textContent = verticals.length;
-      }
-    }
-
-    async function fetchLivePosts() {
-      try {
-        const response = await fetch('/data/live-posts.json?t=' + Date.now());
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const data = await response.json();
-        feedPosts = data.posts || [];
-        console.log(`✅ Loaded ${feedPosts.length} LIVE posts from /data/live-posts.json`);
-        renderCards();
-      } catch (error) {
-        console.error('❌ Failed to load live posts:', error);
-        const track = document.getElementById('carouselTrack');
-        if (track) {
-          track.innerHTML = `<div class="feed-empty"><div class="empty-icon">⚠️</div><h3>Failed to load live posts</h3><p>Make sure /data/live-posts.json exists.</p><p style="margin-top:12px; font-size:0.8rem;">Error: ${error.message}</p></div>`;
-        }
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      renderCategories();
-      fetchLivePosts();
-    });
-  </script>
 </body>
 </html>
