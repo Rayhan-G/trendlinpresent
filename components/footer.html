@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
     <title>trendlin Footer</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            /* CRITICAL: Removes default mobile blue flash/thunder highlight on all elements */
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -18,12 +20,76 @@
             flex-direction: column;
         }
 
+        /* Custom focus for accessibility without intrusive blue */
+        :focus {
+            outline: none;
+        }
+        :focus-visible {
+            outline: 2px solid #e11d48;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        /* All interactive elements get smooth touch feedback - no blue flash */
+        a, 
+        .footer-link,
+        .social-link,
+        .footer-logo {
+            cursor: pointer;
+            touch-action: manipulation;
+            transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        /* Active state: subtle scale + opacity instead of ugly blue flash */
+        a:active,
+        .footer-link:active,
+        .social-link:active,
+        .footer-logo:active {
+            transform: scale(0.96);
+            opacity: 0.85;
+            transition-duration: 0.05s;
+        }
+
+        /* Hover effects preserved for desktop only */
+        @media (hover: hover) {
+            .footer-link:hover {
+                color: #111827;
+                text-decoration: underline;
+            }
+            .social-link:hover {
+                transform: translateY(-2px);
+            }
+            .social-link.x:hover {
+                background: #000000;
+                color: white;
+            }
+            .social-link.facebook:hover {
+                background: #1877f2;
+                color: white;
+            }
+            .social-link.instagram:hover {
+                background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+                color: white;
+            }
+        }
+
         /* Demo content to show spacing */
         .demo-content {
             flex: 1;
             padding: 4rem 2rem;
             text-align: center;
             background: #ffffff;
+        }
+
+        .demo-content h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .demo-content p {
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         /* ============================================
@@ -63,6 +129,7 @@
             text-decoration: none;
             margin-bottom: 1rem;
             justify-content: center;
+            -webkit-tap-highlight-color: transparent;
         }
         
         .logo-text {
@@ -112,12 +179,9 @@
             font-size: 0.85rem;
             color: #6b7280;
             text-decoration: none;
-            transition: color 0.2s ease;
-        }
-        
-        .footer-link:hover {
-            color: #111827;
-            text-decoration: underline;
+            transition: all 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+            display: inline-block;
         }
         
         /* Social Icons */
@@ -138,31 +202,13 @@
             color: #4b5563;
             transition: all 0.2s ease;
             text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
         }
         
         .social-link svg {
             width: 18px;
             height: 18px;
             fill: currentColor;
-        }
-        
-        .social-link:hover {
-            transform: translateY(-2px);
-        }
-        
-        .social-link.x:hover {
-            background: #000000;
-            color: white;
-        }
-        
-        .social-link.facebook:hover {
-            background: #1877f2;
-            color: white;
-        }
-        
-        .social-link.instagram:hover {
-            background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
-            color: white;
         }
         
         .footer-copyright {
@@ -246,6 +292,16 @@
                 border-top-color: #1f1f2a;
             }
             
+            .demo-content {
+                background: #0f0f13;
+            }
+            .demo-content h1 {
+                color: #e4e4e7;
+            }
+            .demo-content p {
+                color: #9ca3af;
+            }
+            
             .logo-text {
                 background: linear-gradient(135deg, #e4e4e7 0%, #a1a1aa 100%);
                 -webkit-background-clip: text;
@@ -270,8 +326,10 @@
                 color: #9ca3af;
             }
             
-            .footer-link:hover {
-                color: #f1f5f9;
+            @media (hover: hover) {
+                .footer-link:hover {
+                    color: #f1f5f9;
+                }
             }
             
             .social-link {
@@ -287,10 +345,30 @@
                 color: #6b7280;
             }
         }
+        
+        /* Touch device optimizations - ensure no blue flash on any interactive element */
+        .footer-link,
+        .social-link,
+        .footer-logo {
+            -webkit-tap-highlight-color: transparent;
+            tap-highlight-color: transparent;
+        }
+        
+        /* Prevent unwanted outline on active states */
+        .footer-link:active,
+        .social-link:active,
+        .footer-logo:active {
+            outline: none;
+        }
     </style>
 </head>
 <body>
-   
+    <!-- Demo content to show the footer properly spaced -->
+    <main class="demo-content">
+        <h1>Trendlin</h1>
+        <p>Intelligence for the modern world — curated trends, research-backed insights, and clear analysis.</p>
+    </main>
+
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-grid">

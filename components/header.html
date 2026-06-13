@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
     <title>Trendlin | Navigation Component</title>
     
     <!-- Fonts & Icons -->
@@ -15,6 +15,54 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :focus {
+            outline: none;
+        }
+        :focus-visible {
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+            border-radius: 6px;
+        }
+
+        a, 
+        .hamburger,
+        .mobile-menu-close,
+        .mobile-overlay,
+        label,
+        .desktop-nav a {
+            cursor: pointer;
+            touch-action: manipulation;
+            transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a:active,
+        .hamburger:active,
+        .mobile-menu-close:active,
+        .desktop-nav a:active {
+            transform: scale(0.96);
+            opacity: 0.85;
+            transition-duration: 0.05s;
+        }
+
+        @media (hover: hover) {
+            .desktop-nav a:hover {
+                background: var(--light);
+                color: var(--dark);
+            }
+            .desktop-nav a.shop-link:hover {
+                transform: translateY(-2px);
+                box-shadow: var(--shadow-md);
+            }
+            .hamburger:hover {
+                background: var(--light);
+            }
+            .mobile-menu-close:hover {
+                color: var(--dark);
+            }
         }
 
         :root {
@@ -64,7 +112,7 @@
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
         }
 
         .header-inner {
@@ -123,11 +171,6 @@
             transition: all 0.2s ease;
         }
 
-        .desktop-nav a:hover {
-            background: var(--light);
-            color: var(--dark);
-        }
-
         .desktop-nav a.active {
             color: var(--primary);
             background: rgba(102, 126, 234, 0.1);
@@ -138,11 +181,6 @@
             color: white !important;
             padding: 8px 24px;
             border-radius: var(--radius-full);
-        }
-
-        .desktop-nav a.shop-link:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
         }
 
         /* ===== CSS ONLY HAMBURGER MENU ===== */
@@ -161,10 +199,6 @@
             gap: 6px;
         }
 
-        .hamburger:hover {
-            background: var(--light);
-        }
-
         .hamburger span {
             display: block;
             width: 24px;
@@ -172,6 +206,7 @@
             background: var(--dark);
             border-radius: 2px;
             transition: 0.2s ease;
+            pointer-events: none;
         }
 
         /* Mobile Menu Panel */
@@ -202,10 +237,7 @@
             transition: color 0.2s ease;
             display: inline-block;
             padding: 8px;
-        }
-
-        .mobile-menu-close:hover {
-            color: var(--dark);
+            line-height: 1;
         }
 
         .mobile-menu ul {
@@ -246,11 +278,6 @@
             justify-content: center;
         }
 
-        .mobile-menu a.shop-link:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
         /* Mobile Menu Overlay */
         .mobile-overlay {
             position: fixed;
@@ -286,10 +313,6 @@
         }
 
         @media (max-width: 767px) {
-            .container {
-                padding: 0 20px;
-            }
-            
             .header-inner {
                 padding: 12px 0;
             }
@@ -309,8 +332,13 @@
             }
             
             .site-header {
-                background: rgba(18, 23, 32, 0.95);
+                background: rgba(18, 23, 32, 0.98);
             }
+        }
+        
+        /* Fix for iOS momentum scrolling */
+        .mobile-menu {
+            -webkit-overflow-scrolling: touch;
         }
     </style>
 </head>
@@ -374,7 +402,7 @@
     </ul>
 </nav>
 
-<!-- Your existing page content goes here -->
+<!-- The rest of your page content would go here - hero section removed -->
 
 </body>
 </html>

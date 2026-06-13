@@ -1,0 +1,447 @@
+{
+  "posts": [
+    {
+      "id": 2001,
+      "title": "🔴 LIVE: Fed Announces Emergency Rate Cut - Markets Rally",
+      "excerpt": "Breaking: Federal Reserve cuts interest rates by 0.50% in unscheduled meeting. Dow jumps 800 points.",
+      "content": "The Federal Reserve just announced an emergency 50 basis point rate cut. Markets are reacting sharply.",
+      "category": "wealth",
+      "author": "Michael Rodriguez",
+      "date": "2026-06-13",
+      "readTime": 4,
+      "sourceUrl": "/posts/2001",
+      "sourceLabel": "Read full analysis →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/161/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/26/800/500" }
+      ]
+    },
+    {
+      "id": 2005,
+      "title": "💰 LIVE: Bitcoin Surges Past $200,000 for First Time",
+      "excerpt": "Crypto market cap hits $5 trillion. Institutional FOMO driving unprecedented rally.",
+      "content": "Bitcoin just broke through the $200,000 barrier. The rally shows no signs of slowing.",
+      "category": "wealth",
+      "author": "Sarah Johnson",
+      "date": "2026-06-13",
+      "readTime": 5,
+      "sourceUrl": "/posts/2005",
+      "sourceLabel": "Read analysis →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/123/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/42/800/500" }
+      ]
+    },
+    {
+      "id": 2012,
+      "title": "🏦 LIVE: JPMorgan Launches Crypto Trading Desk",
+      "excerpt": "Wall Street's biggest bank finally embraces digital assets. Bitcoin jumps 8%.",
+      "content": "JPMorgan Chase announced it will offer crypto trading services to all retail clients.",
+      "category": "wealth",
+      "author": "Michael Rodriguez",
+      "date": "2026-06-13",
+      "readTime": 4,
+      "sourceUrl": "/posts/2012",
+      "sourceLabel": "Read announcement →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/164/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/123/800/500" }
+      ]
+    },
+    {
+      "id": 2017,
+      "title": "📈 LIVE: Gold Hits Record High Amid Global Inflation Fears",
+      "excerpt": "Spot gold climbs to $2,800 per ounce as investors seek safe-haven assets.",
+      "content": "Unprecedented institutional buying has pushed gold prices to historic highs this morning.",
+      "category": "wealth",
+      "author": "Sarah Johnson",
+      "date": "2026-06-13",
+      "readTime": 3,
+      "sourceUrl": "/posts/2017",
+      "sourceLabel": "View commodity charts →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/162/800/500" }
+      ]
+    },
+    {
+      "id": 2002,
+      "title": "⚡ LIVE: Apple Unveils Revolutionary Foldable iPhone",
+      "excerpt": "Tim Cook just announced the iPhone Fold. 7.8-inch display. $1,999. Available next week.",
+      "content": "Apple just changed the smartphone game. The long-rumored foldable iPhone is finally here.",
+      "category": "technology",
+      "author": "Alex Thompson",
+      "date": "2026-06-13",
+      "readTime": 5,
+      "sourceUrl": "/posts/2002",
+      "sourceLabel": "Explore specs →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/159/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/42/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/15/800/500" }
+      ]
+    },
+    {
+      "id": 2006,
+      "title": "🤖 LIVE: OpenAI Unveils GPT-6 - 'It Can Reason Like a Human'",
+      "excerpt": "Sam Altman just demonstrated GPT-6 solving complex math problems and writing full-stack apps.",
+      "content": "OpenAI's latest model is a quantum leap forward in artificial intelligence.",
+      "category": "technology",
+      "author": "Dr. Sarah Chen",
+      "date": "2026-06-13",
+      "readTime": 6,
+      "sourceUrl": "/posts/2006",
+      "sourceLabel": "Read full analysis →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/1/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/26/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/42/800/500" }
+      ]
+    },
+    {
+      "id": 2010,
+      "title": "🚀 LIVE: SpaceX Launches First Crewed Mission to Mars",
+      "excerpt": "Starship carrying 12 astronauts has lift off. 7-month journey begins.",
+      "content": "History has been made. The first humans to Mars are on their way.",
+      "category": "technology",
+      "author": "Marcus Lee",
+      "date": "2026-06-13",
+      "readTime": 5,
+      "sourceUrl": "/posts/2010",
+      "sourceLabel": "Watch live →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/144/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/42/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/1/800/500" }
+      ]
+    },
+    {
+      "id": 2011,
+      "title": "📱 LIVE: Google's Gemini Ultra 2.0 Released",
+      "excerpt": "Google's answer to GPT-6 is here. 10M token context window. Free for all users.",
+      "content": "Google just unveiled Gemini Ultra 2.0 at I/O 2026. The multimodal capabilities are stunning.",
+      "category": "technology",
+      "author": "Alex Thompson",
+      "date": "2026-06-13",
+      "readTime": 5,
+      "sourceUrl": "/posts/2011",
+      "sourceLabel": "Try it free →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/106/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/26/800/500" }
+      ]
+    },
+    {
+      "id": 2003,
+      "title": "🚨 LIVE: WHO Declares Global Health Emergency",
+      "excerpt": "New viral strain emerging in Southeast Asia. Travel advisories issued for 12 countries.",
+      "content": "The World Health Organization has activated its highest alert level.",
+      "category": "health",
+      "author": "Dr. Emily Watson",
+      "date": "2026-06-13",
+      "readTime": 6,
+      "sourceUrl": "/posts/2003",
+      "sourceLabel": "Read report →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/116/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/1/800/500" }
+      ]
+    },
+    {
+      "id": 2009,
+      "title": "💪 LIVE: Scientists Discover Cure for Common Cold",
+      "excerpt": "Breakthrough antiviral drug eliminates rhinovirus in 24 hours. Human trials successful.",
+      "content": "After decades of research, scientists have finally found a cure for the common cold.",
+      "category": "health",
+      "author": "Dr. Emily Watson",
+      "date": "2026-06-13",
+      "readTime": 4,
+      "sourceUrl": "/posts/2009",
+      "sourceLabel": "Read research →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/99/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/15/800/500" }
+      ]
+    },
+    {
+      "id": 2013,
+      "title": "🧬 LIVE: First Human Gene Editing Therapy Approved",
+      "excerpt": "CRISPR-based treatment for sickle cell disease gets FDA approval. 95% success rate.",
+      "content": "The FDA has approved the first CRISPR gene therapy for widespread use.",
+      "category": "health",
+      "author": "Dr. David Kim",
+      "date": "2026-06-13",
+      "readTime": 6,
+      "sourceUrl": "/posts/2013",
+      "sourceLabel": "Read details →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/177/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/1/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/15/800/500" }
+      ]
+    },
+    {
+      "id": 2018,
+      "title": "🧠 LIVE: Neuralink Patient Successfully Controls Mechanical Limb",
+      "excerpt": "Clinical milestone: Human trial participant demonstrates high-precision bionic movement using interface.",
+      "content": "In a groundbreaking development, Neuralink's newest trial phase shows total integration with prosthetic limbs.",
+      "category": "health",
+      "author": "Dr. David Kim",
+      "date": "2026-06-13",
+      "readTime": 5,
+      "sourceUrl": "/posts/2018",
+      "sourceLabel": "Watch video →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/102/800/500" }
+      ]
+    },
+    {
+      "id": 2004,
+      "title": "🎬 LIVE: Marvel Announces Secret Wars - 2028 Release Date",
+      "excerpt": "Avengers: Secret Wars will be the biggest crossover event in cinema history.",
+      "content": "Marvel Studios just dropped a bombshell at Comic-Con.",
+      "category": "entertainment",
+      "author": "Rachel Green",
+      "date": "2026-06-13",
+      "readTime": 4,
+      "sourceUrl": "/posts/2004",
+      "sourceLabel": "Read details →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/153/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/96/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/26/800/500" }
+      ]
+    },
+    {
+      "id": 2008,
+      "title": "🎮 LIVE: GTA 6 Just Dropped Early - First Gameplay Impressions",
+      "excerpt": "Rockstar surprise-released GTA 6. Fans are calling it 'the greatest game ever made.'",
+      "content": "Rockstar Games just shocked the world by releasing GTA 6 a full 6 months early.",
+      "category": "entertainment",
+      "author": "Phoebe Buffay",
+      "date": "2026-06-13",
+      "readTime": 6,
+      "sourceUrl": "/posts/2008",
+      "sourceLabel": "Read review →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/155/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/1/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/123/800/500" }
+      ]
+    },
+    {
+      "id": 2014,
+      "title": "🎵 LIVE: Spotify Launches Hi-Fi Lossless Audio",
+      "excerpt": "CD-quality streaming now available. Dolby Atmos spatial audio included. Same price.",
+      "content": "Spotify finally delivered its long-promised lossless tier.",
+      "category": "entertainment",
+      "author": "Chandler Bing",
+      "date": "2026-06-13",
+      "readTime": 3,
+      "sourceUrl": "/posts/2014",
+      "sourceLabel": "Learn more →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/167/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/96/800/500" }
+      ]
+    },
+    {
+      "id": 2019,
+      "title": "🏆 LIVE: Oscar Nominations 2026 Announced",
+      "excerpt": "Sci-fi epics lead the pack. Surprising snubs spark fierce internet debates.",
+      "content": "The Academy has officially unveiled this year's contenders. Independent cinema secures massive wins.",
+      "category": "entertainment",
+      "author": "Rachel Green",
+      "date": "2026-06-13",
+      "readTime": 4,
+      "sourceUrl": "/posts/2019",
+      "sourceLabel": "See full list →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/142/800/500" }
+      ]
+    },
+    {
+      "id": 2007,
+      "title": "🌍 LIVE: Amazon Rainforest Fires Reach Critical Level",
+      "excerpt": "Satellite images show record deforestation. International community calls for emergency action.",
+      "content": "The Amazon is burning at an unprecedented rate. Environmental groups are sounding the alarm.",
+      "category": "world",
+      "author": "Nina Patel",
+      "date": "2026-06-13",
+      "readTime": 5,
+      "sourceUrl": "/posts/2007",
+      "sourceLabel": "Read coverage →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/15px/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/96/800/500" }
+      ]
+    },
+    {
+      "id": 2015,
+      "title": "🌡️ LIVE: Global Temperature Record Broken Again",
+      "excerpt": "June 2026 is hottest month ever recorded. Scientists urge immediate action.",
+      "content": "Climate scientists are alarmed by the accelerating pace of warming.",
+      "category": "world",
+      "author": "Nina Patel",
+      "date": "2026-06-13",
+      "readTime": 5,
+      "sourceUrl": "/posts/2015",
+      "sourceLabel": "Read report →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/10/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/42/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/26/800/500" }
+      ]
+    },
+    {
+      "id": 2020,
+      "title": "🕊️ LIVE: Historic Peace Treaty Signed in Middle East",
+      "excerpt": "Five nations sign comprehensive accord in Geneva, ending a decade of territorial disputes.",
+      "content": "World leaders are calling today a monumental step forward for global security and economic harmony.",
+      "category": "world",
+      "author": "Marcus Lee",
+      "date": "2026-06-13",
+      "readTime": 6,
+      "sourceUrl": "/posts/2020",
+      "sourceLabel": "Read treaty terms →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/111/800/500" }
+      ]
+    },
+    {
+      "id": 2021,
+      "title": "🚢 LIVE: Clean Energy Cargo Ship Completes First Atlantic Crossing",
+      "excerpt": "Zero-emission hydrogen vessel anchors in Rotterdam, proving commercial scale.",
+      "content": "The global shipping sector takes a massive leap toward total decarbonization with a flawless maiden voyage.",
+      "category": "world",
+      "author": "Nina Patel",
+      "date": "2026-06-13",
+      "readTime": 4,
+      "sourceUrl": "/posts/2021",
+      "sourceLabel": "Track the fleet →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/124/800/500" }
+      ]
+    },
+    {
+      "id": 2016,
+      "title": "🧘 LIVE: Meditation App Calm Acquires Headspace",
+      "excerpt": "$5B merger creates the ultimate mental wellness platform. 100M combined users.",
+      "content": "The two biggest names in meditation are joining forces.",
+      "category": "growth",
+      "author": "Jennifer Lopez",
+      "date": "2026-06-13",
+      "readTime": 4,
+      "sourceUrl": "/posts/2016",
+      "sourceLabel": "Read news →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/150/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/1/800/500" }
+      ]
+    },
+    {
+      "id": 2022,
+      "title": "📚 LIVE: Notion Releases 'Second Brain' Auto-Organizer",
+      "excerpt": "New contextual framework structures your messy personal notes and diaries automatically.",
+      "content": "Personal knowledge management just got an automated engine designed for maximum productivity.",
+      "category": "growth",
+      "author": "Alex Thompson",
+      "date": "2026-06-13",
+      "readTime": 4,
+      "sourceUrl": "/posts/2022",
+      "sourceLabel": "Optimize workflow →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/48/800/500" }
+      ]
+    },
+    {
+      "id": 2023,
+      "title": "🏃 LIVE: Ultra-Endurance Study Rewrites Human Fatigue Rules",
+      "excerpt": "New physiological data shows mental stamina delays physical exhaustion thresholds by 25%.",
+      "content": "A sweeping multi-year study reveals human grit has structural bio-markers we can explicitly train.",
+      "category": "growth",
+      "author": "Dr. Emily Watson",
+      "date": "2026-06-13",
+      "readTime": 5,
+      "sourceUrl": "/posts/2023",
+      "sourceLabel": "Read human data →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/54/800/500" }
+      ]
+    },
+    {
+      "id": 2024,
+      "title": "✨ LIVE: Morning Ritual Routine Shifts Global Workplace Trends",
+      "excerpt": "Corporate data highlights 40% higher cognitive performance in employees practicing tech-free mornings.",
+      "content": "Ditching the phone for the first 30 minutes of the day is moving from wellness trend to structural corporate strategy.",
+      "category": "growth",
+      "author": "Sarah Johnson",
+      "date": "2026-06-13",
+      "readTime": 3,
+      "sourceUrl": "/posts/2024",
+      "sourceLabel": "Build your habit →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/63/800/500" }
+      ]
+    },
+    {
+      "id": 2025,
+      "title": "🏔️ LIVE: Global Shift Towards Radical Minimalism Observed in Gen Z",
+      "excerpt": "Data indicates a 35% decline in non-essential physical goods ownership among young adults.",
+      "content": "Intentional down-scaling and experiential spending are redefining modern home markets globally.",
+      "category": "lifestyle",
+      "author": "Phoebe Buffay",
+      "date": "2026-06-13",
+      "readTime": 4,
+      "sourceUrl": "/posts/2025",
+      "sourceLabel": "Explore statistics →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/11/800/500" }
+      ]
+    },
+    {
+      "id": 2026,
+      "title": "🏡 LIVE: 'Sanctuary Architecture' Dominates 2026 Home Decor",
+      "excerpt": "Biophilic patterns and acoustic dampening design principles sweep the housing industry.",
+      "content": "Home design is focusing aggressively on emotional health and tactile surfaces to escape online burnout.",
+      "category": "lifestyle",
+      "author": "Chandler Bing",
+      "date": "2026-06-13",
+      "readTime": 4,
+      "sourceUrl": "/posts/2026",
+      "sourceLabel": "View design gallery →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/22/800/500" }
+      ]
+    },
+    {
+      "id": 2027,
+      "title": "💕 LIVE: 'Digital Detached' Social Clubs Boom in Major Cities",
+      "excerpt": "Strict no-phone relationship mixers and conversational meetups see skyrocketing attendance.",
+      "content": "People are paying premium prices to guarantee raw, undistracted interpersonal interactions and eye contact.",
+      "category": "lifestyle",
+      "author": "Rachel Green",
+      "date": "2026-06-13",
+      "readTime": 5,
+      "sourceUrl": "/posts/2027",
+      "sourceLabel": "Find near me →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/33/800/500" }
+      ]
+    },
+    {
+      "id": 2028,
+      "title": "👗 LIVE: The Death of Fast Fashion — Vintage Repurposing Surpasses Retail",
+      "excerpt": "Thrifting and structural circular wardrobe platforms outpace traditional clothing manufacturers.",
+      "content": "A monumental consumer shift has pushed capsule wardrobes and clothing longevity to high-fashion status.",
+      "category": "lifestyle",
+      "author": "Nina Patel",
+      "date": "2026-06-13",
+      "readTime": 4,
+      "sourceUrl": "/posts/2028",
+      "sourceLabel": "Browse styles →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/44/800/500" }
+      ]
+    }
+  ]
+}

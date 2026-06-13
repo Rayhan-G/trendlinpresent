@@ -2,104 +2,456 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Tech | World | Ultima</title>
-    <meta name="description" content="Tech policy, digital sovereignty, AI regulation, and the global innovation race. Technology that shapes nations.">
-    <link rel="stylesheet" href="/assets/css/critical.css">
-    <script src="/components/loader.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <title>Trendlin | Navigation Component</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-        .sub-header { padding: 60px 0 40px; background: linear-gradient(135deg, #1a0a2a 0%, #0a0a0a 100%); color: white; }
-        .back-link { color: #a78bfa; text-decoration: none; margin-bottom: 24px; display: inline-block; }
-        .back-link:hover { text-decoration: underline; }
-        .sub-header h1 { font-size: 2.5rem; font-weight: 700; display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-        .sub-header p { font-size: 1.125rem; color: #9ca3af; max-width: 700px; }
-        .posts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin: 40px 0; }
-        .post-card { border-bottom: 1px solid #eaeef2; padding-bottom: 24px; }
-        .post-category { font-size: 0.75rem; text-transform: uppercase; color: #8b5cf6; margin-bottom: 12px; }
-        .post-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; }
-        .post-card h3 a { color: #111827; text-decoration: none; }
-        .post-card h3 a:hover { color: #8b5cf6; }
-        .post-card p { font-size: 0.875rem; color: #6b7280; margin-bottom: 16px; }
-        .post-meta { display: flex; gap: 16px; font-size: 0.75rem; color: #9ca3af; margin-top: 12px; }
-        .pagination { display: flex; justify-content: center; gap: 8px; margin-top: 40px; padding-top: 20px; }
-        .page-link { padding: 8px 14px; border-radius: 8px; background: #f3f4f6; text-decoration: none; color: #6b7280; }
-        .page-link:hover { background: #e5e7eb; }
-        .page-link.active { background: #111827; color: white; }
-        .loading { text-align: center; padding: 40px; color: #6b7280; }
-        .error { text-align: center; padding: 40px; color: #ef4444; }
-        @media (max-width: 768px) { .posts-grid { grid-template-columns: 1fr; } }
+        /* ===== RESET & VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* CRITICAL: Removes default mobile blue flash/thunder highlight */
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Custom focus for accessibility without intrusive blue */
+        :focus {
+            outline: none;
+        }
+        :focus-visible {
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+            border-radius: 6px;
+        }
+
+        /* All interactive elements get smooth touch feedback - no blue flash */
+        a, 
+        .hamburger,
+        .mobile-menu-close,
+        .mobile-overlay,
+        label,
+        .desktop-nav a {
+            cursor: pointer;
+            touch-action: manipulation;
+            transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Active state: subtle scale + opacity instead of ugly blue flash */
+        a:active,
+        .hamburger:active,
+        .mobile-menu-close:active,
+        .desktop-nav a:active {
+            transform: scale(0.96);
+            opacity: 0.85;
+            transition-duration: 0.05s;
+        }
+
+        /* Hover effects preserved for desktop only */
+        @media (hover: hover) {
+            .desktop-nav a:hover {
+                background: var(--light);
+                color: var(--dark);
+            }
+            .desktop-nav a.shop-link:hover {
+                transform: translateY(-2px);
+                box-shadow: var(--shadow-md);
+            }
+            .hamburger:hover {
+                background: var(--light);
+            }
+            .mobile-menu-close:hover {
+                color: var(--dark);
+            }
+        }
+
+        :root {
+            --primary: #667eea;
+            --primary-dark: #5a67d8;
+            --secondary: #764ba2;
+            --accent: #ff4757;
+            --dark: #0a0a0a;
+            --dark-muted: #1a1a1a;
+            --gray: #6b7280;
+            --gray-light: #9ca3af;
+            --light: #fafafa;
+            --border: #e5e7eb;
+            --white: #ffffff;
+            
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Demo content styling to show the navigation context */
+        .demo-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 24px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9edf2 100%);
+        }
+        .demo-hero h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+        .demo-hero p {
+            font-size: 1rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .demo-hero h1 { font-size: 3rem; }
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        .site-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        /* Logo */
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: baseline;
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-text {
+            background: linear-gradient(135deg, #1a1a1a 0%, #404040 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo-dot {
+            background: linear-gradient(135deg, #e11d48 0%, #f43f5e 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: none;
+        }
+
+        .desktop-nav ul {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .desktop-nav a {
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray);
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .desktop-nav a.active {
+            color: var(--primary);
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .desktop-nav a.shop-link {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white !important;
+            padding: 8px 24px;
+            border-radius: var(--radius-full);
+        }
+
+        /* ===== CSS ONLY HAMBURGER MENU ===== */
+        #menu-toggle {
+            display: none;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: var(--radius-md);
+            transition: background 0.2s ease;
+            user-select: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--dark);
+            border-radius: 2px;
+            transition: 0.2s ease;
+            pointer-events: none;
+        }
+
+        /* Mobile Menu Panel */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: min(320px, 85%);
+            height: 100%;
+            background: var(--white);
+            box-shadow: var(--shadow-xl);
+            z-index: 1001;
+            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 80px 24px 32px;
+            overflow-y: auto;
+        }
+
+        .mobile-menu-header {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .mobile-menu-close {
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--gray);
+            transition: color 0.2s ease;
+            display: inline-block;
+            padding: 8px;
+            line-height: 1;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu li {
+            margin-bottom: 8px;
+        }
+
+        .mobile-menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--gray);
+            border-radius: var(--radius-md);
+            transition: all 0.2s ease;
+        }
+
+        .mobile-menu a:hover {
+            background: var(--light);
+            color: var(--dark);
+        }
+
+        .mobile-menu a i {
+            width: 24px;
+            font-size: 18px;
+        }
+
+        .mobile-menu a.shop-link {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white !important;
+            margin-top: 16px;
+            justify-content: center;
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Show menu when checkbox is checked */
+        #menu-toggle:checked ~ .mobile-menu {
+            left: 0;
+        }
+
+        #menu-toggle:checked ~ .mobile-overlay {
+            display: block;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (min-width: 768px) {
+            .hamburger {
+                display: none;
+            }
+            
+            .desktop-nav {
+                display: block;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .header-inner {
+                padding: 12px 0;
+            }
+            
+            .logo a {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --light: #0b0e14;
+                --dark: #eef2f8;
+                --white: #121720;
+                --border: #232b36;
+            }
+            
+            .site-header {
+                background: rgba(18, 23, 32, 0.98);
+            }
+            
+            .demo-hero {
+                background: linear-gradient(135deg, #0f141c 0%, #131826 100%);
+            }
+            .demo-hero h1 {
+                color: #f0f3fa;
+            }
+            .demo-hero p {
+                color: #9ca3af;
+            }
+        }
+        
+        /* Fix for iOS momentum scrolling */
+        .mobile-menu {
+            -webkit-overflow-scrolling: touch;
+        }
     </style>
 </head>
 <body>
-    <div class="sub-header">
-        <div class="container">
-            <a href="/categories/world/" class="back-link">← Back to World</a>
-            <h1>🖥️ Global Tech</h1>
-            <p>Tech policy, digital sovereignty, AI regulation, and the global innovation race. Technology that shapes nations.</p>
-        </div>
-    </div>
+
+<input type="checkbox" id="menu-toggle">
+
+<header class="site-header">
     <div class="container">
-        <div class="posts-section">
-            <h2>Latest in Global Tech</h2>
-            <div class="posts-grid" id="postsGrid"><div class="loading">Loading articles...</div></div>
-            <div class="pagination" id="pagination"></div>
+        <div class="header-inner">
+            <div class="logo">
+                <a href="/">
+                    <span class="logo-text">trendlin</span>
+                    <span class="logo-dot">.</span>
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="/"><i class="fas fa-th-large"></i> Home</a></li>
+                    <li><a href="/categories/technology/"><i class="fas fa-microchip"></i> Technology</a></li>
+                    <li><a href="/categories/health/"><i class="fas fa-heartbeat"></i> Health</a></li>
+                    <li><a href="/categories/wealth/"><i class="fas fa-chart-line"></i> Wealth</a></li>
+                    <li><a href="/categories/growth/"><i class="fas fa-brain"></i> Growth</a></li>
+                    <li><a href="/categories/entertainment/"><i class="fas fa-film"></i> Entertainment</a></li>
+                    <li><a href="/categories/world/"><i class="fas fa-globe"></i> World</a></li>
+                    <li><a href="/categories/lifestyle/"><i class="fas fa-spa"></i> Lifestyle</a></li>
+                    <li><a href="/affiliate-shop/" class="shop-link"><i class="fas fa-store"></i> Shop</a></li>
+                </ul>
+            </nav>
+
+            <!-- Hamburger Label (CSS Only - No JavaScript!) -->
+            <label for="menu-toggle" class="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
         </div>
     </div>
-    <script>
-        const CATEGORY = 'world';
-        const SUBCATEGORY = 'technology';
-        let currentPage = 1;
-        const POSTS_PER_PAGE = 9;
-        let allPosts = [];
-        async function loadContent() {
-            try {
-                const response = await fetch('/data/posts.json?t=' + Date.now());
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                const data = await response.json();
-                let postsArray = Array.isArray(data) ? data : (data.posts || []);
-                allPosts = postsArray.filter(p => p.category === CATEGORY && p.subcategory === SUBCATEGORY);
-                if (allPosts.length === 0) { document.getElementById('postsGrid').innerHTML = '<div class="loading">No global tech articles yet. Check back soon.</div>'; return; }
-                renderPosts();
-            } catch (error) {
-                document.getElementById('postsGrid').innerHTML = `<div class="error">Error: ${error.message}. Please refresh the page.</div>`;
-            }
-        }
-        function renderPosts() {
-            const start = (currentPage - 1) * POSTS_PER_PAGE;
-            const pagePosts = allPosts.slice(start, start + POSTS_PER_PAGE);
-            document.getElementById('postsGrid').innerHTML = pagePosts.map(post => `
-                <div class="post-card">
-                    <div class="post-category">${(post.subcategory || 'TECH').toUpperCase()}</div>
-                    <h3><a href="/posts/index.html?id=${post.id}">${escapeHtml(post.title)}</a></h3>
-                    <p>${escapeHtml((post.excerpt || '').substring(0, 120))}...</p>
-                    <div class="post-meta">
-                        <span>📅 ${post.date || 'Recent'}</span>
-                        <span>🕐 ${post.readTime || '5'} min read</span>
-                        <span>👁️ ${(post.views || 0).toLocaleString()} views</span>
-                    </div>
-                </div>
-            `).join('');
-            renderPagination();
-        }
-        function renderPagination() {
-            const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
-            if (totalPages <= 1) return;
-            let html = '';
-            if (currentPage > 1) html += `<a href="#" class="page-link" data-page="${currentPage-1}">← Prev</a>`;
-            for (let i = 1; i <= totalPages; i++) {
-                if (i === 1 || i === totalPages || (i >= currentPage-2 && i <= currentPage+2))
-                    html += `<a href="#" class="page-link ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</a>`;
-                else if (i === currentPage-3 || i === currentPage+3) html += `<span class="page-link">...</span>`;
-            }
-            if (currentPage < totalPages) html += `<a href="#" class="page-link" data-page="${currentPage+1}">Next →</a>`;
-            document.getElementById('pagination').innerHTML = html;
-            document.querySelectorAll('.page-link[data-page]').forEach(link => {
-                link.addEventListener('click', (e) => { e.preventDefault(); currentPage = parseInt(link.dataset.page); renderPosts(); window.scrollTo({ top: 300, behavior: 'smooth' }); });
-            });
-        }
-        function escapeHtml(str) { if (!str) return ''; return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
-        document.addEventListener('DOMContentLoaded', loadContent);
-    </script>
+</header>
+
+<!-- Mobile Menu Overlay -->
+<label for="menu-toggle" class="mobile-overlay" aria-label="Close menu"></label>
+
+<!-- Mobile Menu Panel -->
+<nav class="mobile-menu">
+    <div class="mobile-menu-header">
+        <label for="menu-toggle" class="mobile-menu-close" aria-label="Close menu">✕</label>
+    </div>
+    <ul>
+        <li><a href="/"><i class="fas fa-th-large"></i> Home</a></li>
+        <li><a href="/categories/technology/"><i class="fas fa-microchip"></i> Technology</a></li>
+        <li><a href="/categories/health/"><i class="fas fa-heartbeat"></i> Health</a></li>
+        <li><a href="/categories/wealth/"><i class="fas fa-chart-line"></i> Wealth</a></li>
+        <li><a href="/categories/growth/"><i class="fas fa-brain"></i> Growth</a></li>
+        <li><a href="/categories/entertainment/"><i class="fas fa-film"></i> Entertainment</a></li>
+        <li><a href="/categories/world/"><i class="fas fa-globe"></i> World</a></li>
+        <li><a href="/categories/lifestyle/"><i class="fas fa-spa"></i> Lifestyle</a></li>
+        <li><a href="/affiliate-shop/" class="shop-link"><i class="fas fa-store"></i> Shop</a></li>
+    </ul>
+</nav>
+
+<!-- Demo content to show the navigation in context -->
+<section class="demo-hero">
+    <div class="container">
+        <h1>Intelligence for the Modern World</h1>
+        <p>Trendlin researches emerging trends from across the web — social media, forums, news outlets, and public data — and writes clear, insightful articles.</p>
+    </div>
+</section>
+
+<!-- The rest of your page content would go here -->
+
 </body>
 </html>

@@ -9,109 +9,116 @@
     <link rel="stylesheet" href="/assets/css/live-feed.css">
     <script src="/components/loader.js" defer></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #ffffff; color: #111827; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.5; }
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-
-        /* HERO - PURE CSS, NO COPYRIGHT IMAGES */
-        .hero { 
-            min-height: 40vh; 
-            display: flex; 
-            align-items: center; 
-            background: linear-gradient(135deg, #0b2b26 0%, #0a1f1a 100%); 
-            position: relative; 
-            overflow: hidden; 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
-        /* Animated gradient orbs instead of background image */
+
+        body {
+            background: #ffffff;
+            color: #111827;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* HERO SECTION - HEALTH THEME */
+        .hero {
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #0b2b26 0%, #0a1f1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
         .hero::before {
             content: '';
             position: absolute;
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(52, 211, 153, 0.25), transparent);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(52, 211, 153, 0.3), transparent);
             top: -100px;
-            right: -80px;
+            right: -100px;
             border-radius: 50%;
-            animation: floatOrb1 18s infinite alternate;
+            animation: floatOrb 15s infinite alternate;
         }
-        
         .hero::after {
             content: '';
             position: absolute;
             width: 400px;
             height: 400px;
-            background: radial-gradient(circle, rgba(110, 231, 183, 0.15), transparent);
-            bottom: -120px;
-            left: -100px;
+            background: radial-gradient(circle, rgba(110, 231, 183, 0.2), transparent);
+            bottom: -150px;
+            left: -150px;
             border-radius: 50%;
-            animation: floatOrb2 22s infinite alternate;
+            animation: floatOrb2 18s infinite alternate;
         }
-        
-        @keyframes floatOrb1 {
+        @keyframes floatOrb {
             0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
             100% { transform: translate(-50px, 50px) scale(1.3); opacity: 0.6; }
         }
-        
         @keyframes floatOrb2 {
             0% { transform: translate(0, 0) scale(1); opacity: 0.2; }
             100% { transform: translate(60px, -40px) scale(1.4); opacity: 0.5; }
         }
-        
-        /* Animated leaf/growth pattern overlay */
         .hero-grid {
             position: absolute;
             inset: 0;
-            background-image: radial-gradient(circle at 10% 20%, rgba(52, 211, 153, 0.08) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: patternMove 20s linear infinite;
+            background-image: linear-gradient(rgba(52, 211, 153, 0.08) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(52, 211, 153, 0.08) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
         }
-        
-        @keyframes patternMove {
+        @keyframes gridMove {
             0% { background-position: 0 0; }
-            100% { background-position: 40px 40px; }
+            100% { background-position: 50px 50px; }
         }
-        
-        .hero-content { 
-            position: relative; 
-            z-index: 2; 
-            max-width: 800px; 
-            margin: 0 auto; 
-            text-align: center; 
-            padding: 0 24px; 
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 24px;
         }
-        .hero-badge { 
-            display: inline-block; 
-            background: rgba(52, 211, 153, 0.2); 
-            backdrop-filter: blur(10px); 
-            color: #6ee7b7; 
-            padding: 4px 16px; 
-            border-radius: 100px; 
-            font-size: 0.65rem; 
-            letter-spacing: 2px; 
-            margin-bottom: 20px; 
-            border: 1px solid rgba(52, 211, 153, 0.3); 
+        .hero-badge {
+            display: inline-block;
+            background: rgba(52, 211, 153, 0.2);
+            backdrop-filter: blur(10px);
+            color: #6ee7b7;
+            padding: 4px 16px;
+            border-radius: 100px;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(52, 211, 153, 0.3);
         }
-        .hero h1 { 
-            font-size: 2.5rem; 
-            font-weight: 700; 
-            line-height: 1.2; 
-            margin-bottom: 16px; 
-            color: white; 
-            letter-spacing: -0.02em; 
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: white;
+            letter-spacing: -0.02em;
         }
-        .hero h1 span { 
-            background: linear-gradient(135deg, #6ee7b7, #34d399); 
-            -webkit-background-clip: text; 
-            background-clip: text; 
-            color: transparent; 
+        .hero h1 span {
+            background: linear-gradient(135deg, #6ee7b7, #34d399);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
-        .hero p { 
-            font-size: 0.9rem; 
-            color: #9ca3af; 
-            max-width: 600px; 
-            margin: 0 auto; 
-            line-height: 1.5; 
+        .hero p {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
         }
 
         .feed-section {
@@ -135,51 +142,317 @@
             font-size: 0.85rem;
         }
 
-        /* ========== SUBCATEGORY GRID - NO COPYRIGHT IMAGES, PURE CSS ========== */
-        .subcategory-showcase {
-            padding: 60px 0;
-            background: linear-gradient(135deg, #ffffff 0%, #ecfdf5 100%);
+        /* CAROUSEL STYLES */
+        .carousel-wrapper { 
+            position: relative; 
+            max-width: 100%; 
+            overflow: visible; 
+            padding: 0 60px;
+        }
+        .carousel-track-container {
+            overflow-x: auto;
+            overflow-y: visible;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            padding: 20px 0 30px;
+            scrollbar-color: #34D399 #EDEDF2;
+        }
+        .carousel-track-container::-webkit-scrollbar { height: 6px; }
+        .carousel-track-container::-webkit-scrollbar-track { background: #EDEDF2; border-radius: 10px; }
+        .carousel-track-container::-webkit-scrollbar-thumb { background: #34D399; border-radius: 10px; }
+        .carousel-track {
+            display: flex;
+            gap: 30px;
+            padding: 10px calc(50% - 430px) 20px calc(50% - 430px);
+            scroll-snap-type: x mandatory;
+        }
+        .depth-card {
+            flex: 0 0 860px;
+            scroll-snap-align: center;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            cursor: pointer;
+            filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.15));
+        }
+        .depth-card:hover { transform: translateY(-10px); filter: drop-shadow(0 30px 35px rgba(0, 0, 0, 0.25)); }
+        .seamless-card {
+            display: flex;
+            background: #FFFFFF;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+            height: 620px;
+        }
+        .text-panel {
+            flex: 0 0 60%;
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            background: #FFFFFF;
+            height: 100%;
+        }
+        .title-panel {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8F6F2 100%);
+            padding: 28px 28px 22px 28px;
+            box-shadow: 0 30px 35px -20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,240,0.9);
+            position: relative;
+            z-index: 30;
+            margin-bottom: -10px;
+            flex-shrink: 0;
+        }
+        .live-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #D1FAE5;
+            padding: 6px 16px;
+            border-radius: 60px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: #065F46;
+            margin-bottom: 16px;
+        }
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background: #34D399;
+            border-radius: 50%;
+            animation: pulseAnim 1.3s infinite;
+        }
+        @keyframes pulseAnim {
+            0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(52,211,153,0.7);}
+            70% { transform: scale(1.3); box-shadow: 0 0 0 8px rgba(52,211,153,0);}
+            100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(52,211,153,0);}
+        }
+        .title-panel h2 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            line-height: 1.35;
+            letter-spacing: -0.02em;
+            background: linear-gradient(115deg, #1a2a35, #2d4a5c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0;
+        }
+        .desc-panel {
+            background: #F5F0E8;
+            padding: 24px 28px 24px 28px;
+            position: relative;
+            z-index: 20;
+            margin-top: -6px;
+            box-shadow: 0 15px 25px -15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,245,0.8);
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .desc-panel::-webkit-scrollbar { width: 6px; }
+        .desc-panel::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.08); border-radius: 10px; }
+        .desc-panel::-webkit-scrollbar-thumb { background: #34D399; border-radius: 10px; }
+        .desc-panel p { font-size: 1rem; line-height: 1.65; color: #3a4a55; font-weight: 450; margin-bottom: 20px; flex-shrink: 0; }
+        .tag-list { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 8px; flex-shrink: 0; }
+        .tag-list span { background: rgba(0, 0, 0, 0.06); font-size: 0.7rem; padding: 5px 14px; border-radius: 30px; font-weight: 600; color: #5a6a7a; }
+        .scroll-hint {
+            position: sticky;
+            bottom: 0;
+            text-align: center;
+            font-size: 0.6rem;
+            color: #8a7a68;
+            background: rgba(245, 240, 232, 0.95);
+            padding: 6px;
+            border-radius: 20px;
+            width: fit-content;
+            margin: 12px auto 0;
+            backdrop-filter: blur(4px);
+            pointer-events: none;
+            flex-shrink: 0;
+        }
+        .source-panel {
+            background: #D8D0C4;
+            background-image: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 2px, transparent 2px, transparent 12px);
+            padding: 18px 28px 22px 28px;
+            position: relative;
+            z-index: 10;
+            margin-top: -6px;
+            box-shadow: 0 25px 35px -18px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,250,235,0.5);
+            flex-shrink: 0;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+        .source-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(42, 58, 68, 0.15);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #4a3a2a;
+            letter-spacing: 0.5px;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+        }
+        .source-title-link a {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1a2a35;
+            text-decoration: none;
+            transition: color 0.2s;
+            line-height: 1.4;
+        }
+        .source-title-link a:hover { color: #34D399; text-decoration: underline; }
+        .media-panel {
+            flex: 0 0 40%;
+            width: 40%;
+            position: relative;
+            background: #1a1a2e;
+            overflow: hidden;
+            height: 100%;
+        }
+        .media-carousel { width: 100%; height: 100%; position: relative; }
+        .media-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: opacity 0.3s ease;
+        }
+        .media-slide img, .media-slide video { width: 100%; height: 100%; object-fit: cover; }
+        .no-media {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #34d399, #059669);
+            color: white;
+            font-weight: 600;
+        }
+        .media-prev, .media-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 15;
+            transition: all 0.2s;
+        }
+        .media-prev:hover, .media-next:hover { background: rgba(0,0,0,0.85); transform: translateY(-50%) scale(1.05); }
+        .media-prev { left: 12px; }
+        .media-next { right: 12px; }
+        .media-dots {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 15;
+        }
+        .media-dots .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+        }
+        .media-dots .dot.active { background: white; width: 24px; border-radius: 4px; }
+        
+        /* Navigation Buttons */
+        .carousel-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 52px;
+            height: 52px;
+            background: white;
+            border: 1px solid #EDEDF2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 28px;
+            transition: all 0.2s ease;
+            box-shadow: 0 8px 16px -6px rgba(0, 0, 0, 0.06), 0 4px 8px -4px rgba(0, 0, 0, 0.04);
+            z-index: 25;
+            color: #1E1E2F;
+            font-weight: 400;
+            line-height: 1;
+        }
+        .carousel-nav-btn:hover { background: #34D399; color: white; border-color: #34D399; transform: translateY(-50%) scale(1.05); }
+        .carousel-nav-btn:active { transform: translateY(-50%) scale(0.98); }
+        .btn-prev { left: 0; }
+        .btn-next { right: 0; }
+        
+        .loading-spinner { text-align: center; padding: 80px; font-size: 1.2rem; color: #9393A6; }
+        .feed-empty { text-align: center; padding: 80px 24px; background: white; border-radius: 24px; max-width: 600px; margin: 0 auto; }
+        .empty-icon { font-size: 64px; margin-bottom: 20px; }
+
+        @media (max-width: 1024px) {
+            .carousel-track { padding: 10px 24px 20px 24px; }
+            .carousel-nav-btn { width: 44px; height: 44px; font-size: 24px; }
+            .carousel-wrapper { padding: 0 50px; }
+        }
+        @media (max-width: 900px) {
+            .depth-card { flex: 0 0 92vw; }
+            .seamless-card { flex-direction: column; height: auto; }
+            .text-panel, .media-panel { flex: auto; width: 100%; height: auto; }
+            .media-panel { min-height: 320px; }
+            .title-panel h2 { font-size: 1.4rem; }
+            .carousel-track { padding: 10px 16px 20px 16px; }
+            .desc-panel { min-height: 200px; max-height: 250px; }
         }
 
+        /* SUBCATEGORY STYLES */
+        .subcategory-showcase {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+        }
         .subcategory-showcase .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 24px;
         }
-
         .showcase-header {
             text-align: center;
             margin-bottom: 48px;
         }
-
         .showcase-header .section-label {
             text-align: center;
             font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: #10b981;
+            color: #34d399;
             margin-bottom: 12px;
         }
-
         .showcase-header h2 {
             font-size: 1.8rem;
             font-weight: 700;
             color: #111827;
             margin-bottom: 12px;
         }
-
         .showcase-header p {
             color: #6b7280;
             font-size: 0.9rem;
         }
-
         .subcategory-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 24px;
         }
-
-        /* PURE CSS CARDS - NO BACKGROUND IMAGES */
         .subcategory-card {
             position: relative;
             height: 360px;
@@ -189,80 +462,63 @@
             transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             text-decoration: none;
             display: block;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
         }
-
-        /* Individual card background gradients - Wellness theme */
-        .subcategory-card[data-cat="nutrition"] { background: linear-gradient(135deg, #1a3a2a, #0a2a1a); }
-        .subcategory-card[data-cat="mental-wellness"] { background: linear-gradient(135deg, #2a1a3a, #1a0a2a); }
-        .subcategory-card[data-cat="fitness-mobility"] { background: linear-gradient(135deg, #2a2a1a, #1a1a0a); }
-        .subcategory-card[data-cat="sleep-hygiene"] { background: linear-gradient(135deg, #1a2a3a, #0a1a2a); }
-        .subcategory-card[data-cat="gut-health"] { background: linear-gradient(135deg, #2a1a2a, #1a0a1a); }
-        .subcategory-card[data-cat="heart-longevity"] { background: linear-gradient(135deg, #2a1a1a, #1a0a0a); }
-
-        /* Animated gradient border */
         .subcategory-card::before {
             content: '';
             position: absolute;
             inset: 0;
             border-radius: 20px;
             padding: 2px;
-            background: linear-gradient(135deg, #10b981, #34d399, #059669, #10b981);
-            background-size: 300% 300%;
+            background: linear-gradient(135deg, #34d399, #6ee7b7, #34d399);
+            background-size: 200% 200%;
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
             opacity: 0;
             transition: opacity 0.4s;
-            animation: borderShift 4s ease infinite;
+            animation: gradientShift 3s ease infinite;
         }
-
-        .subcategory-card:hover::before {
-            opacity: 1;
-        }
-
-        @keyframes borderShift {
+        .subcategory-card:hover::before { opacity: 1; }
+        @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
-        .gradient-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.85), rgba(5, 150, 105, 0.85));
-            transition: opacity 0.3s;
-            opacity: 0.85;
-        }
-
-        .subcategory-card:hover .gradient-overlay {
-            opacity: 0.95;
-        }
-
-        /* Floating particles - leaf-like dots */
+        .subcategory-card[data-cat="nutrition"] { background: linear-gradient(135deg, #1a3a2a, #0a2a1a); }
+        .subcategory-card[data-cat="mental-wellness"] { background: linear-gradient(135deg, #2a1a3a, #1a0a2a); }
+        .subcategory-card[data-cat="fitness-mobility"] { background: linear-gradient(135deg, #2a2a1a, #1a1a0a); }
+        .subcategory-card[data-cat="sleep-hygiene"] { background: linear-gradient(135deg, #1a2a3a, #0a1a2a); }
+        .subcategory-card[data-cat="gut-health"] { background: linear-gradient(135deg, #2a1a2a, #1a0a1a); }
+        .subcategory-card[data-cat="heart-longevity"] { background: linear-gradient(135deg, #2a1a1a, #1a0a0a); }
         .card-particles {
             position: absolute;
             inset: 0;
             pointer-events: none;
-            overflow: hidden;
         }
-
         .card-particles span {
             position: absolute;
             width: 4px;
             height: 4px;
-            background: rgba(110, 231, 183, 0.5);
+            background: rgba(52, 211, 153, 0.4);
             border-radius: 50%;
-            animation: particleFloat 12s infinite linear;
+            animation: particleFloat 8s infinite linear;
         }
-
         @keyframes particleFloat {
             0% { transform: translateY(100%) rotate(0deg); opacity: 0; }
             10% { opacity: 0.6; }
             90% { opacity: 0.6; }
-            100% { transform: translateY(-30%) rotate(360deg); opacity: 0; }
+            100% { transform: translateY(-20%) rotate(360deg); opacity: 0; }
         }
-
+        .gradient-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(52, 211, 153, 0.85), rgba(5, 150, 105, 0.85));
+            transition: opacity 0.3s;
+            opacity: 0.85;
+        }
+        .subcategory-card:hover .gradient-overlay { opacity: 0.95; }
         .card-content-wrapper {
             position: absolute;
             inset: 0;
@@ -272,13 +528,11 @@
             justify-content: space-between;
             z-index: 2;
         }
-
         .card-top {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
         }
-
         .card-icon {
             width: 56px;
             height: 56px;
@@ -291,36 +545,28 @@
             font-size: 1.8rem;
             transition: transform 0.3s;
         }
-
-        .subcategory-card:hover .card-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
+        .subcategory-card:hover .card-icon { transform: scale(1.1) rotate(5deg); }
         .card-bottom {
             text-align: left;
         }
-
         .card-bottom h3 {
             font-size: 1.6rem;
             font-weight: 700;
             color: white;
             margin-bottom: 8px;
         }
-
         .card-tagline {
             color: rgba(255, 255, 255, 0.9);
             font-size: 0.85rem;
             margin-bottom: 6px;
             font-weight: 500;
         }
-
         .card-description {
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.7rem;
             margin-bottom: 12px;
             line-height: 1.4;
         }
-
         .explore-link {
             display: inline-flex;
             align-items: center;
@@ -330,338 +576,326 @@
             font-weight: 500;
             transition: all 0.2s;
         }
-
-        .subcategory-card:hover .explore-link {
-            gap: 12px;
-            color: white;
+        .subcategory-card:hover .explore-link { gap: 12px; color: white; }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6b7280;
         }
 
-        .stats-badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(4px);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-top: 8px;
-        }
-
-        .featured-section, .articles-section, .sidebar-section {
-            display: none !important;
-        }
-
-        .loading { text-align: center; padding: 40px; color: #6b7280; }
-
-        @media (max-width: 900px) { 
-            .hero h1 { font-size: 1.8rem; } 
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 1.8rem; }
             .subcategory-grid { grid-template-columns: 1fr; }
         }
-        @media (max-width: 640px) { 
-            .hero h1 { font-size: 1.5rem; } 
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 1.5rem; }
             .card-bottom h3 { font-size: 1.3rem; }
         }
     </style>
 </head>
 <body>
-    <div class="hero">
-        <div class="hero-grid"></div>
-        <div class="hero-content">
-            <div class="hero-badge">TRENDLIN HEALTH</div>
-            <h1>Small daily <span>wellness wins</span></h1>
-            <p>Science-backed rituals for energy, mental clarity, and longevity. Transform your health from the inside out — one sustainable step at a time.</p>
+
+<!-- HERO SECTION -->
+<div class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+        <div class="hero-badge">TRENDLIN HEALTH</div>
+        <h1>Small daily <span>wellness wins</span></h1>
+        <p>Science-backed rituals for energy, mental clarity, and longevity. Transform your health from the inside out — one sustainable step at a time.</p>
+    </div>
+</div>
+
+<!-- LIVE FEED SECTION -->
+<section class="feed-section">
+    <div class="feed-header">
+        <h2>🌿 Live Health Feed</h2>
+        <p>← Click the left/right buttons → Only posts from Health category</p>
+    </div>
+    <div class="carousel-wrapper">
+        <button class="carousel-nav-btn btn-prev" id="prevBtn">‹</button>
+        <div class="carousel-track-container" id="trackContainer">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="loading-spinner">Loading health live posts from /data/live-posts.json...</div>
+            </div>
+        </div>
+        <button class="carousel-nav-btn btn-next" id="nextBtn">›</button>
+    </div>
+</section>
+
+<!-- SUBCATEGORY SECTION -->
+<div class="subcategory-showcase">
+    <div class="container">
+        <div class="showcase-header">
+            <div class="section-label">Wellness pillars</div>
+            <h2>Nourish • Move • Recover • Thrive</h2>
+            <p>Dive into your favorite health & wellness topics</p>
+        </div>
+        <div class="subcategory-grid" id="subcategory-grid">
+            <div class="loading">Loading categories...</div>
         </div>
     </div>
+</div>
 
-    <section class="feed-section">
-        <div class="feed-header">
-            <h2>🌿 Live Health Feed</h2>
-            <p>← Swipe → the freshest posts on nutrition, fitness, mental wellness, sleep, and longevity</p>
-        </div>
-        <div id="live-feed-container" data-category="health">
-            <div class="feed-skeleton">
-                <div class="skeleton-track">
-                    <div class="skeleton-post"><div class="skeleton-text"><div class="skeleton-line title"></div><div class="skeleton-line meta"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line footer"></div></div><div class="skeleton-media"></div></div>
-                    <div class="skeleton-post"><div class="skeleton-text"><div class="skeleton-line title"></div><div class="skeleton-line meta"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line excerpt"></div><div class="skeleton-line footer"></div></div><div class="skeleton-media"></div></div>
+<script>
+    let healthPosts = [];
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return String(str).replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m]));
+    }
+
+    function getCategoryIcon(category) { 
+        const icons = { technology: '💻', wealth: '💰', health: '🌿', growth: '🌱', entertainment: '🎬', world: '🌍', lifestyle: '✨' };
+        return icons[category?.toLowerCase()] || '🌿';
+    }
+    
+    function getCategoryBadge(category) {
+        const badges = { technology: '🔵 TECH', wealth: '🟡 WEALTH', health: '🌿 HEALTH', growth: '🟠 GROWTH', entertainment: '🎬 ENTERTAINMENT', world: '🌍 WORLD', lifestyle: '✨ LIFESTYLE' };
+        return badges[category?.toLowerCase()] || '🌿 LIVE';
+    }
+
+    function buildMedia(mediaId, mediaItems) {
+        if (!mediaItems || mediaItems.length === 0) return `<div class="no-media">🌿 No media</div>`;
+        const multiple = mediaItems.length > 1;
+        let html = `<div class="media-carousel" data-media-id="${mediaId}" style="height:100%;">`;
+        html += `<div id="media-${mediaId}" style="position:relative; width:100%; height:100%;">`;
+        mediaItems.forEach((item, idx) => {
+            const url = item.url || item;
+            html += `<div class="media-slide" style="opacity:${idx === 0 ? 1 : 0}"><img src="${url}" alt="Post visual" loading="lazy" onerror="this.src='https://placehold.co/800x500?text=Health+Wellness'"></div>`;
+        });
+        html += `</div>`;
+        if (multiple) {
+            html += `<button class="media-prev" data-target="media-${mediaId}">‹</button>`;
+            html += `<button class="media-next" data-target="media-${mediaId}">›</button>`;
+            html += `<div class="media-dots">${mediaItems.map((_, idx) => `<span class="dot ${idx === 0 ? 'active' : ''}" data-idx="${idx}"></span>`).join('')}</div>`;
+        }
+        html += `</div>`;
+        return html;
+    }
+
+    function renderCards() {
+        const track = document.getElementById('carouselTrack');
+        if (!track) return;
+        
+        if (!healthPosts || healthPosts.length === 0) {
+            track.innerHTML = `<div class="feed-empty"><div class="empty-icon">🌿💚</div><h3>No health live posts available</h3><p>Make sure /data/live-posts.json exists with health category posts.</p></div>`;
+            return;
+        }
+        
+        track.innerHTML = healthPosts.map((post, idx) => {
+            const excerpt = (post.excerpt || post.content || '').substring(0, 350);
+            const categoryIcon = getCategoryIcon(post.category);
+            const categoryBadge = getCategoryBadge(post.category);
+            const mediaItems = post.media || (post.image ? [{ url: post.image }] : []);
+            const sourceUrl = post.sourceUrl || post.url || '#';
+            
+            return `
+                <div class="depth-card">
+                    <div class="seamless-card">
+                        <div class="text-panel">
+                            <div class="title-panel">
+                                <div class="live-tag"><span class="pulse-dot"></span><span>${categoryIcon} ${categoryBadge}</span></div>
+                                <h2>${escapeHtml(post.title)}</h2>
+                            </div>
+                            <div class="desc-panel">
+                                <p>${escapeHtml(excerpt)}${excerpt.length >= 350 ? '...' : ''}</p>
+                                ${post.tags ? `<div class="tag-list">${post.tags.map(t => `<span>${escapeHtml(t)}</span>`).join('')}</div>` : ''}
+                                <div class="scroll-hint">↓ scroll ↓</div>
+                            </div>
+                            <div class="source-panel">
+                                <div class="source-label"><span>📎</span> SOURCE</div>
+                                <div class="source-title-link">
+                                    <a href="${sourceUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(post.title)}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="media-panel">
+                            ${buildMedia(post.id || idx, mediaItems)}
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            `;
+        }).join('');
+        
+        attachMediaEvents();
+    }
 
-    <div class="subcategory-showcase">
-        <div class="container">
-            <div class="showcase-header">
-                <div class="section-label">Wellness pillars</div>
-                <h2>Nourish • Move • Recover • Thrive</h2>
-                <p>Dive into your favorite health & wellness topics</p>
-            </div>
-            <div class="subcategory-grid" id="subcategory-grid">
-                <div class="loading">Loading categories...</div>
-            </div>
-        </div>
-    </div>
+    function attachMediaEvents() {
+        document.querySelectorAll('.media-prev, .media-next').forEach(btn => {
+            btn.removeEventListener('click', handleMediaNav);
+            btn.addEventListener('click', handleMediaNav);
+        });
+        document.querySelectorAll('.media-dots .dot').forEach(dot => {
+            dot.removeEventListener('click', handleDotNav);
+            dot.addEventListener('click', handleDotNav);
+        });
+    }
 
-    <link rel="stylesheet" href="/assets/css/live-feed.css">
-    <script src="/assets/js/live-feed.js"></script>
-
-    <script>
-        // ========== SUBCATEGORIES - DYNAMIC FROM YOUR ACTUAL FOLDER STRUCTURE ==========
-        const HEALTH_SUBCATEGORIES = [
-            { slug: 'nutrition', name: 'Nutrition', icon: '🥗', tagline: 'Fuel your body right', description: 'Whole foods, meal planning & dietary science' },
-            { slug: 'mental-wellness', name: 'Mental Wellness', icon: '🧠', tagline: 'Find inner peace', description: 'Mindfulness, stress reduction & emotional health' },
-            { slug: 'fitness-mobility', name: 'Fitness & Mobility', icon: '💪', tagline: 'Move with purpose', description: 'Strength training, flexibility & functional movement' },
-            { slug: 'sleep-hygiene', name: 'Sleep Hygiene', icon: '😴', tagline: 'Restore & recover', description: 'Sleep science, routines & recovery optimization' },
-            { slug: 'gut-health', name: 'Gut Health', icon: '🌿', tagline: 'Heal from within', description: 'Microbiome, digestion & immune health' },
-            { slug: 'heart-longevity', name: 'Heart Longevity', icon: '❤️', tagline: 'Live longer, better', description: 'Cardiovascular health & aging well' }
-        ];
-
-        // Generate random particles for each card
-        function generateParticles() {
-            let particles = '';
-            for (let i = 0; i < 15; i++) {
-                const left = Math.random() * 100;
-                const delay = Math.random() * 12;
-                const duration = 7 + Math.random() * 8;
-                particles += `<span style="left: ${left}%; bottom: -10px; animation-delay: ${delay}s; animation-duration: ${duration}s;"></span>`;
-            }
-            return particles;
+    function handleMediaNav(e) {
+        e.stopPropagation();
+        const btn = e.currentTarget;
+        const targetId = btn.dataset.target;
+        const container = document.getElementById(targetId);
+        if (!container) return;
+        const slides = container.querySelectorAll('.media-slide');
+        const dotsContainer = btn.parentElement?.querySelector('.media-dots');
+        let activeIdx = Array.from(slides).findIndex(s => getComputedStyle(s).opacity === '1');
+        if (activeIdx === -1) activeIdx = 0;
+        const isPrev = btn.classList.contains('media-prev');
+        const newIdx = isPrev ? (activeIdx - 1 + slides.length) % slides.length : (activeIdx + 1) % slides.length;
+        slides.forEach((s, i) => { s.style.opacity = i === newIdx ? '1' : '0'; });
+        if (dotsContainer) {
+            dotsContainer.querySelectorAll('.dot').forEach((dot, i) => dot.classList.toggle('active', i === newIdx));
         }
+    }
 
-        async function getArticleCountForSubcategory(slug) {
-            try {
-                const response = await fetch('/data/posts.json?t=' + Date.now());
-                if (response.ok) {
-                    const data = await response.json();
-                    const posts = data.posts || [];
-                    const count = posts.filter(post => {
-                        const cat = (post.category || '').toLowerCase();
-                        const subcat = (post.subcategory || '').toLowerCase();
-                        return cat === 'health' && subcat === slug;
-                    }).length;
-                    return count > 0 ? count : null;
-                }
-            } catch (e) {
-                console.warn('Could not load article count for', slug);
+    function handleDotNav(e) {
+        e.stopPropagation();
+        const dot = e.currentTarget;
+        const dotsContainer = dot.closest('.media-dots');
+        const mediaCarousel = dotsContainer?.closest('.media-carousel');
+        const targetId = mediaCarousel?.dataset.mediaId;
+        const container = document.getElementById(`media-${targetId}`);
+        if (!container) return;
+        const slides = container.querySelectorAll('.media-slide');
+        const idx = parseInt(dot.dataset.idx);
+        slides.forEach((s, i) => { s.style.opacity = i === idx ? '1' : '0'; });
+        dotsContainer?.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+
+    async function fetchHealthPosts() {
+        try {
+            const response = await fetch('/data/live-posts.json?t=' + Date.now());
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const data = await response.json();
+            const allPosts = data.posts || [];
+            healthPosts = allPosts.filter(post => (post.category || '').toLowerCase() === 'health');
+            healthPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+            console.log(`✅ Loaded ${healthPosts.length} health posts from live-posts.json`);
+            renderCards();
+        } catch (error) {
+            console.error('❌ Failed to load live posts:', error);
+            const track = document.getElementById('carouselTrack');
+            if (track) {
+                track.innerHTML = `<div class="feed-empty"><div class="empty-icon">⚠️</div><h3>Failed to load health live posts</h3><p>Make sure /data/live-posts.json exists with health category posts.</p><p style="margin-top:12px; font-size:0.8rem;">Error: ${error.message}</p></div>`;
             }
-            return null;
         }
+    }
 
-        async function renderSubcategoryGrid() {
-            const grid = document.getElementById('subcategory-grid');
-            if (!grid) return;
-            
-            const cards = [];
-            
-            for (const cat of HEALTH_SUBCATEGORIES) {
-                const articleCount = await getArticleCountForSubcategory(cat.slug);
-                const statText = articleCount ? `${articleCount} articles` : 'Explore →';
-                
-                cards.push(`
-                    <a href="/categories/health/${cat.slug}/" class="subcategory-card" data-cat="${cat.slug}">
-                        <div class="gradient-overlay"></div>
-                        <div class="card-particles">
-                            ${generateParticles()}
-                        </div>
-                        <div class="card-content-wrapper">
-                            <div class="card-top">
-                                <div class="card-icon">${cat.icon}</div>
-                            </div>
-                            <div class="card-bottom">
-                                <h3>${cat.name}</h3>
-                                <div class="card-tagline">${cat.tagline}</div>
-                                <div class="card-description">${cat.description}</div>
-                                <div class="explore-link">
-                                    ${statText} <span>→</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                `);
-            }
-            
-            grid.innerHTML = cards.join('');
-        }
+    // Subcategory data
+    const HEALTH_SUBCATEGORIES = [
+        { slug: 'nutrition', name: 'Nutrition', icon: '🥗', tagline: 'Fuel your body right', description: 'Whole foods, meal planning & dietary science' },
+        { slug: 'mental-wellness', name: 'Mental Wellness', icon: '🧠', tagline: 'Find inner peace', description: 'Mindfulness, stress reduction & emotional health' },
+        { slug: 'fitness-mobility', name: 'Fitness & Mobility', icon: '💪', tagline: 'Move with purpose', description: 'Strength training, flexibility & functional movement' },
+        { slug: 'sleep-hygiene', name: 'Sleep Hygiene', icon: '😴', tagline: 'Restore & recover', description: 'Sleep science, routines & recovery optimization' },
+        { slug: 'gut-health', name: 'Gut Health', icon: '🌿', tagline: 'Heal from within', description: 'Microbiome, digestion & immune health' },
+        { slug: 'heart-longevity', name: 'Heart Longevity', icon: '❤️', tagline: 'Live longer, better', description: 'Cardiovascular health & aging well' }
+    ];
 
-        // ========== LIVE FEED - HEALTH ONLY ==========
-        (function() {
-            const CONFIG = {
-                postLifespanHours: 168,
-                refreshInterval: 300000
-            };
-
-            let filteredHealthPosts = [];
-            let container = null;
-
-            async function loadPosts() {
-                try {
-                    let response = await fetch('/data/posts.json?t=' + Date.now());
-                    if (!response.ok) {
-                        const fallbackResp = await fetch('/api/v1/posts/page/1.json');
-                        if (fallbackResp.ok) {
-                            const fallbackData = await fallbackResp.json();
-                            return fallbackData.posts || [];
-                        }
-                        throw new Error('No posts source');
-                    }
-                    const data = await response.json();
-                    return data.posts || [];
-                } catch (err) {
-                    console.warn('Error loading posts:', err);
-                    return [];
-                }
-            }
-
-            function filterHealthLivePosts(posts) {
-                const now = new Date();
-                const healthOnly = posts.filter(post => {
+    async function getArticleCountForSubcategory(slug) {
+        try {
+            const response = await fetch('/data/live-posts.json?t=' + Date.now());
+            if (response.ok) {
+                const data = await response.json();
+                const posts = data.posts || [];
+                const count = posts.filter(post => {
                     const cat = (post.category || '').toLowerCase();
-                    return cat === 'health';
-                });
-                
-                const livePosts = healthOnly.filter(post => {
-                    if (!post.date) return true;
-                    const postDate = new Date(post.date);
-                    if (isNaN(postDate.getTime())) return true;
-                    const diffHours = (now - postDate) / (1000 * 60 * 60);
-                    return diffHours <= CONFIG.postLifespanHours;
-                });
-                
-                livePosts.sort((a, b) => new Date(b.date) - new Date(a.date));
-                return livePosts;
+                    const subcat = (post.subcategory || '').toLowerCase();
+                    return cat === 'health' && subcat === slug;
+                }).length;
+                return count > 0 ? count : null;
             }
+        } catch (e) {
+            console.warn('Could not load article count for', slug);
+        }
+        return null;
+    }
 
-            function getCategoryIcon(subcat) {
-                const icons = {
-                    nutrition: '🥗', 'mental-wellness': '🧠', 'fitness-mobility': '💪',
-                    'sleep-hygiene': '😴', 'gut-health': '🌿', 'heart-longevity': '❤️'
-                };
-                return icons[subcat?.toLowerCase()] || '💚';
-            }
+    function generateParticles() {
+        let particles = '';
+        for (let i = 0; i < 12; i++) {
+            const left = Math.random() * 100;
+            const delay = Math.random() * 8;
+            const duration = 5 + Math.random() * 6;
+            particles += `<span style="left: ${left}%; bottom: -10px; animation-delay: ${delay}s; animation-duration: ${duration}s;"></span>`;
+        }
+        return particles;
+    }
 
-            function getDisplayCategory(subcat) {
-                if (!subcat) return 'Wellness';
-                const map = {
-                    nutrition: 'Nutrition', 'mental-wellness': 'Mental Wellness',
-                    'fitness-mobility': 'Fitness', 'sleep-hygiene': 'Sleep',
-                    'gut-health': 'Gut Health', 'heart-longevity': 'Heart Longevity'
-                };
-                return map[subcat.toLowerCase()] || subcat;
-            }
-
-            function escapeHtml(str) {
-                if (!str) return '';
-                return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-            }
-
-            function renderMediaCarousel(mediaItems, postId) {
-                if (!mediaItems || mediaItems.length === 0) {
-                    return `<div class="post-media-placeholder"><span>🌱</span><span style="font-size:0.7rem;">Wellness insight</span></div>`;
-                }
-                const hasMultiple = mediaItems.length > 1;
-                const carouselId = `media-${postId}`;
-                let html = `<div class="post-media" data-carousel-id="${carouselId}"><div class="media-slides" id="${carouselId}">`;
-                mediaItems.forEach((media, idx) => {
-                    let mediaHtml = '';
-                    if (media.type === 'image' || (!media.type && media.url)) {
-                        mediaHtml = `<img src="${media.url}" alt="Post media" loading="lazy" onerror="this.src='https://placehold.co/800x450?text=Health+Wellness'">`;
-                    } else if (media.type === 'video') {
-                        mediaHtml = `<video controls preload="metadata"><source src="${media.url}" type="video/mp4"></video>`;
-                    } else {
-                        mediaHtml = `<img src="${media.url}" alt="Media" loading="lazy">`;
-                    }
-                    html += `<div class="media-slide ${idx === 0 ? 'active' : ''}" data-index="${idx}">${mediaHtml}</div>`;
-                });
-                html += `</div>`;
-                if (hasMultiple) {
-                    html += `<button class="media-prev" data-carousel="${carouselId}">‹</button>
-                             <button class="media-next" data-carousel="${carouselId}">›</button>
-                             <div class="media-dots">${mediaItems.map((_, idx) => `<span class="dot ${idx === 0 ? 'active' : ''}" data-index="${idx}"></span>`).join('')}</div>`;
-                }
-                html += `</div>`;
-                return html;
-            }
-
-            function renderPost(post, idx) {
-                const postId = `${post.id || idx}-${idx}`;
-                const mediaItems = post.media || (post.image ? [{ type: 'image', url: post.image }] : []);
-                let excerptText = post.excerpt || '';
-                if (!excerptText && post.content) {
-                    excerptText = post.content.replace(/<[^>]*>/g, '').substring(0, 180) + '...';
-                }
-                if (!excerptText) excerptText = 'Evidence-based wellness strategies for energy, recovery, and lasting health.';
-                const icon = getCategoryIcon(post.subcategory);
-                const displayCat = getDisplayCategory(post.subcategory);
-                const postDate = post.date ? new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : 'Recent';
-                const readTime = post.readTime || (post.content ? Math.ceil(post.content.length / 1000) : 5);
-                return `
-                    <div class="feed-post" data-post-id="${post.id}">
-                        <div class="post-inner">
-                            <div class="post-content">
-                                <div class="post-meta">
-                                    <div class="post-category">
-                                        <span class="category-icon">${icon}</span>
-                                        <span class="category-name">${displayCat}</span>
-                                    </div>
-                                    <span class="post-date">${postDate}</span>
-                                </div>
-                                <h2 class="post-title">${escapeHtml(post.title)}</h2>
-                                <div class="post-excerpt">${escapeHtml(excerptText.substring(0, 160))}${excerptText.length > 160 ? '…' : ''}</div>
-                                <div class="post-footer">
-                                    <div class="post-author">
-                                        <span class="author-avatar">💚</span>
-                                        <span class="author-name">${escapeHtml(post.author || 'Trendlin Wellness')}</span>
-                                    </div>
-                                    <div class="post-read-time">⏱️ ${readTime} min read</div>
-                                </div>
-                            </div>
-                            <div class="post-visual">
-                                ${renderMediaCarousel(mediaItems, postId)}
+    async function renderSubcategoryGrid() {
+        const grid = document.getElementById('subcategory-grid');
+        if (!grid) return;
+        
+        const cards = [];
+        
+        for (const cat of HEALTH_SUBCATEGORIES) {
+            const articleCount = await getArticleCountForSubcategory(cat.slug);
+            const statText = articleCount ? `${articleCount} articles` : 'Explore →';
+            
+            cards.push(`
+                <a href="/categories/health/${cat.slug}/" class="subcategory-card" data-cat="${cat.slug}">
+                    <div class="gradient-overlay"></div>
+                    <div class="card-particles">
+                        ${generateParticles()}
+                    </div>
+                    <div class="card-content-wrapper">
+                        <div class="card-top">
+                            <div class="card-icon">${cat.icon}</div>
+                        </div>
+                        <div class="card-bottom">
+                            <h3>${cat.name}</h3>
+                            <div class="card-tagline">${cat.tagline}</div>
+                            <div class="card-description">${cat.description}</div>
+                            <div class="explore-link">
+                                ${statText} <span>→</span>
                             </div>
                         </div>
                     </div>
-                `;
-            }
+                </a>
+            `);
+        }
+        
+        grid.innerHTML = cards.join('');
+    }
 
-            function renderEmptyState() {
-                return `<div class="feed-empty"><div class="empty-icon">🌱💚</div><h3>No health posts yet</h3><p>Check back soon for fresh insights on nutrition, fitness, mental wellness, and longevity!</p></div>`;
-            }
+    // Setup scroll buttons after DOM is ready
+    function setupScrollButtons() {
+        const scrollContainer = document.getElementById('trackContainer');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        if (scrollContainer && prevBtn && nextBtn) {
+            const newPrev = prevBtn.cloneNode(true);
+            const newNext = nextBtn.cloneNode(true);
+            prevBtn.parentNode.replaceChild(newPrev, prevBtn);
+            nextBtn.parentNode.replaceChild(newNext, nextBtn);
+            
+            const finalPrev = document.getElementById('prevBtn');
+            const finalNext = document.getElementById('nextBtn');
+            
+            finalPrev.onclick = function(e) {
+                e.preventDefault();
+                const card = document.querySelector('.depth-card');
+                const scrollAmount = card ? card.offsetWidth + 30 : 890;
+                scrollContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            };
+            
+            finalNext.onclick = function(e) {
+                e.preventDefault();
+                const card = document.querySelector('.depth-card');
+                const scrollAmount = card ? card.offsetWidth + 30 : 890;
+                scrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            };
+        }
+    }
 
-            async function renderLiveFeed() {
-                if (!container) return;
-                if (!filteredHealthPosts.length) {
-                    container.innerHTML = renderEmptyState();
-                    return;
-                }
-                const carouselId = 'health-carousel-main';
-                let html = `<div class="carousel-container"><div class="carousel-track" id="${carouselId}">${filteredHealthPosts.map((post, idx) => renderPost(post, idx)).join('')}</div>`;
-                if (filteredHealthPosts.length > 1) {
-                    html += `<button class="carousel-nav carousel-prev" data-carousel="${carouselId}">‹</button><button class="carousel-nav carousel-next" data-carousel="${carouselId}">›</button>`;
-                }
-                html += `<div class="carousel-scrollbar"><div class="carousel-scrollbar-thumb"></div></div><div class="carousel-counter"><span class="current-index">1</span> / <span class="total-count">${filteredHealthPosts.length}</span></div></div>`;
-                container.innerHTML = html;
-            }
-
-            async function refresh() {
-                if (!container) return;
-                container.innerHTML = `<div class="feed-skeleton"><div class="skeleton-track"><div class="skeleton-post"><div class="skeleton-text"><div class="skeleton-line title"></div><div class="skeleton-line meta"></div><div class="skeleton-line excerpt"></div></div><div class="skeleton-media"></div></div></div></div>`;
-                const posts = await loadPosts();
-                filteredHealthPosts = filterHealthLivePosts(posts);
-                await renderLiveFeed();
-            }
-
-            function init() {
-                container = document.getElementById('live-feed-container');
-                if (!container) return;
-                refresh();
-                setInterval(refresh, CONFIG.refreshInterval);
-            }
-
-            init();
-        })();
-
-        document.addEventListener('DOMContentLoaded', () => {
-            renderSubcategoryGrid();
+    document.addEventListener('DOMContentLoaded', () => {
+        renderSubcategoryGrid();
+        fetchHealthPosts().then(() => {
+            setTimeout(setupScrollButtons, 100);
         });
-    </script>
+    });
+</script>
+
 </body>
 </html>
