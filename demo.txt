@@ -1,0 +1,51 @@
+ {
+      "id": 2001,
+      "title": "🔴 LIVE: Fed Announces Emergency Rate Cut - Markets Rally",
+      "excerpt": "Breaking: Federal Reserve cuts interest rates by 0.50% in unscheduled meeting. Dow jumps 800 points.",
+      "content": "The Federal Reserve just announced an emergency 50 basis point rate cut. Markets are reacting sharply.",
+      "category": "wealth",
+      "author": "Michael Rodriguez",
+      "date": "2026-06-13",
+      "readTime": 4,
+      "sourceUrl": "/posts/2001",
+      "sourceLabel": "Read full analysis →",
+      "media": [
+        { "type": "image", "url": "https://picsum.photos/id/161/800/500" },
+        { "type": "image", "url": "https://picsum.photos/id/26/800/500" }
+      ]
+    }
+
+
+      {
+      "id": 1,
+      "name": "Apple MacBook Pro M4",
+      "category": "World",
+      "price": 1999,
+      "originalPrice": 2299,
+      "rating": 4.9,
+      "reviews": 12450,
+      "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&h=400&fit=crop",
+      "affiliateLink": "https://amzn.to/example-macbook",
+      "description": "The most powerful MacBook ever. M4 chip delivers incredible performance for creators and developers.",
+      "trending": true,
+      "bestSeller": true,
+      "discount": 13,
+      "inStock": true
+    }
+
+
+    {
+      "id": 1,
+      "title": "The Future of AI: What's Coming in 2025",
+      "excerpt": "From autonomous agents to multimodal models, here's what the next generation of AI will bring.",
+      "content": "<p>Artificial Intelligence continues to evolve at breakneck speed. As we look toward 2025, several key trends are emerging that will reshape how we interact with technology.</p><h2>Autonomous Agents</h2><p>The next frontier is AI that can act on your behalf. These agents will book travel, manage schedules, and complete complex tasks with minimal supervision.</p><h2>Multimodal Models</h2><p>Models that can understand text, images, audio, and video simultaneously will become standard, enabling richer interactions.</p>",
+      "category": "technology",
+      "subcategory": "ai",
+      "author": "Dr. Sarah Chen",
+      "date": "Jun 4, 2024",
+      "readTime": 8,
+      "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop",
+      "featured": true,
+      "trending": true,
+      "views": 15420
+    }
