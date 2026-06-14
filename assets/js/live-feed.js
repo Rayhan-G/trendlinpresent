@@ -4,20 +4,24 @@
  * ALL posts in ONE horizontal scrollable carousel
  * Desktop: 60% text (left) + 40% media (right)
  * FILTERED BY CATEGORY - Shows only posts from current category
+ * 
+ * ⏰ POST LIFESPAN: 24 HOURS - Posts automatically expire and are no longer available after 24 hours
  */
 
 (function() {
     'use strict';
     
     const CONFIG = {
-        postLifespanHours: 24,
-        refreshInterval: 300000
+        postLifespanHours: 24,        // ⏰ Posts expire after 24 hours
+        refreshInterval: 300000,       // Refresh every 5 minutes (300,000 ms)
+        storageKey: 'trendlin_expired_posts'  // Track expired posts in session
     };
     
     let allPosts = [];
     let filteredPosts = [];
     let container = null;
     let currentCategory = null;
+    let expiredPostIds = new Set();     // Track already expired post IDs to avoid re-processing
     
     // Detect current category from URL path
     function detectCurrentCategory() {
@@ -41,22 +45,142 @@
         return 'all';
     }
     
+    // Get expiration timestamp for a post (post date + 24 hours)
+    function getExpirationTimestamp(postDate) {
+        const date = new Date(postDate);
+        return date.getTime() + (CONFIG.postLifespanHours * 60 * 60 * 1000);
+    }
+    
+    // Check if a post is expired
+    function isPostExpired(post) {
+        if (!post.date) return true;
+        
+        const postDate = new Date(post.date);
+        if (isNaN(postDate.getTime())) return true;
+        
+        const now = new Date();
+        const expirationTime = getExpirationTimestamp(post.date);
+        const isExpired = now.getTime() > expirationTime;
+        
+        // Log expiration for debugging (only once per expired post)
+        if (isExpired && !expiredPostIds.has(post.id)) {
+            expiredPostIds.add(post.id);
+            const hoursRemaining = Math.floor((expirationTime - now.getTime()) / (1000 * 60 * 60));
+            console.log(`⏰ Post "${post.title}" expired ${Math.abs(hoursRemaining)} hours ago and is no longer available`);
+        }
+        
+        return isExpired;
+    }
+    
+    // Get remaining hours until expiration for a post (for debugging/display)
+    function getRemainingHours(post) {
+        if (!post.date) return 0;
+        const postDate = new Date(post.date);
+        if (isNaN(postDate.getTime())) return 0;
+        
+        const expirationTime = getExpirationTimestamp(post.date);
+        const now = new Date();
+        const remainingMs = expirationTime - now.getTime();
+        
+        if (remainingMs <= 0) return 0;
+        return Math.floor(remainingMs / (1000 * 60 * 60));
+    }
+    
+    // Get remaining minutes (for display when less than 1 hour)
+    function getRemainingMinutes(post) {
+        if (!post.date) return 0;
+        const postDate = new Date(post.date);
+        if (isNaN(postDate.getTime())) return 0;
+        
+        const expirationTime = getExpirationTimestamp(post.date);
+        const now = new Date();
+        const remainingMs = expirationTime - now.getTime();
+        
+        if (remainingMs <= 0) return 0;
+        if (remainingMs < 3600000) {
+            return Math.floor(remainingMs / (1000 * 60));
+        }
+        return 0;
+    }
+    
+    // Load expired posts from session storage (optional persistence)
+    function loadExpiredTracking() {
+        try {
+            const stored = sessionStorage.getItem(CONFIG.storageKey);
+            if (stored) {
+                const parsed = JSON.parse(stored);
+                expiredPostIds = new Set(parsed);
+            }
+        } catch (e) {
+            console.warn('Could not load expired tracking:', e);
+        }
+    }
+    
+    // Save expired tracking to session storage
+    function saveExpiredTracking() {
+        try {
+            const toStore = Array.from(expiredPostIds);
+            sessionStorage.setItem(CONFIG.storageKey, JSON.stringify(toStore));
+        } catch (e) {
+            console.warn('Could not save expired tracking:', e);
+        }
+    }
+    
     async function init() {
         container = document.getElementById('live-feed-container');
         if (!container) return;
         
+        loadExpiredTracking();
         currentCategory = detectCurrentCategory();
-        console.log(`Current category filter: ${currentCategory}`);
+        
+        // Display category-specific lifespan message
+        console.log(`Current category filter: ${currentCategory} | Posts expire after ${CONFIG.postLifespanHours} hours`);
         
         await loadPosts();
         filterPostsByCategory();
         render();
         
+        // Set up automatic refresh to remove expired posts
         setInterval(async () => {
             await loadPosts();
             filterPostsByCategory();
             render();
+            saveExpiredTracking();
         }, CONFIG.refreshInterval);
+        
+        // Also set a more frequent check for expiration (every minute) to update UI without full reload
+        setInterval(() => {
+            if (allPosts.length > 0) {
+                const hadExpired = checkAndRemoveExpiredPosts();
+                if (hadExpired) {
+                    filterPostsByCategory();
+                    render();
+                    saveExpiredTracking();
+                }
+            }
+        }, 60000); // Check every minute
+    }
+    
+    // Check for newly expired posts without reloading from server
+    function checkAndRemoveExpiredPosts() {
+        let hasChanges = false;
+        const newExpiredIds = [];
+        
+        for (const post of allPosts) {
+            if (isPostExpired(post) && !expiredPostIds.has(post.id)) {
+                expiredPostIds.add(post.id);
+                newExpiredIds.push(post.id);
+                hasChanges = true;
+                console.log(`⏰ Post "${post.title}" just expired and has been removed from feed`);
+            }
+        }
+        
+        if (newExpiredIds.length > 0) {
+            // Trigger a UI update
+            return true;
+        }
+        
+        return hasChanges;
     }
     
     async function showSkeleton() {
@@ -105,6 +229,19 @@
             const data = await response.json();
             allPosts = data.posts || [];
             console.log(`Loaded ${allPosts.length} posts total`);
+            
+            // Log expiration info for debugging
+            let activeCount = 0;
+            let expiredCount = 0;
+            for (const post of allPosts) {
+                if (isPostExpired(post)) {
+                    expiredCount++;
+                } else {
+                    activeCount++;
+                }
+            }
+            console.log(`⏰ Posts status: ${activeCount} active, ${expiredCount} expired (${CONFIG.postLifespanHours}h lifespan)`);
+            
         } catch (error) {
             console.error('Failed to load posts:', error);
             allPosts = [];
@@ -114,30 +251,48 @@
     function filterPostsByCategory() {
         const now = new Date();
         
+        // Apply 24-hour expiration filter - ONLY include posts that are NOT expired
         let dateFiltered = allPosts.filter(post => {
             if (!post.date) return false;
             const postDate = new Date(post.date);
             if (isNaN(postDate.getTime())) return false;
-            const diffHours = (now - postDate) / (1000 * 60 * 60);
-            return diffHours <= CONFIG.postLifespanHours && diffHours >= 0;
+            
+            // CRITICAL: Post is only available if NOT expired
+            const isExpired = isPostExpired(post);
+            return !isExpired;
         });
+        
+        console.log(`After 24h expiration filter: ${dateFiltered.length} posts remain (out of ${allPosts.length})`);
         
         if (currentCategory === 'all') {
             filteredPosts = dateFiltered;
-            console.log(`Home page: showing ${filteredPosts.length} posts from all categories`);
+            console.log(`Home page: showing ${filteredPosts.length} posts from all categories (24h window)`);
         } else if (currentCategory === 'shop') {
             filteredPosts = dateFiltered.filter(post => 
                 post.category === 'shop' || post.tags?.includes('product')
             );
-            console.log(`Shop page: ${filteredPosts.length} posts`);
+            console.log(`Shop page: ${filteredPosts.length} posts (24h window)`);
         } else {
             filteredPosts = dateFiltered.filter(post => 
                 post.category && post.category.toLowerCase() === currentCategory
             );
-            console.log(`Category "${currentCategory}": ${filteredPosts.length} posts`);
+            console.log(`Category "${currentCategory}": ${filteredPosts.length} posts (24h window)`);
         }
         
+        // Sort by date (newest first)
         filteredPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        // Log remaining time for the oldest active post (to show when next expiration happens)
+        if (filteredPosts.length > 0) {
+            const oldestPost = filteredPosts[filteredPosts.length - 1];
+            const remainingHours = getRemainingHours(oldestPost);
+            const remainingMinutes = getRemainingMinutes(oldestPost);
+            if (remainingHours > 0) {
+                console.log(`⏳ Oldest active post expires in ~${remainingHours}h`);
+            } else if (remainingMinutes > 0) {
+                console.log(`⏳ Oldest active post expires in ~${remainingMinutes}m`);
+            }
+        }
     }
     
     function renderMediaCarousel(mediaItems, postId) {
@@ -231,7 +386,6 @@
         return names[category?.toLowerCase()] || category || 'Story';
     }
     
-    // Helper to get source link - prioritizes post.source, then post.sourceUrl, then fallback
     function getSourceLink(post) {
         if (post.sourceLink) return post.sourceLink;
         if (post.sourceUrl) return post.sourceUrl;
@@ -246,10 +400,23 @@
         return 'Read full story →';
     }
     
+    // Helper to format relative time (how long ago the post was published)
+    function getRelativeTime(dateString) {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diffMs = now - date;
+        const diffMins = Math.floor(diffMs / (1000 * 60));
+        const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+        
+        if (diffMins < 1) return 'just now';
+        if (diffMins < 60) return `${diffMins} min ago`;
+        if (diffHours < 24) return `${diffHours} hour${diffHours === 1 ? '' : 's'} ago`;
+        return date.toLocaleDateString();
+    }
+    
     function renderPost(post, index) {
         const postId = `${post.id}-${index}`;
         const mediaItems = post.media || (post.image ? [{ type: 'image', url: post.image }] : []);
-        // Extract clean text content (removes HTML tags)
         let fullText = post.text || post.content || post.excerpt || '';
         if (fullText && fullText.includes('<')) {
             fullText = fullText.replace(/<[^>]*>/g, '');
@@ -259,37 +426,40 @@
         const displayCategory = getCategoryDisplayName(post.category);
         const sourceLink = getSourceLink(post);
         const sourceLabel = getSourceLabel(post);
+        const relativeTime = getRelativeTime(post.date);
+        const remainingHours = getRemainingHours(post);
+        const remainingMinutes = getRemainingMinutes(post);
         
-        // NEW LAYOUT ORDER:
-        // 1. HEADING (post title)
-        // 2. TEXT (description / excerpt)
-        // 3. SOURCE LINK (call-to-action link)
+        // Build expiry badge (optional, for transparency)
+        let expiryBadge = '';
+        if (remainingHours > 0 && remainingHours < 6) {
+            expiryBadge = `<span class="expiry-badge" title="Expires in ${remainingHours}h">⏳ ${remainingHours}h left</span>`;
+        } else if (remainingHours === 0 && remainingMinutes > 0 && remainingMinutes <= 60) {
+            expiryBadge = `<span class="expiry-badge" title="Expires in ${remainingMinutes}m">⏳ ${remainingMinutes}m left</span>`;
+        }
+        
         return `
-            <div class="feed-post" data-post-id="${post.id}">
+            <div class="feed-post" data-post-id="${post.id}" data-post-date="${post.date}">
                 <div class="post-inner">
-                    <!-- 60% TEXT (LEFT) - FIGMALAND STYLE: Heading → Text → Source Link -->
                     <div class="post-content">
                         <div class="post-meta">
                             <div class="post-category">
                                 <span class="category-icon">${icon}</span>
                                 <span class="category-name">${displayCategory}</span>
                             </div>
-                            <span class="post-date">${post.date || 'Recent'}</span>
+                            <span class="post-date" title="Posted ${relativeTime}">${relativeTime}</span>
+                            ${expiryBadge}
                         </div>
-                        <!-- 1️⃣ HEADING (Title) - FIRST -->
                         <h2 class="post-title">
                             <a href="${escapeHtml(sourceLink)}" target="_blank" rel="noopener noreferrer">${escapeHtml(post.title)}</a>
                         </h2>
-                        <!-- 2️⃣ TEXT (Excerpt/Content) - SECOND -->
                         <div class="post-excerpt">${escapeHtml(excerptText)}</div>
-                        <!-- 3️⃣ SOURCE LINK - THIRD (distinct CTA) -->
                         <div class="post-source-wrapper">
                             <a href="${escapeHtml(sourceLink)}" target="_blank" rel="noopener noreferrer" class="post-source-link">
                                 <span class="source-arrow">↗</span>
                                 <span>${escapeHtml(sourceLabel)}</span>
                             </a>
                         </div>
-                        <!-- Optional footer (author, read time) kept minimal -->
                         <div class="post-footer">
                             <div class="post-author">
                                 <span class="author-avatar">
@@ -303,7 +473,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- 40% MEDIA (RIGHT) -->
                     <div class="post-visual">
                         ${renderMediaCarousel(mediaItems, postId)}
                     </div>
@@ -315,13 +484,16 @@
     function renderEmptyState() {
         let message = '';
         let icon = '📭';
+        let subMessage = `No posts in the last ${CONFIG.postLifespanHours} hours for this category.`;
         
         if (currentCategory === 'all') {
             message = 'No recent posts';
             icon = '📭';
+            subMessage = `No posts have been published in the last ${CONFIG.postLifespanHours} hours.`;
         } else if (currentCategory === 'shop') {
             message = 'No shop items available';
             icon = '🛍️';
+            subMessage = `No shop posts in the last ${CONFIG.postLifespanHours} hours.`;
         } else {
             const categoryName = getCategoryDisplayName(currentCategory);
             message = `No ${categoryName} posts yet`;
@@ -332,8 +504,8 @@
             <div class="feed-empty">
                 <div class="empty-icon">${icon}</div>
                 <h3>${message}</h3>
-                <p>No posts in the last 24 hours for this category.</p>
-                <p class="empty-hint">Check back soon for fresh content!</p>
+                <p>${subMessage}</p>
+                <p class="empty-hint">Check back soon for fresh content! ✨</p>
             </div>
         `;
     }
@@ -513,6 +685,62 @@
             .replace(/"/g, '&quot;')
             .replace(/'/g, '&#39;');
     }
+    
+    // Add CSS for expiry badge styling (inject if not present)
+    function injectExpiryStyles() {
+        if (document.getElementById('trendlin-expiry-styles')) return;
+        
+        const styles = document.createElement('style');
+        styles.id = 'trendlin-expiry-styles';
+        styles.textContent = `
+            .expiry-badge {
+                display: inline-flex;
+                align-items: center;
+                background: rgba(245, 158, 11, 0.15);
+                border: 1px solid rgba(245, 158, 11, 0.4);
+                border-radius: 20px;
+                padding: 2px 8px;
+                font-size: 0.65rem;
+                font-weight: 500;
+                color: #fbbf24;
+                margin-left: 10px;
+                white-space: nowrap;
+                animation: pulseExpiry 2s infinite;
+            }
+            
+            @keyframes pulseExpiry {
+                0%, 100% { opacity: 0.8; }
+                50% { opacity: 1; background: rgba(245, 158, 11, 0.25); }
+            }
+            
+            .feed-empty .empty-icon {
+                font-size: 48px;
+                margin-bottom: 16px;
+                opacity: 0.7;
+            }
+            
+            .feed-empty h3 {
+                font-size: 1.3rem;
+                margin-bottom: 8px;
+                color: #e5e7eb;
+            }
+            
+            .feed-empty p {
+                color: #9ca3af;
+                font-size: 0.85rem;
+            }
+            
+            .feed-empty .empty-hint {
+                margin-top: 16px;
+                font-size: 0.8rem;
+                color: #6b7280;
+            }
+        `;
+        document.head.appendChild(styles);
+    }
+    
+    // Inject styles
+    injectExpiryStyles();
     
     showSkeleton();
     
