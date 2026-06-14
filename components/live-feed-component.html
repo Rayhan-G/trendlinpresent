@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Trendlin Live Feed</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #F5F7FA;
+            font-family: 'Inter', sans-serif;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .trendlin-feed {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px;
+        }
+
+        /* ===== PREMIUM MINIMAL HEADER ===== */
+        .feed-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #E8ECF0;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .feed-header h1 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #1A1F2E;
+            letter-spacing: -0.2px;
+            margin: 0;
+        }
+
+        .feed-header h1 span {
+            font-weight: 400;
+            color: #8A8F99;
+        }
+
+        .feed-stats {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: #F0F2F5;
+            padding: 2px 10px;
+            border-radius: 30px;
+        }
+
+        .stat-badge {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #1A1F2E;
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            color: #6B7280;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 8px;
+        }
+
+        .refresh-btn {
+            background: none;
+            border: none;
+            color: #8A8F99;
+            cursor: pointer;
+            font-size: 0.85rem;
+            padding: 4px 8px;
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+
+        .refresh-btn:hover {
+            background: #F0F2F5;
+            color: #1A1F2E;
+        }
+
+        /* ===== CATEGORY FILTER - HIDDEN ON CATEGORY PAGES ===== */
+        .category-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #E8ECF0;
+        }
+
+        .category-filter.hidden-filter {
+            display: none;
+        }
+
+        .filter-btn {
+            padding: 4px 14px;
+            border-radius: 30px;
+            border: none;
+            background: transparent;
+            font-size: 0.75rem;
+            font-weight: 450;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #6B7280;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .filter-btn:hover {
+            background: #F0F2F5;
+            color: #1A1F2E;
+        }
+
+        .filter-btn.active {
+            background: #1A1F2E;
+            color: white;
+        }
+
+        /* Navigation - Desktop only */
+        .nav-controls {
+            display: none;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        @media (min-width: 769px) {
+            .nav-controls {
+                display: flex;
+            }
+        }
+
+        .nav-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid #E8ECF0;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+            color: #1A1F2E;
+        }
+
+        .nav-btn:hover {
+            background: #1A1F2E;
+            color: white;
+            border-color: #1A1F2E;
+        }
+
+        .nav-controls.hidden {
+            display: none;
+        }
+
+        /* ===== CARDS GRID - HORIZONTAL SCROLLING ===== */
+        .cards-grid {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 8px 4px 20px;
+            scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+        }
+
+        .cards-grid::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .cards-grid::-webkit-scrollbar-track {
+            background: #E8ECF0;
+            border-radius: 10px;
+        }
+
+        .cards-grid::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 10px;
+        }
+
+        .cards-grid.single-card {
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        /* Card - Premium Minimal */
+        .feed-card {
+            flex-shrink: 0;
+            width: 85vw;
+            max-width: 85vw;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+            transition: all 0.25s ease;
+            scroll-snap-align: start;
+            border: 1px solid #E8ECF0;
+        }
+
+        .feed-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+
+        @media (min-width: 640px) {
+            .feed-card {
+                width: 460px;
+                max-width: 460px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .feed-card {
+                width: 500px;
+                max-width: 500px;
+            }
+        }
+
+        .card-inner {
+            padding: 20px;
+        }
+
+        @media (min-width: 640px) {
+            .card-inner {
+                padding: 22px;
+            }
+        }
+
+        /* Title */
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.4;
+            color: #1A1F2E;
+            margin-bottom: 8px;
+            letter-spacing: -0.2px;
+        }
+
+        /* Meta */
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+            font-size: 0.65rem;
+            color: #8A8F99;
+            flex-wrap: wrap;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .read-time {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Share Button */
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: transparent;
+            border: none;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            font-weight: 450;
+            color: #8A8F99;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .share-btn:hover {
+            background: #F0F2F5;
+            color: #1A1F2E;
+        }
+
+        /* Media Carousel */
+        .card-media {
+            margin: 0 -20px 16px -20px;
+            position: relative;
+        }
+
+        .media-carousel {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        @media (min-width: 640px) {
+            .media-carousel {
+                height: 220px;
+            }
+        }
+
+        /* Beautiful gradient placeholder for missing images */
+        .media-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            gap: 12px;
+        }
+
+        .media-placeholder i {
+            font-size: 3rem;
+            opacity: 0.8;
+        }
+
+        .media-placeholder span {
+            font-size: 0.85rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        /* Category-specific placeholder colors */
+        .media-placeholder[data-category="technology"] { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); }
+        .media-placeholder[data-category="wealth"] { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+        .media-placeholder[data-category="health"] { background: linear-gradient(135deg, #134e5e 0%, #71b280 100%); }
+        .media-placeholder[data-category="entertainment"] { background: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 100%); }
+        .media-placeholder[data-category="growth"] { background: linear-gradient(135deg, #f39f86 0%, #f9d976 100%); }
+        .media-placeholder[data-category="world"] { background: linear-gradient(135deg, #085078 0%, #85d8ce 100%); }
+        .media-placeholder[data-category="lifestyle"] { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+
+        .media-slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .media-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            background: #F5F7FA;
+        }
+
+        .media-slide.active {
+            opacity: 1;
+            position: relative;
+        }
+
+        .media-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .media-prev, .media-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 10;
+            backdrop-filter: blur(4px);
+            transition: all 0.2s;
+        }
+
+        .media-prev:hover, .media-next:hover {
+            background: rgba(0,0,0,0.8);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .media-prev { left: 10px; }
+        .media-next { right: 10px; }
+
+        .media-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 10;
+        }
+
+        .media-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .media-dot.active {
+            width: 12px;
+            border-radius: 2px;
+            background: white;
+        }
+
+        /* Description - Scrollable */
+        .card-content {
+            font-size: 0.85rem;
+            line-height: 1.55;
+            color: #4A4F5E;
+            max-height: 280px;
+            overflow-y: auto;
+            padding-right: 6px;
+            margin: 14px 0 16px;
+            scrollbar-width: thin;
+        }
+
+        .card-content::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .card-content::-webkit-scrollbar-track {
+            background: #E8ECF0;
+            border-radius: 10px;
+        }
+
+        .card-content::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 10px;
+        }
+
+        .card-content p {
+            margin-bottom: 10px;
+        }
+
+        .card-content ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+
+        /* Tags */
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 10px 0 12px;
+        }
+
+        .card-tag {
+            background: #F0F2F5;
+            padding: 2px 8px;
+            border-radius: 14px;
+            font-size: 0.6rem;
+            color: #6B7280;
+        }
+
+        /* Footer */
+        .card-footer-compact {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #E8ECF0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        @media (min-width: 480px) {
+            .card-footer-compact {
+                flex-direction: row;
+                gap: 16px;
+            }
+        }
+
+        .footer-sources, .footer-knowmore {
+            flex: 1;
+        }
+
+        .footer-label {
+            font-size: 0.55rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #9CA3AF;
+            margin-bottom: 6px;
+        }
+
+        .sources-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .source-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #F0F2F5;
+            padding: 3px 8px;
+            border-radius: 14px;
+            font-size: 0.6rem;
+            color: #6B7280;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .source-chip:hover {
+            background: #E8ECF0;
+            color: #1A1F2E;
+        }
+
+        .knowmore-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .knowmore-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #F0F2F5;
+            padding: 3px 10px;
+            border-radius: 14px;
+            font-size: 0.65rem;
+            font-weight: 450;
+            color: #1A1F2E;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .knowmore-chip:hover {
+            background: #1A1F2E;
+            color: white;
+        }
+
+        .knowmore-chip i {
+            font-size: 0.55rem;
+        }
+
+        /* Bottom Row */
+        .card-bottom {
+            margin-top: 10px;
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.6rem;
+            color: #9CA3AF;
+            border-top: 1px solid #E8ECF0;
+        }
+
+        .category-badge {
+            background: #F0F2F5;
+            padding: 2px 8px;
+            border-radius: 14px;
+            font-size: 0.6rem;
+            font-weight: 450;
+            color: #6B7280;
+        }
+
+        /* Share Modal */
+        .share-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .share-modal.active {
+            display: flex;
+        }
+
+        .share-modal-content {
+            background: white;
+            border-radius: 24px;
+            max-width: 90%;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 20px;
+            animation: modalFadeIn 0.2s ease;
+        }
+
+        @media (min-width: 480px) {
+            .share-modal-content {
+                max-width: 380px;
+                padding: 22px;
+            }
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .share-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .share-modal-header h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #1A1F2E;
+        }
+
+        .share-modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #9CA3AF;
+        }
+
+        .share-post-title {
+            font-size: 0.8rem;
+            color: #6B7280;
+            margin-bottom: 16px;
+            padding: 10px;
+            background: #F5F7FA;
+            border-radius: 12px;
+        }
+
+        .share-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .share-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 450;
+            transition: all 0.2s;
+            justify-content: center;
+        }
+
+        .share-facebook { background: #1877F2; color: white; }
+        .share-twitter { background: #1DA1F2; color: white; }
+        .share-whatsapp { background: #25D366; color: white; }
+        .share-linkedin { background: #0077B5; color: white; }
+        .share-copy { background: #F0F2F5; color: #1A1F2E; cursor: pointer; }
+
+        .share-link {
+            grid-column: span 2;
+            background: #F5F7FA;
+            border-radius: 12px;
+            padding: 8px;
+            font-size: 0.65rem;
+            color: #6B7280;
+            text-align: center;
+            word-break: break-all;
+        }
+
+        /* States */
+        .loading-state, .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: 20px;
+            border: 1px solid #E8ECF0;
+            width: 100%;
+        }
+
+        .loading-spinner {
+            width: 32px;
+            height: 32px;
+            border: 2px solid #E8ECF0;
+            border-top-color: #1A1F2E;
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .live-toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1A1F2E;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            z-index: 10001;
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+        }
+
+        /* Dark Mode */
+        @media (prefers-color-scheme: dark) {
+            body { background: #121417; }
+            .feed-header h1, .card-title, .share-modal-header h3 { color: #EDEDED; }
+            .feed-card, .share-modal-content, .loading-state, .empty-state { background: #1A1D24; border-color: #2A2D35; }
+            .card-content { color: #A0A5B0; }
+            .feed-stats, .card-tag, .category-badge, .source-chip, .knowmore-chip, .share-copy { background: #2A2D35; color: #A0A5B0; }
+            .filter-btn { color: #A0A5B0; }
+            .filter-btn:hover, .share-btn:hover { background: #2A2D35; }
+            .filter-btn.active { background: #EDEDED; color: #121417; }
+            .nav-btn { background: #1A1D24; border-color: #2A2D35; color: #EDEDED; }
+            .share-post-title, .share-link { background: #2A2D35; color: #A0A5B0; }
+            .card-content::-webkit-scrollbar-track { background: #2A2D35; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="trendlin-feed">
+    <!-- PREMIUM MINIMAL HEADER -->
+    <div class="feed-header">
+        <div class="header-left">
+            <h1>trendlin <span>/ intelligence</span></h1>
+            <div class="feed-stats">
+                <span class="stat-badge" id="livePostCount">0</span>
+                <span class="stat-label">insights</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="refresh-btn" id="refreshBtn" title="Refresh"><i class="fas fa-rotate-right"></i></button>
+        </div>
+    </div>
+
+    <!-- CATEGORY FILTER - Will be hidden on category pages -->
+    <div class="category-filter" id="categoryFilter">
+        <button class="filter-btn active" data-category="all">All</button>
+        <button class="filter-btn" data-category="technology">Tech</button>
+        <button class="filter-btn" data-category="wealth">Wealth</button>
+        <button class="filter-btn" data-category="health">Health</button>
+        <button class="filter-btn" data-category="entertainment">Media</button>
+        <button class="filter-btn" data-category="growth">Growth</button>
+        <button class="filter-btn" data-category="world">World</button>
+        <button class="filter-btn" data-category="lifestyle">Life</button>
+    </div>
+
+    <div class="nav-controls" id="navControls">
+        <button class="nav-btn" id="livePrevBtn"><i class="fas fa-chevron-left"></i></button>
+        <button class="nav-btn" id="liveNextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <div class="cards-grid" id="liveTrack">
+        <div class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Loading</p>
+        </div>
+    </div>
+</div>
+
+<!-- SHARE MODAL -->
+<div class="share-modal" id="shareModal">
+    <div class="share-modal-content">
+        <div class="share-modal-header">
+            <h3>Share</h3>
+            <button class="share-modal-close" id="closeModalBtn">&times;</button>
+        </div>
+        <div class="share-post-title" id="sharePostTitle">Loading...</div>
+        <div class="share-grid">
+            <a href="#" id="shareFacebook" class="share-option share-facebook" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+            <a href="#" id="shareTwitter" class="share-option share-twitter" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+            <a href="#" id="shareWhatsApp" class="share-option share-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="#" id="shareLinkedIn" class="share-option share-linkedin" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            <button id="shareCopyLink" class="share-option share-copy"><i class="fas fa-copy"></i> Copy</button>
+        </div>
+        <div class="share-link" id="shareLinkDisplay"></div>
+    </div>
+</div>
+
+<div class="live-toast" id="liveToast"></div>
+
+<script>
+    (function() {
+        'use strict';
+
+        // Absolute path
+        const JSON_PATH = '/live-feed/data/posts.json';
+        
+        // DETECT CATEGORY PAGE AND HIDE FILTER BAR
+        const currentPath = window.location.pathname;
+        let forcedCategory = null;
+        let isCategoryPage = false;
+        
+        if (currentPath.includes('/entertainment/')) {
+            forcedCategory = 'entertainment';
+            isCategoryPage = true;
+            console.log('🎬 Entertainment page - hiding category filter, showing only entertainment posts');
+        } else if (currentPath.includes('/technology/')) {
+            forcedCategory = 'technology';
+            isCategoryPage = true;
+            console.log('💻 Technology page - hiding category filter, showing only technology posts');
+        } else if (currentPath.includes('/wealth/')) {
+            forcedCategory = 'wealth';
+            isCategoryPage = true;
+            console.log('💰 Wealth page - hiding category filter, showing only wealth posts');
+        } else if (currentPath.includes('/health/')) {
+            forcedCategory = 'health';
+            isCategoryPage = true;
+            console.log('💊 Health page - hiding category filter, showing only health posts');
+        } else if (currentPath.includes('/growth/')) {
+            forcedCategory = 'growth';
+            isCategoryPage = true;
+            console.log('🌱 Growth page - hiding category filter, showing only growth posts');
+        } else if (currentPath.includes('/world/')) {
+            forcedCategory = 'world';
+            isCategoryPage = true;
+            console.log('🌍 World page - hiding category filter, showing only world posts');
+        } else if (currentPath.includes('/lifestyle/')) {
+            forcedCategory = 'lifestyle';
+            isCategoryPage = true;
+            console.log('✨ Lifestyle page - hiding category filter, showing only lifestyle posts');
+        }
+        
+        // HIDE THE CATEGORY FILTER BAR ON CATEGORY PAGES
+        if (isCategoryPage && forcedCategory) {
+            const filterBar = document.getElementById('categoryFilter');
+            if (filterBar) {
+                filterBar.classList.add('hidden-filter');
+                console.log('🔒 Category filter bar hidden - users cannot switch categories');
+            }
+        }
+        
+        let allPosts = [];
+        let filteredPosts = [];
+        let currentCategory = forcedCategory || 'all';
+        let currentSharePost = null;
+
+        const shareModal = document.getElementById('shareModal');
+        const sharePostTitle = document.getElementById('sharePostTitle');
+        const shareLinkDisplay = document.getElementById('shareLinkDisplay');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const refreshBtn = document.getElementById('refreshBtn');
+
+        function showToast(msg) {
+            const toast = document.getElementById('liveToast');
+            if (!toast) return;
+            toast.textContent = msg;
+            toast.style.opacity = '1';
+            setTimeout(() => toast.style.opacity = '0', 2000);
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return 'Recent';
+            const date = new Date(dateStr);
+            const now = new Date();
+            const diff = Math.floor((now - date) / 60000);
+            if (diff < 1) return 'Just now';
+            if (diff < 60) return `${diff}m`;
+            if (diff < 1440) return `${Math.floor(diff/60)}h`;
+            return date.toLocaleDateString();
+        }
+
+        function getCategoryIcon(cat) {
+            const icons = { technology:'💻', tech:'💻', wealth:'💰', health:'💊', entertainment:'🎬', growth:'🌱', world:'🌍', lifestyle:'✨' };
+            return icons[cat?.toLowerCase()] || '📄';
+        }
+
+        function openShareModal(post) {
+            if (!post) return;
+            currentSharePost = post;
+            const shareUrl = encodeURIComponent(window.location.href.split('?')[0] + `?post=${post.id}`);
+            const title = encodeURIComponent(post.title);
+            const displayUrl = window.location.href.split('?')[0] + `?post=${post.id}`;
+            sharePostTitle.textContent = post.title;
+            shareLinkDisplay.textContent = displayUrl;
+            document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+            document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?text=${title}&url=${shareUrl}`;
+            document.getElementById('shareWhatsApp').href = `https://wa.me/?text=${title}%20${shareUrl}`;
+            document.getElementById('shareLinkedIn').href = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
+            shareModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeShareModal() {
+            shareModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        async function copyLinkToClipboard() {
+            if (!currentSharePost) return;
+            const link = window.location.href.split('?')[0] + `?post=${currentSharePost.id}`;
+            try {
+                await navigator.clipboard.writeText(link);
+                showToast('✓ Copied');
+                closeShareModal();
+            } catch (err) {
+                showToast('Failed');
+            }
+        }
+
+        if (closeModalBtn) closeModalBtn.onclick = closeShareModal;
+        shareModal?.addEventListener('click', (e) => { if (e.target === shareModal) closeShareModal(); });
+        document.getElementById('shareCopyLink')?.addEventListener('click', (e) => { e.preventDefault(); copyLinkToClipboard(); });
+        if (refreshBtn) refreshBtn.onclick = () => { loadPosts(); showToast('Refreshing...'); };
+
+        function buildMediaCarousel(mediaItems, postId, category) {
+            if (!mediaItems || mediaItems.length === 0) {
+                // Return beautiful gradient placeholder when no media
+                const categoryLower = (category || '').toLowerCase();
+                return `<div class="media-carousel"><div class="media-placeholder" data-category="${categoryLower}"><i class="fas fa-newspaper"></i><span>No media available</span></div></div>`;
+            }
+            
+            const multiple = mediaItems.length > 1;
+            let html = `<div class="media-carousel" data-post-id="${postId}"><div class="media-slides" id="slides-${postId}">`;
+            mediaItems.forEach((item, idx) => {
+                const url = typeof item === 'string' ? item : item.url;
+                html += `<div class="media-slide ${idx === 0 ? 'active' : ''}"><img src="${url}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'media-placeholder\' data-category=\'${category}\'><i class=\'fas fa-image\'></i><span>Image failed to load</span></div>'"></div>`;
+            });
+            html += `</div>`;
+            if (multiple) {
+                html += `<button class="media-prev" data-post="${postId}">‹</button><button class="media-next" data-post="${postId}">›</button><div class="media-dots" data-post="${postId}">`;
+                mediaItems.forEach((_, idx) => { html += `<span class="media-dot ${idx === 0 ? 'active' : ''}" data-idx="${idx}"></span>`; });
+                html += `</div>`;
+            }
+            html += `</div>`;
+            return html;
+        }
+
+        function attachCarouselEvents() {
+            document.querySelectorAll('.media-prev').forEach(btn => {
+                btn.onclick = (e) => {
+                    e.stopPropagation();
+                    const postId = btn.dataset.post;
+                    const container = document.getElementById(`slides-${postId}`);
+                    const slides = container?.querySelectorAll('.media-slide');
+                    if (!slides || slides.length <= 1) return;
+                    let active = Array.from(slides).findIndex(s => s.classList.contains('active'));
+                    if (active === -1) active = 0;
+                    const newIdx = (active - 1 + slides.length) % slides.length;
+                    slides.forEach((s, i) => s.classList.toggle('active', i === newIdx));
+                    const dots = document.querySelector(`.media-dots[data-post="${postId}"]`);
+                    dots?.querySelectorAll('.media-dot').forEach((d, i) => d.classList.toggle('active', i === newIdx));
+                };
+            });
+            document.querySelectorAll('.media-next').forEach(btn => {
+                btn.onclick = (e) => {
+                    e.stopPropagation();
+                    const postId = btn.dataset.post;
+                    const container = document.getElementById(`slides-${postId}`);
+                    const slides = container?.querySelectorAll('.media-slide');
+                    if (!slides || slides.length <= 1) return;
+                    let active = Array.from(slides).findIndex(s => s.classList.contains('active'));
+                    if (active === -1) active = 0;
+                    const newIdx = (active + 1) % slides.length;
+                    slides.forEach((s, i) => s.classList.toggle('active', i === newIdx));
+                    const dots = document.querySelector(`.media-dots[data-post="${postId}"]`);
+                    dots?.querySelectorAll('.media-dot').forEach((d, i) => d.classList.toggle('active', i === newIdx));
+                };
+            });
+            document.querySelectorAll('.media-dot').forEach(dot => {
+                dot.onclick = (e) => {
+                    e.stopPropagation();
+                    const idx = parseInt(dot.dataset.idx);
+                    const dotsContainer = dot.closest('.media-dots');
+                    const postId = dotsContainer?.dataset.post;
+                    const container = document.getElementById(`slides-${postId}`);
+                    const slides = container?.querySelectorAll('.media-slide');
+                    if (!slides) return;
+                    slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+                    dotsContainer?.querySelectorAll('.media-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+                };
+            });
+        }
+
+        function attachShareEvents() {
+            document.querySelectorAll('.share-post-btn').forEach(btn => {
+                btn.onclick = (e) => {
+                    e.stopPropagation();
+                    const post = filteredPosts.find(p => p.id === btn.dataset.postId);
+                    if (post) openShareModal(post);
+                };
+            });
+        }
+
+        function renderCards() {
+            const track = document.getElementById('liveTrack');
+            const countSpan = document.getElementById('livePostCount');
+            const navControls = document.getElementById('navControls');
+            if (!track) return;
+            if (countSpan) countSpan.textContent = filteredPosts.length;
+            
+            // Update parent page post count
+            const parentPostCount = window.parent?.document?.getElementById('postCount');
+            if (parentPostCount) parentPostCount.textContent = filteredPosts.length;
+            
+            if (filteredPosts.length === 1) {
+                track.classList.add('single-card');
+                if (navControls) navControls.classList.add('hidden');
+            } else {
+                track.classList.remove('single-card');
+                if (navControls) navControls.classList.remove('hidden');
+            }
+            if (filteredPosts.length === 0) {
+                track.innerHTML = `<div class="empty-state"><p>No ${forcedCategory ? forcedCategory : ''} posts found</p></div>`;
+                return;
+            }
+            track.innerHTML = filteredPosts.map(post => {
+                const mediaHtml = buildMediaCarousel(post.media, post.id, post.category);
+                const contentHtml = post.fullContent || `<p>${post.excerpt || post.description || 'No content'}</p>`;
+                const sources = post.sources || (post.source ? [post.source] : []);
+                const knowMoreLinks = post.ctaButtons || [];
+                return `
+                    <div class="feed-card" data-post-id="${post.id}">
+                        <div class="card-inner">
+                            <h2 class="card-title">${escapeHtml(post.title)}</h2>
+                            <div class="card-meta">
+                                <div class="author-info"><i class="fas fa-user-circle"></i><span>${escapeHtml(post.author || 'Trendlin')}</span></div>
+                                <div style="display: flex; gap: 8px; align-items: center;">
+                                    ${post.readTime ? `<div class="read-time"><i class="fas fa-clock"></i> ${post.readTime} min</div>` : ''}
+                                    <button class="share-btn share-post-btn" data-post-id="${post.id}"><i class="fas fa-share-alt"></i> Share</button>
+                                </div>
+                            </div>
+                            ${mediaHtml ? `<div class="card-media">${mediaHtml}</div>` : ''}
+                            <div class="card-content">${contentHtml}</div>
+                            ${post.tags && post.tags.length ? `<div class="card-tags">${post.tags.map(t => `<span class="card-tag">#${escapeHtml(t)}</span>`).join('')}</div>` : ''}
+                            <div class="card-footer-compact">
+                                ${sources.length > 0 ? `<div class="footer-sources"><div class="footer-label"><i class="fas fa-database"></i> SOURCES</div><div class="sources-list">${sources.map(src => `<a href="${src.url || '#'}" target="_blank" class="source-chip"><i class="fas fa-link"></i><span>${escapeHtml(src.name.length > 20 ? src.name.substring(0, 18) + '...' : src.name)}</span></a>`).join('')}</div></div>` : ''}
+                                ${knowMoreLinks.length > 0 ? `<div class="footer-knowmore"><div class="footer-label"><i class="fas fa-compass"></i> MORE</div><div class="knowmore-list">${knowMoreLinks.map(link => `<a href="${link.url}" target="_blank" class="knowmore-chip"><span>${escapeHtml(link.label || 'Learn More')}</span><i class="fas fa-arrow-right"></i></a>`).join('')}</div></div>` : ''}
+                            </div>
+                            <div class="card-bottom"><span class="category-badge">${getCategoryIcon(post.category)} ${escapeHtml(post.category || 'General')}</span><span><i class="far fa-calendar-alt"></i> ${formatDate(post.date)}</span></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            attachCarouselEvents();
+            attachShareEvents();
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str).replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m]));
+        }
+
+        function filterByCategory(category) {
+            // On category pages, block any attempts to change category
+            if (isCategoryPage && category !== forcedCategory) {
+                console.log('🚫 Category change blocked - page is locked to', forcedCategory);
+                return;
+            }
+            currentCategory = category;
+            filteredPosts = category === 'all' ? [...allPosts] : allPosts.filter(p => p.category?.toLowerCase() === category.toLowerCase());
+            filteredPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+            renderCards();
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.category === category));
+        }
+
+        async function loadPosts() {
+            const track = document.getElementById('liveTrack');
+            try {
+                const response = await fetch(JSON_PATH + '?t=' + Date.now());
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const data = await response.json();
+                if (!data.posts || !Array.isArray(data.posts)) throw new Error('Invalid JSON');
+                allPosts = data.posts;
+                
+                // If on category page, force filter to that category
+                if (forcedCategory) {
+                    console.log(`🔒 Category page locked to: ${forcedCategory}`);
+                    filteredPosts = allPosts.filter(p => p.category?.toLowerCase() === forcedCategory);
+                    filteredPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    currentCategory = forcedCategory;
+                    renderCards();
+                    showToast(`${filteredPosts.length} ${forcedCategory} insights`);
+                } else {
+                    filterByCategory('all');
+                    showToast(`${allPosts.length} insights`);
+                }
+            } catch (error) {
+                console.error(error);
+                track.innerHTML = `<div class="empty-state"><p>Failed to load</p><button onclick="location.reload()" style="margin-top:12px; padding:6px 16px; border-radius:20px; border:none; background:#1A1F2E; color:white; cursor:pointer">Retry</button></div>`;
+                showToast('Failed to load');
+            }
+        }
+
+        function initScrollControls() {
+            const track = document.getElementById('liveTrack');
+            const prev = document.getElementById('livePrevBtn');
+            const next = document.getElementById('liveNextBtn');
+            if (!track || !prev || !next) return;
+            const scrollAmount = () => { const card = document.querySelector('.feed-card'); return card ? card.offsetWidth + 20 : 500; };
+            prev.onclick = () => track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+            next.onclick = () => track.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+        }
+
+        function initFilters() {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.onclick = () => filterByCategory(btn.dataset.category);
+            });
+        }
+
+        function initTouchSwipe() {
+            const track = document.getElementById('liveTrack');
+            if (!track) return;
+            let startX = 0;
+            track.addEventListener('touchstart', (e) => { startX = e.changedTouches[0].screenX; }, { passive: true });
+            track.addEventListener('touchend', (e) => {
+                const diff = startX - e.changedTouches[0].screenX;
+                if (Math.abs(diff) > 50) {
+                    const card = document.querySelector('.feed-card');
+                    const amount = card ? card.offsetWidth + 20 : 500;
+                    track.scrollBy({ left: diff > 0 ? amount : -amount, behavior: 'smooth' });
+                }
+            });
+        }
+
+        function init() {
+            loadPosts();
+            initFilters();
+            setTimeout(initScrollControls, 500);
+            initTouchSwipe();
+        }
+        
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+        else init();
+    })();
+</script>
+</body>
+</html>

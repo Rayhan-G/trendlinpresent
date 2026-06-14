@@ -280,404 +280,47 @@
       100% { transform: translateY(-40px); opacity: 0; }
     }
 
-    /* ===== CAROUSEL SECTION ===== */
+    /* ===== FEED SECTION ===== */
     .feed-section {
       padding: var(--space-12) 0;
       background: var(--bg-app);
     }
 
-    .feed-header {
-      max-width: 1280px;
-      margin: 0 auto var(--space-6);
-      padding: 0 var(--space-6);
-    }
-
-    .feed-header h2 { font-size: 1.5rem; font-weight: 600; }
-    .feed-header p { color: var(--text-secondary); margin-top: 8px; }
-
-    .carousel-wrapper { 
-      position: relative; 
-      max-width: 100%; 
-      overflow: visible; 
-      padding: 0 10px;
-    }
-    
-    @media (min-width: 1024px) {
-      .carousel-wrapper { 
-        padding: 0 60px;
-      }
-    }
-
-    .carousel-track-container {
-      overflow-x: auto;
-      overflow-y: visible;
-      scroll-behavior: smooth;
-      scrollbar-width: thin;
-      -webkit-overflow-scrolling: touch;
-      scroll-snap-type: x mandatory;
-      padding: 20px 0 30px;
-      scrollbar-color: var(--primary-500) var(--gray-200);
-    }
-    
-    .carousel-track-container::-webkit-scrollbar { height: 6px; }
-    .carousel-track-container::-webkit-scrollbar-track { background: var(--gray-200); border-radius: 10px; }
-    .carousel-track-container::-webkit-scrollbar-thumb { background: var(--primary-500); border-radius: 10px; }
-    
-    .carousel-track {
-      display: flex;
-      gap: 24px;
-      scroll-snap-type: x mandatory;
-    }
-    
-    @media (min-width: 1024px) {
-      .carousel-track {
-        padding: 10px calc(50% - 430px) 20px calc(50% - 430px);
-        gap: 30px;
-      }
-    }
-    
-    @media (max-width: 1023px) {
-      .carousel-track {
-        padding: 10px 16px 20px 16px;
-        gap: 16px;
-      }
-    }
-
-    .depth-card {
-      scroll-snap-align: center;
-      transition: transform 0.3s ease, filter 0.3s ease;
-      cursor: pointer;
-      filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.15));
-    }
-    
-    @media (min-width: 1024px) {
-      .depth-card {
-        flex: 0 0 860px;
-      }
-    }
-    
-    @media (min-width: 768px) and (max-width: 1023px) {
-      .depth-card {
-        flex: 0 0 70vw;
-      }
-    }
-    
-    @media (max-width: 767px) {
-      .depth-card {
-        flex: 0 0 calc(100vw - 80px);
-        min-width: 280px;
-      }
-    }
-
-    .depth-card:hover { transform: translateY(-10px); filter: drop-shadow(0 30px 35px rgba(0, 0, 0, 0.25)); }
-    
-    /* DESKTOP LAYOUT - Text Left, Media Right */
-    .seamless-card {
-      display: flex;
-      background: #FFFFFF;
-      border-radius: 28px;
-      overflow: hidden;
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
-      height: 620px;
-    }
-    
-    /* MOBILE LAYOUT - Media Top, Text Below */
-    @media (max-width: 900px) {
-      .seamless-card {
-        flex-direction: column;
-        height: auto;
-      }
-      .text-panel { 
-        width: 100%; 
-        order: 2;
-      }
-      .media-panel { 
-        width: 100%; 
-        order: 1;
-        min-height: 260px;
-      }
-      .title-panel h2 { 
-        font-size: 1.3rem; 
-      }
-      .desc-panel { 
-        max-height: 200px; 
-      }
-      .title-panel {
-        padding: 20px 20px 16px 20px;
-      }
-      .desc-panel {
-        padding: 18px 20px;
-      }
-      .source-panel {
-        padding: 16px 20px;
-      }
-    }
-
-    .text-panel {
-      flex: 0 0 60%;
-      display: flex;
-      flex-direction: column;
-      background: #FFFFFF;
-      height: 100%;
-    }
-
-    .title-panel {
-      background: linear-gradient(135deg, #FFFFFF 0%, #F8F6F2 100%);
-      padding: 28px 28px 22px 28px;
-      box-shadow: 0 30px 35px -20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,240,0.9);
-      position: relative;
-      z-index: 30;
-      margin-bottom: -10px;
-      flex-shrink: 0;
-    }
-
-    .live-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: #FFE0B5;
-      padding: 6px 16px;
-      border-radius: 60px;
-      font-size: 0.7rem;
-      font-weight: 800;
-      color: #B45A2C;
-      margin-bottom: 16px;
-    }
-
-    .pulse-dot {
-      width: 10px;
-      height: 10px;
-      background: #E15554;
-      border-radius: 50%;
-      animation: pulseAnim 1.3s infinite;
-    }
-
-    @keyframes pulseAnim {
-      0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(225,85,84,0.7);}
-      70% { transform: scale(1.3); box-shadow: 0 0 0 8px rgba(225,85,84,0);}
-      100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(225,85,84,0);}
-    }
-
-    .title-panel h2 {
-      font-size: 1.7rem;
-      font-weight: 800;
-      line-height: 1.35;
-      letter-spacing: -0.02em;
-      background: linear-gradient(115deg, #1a2a35, #2d4a5c);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      margin-bottom: 0;
-    }
-
-    .desc-panel {
-      background: #F5F0E8;
-      padding: 24px 28px 24px 28px;
-      position: relative;
-      z-index: 20;
-      margin-top: -6px;
-      box-shadow: 0 15px 25px -15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,245,0.8);
-      flex: 1;
-      min-height: 0;
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-      overflow-x: hidden;
-    }
-
-    .desc-panel::-webkit-scrollbar { width: 6px; }
-    .desc-panel::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.08); border-radius: 10px; }
-    .desc-panel::-webkit-scrollbar-thumb { background: #0F6EFF; border-radius: 10px; }
-    .desc-panel p { font-size: 1rem; line-height: 1.65; color: #3a4a55; font-weight: 450; margin-bottom: 20px; flex-shrink: 0; }
-    
-    .tag-list { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 8px; flex-shrink: 0; }
-    .tag-list span { background: rgba(0, 0, 0, 0.06); font-size: 0.7rem; padding: 5px 14px; border-radius: 30px; font-weight: 600; color: #5a6a7a; }
-    
-    .scroll-hint {
-      position: sticky;
-      bottom: 0;
+    /* Question Card */
+    .question-card {
+      max-width: 900px;
+      margin: 40px auto 0;
+      background: linear-gradient(135deg, var(--gray-900) 0%, #2C2C3A 100%);
+      border-radius: var(--radius-xl);
+      padding: 48px 40px;
       text-align: center;
-      font-size: 0.6rem;
-      color: #8a7a68;
-      background: rgba(245, 240, 232, 0.95);
-      padding: 6px;
-      border-radius: 20px;
-      width: fit-content;
-      margin: 12px auto 0;
-      backdrop-filter: blur(4px);
-      pointer-events: none;
-      flex-shrink: 0;
-    }
-
-    .source-panel {
-      background: #D8D0C4;
-      background-image: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 2px, transparent 2px, transparent 12px);
-      padding: 18px 28px 22px 28px;
-      position: relative;
-      z-index: 10;
-      margin-top: -6px;
-      box-shadow: 0 25px 35px -18px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,250,235,0.5);
-      flex-shrink: 0;
-      border-top: 1px solid rgba(0,0,0,0.05);
-    }
-
-    .source-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(42, 58, 68, 0.15);
-      padding: 4px 12px;
-      border-radius: 30px;
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: #4a3a2a;
-      letter-spacing: 0.5px;
-      margin-bottom: 14px;
-      text-transform: uppercase;
-    }
-
-    .source-title-link a {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #1a2a35;
-      text-decoration: none;
-      transition: color 0.2s;
-      line-height: 1.4;
-    }
-
-    .source-title-link a:hover { color: #0F6EFF; text-decoration: underline; }
-
-    .media-panel {
-      flex: 0 0 40%;
-      position: relative;
-      background: #1a1a2e;
-      overflow: hidden;
-      height: 100%;
-    }
-
-    .media-carousel { width: 100%; height: 100%; position: relative; }
-    .media-slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      transition: opacity 0.3s ease;
-    }
-    .media-slide img, .media-slide video { width: 100%; height: 100%; object-fit: cover; }
-    .no-media {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #667eea, #764ba2);
+      box-shadow: var(--shadow-lg);
       color: white;
-      font-weight: 600;
     }
 
-    .media-prev, .media-next {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(4px);
-      color: white;
-      border: none;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 18px;
-      z-index: 15;
-      transition: all 0.2s;
-    }
-
-    @media (min-width: 768px) {
-      .media-prev, .media-next {
-        width: 36px;
-        height: 36px;
-        font-size: 20px;
+    @media (max-width: 768px) {
+      .question-card {
+        margin: 30px 20px;
+        padding: 32px 24px;
+      }
+      .question-card h2 {
+        font-size: 1.4rem;
+      }
+      .question-card p {
+        font-size: 0.9rem;
       }
     }
 
-    .media-prev:hover, .media-next:hover { background: rgba(0,0,0,0.85); transform: translateY(-50%) scale(1.05); }
-    .media-prev { left: 12px; }
-    .media-next { right: 12px; }
-    
-    .media-dots {
-      position: absolute;
-      bottom: 16px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 8px;
-      z-index: 15;
-    }
-    .media-dots .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.5);
-      cursor: pointer;
-    }
-    .media-dots .dot.active { background: white; width: 24px; border-radius: 4px; }
-    
-    /* Navigation Buttons */
-    .carousel-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: white;
-      border: 1px solid var(--border-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: var(--shadow-md);
-      z-index: 25;
-      color: var(--text-primary);
+    .question-card h2 { 
+      font-size: 1.8rem; 
+      font-weight: 700; 
+      margin-bottom: 12px; 
+      color: white; 
     }
     
-    @media (min-width: 1024px) {
-      .carousel-nav {
-        width: 52px;
-        height: 52px;
-        font-size: 28px;
-      }
-      .nav-prev { left: 0; }
-      .nav-next { right: 0; }
+    .question-card p { 
+      color: var(--gray-300); 
     }
-    
-    @media (min-width: 768px) and (max-width: 1023px) {
-      .carousel-nav {
-        width: 44px;
-        height: 44px;
-        font-size: 24px;
-      }
-      .nav-prev { left: 5px; }
-      .nav-next { right: 5px; }
-    }
-    
-    @media (max-width: 767px) {
-      .carousel-nav {
-        width: 36px;
-        height: 36px;
-        font-size: 20px;
-        background: rgba(255,255,255,0.95);
-      }
-      .nav-prev { left: 0; }
-      .nav-next { right: 0; }
-    }
-
-    .carousel-nav:hover { background: var(--primary-500); color: white; border-color: var(--primary-500); transform: translateY(-50%) scale(1.05); }
-    .carousel-nav:active { transform: translateY(-50%) scale(0.98); }
-
-    .loading-spinner { text-align: center; padding: 80px; font-size: 1.2rem; color: var(--text-tertiary); }
-    .feed-empty { text-align: center; padding: 80px 24px; background: white; border-radius: 24px; max-width: 600px; margin: 0 auto; }
-    .empty-icon { font-size: 64px; margin-bottom: 20px; }
 
     /* Why Trendlin Section */
     .why-section {
@@ -1251,34 +894,6 @@
     .explore-link:hover { gap: var(--space-3); }
     .explore-link:hover span { transform: translateX(4px); }
 
-    /* Question Card */
-    .question-card {
-      max-width: 900px;
-      margin: 40px auto 0;
-      background: linear-gradient(135deg, var(--gray-900) 0%, #2C2C3A 100%);
-      border-radius: var(--radius-xl);
-      padding: 48px 40px;
-      text-align: center;
-      box-shadow: var(--shadow-lg);
-      color: white;
-    }
-
-    @media (max-width: 768px) {
-      .question-card {
-        margin: 30px 20px;
-        padding: 32px 24px;
-      }
-      .question-card h2 {
-        font-size: 1.4rem;
-      }
-      .question-card p {
-        font-size: 0.9rem;
-      }
-    }
-
-    .question-card h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 12px; color: white; }
-    .question-card p { color: var(--gray-300); }
-
     /* Manifesto */
     .manifesto {
       background: var(--gray-100);
@@ -1360,15 +975,6 @@
       .stat-number { color: #e0e0f0; }
       .hero-visual { background: rgba(30, 30, 42, 0.4); border-color: rgba(255, 255, 255, 0.05); }
       .visual-badge { background: rgba(30, 30, 42, 0.95); color: #e0e0f0; }
-      .seamless-card { background: #242430; }
-      .text-panel { background: #242430; }
-      .title-panel { background: #242430; }
-      .title-panel h2 { background: linear-gradient(115deg, #e0e0f0, #b0b0c0); background-clip: text; -webkit-background-clip: text; color: transparent; }
-      .desc-panel { background: #2a2a36; }
-      .desc-panel p { color: #c0c0d0; }
-      .source-panel { background: #333342; }
-      .carousel-nav { background: #2a2a36; border-color: #3a3a4a; color: #e0e0f0; }
-      .carousel-nav:hover { background: var(--primary-500); color: white; }
       .reality-card { background: rgba(30, 30, 42, 0.8); border-color: rgba(255, 255, 255, 0.05); }
       .reality-card h3 { color: #e0e0f0; }
       .category-card { background: #1e1e2a; }
@@ -1431,22 +1037,10 @@
   </div>
 </section>
 
-<!-- LIVE POSTS CAROUSEL SECTION -->
+<!-- LIVE POSTS CAROUSEL SECTION - Component loads here -->
 <section class="feed-section">
   <div class="container">
-    <div class="feed-header">
-      <h2>📋 Live Intelligence Feed</h2>
-      <p>← Click the left/right buttons → Manual horizontal scroll working!</p>
-    </div>
-    <div class="carousel-wrapper">
-      <button class="carousel-nav nav-prev" id="prevBtn">‹</button>
-      <div class="carousel-track-container" id="trackContainer">
-        <div class="carousel-track" id="carouselTrack">
-          <div class="loading-spinner">Loading live posts from /data/live-posts.json...</div>
-        </div>
-      </div>
-      <button class="carousel-nav nav-next" id="nextBtn">›</button>
-    </div>
+    <div id="live-feed-root"></div>
   </div>
 </section>
 
@@ -1593,172 +1187,45 @@
 
     loadComponent('header-placeholder', '/components/header.html');
     loadComponent('footer-placeholder', '/components/footer.html');
+    
+    // Load live feed component with proper path
+    const liveFeedContainer = document.getElementById('live-feed-root');
+    if (liveFeedContainer) {
+      // Use absolute path from root
+      fetch('/components/live-feed-component.html')
+        .then(response => {
+          if (!response.ok) throw new Error(`HTTP ${response.status} - ${response.statusText}`);
+          return response.text();
+        })
+        .then(html => {
+          liveFeedContainer.innerHTML = html;
+          console.log('✅ Live feed component loaded from /components/live-feed-component.html');
+          
+          // After component is loaded, ensure scripts are executed
+          const scripts = liveFeedContainer.querySelectorAll('script');
+          scripts.forEach(oldScript => {
+            const newScript = document.createElement('script');
+            if (oldScript.src) {
+              newScript.src = oldScript.src;
+            } else {
+              newScript.textContent = oldScript.textContent;
+            }
+            document.body.appendChild(newScript);
+          });
+        })
+        .catch(error => {
+          console.error('❌ Failed to load live feed component:', error);
+          liveFeedContainer.innerHTML = `<div style="text-align:center; padding:60px; background:white; border-radius:24px;">
+            <div style="font-size:64px;">⚠️</div>
+            <h3>Failed to load live feed</h3>
+            <p>Make sure /components/live-feed-component.html exists.</p>
+            <p style="margin-top:12px; font-size:0.8rem; color:#666;">Error: ${error.message}</p>
+          </div>`;
+        });
+    }
   })();
 
-  // ===== JAVASCRIPT - COMPLETELY FUNCTIONAL =====
-  let feedPosts = [];
-
-  function escapeHtml(str) { return String(str || '').replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m])); }
-
-  function getCategoryIcon(category) {
-    const icons = { technology: '💻', wealth: '💰', health: '💊', growth: '🌱', entertainment: '🎬', world: '🌍', lifestyle: '✨' };
-    return icons[category?.toLowerCase()] || '📄';
-  }
-
-  function getCategoryBadge(category) {
-    const badges = { technology: '🔵 TECH', wealth: '🟡 WEALTH', health: '🟢 HEALTH', growth: '🟠 GROWTH', entertainment: '🎬 ENTERTAINMENT', world: '🌍 WORLD', lifestyle: '✨ LIFESTYLE' };
-    return badges[category?.toLowerCase()] || '📡 LIVE';
-  }
-
-  function buildMedia(mediaId, mediaItems) {
-    if (!mediaItems || mediaItems.length === 0) return `<div class="no-media">🎬 No media</div>`;
-    const multiple = mediaItems.length > 1;
-    let html = `<div class="media-carousel" data-media-id="${mediaId}" style="height:100%;">`;
-    html += `<div id="media-${mediaId}" style="position:relative; width:100%; height:100%;">`;
-    mediaItems.forEach((item, idx) => {
-      const url = item.url || item;
-      html += `<div class="media-slide" style="opacity:${idx === 0 ? 1 : 0}"><img src="${url}" alt="Post visual" loading="lazy" onerror="this.src='https://placehold.co/800x500?text=Image+Not+Found'"></div>`;
-    });
-    html += `</div>`;
-    if (multiple) {
-      html += `<button class="media-prev" data-target="media-${mediaId}">‹</button>`;
-      html += `<button class="media-next" data-target="media-${mediaId}">›</button>`;
-      html += `<div class="media-dots">${mediaItems.map((_, idx) => `<span class="dot ${idx === 0 ? 'active' : ''}" data-idx="${idx}"></span>`).join('')}</div>`;
-    }
-    html += `</div>`;
-    return html;
-  }
-
-  function renderCards() {
-    const track = document.getElementById('carouselTrack');
-    if (!track) return;
-    
-    if (!feedPosts || feedPosts.length === 0) {
-      track.innerHTML = `<div class="feed-empty"><div class="empty-icon">📭</div><h3>No live posts available</h3><p>Make sure /data/live-posts.json exists with recent posts.</p></div>`;
-      return;
-    }
-    
-    document.getElementById('postCount').textContent = feedPosts.length;
-    
-    track.innerHTML = feedPosts.map((post, idx) => {
-      const excerpt = (post.excerpt || post.content || '').substring(0, 350);
-      const categoryIcon = getCategoryIcon(post.category);
-      const categoryBadge = getCategoryBadge(post.category);
-      const mediaItems = post.media || (post.image ? [{ url: post.image }] : []);
-      const sourceUrl = post.sourceUrl || post.url || '#';
-      
-      return `
-        <div class="depth-card">
-          <div class="seamless-card">
-            <div class="text-panel">
-              <div class="title-panel">
-                <div class="live-tag"><span class="pulse-dot"></span><span>${categoryIcon} ${categoryBadge}</span></div>
-                <h2>${escapeHtml(post.title)}</h2>
-              </div>
-              <div class="desc-panel">
-                <p>${escapeHtml(excerpt)}${excerpt.length >= 350 ? '...' : ''}</p>
-                ${post.tags ? `<div class="tag-list">${post.tags.map(t => `<span>${escapeHtml(t)}</span>`).join('')}</div>` : ''}
-                <div class="scroll-hint">↓ scroll ↓</div>
-              </div>
-              <div class="source-panel">
-                <div class="source-label"><span>📎</span> SOURCE</div>
-                <div class="source-title-link">
-                  <a href="${sourceUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(post.title)}</a>
-                </div>
-              </div>
-            </div>
-            <div class="media-panel">
-              ${buildMedia(post.id, mediaItems)}
-            </div>
-          </div>
-        </div>
-      `;
-    }).join('');
-    
-    attachMediaEvents();
-    attachCarouselEvents();
-  }
-
-  function attachMediaEvents() {
-    document.querySelectorAll('.media-prev, .media-next').forEach(btn => {
-      btn.removeEventListener('click', handleMediaNav);
-      btn.addEventListener('click', handleMediaNav);
-    });
-    document.querySelectorAll('.media-dots .dot').forEach(dot => {
-      dot.removeEventListener('click', handleDotNav);
-      dot.addEventListener('click', handleDotNav);
-    });
-  }
-
-  function handleMediaNav(e) {
-    e.stopPropagation();
-    const btn = e.currentTarget;
-    const targetId = btn.dataset.target;
-    const container = document.getElementById(targetId);
-    if (!container) return;
-    const slides = container.querySelectorAll('.media-slide');
-    const dotsContainer = btn.parentElement?.querySelector('.media-dots');
-    let activeIdx = Array.from(slides).findIndex(s => getComputedStyle(s).opacity === '1');
-    if (activeIdx === -1) activeIdx = 0;
-    const isPrev = btn.classList.contains('media-prev');
-    const newIdx = isPrev ? (activeIdx - 1 + slides.length) % slides.length : (activeIdx + 1) % slides.length;
-    slides.forEach((s, i) => { s.style.opacity = i === newIdx ? '1' : '0'; });
-    if (dotsContainer) {
-      dotsContainer.querySelectorAll('.dot').forEach((dot, i) => dot.classList.toggle('active', i === newIdx));
-    }
-  }
-
-  function handleDotNav(e) {
-    e.stopPropagation();
-    const dot = e.currentTarget;
-    const dotsContainer = dot.closest('.media-dots');
-    const mediaCarousel = dotsContainer?.closest('.media-carousel');
-    const targetId = mediaCarousel?.dataset.mediaId;
-    const container = document.getElementById(`media-${targetId}`);
-    if (!container) return;
-    const slides = container.querySelectorAll('.media-slide');
-    const idx = parseInt(dot.dataset.idx);
-    slides.forEach((s, i) => { s.style.opacity = i === idx ? '1' : '0'; });
-    dotsContainer?.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === idx));
-  }
-
-  function attachCarouselEvents() {
-    const scrollContainer = document.getElementById('trackContainer');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    
-    if (scrollContainer && prevBtn && nextBtn) {
-      const getScrollAmount = () => {
-        const card = document.querySelector('.depth-card');
-        if (card) return card.offsetWidth + 30;
-        return 890;
-      };
-      
-      const newPrevBtn = prevBtn.cloneNode(true);
-      const newNextBtn = nextBtn.cloneNode(true);
-      prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
-      nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
-      
-      const finalPrevBtn = document.getElementById('prevBtn');
-      const finalNextBtn = document.getElementById('nextBtn');
-      
-      if (finalPrevBtn) {
-        finalPrevBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          scrollContainer.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-        });
-      }
-      if (finalNextBtn) {
-        finalNextBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          scrollContainer.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-        });
-      }
-    }
-  }
-
+  // ========== CATEGORIES ==========
   const verticals = [
     { icon: '<i class="fas fa-microchip"></i>', name: "Technology", desc: "Deep tech trends & AI breakthroughs", color: "#0F6EFF", link: "/categories/technology/" },
     { icon: '<i class="fas fa-chart-line"></i>', name: "Wealth", desc: "Macro shifts, markets & finance", color: "#F5A623", link: "/categories/wealth/" },
@@ -1788,26 +1255,8 @@
     }
   }
 
-  async function fetchLivePosts() {
-    try {
-      const response = await fetch('/data/live-posts.json?t=' + Date.now());
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const data = await response.json();
-      feedPosts = data.posts || [];
-      console.log(`✅ Loaded ${feedPosts.length} LIVE posts from /data/live-posts.json`);
-      renderCards();
-    } catch (error) {
-      console.error('❌ Failed to load live posts:', error);
-      const track = document.getElementById('carouselTrack');
-      if (track) {
-        track.innerHTML = `<div class="feed-empty"><div class="empty-icon">⚠️</div><h3>Failed to load live posts</h3><p>Make sure /data/live-posts.json exists.</p><p style="margin-top:12px; font-size:0.8rem;">Error: ${error.message}</p></div>`;
-      }
-    }
-  }
-
   document.addEventListener('DOMContentLoaded', () => {
     renderCategories();
-    fetchLivePosts();
   });
 </script>
 
