@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-    <title>Gaming | Entertainment | Trendlin</title>
-    <meta name="description" content="Video games, esports, game streaming, reviews, and walkthroughs for PC, console, and mobile gamers.">
+    <title>Movies & TV | Entertainment | Trendlin</title>
+    <meta name="description" content="Hollywood, Bollywood, TV series, documentaries, and short films — everything worth watching on the big and small screen.">
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         :focus { outline: none; }
@@ -55,20 +56,20 @@
     <div class="sub-header">
         <div class="container">
             <a href="/categories/entertainment/" class="back-link">← Back to Entertainment</a>
-            <h1>🎮 Gaming</h1>
-            <p>Video games, esports, game streaming, reviews, and walkthroughs for PC, console, and mobile gamers.</p>
+            <h1>🎬 Movies & TV</h1>
+            <p>Hollywood, Bollywood, TV series, documentaries, and short films — everything worth watching on the big and small screen.</p>
         </div>
     </div>
     <div class="container">
         <div class="posts-section">
-            <h2>Latest in Gaming</h2>
+            <h2>Latest in Movies & TV</h2>
             <div class="posts-grid" id="postsGrid"><div class="skeleton-card"><div class="skeleton-category"></div><div class="skeleton-title"></div><div class="skeleton-excerpt"></div><div class="skeleton-meta"></div></div><div class="skeleton-card"><div class="skeleton-category"></div><div class="skeleton-title"></div><div class="skeleton-excerpt"></div><div class="skeleton-meta"></div></div><div class="skeleton-card"><div class="skeleton-category"></div><div class="skeleton-title"></div><div class="skeleton-excerpt"></div><div class="skeleton-meta"></div></div></div>
             <div class="pagination" id="pagination"></div>
         </div>
     </div>
     <script>
         const CATEGORY = 'entertainment';
-        const SUBCATEGORY = 'gaming';
+        const SUBCATEGORY = 'movies-tv';
         let currentPage = 1;
         const POSTS_PER_PAGE = 9;
         let allPosts = [];
@@ -79,7 +80,7 @@
                 const data = await response.json();
                 let postsArray = Array.isArray(data) ? data : (data.posts || []);
                 allPosts = postsArray.filter(post => post.category === CATEGORY && post.subcategory === SUBCATEGORY);
-                if (allPosts.length === 0) { document.getElementById('postsGrid').innerHTML = '<div class="loading">🎮 No gaming articles yet. Check back soon for reviews and esports highlights!</div>'; return; }
+                if (allPosts.length === 0) { document.getElementById('postsGrid').innerHTML = '<div class="loading">🎬 No movies & TV articles yet. Check back soon for reviews and recommendations!</div>'; return; }
                 renderPosts();
             } catch (error) { document.getElementById('postsGrid').innerHTML = '<div class="error">⚠️ Failed to load posts. Please refresh or try again later.</div>'; }
         }
@@ -92,12 +93,12 @@
             if (!postsGrid) return;
             if (pagePosts.length === 0) { postsGrid.innerHTML = '<div class="loading">No posts on this page.</div>'; return; }
             postsGrid.innerHTML = pagePosts.map(post => {
-                const excerpt = post.excerpt || post.content?.replace(/<[^>]*>/g, '').substring(0, 120) || 'Game reviews, esports highlights, industry news, and what\'s next in interactive entertainment.';
+                const excerpt = post.excerpt || post.content?.replace(/<[^>]*>/g, '').substring(0, 120) || 'Reviews, trailers, and behind-the-scenes insights from the biggest releases and indie gems.';
                 const trimmedExcerpt = excerpt.length > 120 ? excerpt.substring(0, 117) + '...' : excerpt;
                 const postDate = formatDate(post.date);
                 const readTime = post.readTime || (post.content ? Math.ceil(post.content.length / 1000) : 5);
                 const views = post.views || Math.floor(Math.random() * 15000) + 1000;
-                return `<div class="post-card"><div class="post-category">${(post.subcategory || 'GAMING').toUpperCase()}</div><h3><a href="/posts/index.html?id=${post.id}">${escapeHtml(post.title)}</a></h3><p>${escapeHtml(trimmedExcerpt)}</p><div class="post-meta"><span>📅 ${postDate}</span><span>🕐 ${readTime} min read</span><span>👁️ ${views.toLocaleString()} views</span></div></div>`;
+                return `<div class="post-card"><div class="post-category">${(post.subcategory || 'MOVIES & TV').toUpperCase()}</div><h3><a href="/posts/index.html?id=${post.id}">${escapeHtml(post.title)}</a></h3><p>${escapeHtml(trimmedExcerpt)}</p><div class="post-meta"><span>📅 ${postDate}</span><span>🕐 ${readTime} min read</span><span>👁️ ${views.toLocaleString()} views</span></div></div>`;
             }).join('');
             renderPagination();
         }

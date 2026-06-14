@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
     <title>Entertainment | Trendlin — Intelligence for the Modern World</title>
-    <meta name="description" content="What's worth your time. Curated recommendations on film, TV, books, games, and pop culture — researched and explained.">
+    <meta name="description" content="What's worth your time. Curated recommendations on film, TV, music, gaming, arts, pop culture, digital content, and sports entertainment — researched and explained.">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -275,10 +275,8 @@
         .card-title {
             font-size: 1.6rem;
             font-weight: 800;
-            color: #111827;
             margin-bottom: 8px;
             letter-spacing: -0.02em;
-            transition: color 0.2s ease;
             background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
             -webkit-background-clip: text;
             background-clip: text;
@@ -421,7 +419,7 @@
         <div class="hero-content">
             <div class="hero-badge">TRENDLIN ENTERTAINMENT</div>
             <h1>What's <span>worth your time</span></h1>
-            <p>Trends in movies, TV, gaming, music, books, and pop culture — researched and explained.</p>
+            <p>Trends in movies, TV, music, gaming, arts, pop culture, digital content, and sports entertainment — researched and explained.</p>
         </div>
     </div>
 </section>
@@ -433,7 +431,7 @@
     </div>
 </section>
 
-<!-- SUBCATEGORY SECTION - IMPROVED DESIGN (Article Count Removed) -->
+<!-- SUBCATEGORY SECTION - CARDS PROPERLY LINKED TO SUBPAGES -->
 <div class="subcategory-showcase">
     <div class="container">
         <div class="showcase-header">
@@ -524,26 +522,75 @@
             });
     }
 
-    // Subcategories data - Article count badge completely removed
+    // Subcategories data with PROPER LINKS to the subcategory pages
     const ENTERTAINMENT_SUBCATEGORIES = [
-        { name: 'Movies', icon: '🎬', tagline: 'Cinema magic awaits', description: 'Reviews, trailers, and behind-the-scenes insights from the biggest releases and indie gems.', slug: 'movies' },
-        { name: 'TV Shows', icon: '📺', tagline: 'Binge-worthy series', description: 'Streaming guides, episode recaps, and deep dives into the most talked-about shows.', slug: 'tv-shows' },
-        { name: 'Gaming', icon: '🎮', tagline: 'Level up', description: 'Game reviews, esports highlights, industry news, and what\'s next in interactive entertainment.', slug: 'gaming' },
-        { name: 'Streaming', icon: '📡', tagline: 'Watch anywhere', description: 'Netflix, Disney+, HBO, Apple TV+ — navigate the streaming universe like a pro.', slug: 'streaming' },
-        { name: 'Books', icon: '📚', tagline: 'Pages worth turning', description: 'Literary reviews, reading lists, author interviews, and the best new fiction & non-fiction.', slug: 'books' },
-        { name: 'Pop Culture', icon: '🌟', tagline: 'What everyone\'s talking about', description: 'Memes, viral trends, celebrity moments, and the cultural waves shaping our world.', slug: 'pop-culture' }
+        { 
+            name: 'Movies & TV', 
+            icon: '🎬', 
+            tagline: 'Cinema & streaming magic', 
+            description: 'Hollywood, Bollywood, TV series, documentaries, and short films — everything worth watching on the big and small screen.',
+            link: '/categories/entertainment/movies-tv/'
+        },
+        { 
+            name: 'Music', 
+            icon: '🎵', 
+            tagline: 'Songs that move you', 
+            description: 'Albums, music videos, live concerts, and deep dives into pop, rock, hip-hop, classical, and everything in between.',
+            link: '/categories/entertainment/music/'
+        },
+        { 
+            name: 'Gaming', 
+            icon: '🎮', 
+            tagline: 'Level up', 
+            description: 'Video games, esports, game streaming, reviews, and walkthroughs for PC, console, and mobile gamers.',
+            link: '/categories/entertainment/gaming/'
+        },
+        { 
+            name: 'Arts & Performance', 
+            icon: '🎭', 
+            tagline: 'Live & on stage', 
+            description: 'Theatre, drama, dance, stand-up comedy, circus, and live shows that celebrate creative expression.',
+            link: '/categories/entertainment/arts-performance/'
+        },
+        { 
+            name: 'Celebrity & Pop Culture', 
+            icon: '📚', 
+            tagline: 'What everyone\'s talking about', 
+            description: 'Celebrity news, gossip, interviews, awards shows, and the cultural moments that define our time.',
+            link: '/categories/entertainment/celebrity-pop-culture/'
+        },
+        { 
+            name: 'Digital & Online', 
+            icon: '📺', 
+            tagline: 'Born on the internet', 
+            description: 'YouTube, TikTok, podcasts, livestreaming, memes, and viral content — the digital entertainment revolution.',
+            link: '/categories/entertainment/digital-online/'
+        },
+        { 
+            name: 'Sports Entertainment', 
+            icon: '🏟️', 
+            tagline: 'Where passion meets play', 
+            description: 'Match highlights, player spotlights, and sports events as entertainment — from World Cup to WrestleMania.',
+            link: '/categories/entertainment/sports-entertainment/'
+        },
+        { 
+            name: 'Creative Entertainment', 
+            icon: '🎨', 
+            tagline: 'Imagination unleashed', 
+            description: 'Animation, comics, manga, fan fiction, and storytelling content that pushes creative boundaries.',
+            link: '/categories/entertainment/creative-entertainment/'
+        }
     ];
 
-    // Simplified render function — NO article badge, NO article count, static "Explore" text
+    // Render function with proper href links
     async function renderSubcategoryGrid() {
         const grid = document.getElementById('subcategory-grid');
         if (!grid) return;
         
-        // Build cards without any article count logic or badge
         const cards = [];
         for (const cat of ENTERTAINMENT_SUBCATEGORIES) {
             cards.push(`
-                <a href="/categories/entertainment/${cat.slug}/" class="subcategory-card">
+                <a href="${cat.link}" class="subcategory-card">
                     <div class="card-icon">${cat.icon}</div>
                     <h3 class="card-title">${cat.name}</h3>
                     <div class="card-tagline">${cat.tagline}</div>
