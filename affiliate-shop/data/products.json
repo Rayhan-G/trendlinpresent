@@ -1,6 +1,34 @@
 {
   "products": [
-  
+  {
+  "id": 2,
+  "name": "Samsung Galaxy Ring AI Smart Ring",
+  "category": "Wearables",
+  "image": "https://pub-bf1013d046c946448ed23cbf79e38b92.r2.dev/livepostsimages/Samsung-Mobile-Galaxy-Unpacked-2024-Galaxy-Wearables_dl2-1024x683.jpg",
+  "affiliateLink": "https://amzn.to/3SHgOzK",
+  "description": "A lightweight titanium smart ring that tracks sleep, heart rate, and activity without a subscription fee. Designed for all-day comfort with Samsung Health integration.",
+  "trending": true,
+  "bestSeller": false,
+  "inStock": true,
+  "pros": [
+    "No monthly subscription required",
+    "Extremely lightweight (2.3-3g) and comfortable",
+    "Seamless integration with Samsung Health ecosystem",
+    "IP68 water resistance (swim-proof)",
+    "Grade 5 titanium with scratch-resistant concave design",
+    "Up to 7 days of claimed battery life",
+    "HSA/FSA eligible in the US"
+  ],
+  "cons": [
+    "Android only — no iPhone compatibility",
+    "Requires sizing kit — standard ring sizes don't fit",
+    "No built-in GPS; relies on phone for location tracking",
+    "Heart rate accuracy can be inconsistent during workouts",
+    "Stress tracking reported as unreliable by multiple reviewers",
+    "Some users report rapid battery drain after weeks of use",
+    "Rare cases of battery swelling reported (Samsung investigating)"
+  ]
+}
   
   ]
 }

@@ -522,68 +522,68 @@
             });
     }
 
-    // Subcategories data with PROPER LINKS to the subcategory pages
+    // Subcategories data with PROPER LINKS matching exact folder structure
     const ENTERTAINMENT_SUBCATEGORIES = [
         { 
             name: 'Movies & TV', 
             icon: '🎬', 
             tagline: 'Cinema & streaming magic', 
             description: 'Hollywood, Bollywood, TV series, documentaries, and short films — everything worth watching on the big and small screen.',
-            link: '/categories/entertainment/movies-tv/'
+            link: '/categories/entertainment/Movies-TV/'
         },
         { 
             name: 'Music', 
             icon: '🎵', 
             tagline: 'Songs that move you', 
             description: 'Albums, music videos, live concerts, and deep dives into pop, rock, hip-hop, classical, and everything in between.',
-            link: '/categories/entertainment/music/'
+            link: '/categories/entertainment/Music/'
         },
         { 
             name: 'Gaming', 
             icon: '🎮', 
             tagline: 'Level up', 
             description: 'Video games, esports, game streaming, reviews, and walkthroughs for PC, console, and mobile gamers.',
-            link: '/categories/entertainment/gaming/'
+            link: '/categories/entertainment/Gaming/'
         },
         { 
             name: 'Arts & Performance', 
             icon: '🎭', 
             tagline: 'Live & on stage', 
             description: 'Theatre, drama, dance, stand-up comedy, circus, and live shows that celebrate creative expression.',
-            link: '/categories/entertainment/arts-performance/'
+            link: '/categories/entertainment/Arts-Performance/'
         },
         { 
             name: 'Celebrity & Pop Culture', 
             icon: '📚', 
             tagline: 'What everyone\'s talking about', 
             description: 'Celebrity news, gossip, interviews, awards shows, and the cultural moments that define our time.',
-            link: '/categories/entertainment/celebrity-pop-culture/'
+            link: '/categories/entertainment/Celebrity-Pop-Culture/'
         },
         { 
             name: 'Digital & Online', 
             icon: '📺', 
             tagline: 'Born on the internet', 
             description: 'YouTube, TikTok, podcasts, livestreaming, memes, and viral content — the digital entertainment revolution.',
-            link: '/categories/entertainment/digital-online/'
+            link: '/categories/entertainment/Digital-Online-Entertainment/'
         },
         { 
             name: 'Sports Entertainment', 
             icon: '🏟️', 
             tagline: 'Where passion meets play', 
             description: 'Match highlights, player spotlights, and sports events as entertainment — from World Cup to WrestleMania.',
-            link: '/categories/entertainment/sports-entertainment/'
+            link: '/categories/entertainment/Sports-Entertainment/'
         },
         { 
             name: 'Creative Entertainment', 
             icon: '🎨', 
             tagline: 'Imagination unleashed', 
             description: 'Animation, comics, manga, fan fiction, and storytelling content that pushes creative boundaries.',
-            link: '/categories/entertainment/creative-entertainment/'
+            link: '/categories/entertainment/Creative-Entertainment/'
         }
     ];
 
-    // Render function with proper href links
-    async function renderSubcategoryGrid() {
+    // Render function with proper href links matching exact folder names
+    function renderSubcategoryGrid() {
         const grid = document.getElementById('subcategory-grid');
         if (!grid) return;
         
@@ -602,6 +602,7 @@
         grid.innerHTML = cards.join('');
     }
 
+    // Initialize on page load
     document.addEventListener('DOMContentLoaded', () => {
         renderSubcategoryGrid();
     });

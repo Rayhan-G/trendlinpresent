@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "siteName": "Trendlin",          
+  "categories": [],              
+  "carouselSettings": {            
+    "enabled": true,                 
+    "autoPlay": false,             
+    "showDots": true,                
+    "showArrows": true,              
+    "interval": 5000,                
+    "maxSlides": 5                   
+  },
+  "pagination": {
+    "postsPerPage": 12,             
+    "showLoadMore": false            
+  },
+  "features": {
+    "comments": false,               
+    "sharing": true                  
+  }
+}
