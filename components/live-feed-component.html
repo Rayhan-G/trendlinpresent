@@ -225,7 +225,6 @@
             border: 1px solid #E8ECF0;
         }
 
-        /* On mobile, ensure card uses almost full viewport width minus small padding */
         @media (max-width: 640px) {
             .feed-card {
                 width: calc(100vw - 48px);
@@ -267,7 +266,6 @@
             }
         }
 
-        /* Title */
         .card-title {
             font-size: 1.1rem;
             font-weight: 600;
@@ -277,7 +275,6 @@
             letter-spacing: -0.2px;
         }
 
-        /* Meta */
         .card-meta {
             display: flex;
             justify-content: space-between;
@@ -301,7 +298,6 @@
             gap: 4px;
         }
 
-        /* Share Button */
         .share-btn {
             display: inline-flex;
             align-items: center;
@@ -322,7 +318,6 @@
             color: #1A1F2E;
         }
 
-        /* Media Carousel */
         .card-media {
             margin: 0 -20px 16px -20px;
             position: relative;
@@ -342,7 +337,6 @@
             }
         }
 
-        /* Beautiful gradient placeholder for missing images */
         .media-placeholder {
             width: 100%;
             height: 100%;
@@ -367,7 +361,6 @@
             opacity: 0.9;
         }
 
-        /* Category-specific placeholder colors */
         .media-placeholder[data-category="technology"] { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); }
         .media-placeholder[data-category="wealth"] { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
         .media-placeholder[data-category="health"] { background: linear-gradient(135deg, #134e5e 0%, #71b280 100%); }
@@ -454,7 +447,6 @@
             background: white;
         }
 
-        /* Description - Scrollable */
         .card-content {
             font-size: 0.85rem;
             line-height: 1.55;
@@ -484,12 +476,6 @@
             margin-bottom: 10px;
         }
 
-        .card-content ul {
-            padding-left: 20px;
-            margin: 10px 0;
-        }
-
-        /* Tags */
         .card-tags {
             display: flex;
             flex-wrap: wrap;
@@ -505,7 +491,6 @@
             color: #6B7280;
         }
 
-        /* Footer */
         .card-footer-compact {
             margin-top: 12px;
             padding-top: 12px;
@@ -588,7 +573,6 @@
             font-size: 0.55rem;
         }
 
-        /* Bottom Row */
         .card-bottom {
             margin-top: 10px;
             padding-top: 10px;
@@ -609,7 +593,6 @@
             color: #6B7280;
         }
 
-        /* Share Modal */
         .share-modal {
             position: fixed;
             top: 0;
@@ -718,7 +701,6 @@
             word-break: break-all;
         }
 
-        /* States */
         .loading-state, .empty-state {
             text-align: center;
             padding: 60px 20px;
@@ -758,7 +740,6 @@
             pointer-events: none;
         }
 
-        /* Dark Mode */
         @media (prefers-color-scheme: dark) {
             body { background: #121417; }
             .feed-header h1, .card-title, .share-modal-header h3 { color: #EDEDED; }
@@ -777,10 +758,9 @@
 <body>
 
 <div class="trendlin-feed">
-    <!-- PREMIUM MINIMAL HEADER -->
     <div class="feed-header">
         <div class="header-left">
-            <h1>trendlin <span>/ intelligence</span></h1>
+            <h1>trendlin <span id="categoryHeaderSpan">/ intelligence</span></h1>
             <div class="feed-stats">
                 <span class="stat-badge" id="livePostCount">0</span>
                 <span class="stat-label">insights</span>
@@ -791,7 +771,6 @@
         </div>
     </div>
 
-    <!-- CATEGORY FILTER -->
     <div class="category-filter" id="categoryFilter">
         <button class="filter-btn active" data-category="all">All</button>
         <button class="filter-btn" data-category="technology">Tech</button>
@@ -816,7 +795,6 @@
     </div>
 </div>
 
-<!-- SHARE MODAL -->
 <div class="share-modal" id="shareModal">
     <div class="share-modal-content">
         <div class="share-modal-header">
@@ -841,7 +819,72 @@
     (function() {
         'use strict';
 
-        // Fallback posts data with Brazil vs Morocco article as the first post
+        // ========== CATEGORY PAGE DETECTION ==========
+        // This detects if we're on a category-specific page (e.g., /categories/technology/)
+        // and locks the feed to ONLY that category's posts.
+        const currentPath = window.location.pathname;
+        let forcedCategory = null;
+        let isCategoryPage = false;
+        
+        // Define valid categories and their display names
+        const categoryMap = {
+            'technology': 'Technology',
+            'tech': 'Technology',
+            'wealth': 'Wealth',
+            'health': 'Health',
+            'entertainment': 'Entertainment',
+            'media': 'Entertainment',
+            'growth': 'Growth',
+            'world': 'World',
+            'lifestyle': 'Lifestyle',
+            'life': 'Lifestyle'
+        };
+        
+        // Check path for category indicators
+        if (currentPath.includes('/technology/') || currentPath.includes('/categories/technology')) {
+            forcedCategory = 'technology';
+            isCategoryPage = true;
+        } else if (currentPath.includes('/wealth/') || currentPath.includes('/categories/wealth')) {
+            forcedCategory = 'wealth';
+            isCategoryPage = true;
+        } else if (currentPath.includes('/health/') || currentPath.includes('/categories/health')) {
+            forcedCategory = 'health';
+            isCategoryPage = true;
+        } else if (currentPath.includes('/entertainment/') || currentPath.includes('/categories/entertainment') || currentPath.includes('/media/')) {
+            forcedCategory = 'entertainment';
+            isCategoryPage = true;
+        } else if (currentPath.includes('/growth/') || currentPath.includes('/categories/growth')) {
+            forcedCategory = 'growth';
+            isCategoryPage = true;
+        } else if (currentPath.includes('/world/') || currentPath.includes('/categories/world')) {
+            forcedCategory = 'world';
+            isCategoryPage = true;
+        } else if (currentPath.includes('/lifestyle/') || currentPath.includes('/categories/lifestyle') || currentPath.includes('/life/')) {
+            forcedCategory = 'lifestyle';
+            isCategoryPage = true;
+        }
+        
+        // HIDE CATEGORY FILTER BAR ON CATEGORY PAGES
+        const filterBar = document.getElementById('categoryFilter');
+        const categoryHeaderSpan = document.getElementById('categoryHeaderSpan');
+        
+        if (isCategoryPage && forcedCategory) {
+            if (filterBar) {
+                filterBar.classList.add('hidden-filter');
+            }
+            // Update header to show current category
+            const displayName = categoryMap[forcedCategory] || forcedCategory.charAt(0).toUpperCase() + forcedCategory.slice(1);
+            if (categoryHeaderSpan) {
+                categoryHeaderSpan.innerHTML = `/ ${displayName}`;
+            }
+            console.log(`🔒 Category page locked to: ${forcedCategory} — filter bar hidden`);
+        } else {
+            if (categoryHeaderSpan) {
+                categoryHeaderSpan.innerHTML = '/ intelligence';
+            }
+        }
+
+        // ========== POST DATA ==========
         const FALLBACK_POSTS = {
             posts: [
                 {
@@ -885,13 +928,27 @@
                     tags: ["Crypto", "Finance", "Blockchain"],
                     sources: [{ name: "Bloomberg", url: "#" }],
                     ctaButtons: [{ label: "Market Report", url: "#" }]
+                },
+                {
+                    id: "health-longevity-4",
+                    title: "Longevity Science: New Biomarkers for Aging",
+                    author: "Dr. Samira Cohen",
+                    category: "health",
+                    date: "2026-06-12T09:45:00Z",
+                    readTime: 5,
+                    excerpt: "Researchers identified 12 epigenetic clocks that predict biological age more accurately.",
+                    fullContent: "<p>Researchers identified 12 epigenetic clocks that predict biological age more accurately. Clinical trials show lifestyle interventions reverse epigenetic age by 3.5 years.</p>",
+                    media: ["https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=2070&auto=format"],
+                    tags: ["Longevity", "Science", "Health"],
+                    sources: [{ name: "Nature Aging", url: "#" }],
+                    ctaButtons: [{ label: "Read Study", url: "#" }]
                 }
             ]
         };
 
         let allPosts = [];
         let filteredPosts = [];
-        let currentCategory = 'all';
+        let currentCategory = forcedCategory || 'all';
         let currentSharePost = null;
 
         const shareModal = document.getElementById('shareModal');
@@ -1054,7 +1111,8 @@
                 if (navControls) navControls.classList.remove('hidden');
             }
             if (filteredPosts.length === 0) {
-                track.innerHTML = `<div class="empty-state"><p>No posts found</p></div>`;
+                const categoryDisplay = forcedCategory ? categoryMap[forcedCategory] || forcedCategory : '';
+                track.innerHTML = `<div class="empty-state"><p>No ${categoryDisplay} posts found</p><p style="font-size:0.8rem; margin-top:8px;">Check back later for more insights</p></div>`;
                 return;
             }
             track.innerHTML = filteredPosts.map(post => {
@@ -1094,18 +1152,25 @@
             return String(str).replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m]));
         }
 
+        // CRITICAL: filter function respects forcedCategory on category pages
         function filterByCategory(category) {
+            // On category pages, BLOCK any category change attempts
+            if (isCategoryPage && forcedCategory) {
+                console.log('🚫 Category change blocked — page locked to:', forcedCategory);
+                return;
+            }
             currentCategory = category;
             filteredPosts = category === 'all' ? [...allPosts] : allPosts.filter(p => p.category?.toLowerCase() === category.toLowerCase());
             filteredPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
             renderCards();
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.category === category));
+            if (!isCategoryPage) {
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.category === category));
+            }
         }
 
         async function loadPosts() {
             const track = document.getElementById('liveTrack');
             try {
-                // Try to fetch from JSON, fallback to local data
                 let data = null;
                 try {
                     const response = await fetch('/live-feed/data/posts.json?t=' + Date.now());
@@ -1113,7 +1178,7 @@
                         data = await response.json();
                     }
                 } catch (e) {
-                    console.log('Using fallback data');
+                    console.log('Fetch failed, using fallback data');
                 }
                 
                 if (data && data.posts && Array.isArray(data.posts)) {
@@ -1122,12 +1187,30 @@
                     allPosts = FALLBACK_POSTS.posts;
                 }
                 
-                filterByCategory('all');
-                showToast(`${allPosts.length} insights loaded`);
+                // CRITICAL: Apply category filtering based on page type
+                if (isCategoryPage && forcedCategory) {
+                    // Category page: ONLY show posts from this specific category
+                    filteredPosts = allPosts.filter(p => p.category?.toLowerCase() === forcedCategory);
+                    filteredPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    currentCategory = forcedCategory;
+                    renderCards();
+                    const displayName = categoryMap[forcedCategory] || forcedCategory;
+                    showToast(`${filteredPosts.length} ${displayName} insights`);
+                } else {
+                    // Normal page: show all posts
+                    filterByCategory('all');
+                    showToast(`${allPosts.length} insights loaded`);
+                }
             } catch (error) {
                 console.error(error);
                 allPosts = FALLBACK_POSTS.posts;
-                filterByCategory('all');
+                if (isCategoryPage && forcedCategory) {
+                    filteredPosts = allPosts.filter(p => p.category?.toLowerCase() === forcedCategory);
+                    filteredPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    renderCards();
+                } else {
+                    filterByCategory('all');
+                }
                 showToast('Using demo content');
             }
         }
@@ -1143,9 +1226,12 @@
         }
 
         function initFilters() {
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.onclick = () => filterByCategory(btn.dataset.category);
-            });
+            // Only attach filter events if NOT on a category page
+            if (!isCategoryPage) {
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.onclick = () => filterByCategory(btn.dataset.category);
+                });
+            }
         }
 
         function initTouchSwipe() {
