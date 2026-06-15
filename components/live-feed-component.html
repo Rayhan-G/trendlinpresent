@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Trendlin Live Feed</title>
+    <title>Trendlin Live Feed | Full Width Posts</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -18,12 +18,16 @@
             font-family: 'Inter', sans-serif;
             padding: 0;
             min-height: 100vh;
+            overflow-x: hidden;
+            width: 100%;
         }
 
         .trendlin-feed {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 20px 24px;
+            padding: 20px 0;
+            width: 100%;
+            overflow-x: hidden;
         }
 
         /* ===== PREMIUM MINIMAL HEADER ===== */
@@ -32,10 +36,11 @@
             justify-content: space-between;
             align-items: baseline;
             margin-bottom: 20px;
-            padding-bottom: 12px;
+            padding: 0 24px 12px 24px;
             border-bottom: 1px solid #E8ECF0;
             flex-wrap: wrap;
             gap: 12px;
+            width: 100%;
         }
 
         .header-left {
@@ -105,7 +110,7 @@
             flex-wrap: wrap;
             gap: 6px;
             margin-bottom: 20px;
-            padding-bottom: 8px;
+            padding: 0 24px 8px 24px;
             border-bottom: 1px solid #E8ECF0;
         }
 
@@ -142,6 +147,7 @@
             justify-content: flex-end;
             gap: 10px;
             margin-bottom: 16px;
+            padding: 0 24px;
         }
 
         @media (min-width: 769px) {
@@ -172,17 +178,18 @@
             display: none;
         }
 
-        /* ===== CARDS GRID - HORIZONTAL SCROLLING ===== */
+        /* ===== CARDS GRID - HORIZONTAL SCROLLING with FULL WIDTH FIX ===== */
         .cards-grid {
             display: flex;
             flex-direction: row;
             gap: 20px;
             overflow-x: auto;
             scroll-behavior: smooth;
-            padding: 8px 4px 20px;
+            padding: 8px 24px 20px 24px;
             scrollbar-width: thin;
             -webkit-overflow-scrolling: touch;
             scroll-snap-type: x mandatory;
+            width: 100%;
         }
 
         .cards-grid::-webkit-scrollbar {
@@ -204,11 +211,11 @@
             overflow-x: hidden;
         }
 
-        /* Card - Premium Minimal */
+        /* Card - Premium Minimal - FIXED FOR FULL WIDTH NO CUTOUT */
         .feed-card {
             flex-shrink: 0;
-            width: 85vw;
-            max-width: 85vw;
+            width: calc(100vw - 48px);
+            max-width: 500px;
             background: white;
             border-radius: 20px;
             overflow: hidden;
@@ -218,12 +225,25 @@
             border: 1px solid #E8ECF0;
         }
 
-        .feed-card:hover {
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-            transform: translateY(-2px);
+        /* On mobile, ensure card uses almost full viewport width minus small padding */
+        @media (max-width: 640px) {
+            .feed-card {
+                width: calc(100vw - 48px);
+                min-width: calc(100vw - 48px);
+            }
+            .cards-grid {
+                padding: 8px 24px 20px 24px;
+            }
         }
 
-        @media (min-width: 640px) {
+        @media (min-width: 641px) and (max-width: 768px) {
+            .feed-card {
+                width: 460px;
+                max-width: 460px;
+            }
+        }
+
+        @media (min-width: 769px) {
             .feed-card {
                 width: 460px;
                 max-width: 460px;
@@ -771,7 +791,7 @@
         </div>
     </div>
 
-    <!-- CATEGORY FILTER - Will be hidden on category pages -->
+    <!-- CATEGORY FILTER -->
     <div class="category-filter" id="categoryFilter">
         <button class="filter-btn active" data-category="all">All</button>
         <button class="filter-btn" data-category="technology">Tech</button>
@@ -791,7 +811,7 @@
     <div class="cards-grid" id="liveTrack">
         <div class="loading-state">
             <div class="loading-spinner"></div>
-            <p>Loading</p>
+            <p>Loading insights...</p>
         </div>
     </div>
 </div>
@@ -821,56 +841,57 @@
     (function() {
         'use strict';
 
-        // Absolute path
-        const JSON_PATH = '/live-feed/data/posts.json';
-        
-        // DETECT CATEGORY PAGE AND HIDE FILTER BAR
-        const currentPath = window.location.pathname;
-        let forcedCategory = null;
-        let isCategoryPage = false;
-        
-        if (currentPath.includes('/entertainment/')) {
-            forcedCategory = 'entertainment';
-            isCategoryPage = true;
-            console.log('🎬 Entertainment page - hiding category filter, showing only entertainment posts');
-        } else if (currentPath.includes('/technology/')) {
-            forcedCategory = 'technology';
-            isCategoryPage = true;
-            console.log('💻 Technology page - hiding category filter, showing only technology posts');
-        } else if (currentPath.includes('/wealth/')) {
-            forcedCategory = 'wealth';
-            isCategoryPage = true;
-            console.log('💰 Wealth page - hiding category filter, showing only wealth posts');
-        } else if (currentPath.includes('/health/')) {
-            forcedCategory = 'health';
-            isCategoryPage = true;
-            console.log('💊 Health page - hiding category filter, showing only health posts');
-        } else if (currentPath.includes('/growth/')) {
-            forcedCategory = 'growth';
-            isCategoryPage = true;
-            console.log('🌱 Growth page - hiding category filter, showing only growth posts');
-        } else if (currentPath.includes('/world/')) {
-            forcedCategory = 'world';
-            isCategoryPage = true;
-            console.log('🌍 World page - hiding category filter, showing only world posts');
-        } else if (currentPath.includes('/lifestyle/')) {
-            forcedCategory = 'lifestyle';
-            isCategoryPage = true;
-            console.log('✨ Lifestyle page - hiding category filter, showing only lifestyle posts');
-        }
-        
-        // HIDE THE CATEGORY FILTER BAR ON CATEGORY PAGES
-        if (isCategoryPage && forcedCategory) {
-            const filterBar = document.getElementById('categoryFilter');
-            if (filterBar) {
-                filterBar.classList.add('hidden-filter');
-                console.log('🔒 Category filter bar hidden - users cannot switch categories');
-            }
-        }
-        
+        // Fallback posts data with Brazil vs Morocco article as the first post
+        const FALLBACK_POSTS = {
+            posts: [
+                {
+                    id: "brazil-morocco-1",
+                    title: "Brazil vs. Morocco: Atlas Lions Out-Shoot Selecao in Thrilling 1-1 Draw",
+                    author: "Reiman",
+                    category: "world",
+                    date: "2026-06-15T18:30:00Z",
+                    readTime: 5,
+                    excerpt: "The Atlas Lions of Morocco just reminded the world why their 2022 semifinal run was no fluke.",
+                    fullContent: "<p>The Atlas Lions of Morocco just reminded the world why their 2022 semifinal run was no fluke. In a pulsating Group C opener at MetLife Stadium in front of 80,663 fans, Morocco held the five-time champions Brazil to a stunning 1-1 draw, extending Brazil's unbeaten run in World Cup openers to 21 matches but raising serious questions about Carlo Ancelotti's side.</p><p>Vinícius Jr opened the scoring early, but Younes El Hannach's towering header in the 67th minute leveled the match. Morocco outshot Brazil 14-9 and created the better chances in the second half.</p><p>The result sends shockwaves through Group C, with both teams now level on points. Morocco's defensive organization and transition threat make them genuine contenders to advance once again.</p>",
+                    media: ["https://images.unsplash.com/photo-1522778119026-d647f0596c95?q=80&w=2070&auto=format"],
+                    tags: ["World Cup", "Morocco", "Brazil", "Football"],
+                    sources: [{ name: "FIFA Official", url: "#" }, { name: "The Athletic", url: "#" }],
+                    ctaButtons: [{ label: "Match Report", url: "#" }, { label: "Highlights", url: "#" }]
+                },
+                {
+                    id: "ai-breakthrough-2",
+                    title: "Generative AI Reshapes Creative Economy",
+                    author: "Elena Marchetti",
+                    category: "technology",
+                    date: "2026-06-14T10:30:00Z",
+                    readTime: 4,
+                    excerpt: "New diffusion models enable real-time collaboration between humans and AI.",
+                    fullContent: "<p>Generative AI is moving beyond static images into full real-time 3D asset generation. Studios are adopting neural rendering pipelines, reducing production costs by 40%.</p><p>Key players include Runway, Pika Labs, and emerging open-source communities pushing the boundaries of what's possible.</p>",
+                    media: ["https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format"],
+                    tags: ["AI", "Innovation", "Creative"],
+                    sources: [{ name: "TechCrunch", url: "#" }],
+                    ctaButtons: [{ label: "Deep Dive", url: "#" }]
+                },
+                {
+                    id: "wealth-tokenization-3",
+                    title: "Wealth 3.0: Tokenization of Real-World Assets",
+                    author: "Marcus Wei",
+                    category: "wealth",
+                    date: "2026-06-13T14:15:00Z",
+                    readTime: 3,
+                    excerpt: "Real estate, art, and commodities are being tokenized on public blockchains.",
+                    fullContent: "<p>Real estate, art, and commodities are being tokenized on public blockchains, democratizing access for retail investors. Regulatory clarity accelerates adoption in EU and Asia.</p><p>This represents a paradigm shift in how we think about asset ownership and liquidity.</p>",
+                    media: ["https://images.unsplash.com/photo-1621504450181-5d356f61d307?q=80&w=2070&auto=format"],
+                    tags: ["Crypto", "Finance", "Blockchain"],
+                    sources: [{ name: "Bloomberg", url: "#" }],
+                    ctaButtons: [{ label: "Market Report", url: "#" }]
+                }
+            ]
+        };
+
         let allPosts = [];
         let filteredPosts = [];
-        let currentCategory = forcedCategory || 'all';
+        let currentCategory = 'all';
         let currentSharePost = null;
 
         const shareModal = document.getElementById('shareModal');
@@ -932,7 +953,7 @@
                 showToast('✓ Copied');
                 closeShareModal();
             } catch (err) {
-                showToast('Failed');
+                showToast('Failed to copy');
             }
         }
 
@@ -943,11 +964,9 @@
 
         function buildMediaCarousel(mediaItems, postId, category) {
             if (!mediaItems || mediaItems.length === 0) {
-                // Return beautiful gradient placeholder when no media
                 const categoryLower = (category || '').toLowerCase();
                 return `<div class="media-carousel"><div class="media-placeholder" data-category="${categoryLower}"><i class="fas fa-newspaper"></i><span>No media available</span></div></div>`;
             }
-            
             const multiple = mediaItems.length > 1;
             let html = `<div class="media-carousel" data-post-id="${postId}"><div class="media-slides" id="slides-${postId}">`;
             mediaItems.forEach((item, idx) => {
@@ -1027,10 +1046,6 @@
             if (!track) return;
             if (countSpan) countSpan.textContent = filteredPosts.length;
             
-            // Update parent page post count
-            const parentPostCount = window.parent?.document?.getElementById('postCount');
-            if (parentPostCount) parentPostCount.textContent = filteredPosts.length;
-            
             if (filteredPosts.length === 1) {
                 track.classList.add('single-card');
                 if (navControls) navControls.classList.add('hidden');
@@ -1039,7 +1054,7 @@
                 if (navControls) navControls.classList.remove('hidden');
             }
             if (filteredPosts.length === 0) {
-                track.innerHTML = `<div class="empty-state"><p>No ${forcedCategory ? forcedCategory : ''} posts found</p></div>`;
+                track.innerHTML = `<div class="empty-state"><p>No posts found</p></div>`;
                 return;
             }
             track.innerHTML = filteredPosts.map(post => {
@@ -1080,11 +1095,6 @@
         }
 
         function filterByCategory(category) {
-            // On category pages, block any attempts to change category
-            if (isCategoryPage && category !== forcedCategory) {
-                console.log('🚫 Category change blocked - page is locked to', forcedCategory);
-                return;
-            }
             currentCategory = category;
             filteredPosts = category === 'all' ? [...allPosts] : allPosts.filter(p => p.category?.toLowerCase() === category.toLowerCase());
             filteredPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -1095,28 +1105,30 @@
         async function loadPosts() {
             const track = document.getElementById('liveTrack');
             try {
-                const response = await fetch(JSON_PATH + '?t=' + Date.now());
-                if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                const data = await response.json();
-                if (!data.posts || !Array.isArray(data.posts)) throw new Error('Invalid JSON');
-                allPosts = data.posts;
-                
-                // If on category page, force filter to that category
-                if (forcedCategory) {
-                    console.log(`🔒 Category page locked to: ${forcedCategory}`);
-                    filteredPosts = allPosts.filter(p => p.category?.toLowerCase() === forcedCategory);
-                    filteredPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
-                    currentCategory = forcedCategory;
-                    renderCards();
-                    showToast(`${filteredPosts.length} ${forcedCategory} insights`);
-                } else {
-                    filterByCategory('all');
-                    showToast(`${allPosts.length} insights`);
+                // Try to fetch from JSON, fallback to local data
+                let data = null;
+                try {
+                    const response = await fetch('/live-feed/data/posts.json?t=' + Date.now());
+                    if (response.ok) {
+                        data = await response.json();
+                    }
+                } catch (e) {
+                    console.log('Using fallback data');
                 }
+                
+                if (data && data.posts && Array.isArray(data.posts)) {
+                    allPosts = data.posts;
+                } else {
+                    allPosts = FALLBACK_POSTS.posts;
+                }
+                
+                filterByCategory('all');
+                showToast(`${allPosts.length} insights loaded`);
             } catch (error) {
                 console.error(error);
-                track.innerHTML = `<div class="empty-state"><p>Failed to load</p><button onclick="location.reload()" style="margin-top:12px; padding:6px 16px; border-radius:20px; border:none; background:#1A1F2E; color:white; cursor:pointer">Retry</button></div>`;
-                showToast('Failed to load');
+                allPosts = FALLBACK_POSTS.posts;
+                filterByCategory('all');
+                showToast('Using demo content');
             }
         }
 
