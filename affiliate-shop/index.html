@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
     <title>TRENDLIN | Discover Trending Products</title>
     <meta name="description" content="TRENDLIN — Discover and explore trending products across 7 categories. Honest pros and cons analysis.">
     <meta name="theme-color" content="#0f172a">
@@ -39,8 +39,10 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.5;
+            -webkit-tap-highlight-color: transparent;
         }
 
+        /* Mobile-first container adjustments */
         .site-header {
             position: sticky;
             top: 0;
@@ -48,7 +50,7 @@
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-light);
             z-index: 100;
-            padding: 0.875rem 1.5rem;
+            padding: 0.75rem 1rem;
         }
 
         .nav-container {
@@ -60,7 +62,7 @@
         }
 
         .logo {
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             font-weight: 700;
             text-decoration: none;
             color: var(--text-primary);
@@ -71,7 +73,7 @@
         .hero {
             background: linear-gradient(135deg, #f0f9ff 0%, #e8f0fe 100%);
             border-bottom: 1px solid var(--border-light);
-            padding: 2.5rem 1.5rem;
+            padding: 1.5rem 1rem;
         }
 
         .hero-container {
@@ -82,7 +84,7 @@
         .hero-content {
             text-align: center;
             max-width: 700px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 1.5rem;
         }
 
         .hero-badge {
@@ -90,25 +92,25 @@
             align-items: center;
             gap: 0.5rem;
             background: #dbeafe;
-            padding: 0.3rem 1rem;
+            padding: 0.25rem 0.9rem;
             border-radius: 2rem;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 600;
             color: #1d4ed8;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .hero h1 {
-            font-size: 2rem;
+            font-size: 1.6rem;
             font-weight: 700;
             letter-spacing: -0.02em;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             color: var(--text-primary);
         }
 
         .hero p {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .trending-exploration {
@@ -121,28 +123,28 @@
 
         .trending-header {
             background: white;
-            padding: 1rem 1.25rem;
+            padding: 0.75rem 1rem;
             border-bottom: 1px solid var(--border-light);
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 0.75rem;
+            gap: 0.5rem;
         }
 
         .trending-title {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.5rem;
         }
 
         .trending-title i {
             color: var(--accent);
-            font-size: 1rem;
+            font-size: 0.85rem;
         }
 
         .trending-title h3 {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 600;
             color: var(--text-primary);
         }
@@ -159,27 +161,32 @@
             height: 32px;
             border-radius: 50%;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
         }
 
         .trending-carousel {
-            padding: 1rem;
+            padding: 0.75rem;
             overflow-x: auto;
             scroll-behavior: smooth;
             scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
         }
 
         .trending-carousel::-webkit-scrollbar {
-            height: 5px;
+            height: 4px;
         }
 
         .trending-track {
             display: flex;
-            gap: 1rem;
+            gap: 0.85rem;
             width: max-content;
         }
 
         .trending-card {
-            width: 220px;
+            width: 160px;
             background: white;
             border: 1px solid var(--border-light);
             border-radius: 0.75rem;
@@ -190,23 +197,23 @@
         }
 
         .trending-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -10px rgba(0,0,0,0.12);
             border-color: var(--accent);
         }
 
         .trending-card-img {
             width: 100%;
-            height: 150px;
+            height: 120px;
             object-fit: cover;
         }
 
         .trending-card-info {
-            padding: 0.7rem;
+            padding: 0.6rem;
         }
 
         .trending-card-category {
-            font-size: 0.55rem;
+            font-size: 0.5rem;
             font-weight: 600;
             color: var(--accent);
             text-transform: uppercase;
@@ -214,7 +221,7 @@
 
         .trending-card-name {
             font-weight: 600;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             margin: 0.2rem 0;
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -226,22 +233,22 @@
             display: inline-block;
             background: #e74c3c;
             color: white;
-            font-size: 0.5rem;
-            padding: 0.1rem 0.45rem;
+            font-size: 0.45rem;
+            padding: 0.1rem 0.4rem;
             border-radius: 1rem;
             margin-top: 0.2rem;
         }
 
         .app-layout {
             max-width: 1440px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
         }
 
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
+            gap: 0.85rem;
         }
 
         .product-card {
@@ -249,13 +256,12 @@
             border: 1px solid var(--border-light);
             border-radius: 0.85rem;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             position: relative;
         }
 
-        .product-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent);
+        .product-card:active {
+            transform: scale(0.98);
         }
 
         .product-img-container {
@@ -272,24 +278,20 @@
             transition: transform 0.3s ease;
         }
 
-        .product-card:hover .product-img {
-            transform: scale(1.03);
-        }
-
-        /* Quick View button - appears on hover over image */
         .quick-view-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
             background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            padding: 1rem 0.5rem 0.5rem;
+            padding: 0.8rem 0.4rem 0.4rem;
             text-align: center;
             transform: translateY(100%);
             transition: transform 0.25s ease;
         }
 
-        .product-img-container:hover .quick-view-overlay {
+        .product-img-container:hover .quick-view-overlay,
+        .product-img-container:active .quick-view-overlay {
             transform: translateY(0);
         }
 
@@ -297,37 +299,38 @@
             background: white;
             color: var(--accent);
             border: none;
-            padding: 0.4rem 0.8rem;
+            padding: 0.35rem 0.7rem;
             border-radius: 2rem;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 600;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.3rem;
             transition: all 0.2s;
         }
 
-        .quick-view-btn:hover {
+        .quick-view-btn:active {
             background: var(--accent);
             color: white;
         }
 
         .product-info {
-            padding: 0.75rem;
+            padding: 0.65rem;
         }
 
         .product-category {
-            font-size: 0.55rem;
+            font-size: 0.5rem;
             font-weight: 600;
             color: var(--accent);
             text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
 
         .product-title {
             font-weight: 700;
-            font-size: 0.85rem;
-            margin: 0.25rem 0;
+            font-size: 0.75rem;
+            margin: 0.2rem 0;
             line-height: 1.35;
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -336,215 +339,68 @@
         }
 
         .product-description {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--text-secondary);
-            margin: 0.5rem 0;
+            margin: 0.4rem 0;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            line-height: 1.4;
         }
 
-        /* Button row for Amazon and Share */
         .product-actions {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.4rem;
             margin-top: 0.5rem;
         }
 
-        /* Main View on Amazon button */
         .amazon-btn-card {
             flex: 2;
             background: var(--amazon);
             color: #000;
             border: none;
-            padding: 0.5rem;
+            padding: 0.45rem 0.3rem;
             border-radius: 0.5rem;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.3rem;
             transition: background 0.2s;
         }
 
-        .amazon-btn-card:hover {
+        .amazon-btn-card:active {
             background: var(--amazon-hover);
         }
 
-        /* Share button */
         .share-btn-card {
             flex: 1;
             background: var(--bg-secondary);
             color: var(--text-secondary);
             border: 1px solid var(--border-light);
-            padding: 0.5rem;
+            padding: 0.45rem 0.3rem;
             border-radius: 0.5rem;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.4rem;
+            gap: 0.3rem;
             transition: all 0.2s;
         }
 
-        .share-btn-card:hover {
+        .share-btn-card:active {
             background: var(--accent);
             color: white;
             border-color: var(--accent);
         }
 
-        /* Share Modal */
-        .share-modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1001;
-            padding: 1rem;
-        }
-
-        .share-modal-content {
-            background: white;
-            border-radius: 1rem;
-            max-width: 450px;
-            width: 100%;
-            padding: 1.5rem;
-            position: relative;
-        }
-
-        .share-modal-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1.25rem;
-        }
-
-        .share-modal-header h3 {
-            font-size: 1rem;
-            font-weight: 700;
-        }
-
-        .share-modal-close {
-            background: #f0f2f5;
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .share-product-info {
-            display: flex;
-            gap: 0.75rem;
-            padding: 0.75rem;
-            background: var(--bg-secondary);
-            border-radius: 0.75rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .share-product-img {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            border-radius: 0.5rem;
-        }
-
-        .share-product-details {
-            flex: 1;
-        }
-
-        .share-product-name {
-            font-weight: 700;
-            font-size: 0.8rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .share-product-category {
-            font-size: 0.6rem;
-            color: var(--accent);
-        }
-
-        .share-link-container {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .share-link-input {
-            flex: 1;
-            padding: 0.6rem;
-            border: 1px solid var(--border-light);
-            border-radius: 0.5rem;
-            font-size: 0.7rem;
-            background: var(--bg-secondary);
-            font-family: monospace;
-        }
-
-        .copy-link-btn {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 0 1rem;
-            border-radius: 0.5rem;
-            font-size: 0.7rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .copy-link-btn.copied {
-            background: var(--success);
-        }
-
-        .share-options {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .share-option {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.6rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-light);
-            border-radius: 0.75rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-        }
-
-        .share-option:hover {
-            transform: translateY(-2px);
-        }
-
-        .share-option i {
-            font-size: 1.3rem;
-        }
-
-        .share-option span {
-            font-size: 0.6rem;
-            font-weight: 500;
-        }
-
-        .share-option.whatsapp i { color: var(--whatsapp); }
-        .share-option.facebook i { color: var(--facebook); }
-        .share-option.twitter i { color: var(--twitter); }
-        .share-option.linkedin i { color: var(--linkedin); }
-        .share-option.email i { color: var(--email); }
-
-        /* Modal - PROS & CONS focused */
-        .modal {
+        /* Modal Mobile Optimization */
+        .modal, .share-modal {
             position: fixed;
             inset: 0;
             background: rgba(0,0,0,0.85);
@@ -553,48 +409,54 @@
             align-items: center;
             justify-content: center;
             z-index: 1000;
-            padding: 1rem;
+            padding: 0.75rem;
         }
 
-        .modal-content {
+        .modal-content, .share-modal-content {
             background: white;
-            border-radius: 1rem;
-            max-width: 550px;
+            border-radius: 1.25rem;
+            max-width: 500px;
             width: 100%;
-            max-height: 85vh;
+            max-height: 90vh;
             overflow-y: auto;
-            padding: 1.5rem;
+            padding: 1.25rem;
             position: relative;
+            -webkit-overflow-scrolling: touch;
         }
 
-        .modal-close {
+        .modal-close, .share-modal-close {
             position: absolute;
             top: 0.75rem;
             right: 0.75rem;
             background: #f0f2f5;
             border: none;
-            width: 32px;
-            height: 32px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
         }
 
         .modal-product-img {
             width: 100%;
-            height: 200px;
+            height: 180px;
             object-fit: cover;
             border-radius: 0.75rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .modal-product-title {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 700;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.2rem;
+            padding-right: 1.5rem;
         }
 
         .modal-product-category {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--accent);
             font-weight: 600;
             text-transform: uppercase;
@@ -602,25 +464,25 @@
         }
 
         .modal-description {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
             line-height: 1.5;
-            margin-bottom: 1.25rem;
-            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
             border-bottom: 1px solid var(--border-light);
         }
 
         .pros-cons-section {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            margin: 1rem 0;
+            gap: 0.85rem;
+            margin: 0.75rem 0;
         }
 
         .pros-box, .cons-box {
             background: var(--bg-secondary);
             border-radius: 0.75rem;
-            padding: 0.85rem;
+            padding: 0.75rem;
             border-left: 4px solid;
         }
 
@@ -628,44 +490,17 @@
         .cons-box { border-left-color: var(--danger); }
 
         .pros-box h4, .cons-box h4 {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-        }
-
-        .pros-box h4 i { color: var(--success); }
-        .cons-box h4 i { color: var(--danger); }
-
-        .pros-list, .cons-list {
-            list-style: none;
-            padding-left: 0;
+            gap: 0.4rem;
         }
 
         .pros-list li, .cons-list li {
-            font-size: 0.75rem;
-            padding: 0.35rem 0 0.35rem 1.25rem;
-            position: relative;
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
-
-        .pros-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--success);
-            font-weight: 700;
-        }
-
-        .cons-list li:before {
-            content: "✗";
-            position: absolute;
-            left: 0;
-            color: var(--danger);
-            font-weight: 700;
+            font-size: 0.7rem;
+            padding: 0.3rem 0 0.3rem 1.1rem;
         }
 
         .amazon-btn-modal {
@@ -673,8 +508,8 @@
             background: var(--amazon);
             color: #000;
             border: none;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
+            padding: 0.7rem;
+            border-radius: 0.75rem;
             font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
@@ -685,28 +520,32 @@
             gap: 0.5rem;
         }
 
-        .amazon-btn-modal:hover {
-            background: var(--amazon-hover);
-        }
-
         .category-strip {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border-light);
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.25rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
         }
 
         .cat-chip {
-            padding: 0.4rem 1.1rem;
+            padding: 0.4rem 1rem;
             border-radius: 2rem;
             border: 1px solid var(--border-light);
             background: white;
             cursor: pointer;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 500;
             color: var(--text-secondary);
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .cat-chip:active {
+            transform: scale(0.96);
         }
 
         .cat-chip.active {
@@ -715,71 +554,43 @@
             border-color: var(--accent);
         }
 
-        .stats-bar {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .stat-card {
-            background: var(--bg-secondary);
-            padding: 0.4rem 1rem;
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: baseline;
-            gap: 0.4rem;
-            border: 1px solid var(--border-light);
-        }
-
-        .stat-number {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--accent-dark);
-        }
-
-        .stat-label {
-            font-size: 0.6rem;
-            color: var(--text-secondary);
-        }
-
         .sort-bar {
             display: flex;
             justify-content: flex-end;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .sort-select {
-            padding: 0.4rem 1rem;
+            padding: 0.4rem 0.9rem;
             border: 1px solid var(--border-light);
-            border-radius: 0.5rem;
+            border-radius: 2rem;
             font-size: 0.7rem;
             background: white;
             cursor: pointer;
+            font-weight: 500;
         }
 
         footer {
             text-align: center;
-            padding: 1.25rem;
+            padding: 1rem;
             border-top: 1px solid var(--border-light);
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: #8e9eae;
             background: var(--bg-secondary);
         }
 
         .toast {
             position: fixed;
-            bottom: 2rem;
+            bottom: 1.5rem;
             left: 50%;
             transform: translateX(-50%);
             background: #1a1a2e;
             color: white;
-            padding: 0.6rem 1.2rem;
+            padding: 0.5rem 1rem;
             border-radius: 2rem;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             z-index: 1002;
+            white-space: nowrap;
             animation: fadeInUp 0.3s ease;
         }
 
@@ -794,31 +605,17 @@
             }
         }
 
-        @media (min-width: 768px) {
-            .products-grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-            .trending-card { width: 250px; }
-            .hero h1 { font-size: 2.5rem; }
-        }
-
-        @media (min-width: 1024px) {
-            .products-grid { grid-template-columns: repeat(4, 1fr); }
-            .pros-cons-section { flex-direction: row; }
-            .pros-box, .cons-box { flex: 1; }
-        }
-
-        @media (min-width: 1400px) {
-            .hero h1 { font-size: 3rem; }
-        }
-
         .loader-spinner {
             display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            padding: 4rem;
+            padding: 3rem;
         }
 
         .spinner {
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             border: 3px solid var(--border-light);
             border-top-color: var(--accent);
             border-radius: 50%;
@@ -829,8 +626,116 @@
 
         .empty-state {
             text-align: center;
-            padding: 3rem;
+            padding: 2.5rem;
             grid-column: span 2;
+        }
+
+        .share-link-input {
+            font-size: 0.65rem;
+            padding: 0.5rem;
+        }
+
+        .share-options {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.6rem;
+        }
+
+        .share-option {
+            padding: 0.5rem;
+        }
+
+        .share-option i {
+            font-size: 1.1rem;
+        }
+
+        .share-option span {
+            font-size: 0.55rem;
+        }
+
+        /* Tablet and Desktop improvements */
+        @media (min-width: 480px) {
+            .products-grid {
+                gap: 1rem;
+            }
+            .product-title {
+                font-size: 0.8rem;
+            }
+            .trending-card {
+                width: 180px;
+            }
+            .trending-card-img {
+                height: 135px;
+            }
+        }
+
+        @media (min-width: 640px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .app-layout {
+                padding: 0 1.25rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .products-grid {
+                gap: 1.25rem;
+            }
+            .trending-card {
+                width: 220px;
+            }
+            .trending-card-img {
+                height: 150px;
+            }
+            .quick-view-overlay {
+                transform: translateY(100%);
+            }
+            .product-img-container:hover .quick-view-overlay {
+                transform: translateY(0);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .pros-cons-section {
+                flex-direction: row;
+            }
+            .pros-box, .cons-box {
+                flex: 1;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        /* Touch-friendly adjustments */
+        button, .cat-chip, .sort-select, .amazon-btn-card, .share-btn-card, .quick-view-btn {
+            touch-action: manipulation;
+        }
+
+        /* Improve tap targets on mobile */
+        @media (max-width: 640px) {
+            .amazon-btn-card, .share-btn-card {
+                min-height: 36px;
+            }
+            .cat-chip {
+                padding: 0.45rem 1rem;
+            }
+            .modal-close, .share-modal-close {
+                width: 40px;
+                height: 40px;
+            }
         }
     </style>
 </head>
@@ -852,8 +757,8 @@
             <div class="trending-header">
                 <div class="trending-title"><i class="fas fa-fire"></i><h3>🔥 Trending Now · Most Popular This Week</h3></div>
                 <div class="trending-nav">
-                    <button class="trending-nav-btn" id="trendingPrevBtn"><i class="fas fa-chevron-left"></i></button>
-                    <button class="trending-nav-btn" id="trendingNextBtn"><i class="fas fa-chevron-right"></i></button>
+                    <button class="trending-nav-btn" id="trendingPrevBtn" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                    <button class="trending-nav-btn" id="trendingNextBtn" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
             <div class="trending-carousel" id="trendingCarousel">
@@ -864,7 +769,7 @@
 </section>
 
 <div class="app-layout" id="app">
-    <div class="loader-spinner"><div class="spinner"></div></div>
+    <div class="loader-spinner"><div class="spinner"></div><p style="margin-top: 0.75rem; font-size: 0.75rem;">Loading amazing products...</p></div>
 </div>
 
 <footer><i class="fas fa-compass"></i> TRENDLIN — Product discovery & exploration | © 2025</footer>
@@ -920,7 +825,7 @@
             <div class="empty-state">
                 <h3>⚠️ Failed to Load Products</h3>
                 <p>${errorMessage}</p>
-                <button onclick="location.reload()" style="margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--accent); color: white; border: none; border-radius: 0.5rem; cursor: pointer;">Retry</button>
+                <button onclick="location.reload()" style="margin-top: 1rem; padding: 0.6rem 1.5rem; background: var(--accent); color: white; border: none; border-radius: 2rem; cursor: pointer;">Retry</button>
             </div>
         `;
     }
@@ -978,11 +883,11 @@
         
         if (track) {
             if (trending.length === 0) {
-                track.innerHTML = `<div style="padding: 2rem; text-align: center; width: 100%;">No trending products yet</div>`;
+                track.innerHTML = `<div style="padding: 1.5rem; text-align: center; width: 100%;">No trending products yet</div>`;
             } else {
                 track.innerHTML = trending.map(p => `
                     <div class="trending-card" data-id="${p.id}">
-                        <img class="trending-card-img" src="${p.image}" onerror="this.src='https://placehold.co/400x400?text=TRENDLIN'" alt="">
+                        <img class="trending-card-img" src="${p.image}" onerror="this.src='https://placehold.co/400x400?text=TRENDLIN'" alt="${escapeHtml(p.name)}">
                         <div class="trending-card-info">
                             <div class="trending-card-category">${escapeHtml(getCategoryDisplayName(p.category))}</div>
                             <div class="trending-card-name">${escapeHtml(p.name.length > 35 ? p.name.slice(0,32)+'…' : p.name)}</div>
@@ -997,8 +902,8 @@
         const prev = document.getElementById('trendingPrevBtn');
         const next = document.getElementById('trendingNextBtn');
         if (prev && next && container && trending.length > 0) {
-            prev.onclick = () => container.scrollBy({ left: -260, behavior: 'smooth' });
-            next.onclick = () => container.scrollBy({ left: 260, behavior: 'smooth' });
+            prev.onclick = () => container.scrollBy({ left: -180, behavior: 'smooth' });
+            next.onclick = () => container.scrollBy({ left: 180, behavior: 'smooth' });
         }
         
         document.querySelectorAll('.trending-card').forEach(card => {
@@ -1011,16 +916,8 @@
     }
     
     function renderModal(product) {
-        const pros = product.pros || [
-            "Premium build quality",
-            "Excellent customer support",
-            "Good value for money"
-        ];
-        
-        const cons = product.cons || [
-            "Check compatibility before buying",
-            "Limited availability in some regions"
-        ];
+        const pros = product.pros || ["Premium build quality", "Excellent customer support", "Good value for money"];
+        const cons = product.cons || ["Check compatibility before buying", "Limited availability in some regions"];
         
         return `
             <div class="modal" id="productModal">
@@ -1046,9 +943,7 @@
                         </div>
                     </div>
                     
-                    <button class="amazon-btn-modal" id="amazonBtn">
-                        <i class="fab fa-amazon"></i> View on Amazon
-                    </button>
+                    <button class="amazon-btn-modal" id="amazonBtn">View on Amazon</button>
                 </div>
             </div>
         `;
@@ -1065,7 +960,6 @@
                         <h3><i class="fas fa-share-alt"></i> Share this product</h3>
                         <button class="share-modal-close" id="shareModalClose"><i class="fas fa-times"></i></button>
                     </div>
-                    
                     <div class="share-product-info">
                         <img class="share-product-img" src="${product.image}" onerror="this.src='https://placehold.co/100x100?text=TRENDLIN'" alt="">
                         <div class="share-product-details">
@@ -1073,33 +967,16 @@
                             <div class="share-product-category">${escapeHtml(getCategoryDisplayName(product.category))}</div>
                         </div>
                     </div>
-                    
                     <div class="share-link-container">
                         <input type="text" class="share-link-input" id="shareLinkInput" value="${shareUrl}" readonly>
                         <button class="copy-link-btn" id="copyLinkBtn"><i class="fas fa-copy"></i> Copy</button>
                     </div>
-                    
                     <div class="share-options">
-                        <a class="share-option whatsapp" href="https://wa.me/?text=${encodeURIComponent(shareText + ' ' + shareUrl)}" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                            <span>WhatsApp</span>
-                        </a>
-                        <a class="share-option facebook" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}" target="_blank">
-                            <i class="fab fa-facebook-f"></i>
-                            <span>Facebook</span>
-                        </a>
-                        <a class="share-option twitter" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}" target="_blank">
-                            <i class="fab fa-twitter"></i>
-                            <span>Twitter</span>
-                        </a>
-                        <a class="share-option linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}" target="_blank">
-                            <i class="fab fa-linkedin-in"></i>
-                            <span>LinkedIn</span>
-                        </a>
-                        <a class="share-option email" href="mailto:?subject=${encodeURIComponent('Check out ' + product.name)}&body=${encodeURIComponent(shareText + '\n\n' + shareUrl)}">
-                            <i class="fas fa-envelope"></i>
-                            <span>Email</span>
-                        </a>
+                        <a class="share-option whatsapp" href="https://wa.me/?text=${encodeURIComponent(shareText + ' ' + shareUrl)}" target="_blank"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+                        <a class="share-option facebook" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}" target="_blank"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+                        <a class="share-option twitter" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}" target="_blank"><i class="fab fa-twitter"></i><span>Twitter</span></a>
+                        <a class="share-option linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}" target="_blank"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
+                        <a class="share-option email" href="mailto:?subject=${encodeURIComponent('Check out ' + product.name)}&body=${encodeURIComponent(shareText + '\n\n' + shareUrl)}"><i class="fas fa-envelope"></i><span>Email</span></a>
                     </div>
                 </div>
             </div>
@@ -1109,16 +986,8 @@
     function render() {
         const counts = getCategoryCounts();
         const totalProducts = PRODUCTS.length;
-        const avgRating = PRODUCTS.length ? (PRODUCTS.reduce((s,p)=>s+p.rating,0)/PRODUCTS.length).toFixed(1) : '0';
-        const onSaleTotal = PRODUCTS.filter(p => p.discount > 0).length;
         
         const html = `
-            <div class="stats-bar">
-                <div class="stat-card"><span class="stat-number">${totalProducts}</span><span class="stat-label">Products</span></div>
-                <div class="stat-card"><span class="stat-number">${avgRating}</span><span class="stat-label">Avg Rating</span></div>
-                <div class="stat-card"><span class="stat-number">${onSaleTotal}</span><span class="stat-label">On Sale</span></div>
-            </div>
-            
             <div class="category-strip">
                 <button class="cat-chip ${activeCategory === 'all' ? 'active' : ''}" data-cat="all">✨ All (${totalProducts})</button>
                 ${FIXED_CATEGORIES.map(cat => `
@@ -1127,25 +996,21 @@
                     </button>
                 `).join('')}
             </div>
-            
             <div class="sort-bar">
                 <select id="sortSelect" class="sort-select">
                     <option value="trending" ${currentSort === 'trending' ? 'selected' : ''}>🔥 Trending First</option>
                     <option value="name" ${currentSort === 'name' ? 'selected' : ''}>📝 Name A-Z</option>
                 </select>
             </div>
-            
             <div class="products-grid">
                 ${filteredProducts.length === 0 ? 
                     `<div class="empty-state"><h3>No products found</h3><p>Try a different category</p></div>` :
                     filteredProducts.map(p => `
                         <div class="product-card" data-id="${p.id}">
                             <div class="product-img-container">
-                                <img class="product-img" src="${p.image}" loading="lazy" onerror="this.src='https://placehold.co/400x400?text=TRENDLIN'">
+                                <img class="product-img" src="${p.image}" loading="lazy" onerror="this.src='https://placehold.co/400x400?text=TRENDLIN'" alt="${escapeHtml(p.name)}">
                                 <div class="quick-view-overlay">
-                                    <button class="quick-view-btn" data-id="${p.id}">
-                                        <i class="fas fa-eye"></i> Quick View
-                                    </button>
+                                    <button class="quick-view-btn" data-id="${p.id}"><i class="fas fa-eye"></i> Quick View</button>
                                 </div>
                             </div>
                             <div class="product-info">
@@ -1153,19 +1018,14 @@
                                 <div class="product-title">${escapeHtml(p.name.length > 50 ? p.name.slice(0,47)+'…' : p.name)}</div>
                                 <div class="product-description">${escapeHtml(p.description ? (p.description.length > 80 ? p.description.slice(0,77)+'…' : p.description) : 'Click Quick View to see pros & cons')}</div>
                                 <div class="product-actions">
-                                    <button class="amazon-btn-card" data-url="${escapeHtml(p.affiliateLink)}">
-                                        <i class="fab fa-amazon"></i> View on Amazon
-                                    </button>
-                                    <button class="share-btn-card" data-share='${JSON.stringify(p).replace(/'/g, "&#39;")}'>
-                                        <i class="fas fa-share-alt"></i> Share
-                                    </button>
+                                    <button class="amazon-btn-card" data-url="${escapeHtml(p.affiliateLink)}">View on Amazon</button>
+                                    <button class="share-btn-card" data-share='${JSON.stringify(p).replace(/'/g, "&#39;")}'><i class="fas fa-share-alt"></i> Share</button>
                                 </div>
                             </div>
                         </div>
                     `).join('')
                 }
             </div>
-            
             ${selectedProduct ? renderModal(selectedProduct) : ''}
             ${shareProduct ? renderShareModal(shareProduct) : ''}
         `;
@@ -1214,20 +1074,13 @@
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const url = btn.dataset.url;
-                if (url && url !== '#') {
-                    window.open(url, '_blank');
-                }
+                if (url && url !== '#') window.open(url, '_blank');
             });
         });
         
         document.querySelectorAll('.product-card').forEach(card => {
             card.addEventListener('click', (e) => {
-                if (!e.target.classList.contains('amazon-btn-card') && 
-                    !e.target.classList.contains('quick-view-btn') &&
-                    !e.target.classList.contains('share-btn-card') &&
-                    !e.target.closest('.amazon-btn-card') &&
-                    !e.target.closest('.quick-view-btn') &&
-                    !e.target.closest('.share-btn-card')) {
+                if (!e.target.closest('.amazon-btn-card') && !e.target.closest('.quick-view-btn') && !e.target.closest('.share-btn-card')) {
                     const id = parseInt(card.dataset.id);
                     selectedProduct = PRODUCTS.find(p => p.id === id);
                     render();
@@ -1236,50 +1089,15 @@
         });
         
         const closeBtn = document.getElementById('closeModal');
-        if (closeBtn) {
-            closeBtn.addEventListener('click', () => {
-                selectedProduct = null;
-                render();
-            });
-        }
-        
+        if (closeBtn) closeBtn.addEventListener('click', () => { selectedProduct = null; render(); });
         const modal = document.getElementById('productModal');
-        if (modal) {
-            modal.addEventListener('click', (e) => {
-                if (e.target.id === 'productModal') {
-                    selectedProduct = null;
-                    render();
-                }
-            });
-        }
-        
+        if (modal) modal.addEventListener('click', (e) => { if (e.target.id === 'productModal') { selectedProduct = null; render(); } });
         const amazonBtn = document.getElementById('amazonBtn');
-        if (amazonBtn && selectedProduct) {
-            amazonBtn.addEventListener('click', () => {
-                if (selectedProduct.affiliateLink && selectedProduct.affiliateLink !== '#') {
-                    window.open(selectedProduct.affiliateLink, '_blank');
-                }
-            });
-        }
-        
+        if (amazonBtn && selectedProduct) amazonBtn.addEventListener('click', () => { if (selectedProduct.affiliateLink && selectedProduct.affiliateLink !== '#') window.open(selectedProduct.affiliateLink, '_blank'); });
         const shareModalClose = document.getElementById('shareModalClose');
-        if (shareModalClose) {
-            shareModalClose.addEventListener('click', () => {
-                shareProduct = null;
-                render();
-            });
-        }
-        
-        const shareModal = document.getElementById('shareModal');
-        if (shareModal) {
-            shareModal.addEventListener('click', (e) => {
-                if (e.target.id === 'shareModal') {
-                    shareProduct = null;
-                    render();
-                }
-            });
-        }
-        
+        if (shareModalClose) shareModalClose.addEventListener('click', () => { shareProduct = null; render(); });
+        const shareModalEl = document.getElementById('shareModal');
+        if (shareModalEl) shareModalEl.addEventListener('click', (e) => { if (e.target.id === 'shareModal') { shareProduct = null; render(); } });
         const copyLinkBtn = document.getElementById('copyLinkBtn');
         const shareLinkInput = document.getElementById('shareLinkInput');
         if (copyLinkBtn && shareLinkInput) {
@@ -1297,16 +1115,6 @@
         }
     }
     
-    function showLoading() {
-        document.getElementById('app').innerHTML = `
-            <div class="loader-spinner">
-                <div class="spinner"></div>
-                <p style="margin-top: 1rem;">Loading amazing products...</p>
-            </div>
-        `;
-    }
-    
-    showLoading();
     loadProducts();
 })();
 </script>
