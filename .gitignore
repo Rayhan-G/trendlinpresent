@@ -43,3 +43,7 @@ npm-debug.log*
 
 # Deployment scripts (keep for reference but don't deploy)
 deploy.sh
+
+.dev.vars*
+!.dev.vars.example
+!.env.example
